@@ -1,0 +1,149 @@
+/*<<<修改栅格边距*/
+.row {
+	margin-left: -5px;
+	margin-right: -5px;
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3,
+	.col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9,
+	.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3,
+	.col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9,
+	.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3,
+	.col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9,
+	.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3,
+	.col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+/*>>>修改栅格边距*/
+
+/*<<<复用样式*/
+.zw-bg-blue {
+	background-color: rgb(88, 142, 188) !important;
+}
+
+.zw-bg-red {
+	background-color: rgb(266, 92, 93) !important;
+}
+
+.zw-bg-green {
+	background-color: rgb(66, 182, 173) !important;
+}
+
+.zw-bg-purple {
+	background-color: rgb(134, 118, 167) !important;
+}
+
+.zw-bg-white {
+	background-color: rgb(255, 255, 255) !important;
+}
+/*>>>复用样式*/
+
+/*<<<页面顶部总览和跳转*/
+.top-total .small-box .inner p {
+	margin: 0;
+	font-size: 16px;
+	line-height: 20px;
+	color: #FFFFFF;
+	padding-left: 80px;
+}
+
+.top-total .top-total-carcount {
+	background-image: url(../image/cross.png);
+	background-repeat: no-repeat;
+	background-size: 60px 60px;
+	background-position-x: 10px;
+	background-position-y: 0;
+}
+
+.top-total .top-total-crosscount {
+	background-image: url(../image/car.png);
+	background-repeat: no-repeat;
+	background-size: 60px 60px;
+	background-position-x: 10px;
+	background-position-y: 0;
+}
+
+.top-total .top-total-daycarcount {
+	background-image: url(../image/day.png);
+	background-repeat: no-repeat;
+	background-size: 60px 60px;
+	background-position-x: 10px;
+	background-position-y: 0;
+}
+
+.top-total .top-total-yesterdaycarcount {
+	background-image: url(../image/yesterday.png);
+	background-repeat: no-repeat;
+	background-size: 60px 60px;
+	background-position-x: 10px;
+	background-position-y: 0;
+}
+/*>>>页面顶部总览和跳转*/
+
+/*<<<重点关注css*/
+#map-tab {
+	width: 100%;
+	height: 100%;
+}
+
+#map-tab .tab-title {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+
+#map-tab .tab-title>a {
+	display: block;
+	width: 33.33%;
+	float: left;
+}
+
+#map-tab .tab-content {
+	display: none;
+	width: 100%;
+	margin-top: 20px;
+}
+
+#map-tab .tab-content.active {
+	display: block;
+}
+/*>>>重点关注css*/
+
+/*<<<行为分析css*/
+.content-wrapper .summary {
+	height: 350px;
+}
+
+.content-wrapper .summary #car-type {
+	height: 240px;
+}
+
+.content-wrapper .summary #geographical-distribution, .content-wrapper .summary #data-summary-bar
+	{
+	height: 345px;
+}
+
+.search-content #behavior-analysis-heatmap {
+	height: 450px;
+}
+
+.search-content #behavior-analysis-sub1, .search-content #behavior-analysis-sub2,
+	.search-content #behavior-analysis-sub3, .search-content #behavior-analysis-sub4
+	{
+	height: 400px;
+}
+
+.search-content .white-head {
+	border-top-color: #ffffff;
+}
+
+.search-content .box {
+	margin-bottom: 10px;
+}
+
+.search-content .box .nav-tabs-custom {
+	margin-bottom: 10px;
+}
+/*>>>行为分析css*/
