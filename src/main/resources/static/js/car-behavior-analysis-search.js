@@ -249,7 +249,7 @@ $(function() {
 			}
 		},
 		legend: {
-			data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+			 data: ['天河北路388号路段','广园快速农科院路段','科韵路中山立交路段','广州大道中天河北路路段','禺东西路省军区路段','花城大道广州大道路段']
 		},
 		grid: {
 			left: '3%',
@@ -266,7 +266,7 @@ $(function() {
 			type: 'value'
 		}],
 		series: [{
-				name: '邮件营销',
+				name: '天河北路388号路段',
 				type: 'line',
 				stack: '总量',
 				areaStyle: {
@@ -275,7 +275,7 @@ $(function() {
 				data: [120, 132, 101, 134, 90, 230, 210]
 			},
 			{
-				name: '联盟广告',
+				name: '广园快速农科院路段',
 				type: 'line',
 				stack: '总量',
 				areaStyle: {
@@ -284,7 +284,7 @@ $(function() {
 				data: [220, 182, 191, 234, 290, 330, 310]
 			},
 			{
-				name: '视频广告',
+				name: '科韵路中山立交路段',
 				type: 'line',
 				stack: '总量',
 				areaStyle: {
@@ -293,7 +293,7 @@ $(function() {
 				data: [150, 232, 201, 154, 190, 330, 410]
 			},
 			{
-				name: '直接访问',
+				name: '广州大道中天河北路路段',
 				type: 'line',
 				stack: '总量',
 				areaStyle: {
@@ -302,7 +302,7 @@ $(function() {
 				data: [320, 332, 301, 334, 390, 330, 320]
 			},
 			{
-				name: '搜索引擎',
+				name: '禺东西路省军区路段',
 				type: 'line',
 				stack: '总量',
 				label: {
@@ -336,7 +336,7 @@ $(function() {
 		yAxis: {
 			type: 'value',
 			axisLabel: {
-				formatter: '{value} W'
+				formatter: '{value}'
 			},
 			axisPointer: {
 				snap: true
@@ -366,7 +366,7 @@ $(function() {
 			}]
 		},
 		series: [{
-			name: '用电量',
+			name: '频次',
 			type: 'line',
 			smooth: true,
 			data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],
@@ -398,36 +398,37 @@ $(function() {
 		legend: {
 			orient: 'vertical',
 			x: 'left',
-			data: ['直达', '营销广告', '搜索引擎', '邮件营销', '联盟广告', '视频广告', '百度', '谷歌', '必应', '其他']
+			 data: ['天河北路388号路段','广园快速农科院路段','科韵路中山立交路段','广州大道中天河北路路段','禺东西路省军区路段','花城大道广州大道路段','临江大道华南快速路段','临江大道琶洲大桥路段','大观路岭南学院以北路段','珠吉路桥北路段']
+//			data: ['直达', '营销广告', '搜索引擎', '邮件营销', '联盟广告', '视频广告', '百度', '谷歌', '必应', '其他']
 		},
 		series: [{
-				name: '访问来源',
+				name: '活跃卡口',
 				type: 'pie',
 				selectedMode: 'single',
 				radius: [0, '30%'],
 
-				label: {
-					normal: {
-						position: 'inner'
-					}
-				},
-				labelLine: {
-					normal: {
-						show: false
-					}
-				},
+//				label: {
+//					normal: {
+//						position: 'inner'
+//					}
+//				},
+//				labelLine: {
+//					normal: {
+//						show: false
+//					}
+//				},
 				data: [{
 						value: 335,
-						name: '直达',
-						selected: true
+						name: '临江大道琶洲大桥路段'
+//						selected: true
 					},
 					{
 						value: 679,
-						name: '营销广告'
+						name: '大观路岭南学院以北路段'
 					},
 					{
 						value: 1548,
-						name: '搜索引擎'
+						name: '其他'
 					}
 				]
 			},
@@ -438,35 +439,35 @@ $(function() {
 
 				data: [{
 						value: 335,
-						name: '直达'
+						name: '广州大道中天河北路路段'
 					},
 					{
 						value: 310,
-						name: '邮件营销'
+						name: '科韵路中山立交路段'
 					},
 					{
 						value: 234,
-						name: '联盟广告'
+						name: '广园快速农科院路段'
 					},
 					{
 						value: 135,
-						name: '视频广告'
+						name: '天河北路388号路段'
 					},
 					{
 						value: 1048,
-						name: '百度'
+						name: '禺东西路省军区路段'
 					},
 					{
 						value: 251,
-						name: '谷歌'
+						name: '临江大道华南快速路段'
 					},
 					{
 						value: 147,
-						name: '必应'
+						name: '珠吉路桥北路段'
 					},
 					{
 						value: 102,
-						name: '其他'
+						name: '花城大道广州大道路段'
 					}
 				]
 			}
