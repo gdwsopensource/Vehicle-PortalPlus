@@ -1,0 +1,20 @@
+{
+  "groups": [{
+    "name": "application",
+    "type": "com.gdws.vehicle.config.Systemconfigs",
+    "sourceType": "com.gdws.vehicle.config.Systemconfigs"
+  }],
+  "properties": [
+    {
+      "name": "application.domain",
+      "type": "java.lang.String",
+      "sourceType": "com.gdws.vehicle.config.Systemconfigs"
+    },
+    {
+      "name": "application.port",
+      "type": "java.lang.String",
+      "sourceType": "com.gdws.vehicle.config.Systemconfigs"
+    }
+  ],
+  "hints": []
+}

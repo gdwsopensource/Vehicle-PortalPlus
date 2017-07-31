@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title='OD分析'">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<div class="your-main-box" style="height: 1000px">
+				<h1>该页面主盒子</h1>
+			</div>
+		</div>
+		<aside class="control-sidebar control-sidebar-dark">
+			<div class="your-main-aside">
+				<h1>该页面右方悬浮选项，不需要就在这里和js里写函数删掉</h1>
+			</div>
+		</aside>
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->	
+</body>
+</html>
