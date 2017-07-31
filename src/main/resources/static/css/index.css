@@ -147,3 +147,71 @@
 	margin-bottom: 10px;
 }
 /*>>>行为分析css*/
+
+
+/* 高频分析 */
+.frequency .nav-tabs-custom>.nav-tabs>li .active {
+    /*border-top-color: #3c8dbc;*/
+    background:#5bb4d9;
+    color:#fff;
+}
+.frequency	.nav-tabs-custom {
+    margin-bottom: 0px;
+   /*  background: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    border-radius: 3px; */
+}
+.frequency .frequenecy-box{
+	border-radius:5px;
+	box-shadow:0 0 10px #ddd;
+	/* background:#5bb4d9; */
+	padding:20px ;
+}
+.frequency .frequenecy-box .img-box{
+	width:20%;
+	height:50%;
+	display:inline-block;
+	/* margin-left:10%;
+	margin-top:10%; */
+}
+.frequency .frequenecy-box .img-box img{
+	width:100%;
+}
+.frequency .frequenecy-box .text-box{
+	width:75%; 
+	display:inline-block;
+	vertical-align: middle;
+	color:#fff;
+	text-align:center;
+}
+.frequency #warnning-total{
+	background:#5bb4d9;
+}
+.frequency #increasing{
+	background:#4fc3b9;
+}
+.frequency #compare{
+	background:#f47564;
+}
+.frequency #warnning-times{
+	background:#f39c12;
+}
+.frequency #alert-type-analysis,
+.frequency #serious-illegal-analysis,.frequency #high-frequency-bayonet-analysis{
+	height:270px;
+}
+.frequency .box{
+	    border-radius: 0px;
+}
+.frequency  #high-warning .table td,.frequency  #high-warning .table th{
+	text-align:center;
+}
+.frequency  #high-warning .index{
+	color:#3a8cbb;
+}
+
+.frequency  #high-warning .direction span{
+	padding:3px;
+	background:#4fc3b9;
+	color:#fff;
+}
