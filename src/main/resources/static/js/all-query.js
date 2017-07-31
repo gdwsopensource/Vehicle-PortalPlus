@@ -1,0 +1,3 @@
+(function($){
+    $('#reservation').daterangepicker()
+})(jQuery);
