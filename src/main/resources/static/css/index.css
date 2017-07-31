@@ -161,11 +161,18 @@
     box-shadow: 0 1px 1px rgba(0,0,0,0.1);
     border-radius: 3px; */
 }
+.frequency .nav-tabs-custom>.nav-tabs{
+	    border-bottom-color: #000000;
+}
+.frequency .nav-tabs{
+	border-bottom: 1px solid #ddd;
+}
 .frequency .frequenecy-box{
 	border-radius:5px;
 	box-shadow:0 0 10px #ddd;
 	/* background:#5bb4d9; */
 	padding:20px ;
+	margin-bottom: 10px;
 }
 .frequency .frequenecy-box .img-box{
 	width:20%;
@@ -183,6 +190,12 @@
 	vertical-align: middle;
 	color:#fff;
 	text-align:center;
+}
+.frequency .frequenecy-box .text-box .text{
+	font-size:18px;
+}
+.frequency .frequenecy-box .text-box .sum{
+	font-size:34px;
 }
 .frequency #warnning-total{
 	background:#5bb4d9;
