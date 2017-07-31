@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-<head th:include="@{include/head}" th:with="title='OD分析'">
+<head th:include="@{include/head}" th:with="title='假/套牌分析'">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -140,135 +140,10 @@
 				</div>
 			</section>
 		</div>
-		<aside class="control-sidebar control-sidebar-dark">
-			<!-- Create the tabs -->
-			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-				<li class="active"><a href="#type-total" data-toggle="tab"><i
-						class="fa fa-home"></i></a></li>
-				<li><a href="#type-area" data-toggle="tab"><i
-						class="fa fa-home"></i></a></li>
-				<li><a href="#type-time" data-toggle="tab"><i
-						class="fa fa-home"></i></a></li>
-				<li><a href="#type-cross" data-toggle="tab"><i
-						class="fa fa-home"></i></a></li>
-				<li><a href="#type-own" data-toggle="tab"><i
-						class="fa fa-home"></i></a></li>
-			</ul>
-			<!-- Tab panes -->
-			<div class="tab-content" id="type-choose">
-				<!-- Home tab content -->
-				<div class="tab-pane active" id="type-total">
-					<h3 class="control-sidebar-heading">概览</h3>
-					<ul class="control-sidebar-menu">
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">11个区</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">24小时</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">400个卡口</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">省内外归属地</h4>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="tab-pane" id="type-area">
-					<h3 class="control-sidebar-heading">区域</h3>
-					<ul class="control-sidebar-menu">
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading" data-type="天河区">天河区</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">海珠区</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">白云区</h4>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="tab-pane" id="type-time">
-					<h3 class="control-sidebar-heading">时段</h3>
-					<ul class="control-sidebar-menu">
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">00：00-03：00</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">03：00-06：00</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">09：00-12：00</h4>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="tab-pane" id="type-cross">
-					<h3 class="control-sidebar-heading">卡口</h3>
-					<ul class="control-sidebar-menu">
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">琶洲卡口001</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">琶洲卡口002</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">琶洲卡口003</h4>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="tab-pane" id="type-own">
-					<h3 class="control-sidebar-heading">归属</h3>
-					<ul class="control-sidebar-menu">
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">广州市</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">深圳市</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">广东省其他市</h4>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<!-- /.tab-pane -->
-			</div>
-		</aside>
 		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
 	</div>
 	<script th:src="@{js/common.js}"></script>
-	<!-- 该页面额外的js链接 -->
-	<script th:src="@{js/od-analysis.js}"></script>
+	<!-- 该页面额外的js链接 -->	
+	<script th:src="@{js/deck-analysis.js}"></script>
 </body>
 </html>
