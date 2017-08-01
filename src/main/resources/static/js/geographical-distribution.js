@@ -46,4 +46,7 @@ $(function(){
     ]
 };
 myChart.setOption(option);
+$(window).on("resize", function () {
+	myChart.resize();
+   });
 })
