@@ -55,33 +55,36 @@ $(function(){
 	
 	var myChart_high_frequency_bayonet=echarts.init($("#high-frequency-bayonet-analysis")[0]);
 	var option_high_frequency_bayonet= {
-//		    title: {
-//		        text: '世界人口总量',
-//		        subtext: '数据来自网络'
-//		    },
 		    tooltip: {
 		        trigger: 'axis',
 		        axisPointer: {
 		            type: 'shadow'
 		        }
 		    },
-//		    legend: {
-//		        data: ['2011年', '2012年']
-//		    },
 		    grid: {
 		        left: '3%',
 		        right: '4%',
-		        bottom: '3%',
+		        bottom: '10	%',
 		        top:'3%',
 		        containLabel: true
 		    },
 		    xAxis: {
 		        type: 'value',
-		        boundaryGap: [0, 0.01]
+		        boundaryGap: [0, 0.01],
+		        axisLabel:{  
+                    interval:0,  
+                    rotate:30,//倾斜度 -90 至 90 默认为0  
+                    margin:2,  
+                    textStyle:{  
+                        fontWeight:"normal",  
+                        color:"#000000"  
+                    }  
+                },  
 		    },
 		    yAxis: {
 		        type: 'category',
-		        data: ['天河北路388号路段','广园快速农科院路段','科韵路中山立交路段','广州大道中天河北路路段','禺东西路省军区路段','花城大道广州大道路段']
+		        data: ['天河北路388号路段','广园快速农科院路段','科韵路中山立交路段','广州大道中天河北路路段','禺东西路省军区路段','花城大道广州大道路段'],
+		        
 		    },
 		    series: [
 		        {
@@ -150,10 +153,18 @@ $(function(){
 	];
 
 	var links = graphData.map(function (item, idx) {
-	    return {
-	        source: idx,
-	        target: idx + 1
-	    };
+		 return {
+		        source: idx,
+		        target: idx + 1,
+		        lineStyle:{
+		            normal:{
+		                color:'red'
+		            },
+		            emphasis:{
+		                color:'red'    
+		            }
+		        }
+		    };
 	});
 	links.pop();
 
@@ -166,39 +177,30 @@ $(function(){
 	        min: 0,
 	        max: 1000,
 	        inRange: {
-	            color: ['grey'],
-	            opacity: [0, 0.3]
-	        },
-	        controller: {
-	            inRange: {
-	                opacity: [0.3, 0.6]
-	            },
-	            outOfRange: {
-	                color: '#ccc'
-	            }
+	            color: ['#5290fe'],
+	            opacity: [0, 1]
 	        },
 	        calculable: true,
 	        seriesIndex: [1],
 	        orient: 'vertical',
-	        right: '3%',
+	        right: '1%',
 	        bottom: 20
 	    }],
-
+	    gird:{left:'3%'},
 	    calendar: [
 	    {
+	    	left: 30,
 	        orient: 'vertical',
-	        yearLabel: {
-	            margin: 40
-	        },
-	        monthLabel: {
+	        yearLabel: {show: false},
+	       monthLabel: {
 	            nameMap: 'cn',
-	            margin: 20
+//	            margin: 20
 	        },
 	        dayLabel: {
 	            firstDay: 1,
 	            nameMap: 'cn'
 	        },
-	        cellSize: 40,
+	        cellSize: 30,
 	        range: '2017-02'
 	    }],
 

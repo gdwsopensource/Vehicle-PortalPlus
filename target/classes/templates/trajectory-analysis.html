@@ -29,7 +29,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control" id="startDate" name="startDate">
+                                                <input type="text" class="form-control" id="startDate" name="startDate"/>
                                             </div>
                                         </div>
                                     </div>
@@ -39,7 +39,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control" id="endDate" name="endDate">
+                                                <input type="text" class="form-control" id="endDate" name="endDate"/>
                                             </div>
                                         </div>
                                     </div>
@@ -285,8 +285,8 @@
 	<script th:src="@{js/common.js}"></script>
 	<!-- 该页面额外的js链接 -->	
 	<!--DatePicker-->
-<script src="@{bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
-<script src="@{bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js}"></script>
+	<script th:src="@{bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
+	<script th:src="@{bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js}"></script>
 	<script>
 
     $('#startDate').datepicker({
@@ -421,7 +421,7 @@
                 show: true,
                 constantSpeed: 100,
                 trailLength: 0,
-                symbol: 'image://img/carwhite.png',
+                symbol: 'image://../image/carwhite.png',
                 symbolSize: 25,
                 loop: true
             },

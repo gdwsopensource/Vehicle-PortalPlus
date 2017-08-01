@@ -1,3 +1,11 @@
+/*去除地图的作者和百度标记 */
+.BMap_cpyCtrl {
+    display: none;
+}
+
+.anchorBL {
+    display: none;
+}
 /*<<<修改栅格边距*/
 .row {
 	margin-left: -5px;

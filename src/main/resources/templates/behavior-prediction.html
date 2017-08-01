@@ -7,20 +7,45 @@
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
 		<div class="content-wrapper">
-			<div class="row">
-                <div class="col-md-4">
+			  <!-- Main content -->
+        <section class="content">
+            <!--form-->
+            <div class="row">
+                <div class="col-md-6">
                     <div class="box box-solid">
-                        <div class="box-header">行为预测</div>
+                        <div class="box-header with-border">行为预测</div>
                         <div class="box-body">
                             <form action="#" method="get" class="form-group">
-                                <div class="form-group has-warning">
-                                    <div class="row">
-                                        <div class="col-md-9 col-lg-9 col-xs-9 col-sm-9">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
                                             <input type="text" name="plateNo" class="form-control"
                                                    placeholder="请输入你的车牌"/>
                                         </div>
-                                        <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">
-                                            <button type="submit" class="btn btn-block btn-warning btn-flat">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control" id="startDate" name="startDate"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control" id="endDate" name="endDate"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-block btn-primary btn-flat">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div>
@@ -33,81 +58,183 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="box">
-                        <div class="box-header">预测列表</div>
-                        <div class="box-body" style="padding: 20px;height: 540px;">
-                            <table class="table text-center" style="border:1px solid #f4f4f4;">
-                                <tbody>
-                                    <tr class="bg-gray">
-                                        <td>车牌号</td>
-                                        <td>预测地点</td>
-                                        <td>可能时间</td>
-                                        <td>预测类型</td>
-                                    </tr>
-                                    <tr>
-                                        <td>粤XXXX</td>
-                                        <td>卡口1</td>
-                                        <td>2017-07-31</td>
-                                        <td>多次违章</td>
-                                    </tr>
-                                    <tr>
-                                        <td>粤XXXX</td>
-                                        <td>卡口1</td>
-                                        <td>2017-07-31</td>
-                                        <td>多次违章</td>
-                                    </tr>
-                                    <tr>
-                                        <td>粤XXXX</td>
-                                        <td>卡口1</td>
-                                        <td>2017-07-31</td>
-                                        <td>多次违章</td>
-                                    </tr>
-                                    <tr>
-                                        <td>粤XXXX</td>
-                                        <td>卡口1</td>
-                                        <td>2017-07-31</td>
-                                        <td>多次违章</td>
-                                    </tr>
-                                    <tr>
-                                        <td>粤XXXX</td>
-                                        <td>卡口1</td>
-                                        <td>2017-07-31</td>
-                                        <td>多次违章</td>
-                                    </tr>
-                                    <tr>
-                                        <td>粤XXXX</td>
-                                        <td>卡口1</td>
-                                        <td>2017-07-31</td>
-                                        <td>多次违章</td>
-                                    </tr>
-                                    <tr>
-                                        <td>粤XXXX</td>
-                                        <td>卡口1</td>
-                                        <td>2017-07-31</td>
-                                        <td>多次违章</td>
-                                    </tr>
-                                    <tr>
-                                        <td>粤XXXX</td>
-                                        <td>卡口1</td>
-                                        <td>2017-07-31</td>
-                                        <td>多次违章</td>
-                                    </tr>
-                                    <tr>
-                                        <td>粤XXXX</td>
-                                        <td>卡口1</td>
-                                        <td>2017-07-31</td>
-                                        <td>多次违章</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">预测列表</div>
+                        <div class="box-body">
+                            <div class="row" style="height: 400px;">
+                                <div class="col-md-12">
+                                    <table class="table text-center" style="border:1px solid #f4f4f4;" id="example1">
+                                        <tbody>
+                                        <tr class="bg-primary disabled">
+                                            <td>车牌号</td>
+                                            <td>预测地点</td>
+                                            <td>可能时间</td>
+                                            <td>预测类型</td>
+                                        </tr>
+                                        <tr>
+                                            <td>粤XXXX</td>
+                                            <td>卡口1</td>
+                                            <td>2017-07-31</td>
+                                            <td>多次违章</td>
+                                        </tr>
+                                        <tr>
+                                            <td>粤XXXX</td>
+                                            <td>卡口1</td>
+                                            <td>2017-07-31</td>
+                                            <td>多次违章</td>
+                                        </tr>
+                                        <tr>
+                                            <td>粤XXXX</td>
+                                            <td>卡口1</td>
+                                            <td>2017-07-31</td>
+                                            <td>多次违章</td>
+                                        </tr>
+                                        <tr>
+                                            <td>粤XXXX</td>
+                                            <td>卡口1</td>
+                                            <td>2017-07-31</td>
+                                            <td>多次违章</td>
+                                        </tr>
+                                        <tr>
+                                            <td>粤XXXX</td>
+                                            <td>卡口1</td>
+                                            <td>2017-07-31</td>
+                                            <td>多次违章</td>
+                                        </tr>
+                                        <tr>
+                                            <td>粤XXXX</td>
+                                            <td>卡口1</td>
+                                            <td>2017-07-31</td>
+                                            <td>多次违章</td>
+                                        </tr>
+                                        <tr>
+                                            <td>粤XXXX</td>
+                                            <td>卡口1</td>
+                                            <td>2017-07-31</td>
+                                            <td>多次违章</td>
+                                        </tr>
+                                        <tr>
+                                            <td>粤XXXX</td>
+                                            <td>卡口1</td>
+                                            <td>2017-07-31</td>
+                                            <td>多次违章</td>
+                                        </tr>
+                                        <tr>
+                                            <td>粤XXXX</td>
+                                            <td>卡口1</td>
+                                            <td>2017-07-31</td>
+                                            <td>多次违章</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row" style="height: 80px;">
+                                <div class="col-md-12 text-right">
+                                    <ul class="pagination">
+                                        <li class="paginate_button previous disabled" id="example2_previous">
+                                            <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">上一页</a>
+                                        </li>
+                                        <li class="paginate_button active">
+                                            <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a>
+                                        </li>
+                                        <li class="paginate_button ">
+                                            <a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a>
+                                        </li>
+                                        <li class="paginate_button ">
+                                            <a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a>
+                                        </li>
+                                        <li class="paginate_button ">
+                                            <a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a>
+                                        </li>
+                                        <li class="paginate_button ">
+                                            <a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a>
+                                        </li>
+                                        <li class="paginate_button ">
+                                            <a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a>
+                                        </li>
+                                        <li class="paginate_button next" id="example2_next">
+                                            <a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">下一页</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">统计</div>
+                        <div class="box-body">
+                            <div id="barECharts" style="height: 480px;"></div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+        <!-- /.content -->
 		</div>
 		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
 	</div>
 	<script th:src="@{js/common.js}"></script>
+	<!--DatePicker-->
+	<script th:src="@{bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
+	<script th:src="@{bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js}"></script>
 	<!-- 该页面额外的js链接 -->	
+	<script>
+	
+	$('#startDate').datepicker({
+        format: 'yyyy-mm-dd',
+        language: 'zh-CN',
+        autoclose: true,
+        todayHighlight: true
+    });
+    $('#endDate').datepicker({
+        format: 'yyyy-mm-dd',
+        language: 'zh-CN',
+        autoclose: true,
+        todayHighlight: true
+    });
+    // 基于准备好的dom，初始化echarts实例
+    var barECharts = echarts.init(document.getElementById('barECharts'));
+    var barECharts_option = {
+        color: ['#3c8dbc'],
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: ['卡口1', '卡口2', '卡口3', '卡口4', '卡口5', '卡口6', '卡口7'],
+                axisTick: {
+                    alignWithLabel: true
+                }
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: '过车频次',
+                type: 'bar',
+                barWidth: '60%',
+                data: [10, 52, 200, 334, 390, 330, 220]
+            }
+        ]
+    };
+    barECharts.setOption(barECharts_option);
+</script>
 </body>
 </html>

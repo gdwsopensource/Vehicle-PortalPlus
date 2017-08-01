@@ -1,84 +1,136 @@
-$('#map-tab').find('.tab-title').on(
-		'click',
-		'a',
-		function() {
-			var index = $(this).index();
-			$(this).addClass('active').removeClass('disabled').siblings()
-					.removeClass('active').addClass('disabled');
-			$('#map-tab').find('.tab-content').eq(index).show().siblings(
-					'.tab-content').hide();
-			return false;
-		});
-$.get('data/guangzhou.json', function(GuangZhouJson) {
-	echarts.registerMap('guangzhou', GuangZhouJson);
-	var chart = echarts.init(document.getElementById('map'));
-	// 113.325828,23.099192
-	chart.setOption({
-		tooltip : {
-			trigger : 'item'
-		},
-		series : [ {
-			type : 'map',
-			name : '过车频次',
-			map : 'guangzhou',
-			roam : 'scale',
-			selectedMode : true,
-			data : [ {
-				name : "天河区",
-				value : 23
-			}, {
-				name : "番禺区",
-				value : 23
-			}, {
-				name : "黄埔区",
-				value : 23
-			}, {
-				name : "荔湾区",
-				value : 23
-			}, {
-				name : "海珠区",
-				value : 23
-			}, {
-				name : "从化区",
-				value : 23
-			}, {
-				name : "增城区",
-				value : 23
-			}, {
-				name : "白云区",
-				value : 23
-			}, {
-				name : "花都区",
-				value : 23
-			}, {
-				name : "越秀区",
-				value : 23
-			}, {
-				name : "南沙区",
-				value : 23
-			} ],
-			markPoint : {
-				itemStyle : {
-					normal : {
-						label : {
-							show : true,
-							formatter : function(params) {
-								return params.value / 10 + '%';
-							}
-						}
-					}
-				},
-				data : [ {
-					name : "番禺区",
-					value : 23,
-					coord : [ 113.391728, 22.942663 ]
-				} ]
-			}
-		} ]
-	});
-	chart.on('click', function(params) {
-		console.log(params);
-	});
+$('#map-tab').find('.tab-title').on('click','a',function() {
+	var index = $(this).index();
+	$(this).addClass('active').removeClass('disabled').siblings()
+			.removeClass('active').addClass('disabled');
+	$('#map-tab').find('.tab-content').eq(index).show().siblings(
+			'.tab-content').hide();
+	return false;
+});
+$.get('data/guangzhou.json', function (GuangZhouJson) {
+    echarts.registerMap('guangzhou', GuangZhouJson);
+    var chart = echarts.init(document.getElementById('map'));
+    //113.325828,23.099192
+    chart.setOption({
+        tooltip: {
+            trigger: 'item'
+        },
+        series: [{
+            type: 'map',
+            name: '过车频次',
+            map: 'guangzhou',
+            roam: true,
+            selectedMode: true,
+            data: [
+                {name: "天河区", value: 203},
+                {name: "番禺区", value: 240},
+                {name: "黄埔区", value: 250},
+                {name: "荔湾区", value: 250},
+                {name: "海珠区", value: 250},
+                {name: "从化区", value: 250},
+                {name: "增城区", value: 250},
+                {name: "白云区", value: 250},
+                {name: "花都区", value: 250},
+                {name: "越秀区", value: 250},
+                {name: "南沙区", value: 250}
+            ],
+            markPoint: {
+                symbol: 'image://../image/map-pin.png',
+                symbolSize: [26, 38],
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: true,
+                            formatter: function (params) {
+                                return params.value;
+                            }
+                        }
+                    }
+                },
+                label: {
+                    normal: {
+                        textStyle: {
+                            color: '#a4ca49',
+                            fontSize: 10
+                        },
+                        offset: [0, -5]
+                    }
+                },
+                data: [
+                    /*从化区*/
+                    {
+                        name: "卡口1",
+                        value: '24',
+                        coord: [113.562891, 23.402281]
+                    }, {
+                        name: "卡口1",
+                        value: '25',
+                        coord: [113.562891, 23.472281]
+                    }, {
+                        name: "卡口1",
+                        value: '42',
+                        coord: [113.662891, 23.592281]
+                    }, {
+                        name: "卡口1",
+                        value: '43',
+                        coord: [113.452891, 23.502281]
+                    }, {
+                        name: "卡口1",
+                        value: '44',
+                        coord: [113.502891, 23.452281]
+                    }, {
+                        name: "卡口1",
+                        value: '45',
+                        coord: [113.562891, 23.592281]
+                    },
+                    /*番禺区*/
+                    {
+                        name: "卡口1",
+                        value: 23,
+                        coord: [113.391728, 22.942663]
+                    },
+                    /* 荔湾区*/
+                    {
+                        name: "卡口2",
+                        value: '13',
+                        coord: [113.202891, 23.072281]
+                    }, {
+                        name: "卡口3",
+                        value: '14',
+                        coord: [113.242891, 23.072281]
+                    }, {
+                        name: "卡口4",
+                        value: '15',
+                        coord: [113.222891, 23.102281]
+                    }, {
+                        name: "卡口5",
+                        value: '20',
+                        coord: [113.222891, 23.122281]
+                    },
+                    //南沙区
+                    {
+                        name: "卡口6",
+                        value: '29',
+                        coord: [113.442891, 22.802281]
+                    }, {
+                        name: "卡口7",
+                        value: '30',
+                        coord: [113.662891, 22.702281]
+                    }, {
+                        name: "卡口8",
+                        value: '49',
+                        coord: [113.462891, 22.882281]
+                    }, {
+                        name: "卡口9",
+                        value: '50',
+                        coord: [113.402891, 22.872281]
+                    }
+                ]
+            }
+        }]
+    });
+    chart.on('click', function (params) {
+        console.log(params);
+    });
 });
 
 // 基于准备好的dom，初始化echarts实例
