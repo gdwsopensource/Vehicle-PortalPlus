@@ -74,7 +74,7 @@ $.get('data/guangzhou.json', function(GuangZhouJson) {
 					coord : [ 113.391728, 22.942663 ]
 				} ]
 			}
-		} ]
+		}]
 	});
 	chart.on('click', function(params) {
 		console.log(params);

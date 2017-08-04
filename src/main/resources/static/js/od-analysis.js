@@ -977,8 +977,7 @@
 		$(window).on("resize", function() {
 			chart.resize();
 		});
-	}
-	;
+	};
 	function drawArea(id, title, series) {
 		var obj = document.getElementById(id);
 		var chart = echarts.init(obj);
