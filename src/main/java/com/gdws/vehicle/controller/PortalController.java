@@ -55,6 +55,14 @@ public class PortalController {
     String odAnalysis() {
         return "od-analysis";
     }
+    @RequestMapping("od-analysis2")
+    String odAnalysis2() {
+        return "od-analysis2";
+    }
+    @RequestMapping("od-analysis3")
+    String odAnalysis3() {
+        return "od-analysis3";
+    }
     @RequestMapping("all-query")
     String allQuery() {
         return "all-query";
