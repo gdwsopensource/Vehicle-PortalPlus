@@ -1,8 +1,92 @@
+<<<<<<< HEAD
 $('#map-tab').find('.tab-title').on('click', 'a', function () {
     var index = $(this).index();
     $(this).addClass('active').removeClass('disabled').siblings().removeClass('active').addClass('disabled');
     $('#map-tab').find('.tab-content').eq(index).show().siblings('.tab-content').hide();
     return false;
+=======
+$('#map-tab').find('.tab-title').on(
+		'click',
+		'a',
+		function() {
+			var index = $(this).index();
+			$(this).addClass('active').removeClass('disabled').siblings()
+					.removeClass('active').addClass('disabled');
+			$('#map-tab').find('.tab-content').eq(index).show().siblings(
+					'.tab-content').hide();
+			return false;
+		});
+$.get('data/guangzhou.json', function(GuangZhouJson) {
+	echarts.registerMap('guangzhou', GuangZhouJson);
+	var chart = echarts.init(document.getElementById('map'));
+	// 113.325828,23.099192
+	chart.setOption({
+		tooltip : {
+			trigger : 'item'
+		},
+		series : [ {
+			type : 'map',
+			name : '过车频次',
+			map : 'guangzhou',
+			roam : 'scale',
+			selectedMode : true,
+			data : [ {
+				name : "天河区",
+				value : 23
+			}, {
+				name : "番禺区",
+				value : 23
+			}, {
+				name : "黄埔区",
+				value : 23
+			}, {
+				name : "荔湾区",
+				value : 23
+			}, {
+				name : "海珠区",
+				value : 23
+			}, {
+				name : "从化区",
+				value : 23
+			}, {
+				name : "增城区",
+				value : 23
+			}, {
+				name : "白云区",
+				value : 23
+			}, {
+				name : "花都区",
+				value : 23
+			}, {
+				name : "越秀区",
+				value : 23
+			}, {
+				name : "南沙区",
+				value : 23
+			} ],
+			markPoint : {
+				itemStyle : {
+					normal : {
+						label : {
+							show : true,
+							formatter : function(params) {
+								return params.value / 10 + '%';
+							}
+						}
+					}
+				},
+				data : [ {
+					name : "番禺区",
+					value : 23,
+					coord : [ 113.391728, 22.942663 ]
+				} ]
+			}
+		}]
+	});
+	chart.on('click', function(params) {
+		console.log(params);
+	});
+>>>>>>> 34a7917b3b892c8f50fa499e5905772c1f5ace96
 });
     $.get('data/guangzhou.json', function (GuangZhouJson) {
         echarts.registerMap('guangzhou', GuangZhouJson);

@@ -1,6 +1,8 @@
 # 车辆应用前端第二版 master分支
 ## 各自分支 / dev分支 -> master分支 -> 某次master分支测试结果理想则备份成某版本分支
 ![第二版静态资源结构图](https://github.com/qqsgtree/bag/blob/master/images/static2.png)
+* 2017-08-04 用maven代替bower，依赖包已写到pom.xml
+* 2017-08-04 OD交互扁平化版面，路由：od-analysis3
 * 2017-07-31 OD分析改归属地为双饼图，四个类型联动展现不同图表
 * 2017-07-31 增加综合查询页面，昼伏、、假套、初次增加链接
 * 2017-07-30 新前端项目结果见静态结构图，adminlte用了很多依赖包，为了项目下载量不要太大，包没有上传，请用主页的bower.json下载依赖包
