@@ -117,6 +117,67 @@
 #map-tab .tab-content.active {
 	display: block;
 }
+.content-tip {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 10px;
+}
+
+.content-tip > h1 {
+    margin: 0;
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 35px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 15px;
+}
+
+.weather-wrapper .time {
+    float: left;
+    font-size: 40px;
+}
+
+.weather-wrapper .weather-text {
+    float: right;
+    background: url("img/line-icon.png") no-repeat right;
+    background-size: contain;
+    padding-right: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.weather-wrapper .weather-text > h3 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.weather-wrapper .weather-text > p {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.weather-wrapper .weather-icon {
+    float: right;
+}
+
+.weather-wrapper .weather-icon .weather-tip {
+    text-align: center;
+    margin-top: 4px;
+}
+
+.police-icon {
+    display: inline-block;
+    width: 8px;
+    height: 20px;
+    background: url("img/police-icon.png") no-repeat center;
+    background-size: contain;
+    margin-right: 5px;
+}
 /*>>>重点关注css*/
 
 /*<<<行为分析css*/
@@ -158,8 +219,11 @@
 
 
 /* 高频分析 */
-.frequency .nav-tabs-custom>.nav-tabs>li .active {
-    /*border-top-color: #3c8dbc;*/
+.frequency .nav-tabs-custom>.nav-tabs>li {
+    border-top-width: 0;
+}
+.frequency .nav-tabs-custom>.nav-tabs>li.active>a,.frequency .nav-tabs-custom>.nav-tabs>li.active:hover>a{
+	border-top-color: #5bb4d9;
     background:#5bb4d9;
     color:#fff;
 }
@@ -236,3 +300,4 @@
 	background:#4fc3b9;
 	color:#fff;
 }
+/* 高频分析  end  */

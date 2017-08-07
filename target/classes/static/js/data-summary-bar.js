@@ -1,4 +1,5 @@
 $(function() {
+	
 	var myChart = echarts.init($("#data-summary-bar")[0]);
 	option = {
 
@@ -13,12 +14,21 @@ $(function() {
 			top: '3%',
 			left: '3%',
 			right: '4%',
-			bottom: '3%',
+			bottom: '5%',
 			containLabel: true
 		},
 		xAxis: {
 			type: 'value',
-			boundaryGap: [0, 0.01]
+			boundaryGap: [0, 0.01],
+			axisLabel : {
+				interval : 0,
+				rotate : 30,// 倾斜度 -90 至 90 默认为0
+				margin : 5,
+				textStyle : {
+					fontWeight : "normal",
+					color : "#000000"
+				}
+			}
 		},
 		yAxis: {
 			type: 'category',
@@ -31,4 +41,7 @@ $(function() {
 		}]
 	};
 	myChart.setOption(option);
+	 $(window).on("resize", function () {
+		 myChart.resize();
+	    });
 })

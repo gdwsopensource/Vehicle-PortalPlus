@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title='OD分析'">
+</head>
+ <!-- fullCalendar -->
+<link rel="stylesheet" th:href="@{bower_components/fullcalendar/dist/fullcalendar.min.css}"/>
+<link rel="stylesheet" th:href="@{bower_components/fullcalendar/dist/fullcalendar.print.min.css}" media="print"/>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<!--content-header-->
+			<section class="content-header">
+				<h1>
+					每日预警&nbsp;&nbsp;&gt;&nbsp;&nbsp;<small>车辆</small>
+				</h1>
+			</section>
+			<!--content-->
+			<section class="content">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="small-box bg-aqua"
+							style="border-radius: 5px; box-shadow: 5px 5px 20px #c3c6cd;">
+							<div class="inner">
+								<h4 style="font-size: 24px;">粤XXXXX</h4>
+								<p>车牌</p>
+							</div>
+							<div class="icon">
+								<i class="ion ion-android-car"></i>
+							</div>
+							<div class="small-box-footer" style="padding: 10px 0;">类型：通勤车辆</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="small-box bg-teal"
+							style="border-radius: 5px; box-shadow: 5px 5px 20px #c3c6cd;">
+							<div class="inner">
+								<h4 style="font-size: 24px;">上班族</h4>
+								<p>人员</p>
+							</div>
+							<div class="icon">
+								<i class="ion ion-android-person"></i>
+							</div>
+							<div class="small-box-footer" style="padding: 10px 0;">区域：天河区</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="small-box bg-red"
+							style="border-radius: 5px; box-shadow: 5px 5px 20px #c3c6cd;">
+							<div class="inner">
+								<h4 style="font-size: 24px;">09:00-10:00</h4>
+								<p>活跃时段</p>
+							</div>
+							<div class="icon">
+								<i class="ion ion-android-time"></i>
+							</div>
+							<div class="small-box-footer" style="padding: 10px 0;">行车公里：32</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="small-box bg-orange"
+							style="border-radius: 5px; box-shadow: 5px 5px 20px #c3c6cd;">
+							<div class="inner">
+								<h4 style="font-size: 24px;">琶洲</h4>
+								<p>最近可能出现的区域</p>
+							</div>
+							<div class="icon">
+								<i class="ion ion-android-pin"></i>
+							</div>
+							<div class="small-box-footer" style="padding: 10px 0;">时间：10：00-11：00</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-7">
+						<div class="box box-primary">
+							<div class="box-header with-border">
+								<div class="box-title">今日活动轨迹概览</div>
+							</div>
+							<div class="box-body no-padding">
+								<div id="map" style="height: 460px;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="box box-success">
+							<div class="box-header with-border">
+								<div class="box-title">一周经过卡口统计</div>
+							</div>
+							<div class="box-body">
+								<div id="custom_polar_heatmap" style="height: 440px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-7">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<div class="box-title">搜索查询</div>
+							</div>
+							<div class="box-body">
+								<form class="form-horizontal" autocomplete="off">
+									<div class="row">
+										<div class="form-group col-md-6">
+											<label for="plateNo" class="col-sm-2 control-label">车牌</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="plateNo"
+													placeholder="请输入你的车牌"/>
+											</div>
+										</div>
+										<div class="form-group col-md-6">
+											<label for="status" class="col-sm-2 control-label">类型</label>
+											<div class="col-sm-10">
+												<!--<input type="text" class="form-control" id="status" placeholder="请输入你的类型">-->
+												<select class="form-control" id="status">
+													<option selected="selected">Alabama</option>
+													<option>Alaska</option>
+													<option>California</option>
+													<option>Delaware</option>
+													<option>Tennessee</option>
+													<option>Texas</option>
+													<option>Washington</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group col-md-6">
+											<label for="area" class="col-sm-2 control-label">区域</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="area"
+													placeholder="请输入你的区域"/>
+											</div>
+										</div>
+										<div class="form-group col-md-6">
+											<label for="field" class="col-sm-2 control-label">字段</label>
+											<div class="col-sm-10">
+												<!--<input type="text" class="form-control" id="field" placeholder="请输入你的字段">-->
+												<select class="form-control" id="field">
+													<option selected="selected">Alabama</option>
+													<option>Alaska</option>
+													<option>California</option>
+													<option>Delaware</option>
+													<option>Tennessee</option>
+													<option>Texas</option>
+													<option>Washington</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group col-md-6"></div>
+										<div class="form-group col-md-6">
+											<div class="col-sm-12 text-right">
+												<button type="submit" class="btn btn-primary btn-flat">查询</button>
+											</div>
+										</div>
+									</div>
+								</form>
+								<div id="search_result">
+									<table class="table text-center"
+										style="border: 1px solid #f4f4f4; margin-bottom: 0; background-color: #ffffff;">
+										<tbody>
+											<tr>
+												<th>卡口</th>
+												<th>车牌</th>
+												<th>时间</th>
+												<th>类型</th>
+												<th>车牌类型</th>
+											</tr>
+											<tr>
+												<td>卡口1卡口1卡口1卡口1卡口1S</td>
+												<td>粤XXX</td>
+												<td>2017-08-01</td>
+												<td><span class="bg-red">小轿车</span></td>
+												<td>黑色</td>
+											</tr>
+											<tr>
+												<td>卡口1卡口1卡口1卡口1卡口1S</td>
+												<td>粤XXX</td>
+												<td>2017-08-01</td>
+												<td><span class="bg-red">小轿车</span></td>
+												<td>黑色</td>
+											</tr>
+											<tr>
+												<td>卡口1卡口1卡口1卡口1卡口1S</td>
+												<td>粤XXX</td>
+												<td>2017-08-01</td>
+												<td><span class="bg-red">小轿车</span></td>
+												<td>黑色</td>
+											</tr>
+											<tr>
+												<td>卡口1卡口1卡口1卡口1卡口1S</td>
+												<td>粤XXX</td>
+												<td>2017-08-01</td>
+												<td><span class="bg-red">小轿车</span></td>
+												<td>黑色</td>
+											</tr>
+											<tr>
+												<td>卡口1卡口1卡口1卡口1卡口1S</td>
+												<td>粤XXX</td>
+												<td>2017-08-01</td>
+												<td><span class="bg-red">小轿车</span></td>
+												<td>黑色</td>
+											</tr>
+											<tr>
+												<td>卡口1卡口1卡口1卡口1卡口1S</td>
+												<td>粤XXX</td>
+												<td>2017-08-01</td>
+												<td><span class="bg-red">小轿车</span></td>
+												<td>黑色</td>
+											</tr>
+											<tr>
+												<td>卡口1卡口1卡口1卡口1卡口1S</td>
+												<td>粤XXX</td>
+												<td>2017-08-01</td>
+												<td><span class="bg-red">小轿车</span></td>
+												<td>黑色</td>
+											</tr>
+											<tr>
+												<td>卡口1卡口1卡口1卡口1卡口1S</td>
+												<td>粤XXX</td>
+												<td>2017-08-01</td>
+												<td><span class="bg-red">小轿车</span></td>
+												<td>黑色</td>
+											</tr>
+											<tr>
+												<td>卡口1卡口1卡口1卡口1卡口1S</td>
+												<td>粤XXX</td>
+												<td>2017-08-01</td>
+												<td><span class="bg-red">小轿车</span></td>
+												<td>黑色</td>
+											</tr>
+											<tr>
+												<td>卡口1卡口1卡口1卡口1卡口1S</td>
+												<td>粤XXX</td>
+												<td>2017-08-01</td>
+												<td><span class="bg-red">小轿车</span></td>
+												<td>黑色</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="box box-warning">
+							<div class="box-header with-border">
+								<div class="box-title">日历表</div>
+							</div>
+							<div class="box-body no-padding no-print">
+								<!-- THE CALENDAR -->
+								<div id="calendar" style="width: 100%;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->
+	<script
+		th:src="@{bower_components/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+	<!-- fullCalendar -->
+	<script th:src="@{bower_components/moment/moment.js}"></script>
+	<script th:src="@{bower_components/fullcalendar/dist/fullcalendar.min.js}"></script>
+	<script th:src="@{bower_components/fullcalendar/dist/locale-all.js}"></script>
+	<script th:src="@{js/index-car.js}"></script>
+</body>
+</html>

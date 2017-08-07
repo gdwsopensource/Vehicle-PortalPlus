@@ -22,6 +22,15 @@ public class PortalController {
     String frequentBusines() {
         return "index";
     }
+
+    @RequestMapping("index-bayonet")
+    String indexBayonet() {
+    	return "index-bayonet";
+    }
+    @RequestMapping("index-car")
+    String indexCar() {
+    	return "index-car";
+    }
     @RequestMapping("behavior-analysis")
     String behaviorAnalysis() {
         return "behavior-analysis";

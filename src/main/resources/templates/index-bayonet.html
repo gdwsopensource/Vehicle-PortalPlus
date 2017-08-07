@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title='OD分析'">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<!--content-header-->
+			<section class="content-header">
+				<h1>
+					每日预警&nbsp;&nbsp;&gt;&nbsp;&nbsp;<small>卡口</small>
+				</h1>
+			</section>
+			<!--content-->
+			<section class="content">
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="info-box">
+							<span class="info-box-icon bg-aqua"><i
+								class="ion ion-android-pin"></i></span>
+							<div class="info-box-content">
+								<span class="info-box-text">卡口名称/性质</span> <span
+									class="info-box-number">琶洲/通勤车辆</span>
+							</div>
+							<!-- /.info-box-content -->
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="info-box">
+							<span class="info-box-icon bg-green"><i
+								class="ion ion-android-car"></i></span>
+							<div class="info-box-content">
+								<span class="info-box-text">过车辆</span> <span
+									class="info-box-number">1200</span>
+							</div>
+							<!-- /.info-box-content -->
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="info-box">
+							<span class="info-box-icon bg-red"><i class="fa fa-signal"></i></span>
+							<div class="info-box-content">
+								<span class="info-box-text">易抓排名</span> <span
+									class="info-box-number">17</span>
+							</div>
+							<!-- /.info-box-content -->
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="info-box">
+							<span class="info-box-icon bg-orange"><i
+								class="ion ion-android-person"></i></span>
+							<div class="info-box-content">
+								<span class="info-box-text">警力配置人数</span> <span
+									class="info-box-number">2</span>
+							</div>
+							<!-- /.info-box-content -->
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<div class="box-title">实时车数量</div>
+							</div>
+							<div class="box-body">
+								<div id="gaugeECharts_1" style="height: 300px;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="box box-success">
+							<div class="box-header with-border">
+								<div class="box-title">未来一周的车辆</div>
+							</div>
+							<div class="box-body">
+								<div id="lineECharts" style="height: 300px;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<div class="box-title ">人员巡逻表</div>
+							</div>
+							<div class="box-footer">
+								<div class="row">
+									<div class="col-xs-5 text-center">
+										<h4>卡口：琶洲</h4>
+										<h4>警员数量：4人</h4>
+									</div>
+									<div class="col-xs-7">
+										<h4 style="margin-top: 20px;">
+											配置等级： <i class="ion ion-android-star text-orange"></i> <i
+												class="ion ion-android-star text-orange"></i> <i
+												class="ion ion-android-star text-orange"></i> <i
+												class="ion ion-android-star-half text-orange"></i> <i
+												class="ion ion-android-star-outline text-orange"></i>
+										</h4>
+									</div>
+								</div>
+							</div>
+							<div class="box-body no-padding">
+								<div id="police_scroll">
+									<table class="table text-center no-margin">
+										<tbody>
+											<tr>
+												<td>编号</td>
+												<td>姓名</td>
+												<td>巡逻时间</td>
+											</tr>
+											<tr>
+												<td>02010</td>
+												<td>张三</td>
+												<td>08-02 08:00-12:00</td>
+											</tr>
+											<tr>
+												<td>02010</td>
+												<td>张三</td>
+												<td>08-02 08:00-12:00</td>
+											</tr>
+											<tr>
+												<td>02010</td>
+												<td>张三</td>
+												<td>08-02 08:00-12:00</td>
+											</tr>
+											<tr>
+												<td>02010</td>
+												<td>张三</td>
+												<td>08-02 08:00-12:00</td>
+											</tr>
+											<tr>
+												<td>02010</td>
+												<td>张三</td>
+												<td>08-02 08:00-12:00</td>
+											</tr>
+											<tr>
+												<td>02010</td>
+												<td>张三</td>
+												<td>08-02 08:00-12:00</td>
+											</tr>
+											<tr>
+												<td>02010</td>
+												<td>张三</td>
+												<td>08-02 08:00-12:00</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="box box-warning">
+							<div class="box-header with-border">
+								<div class="box-title">相连卡口</div>
+							</div>
+							<div class="box-body">
+								<div id="graphECharts" style="height: 300px;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-9">
+						<div class="box box-primary">
+							<div class="box-header with-border">
+								<div class="box-title">违法闯红灯</div>
+							</div>
+							<div class="box-body">
+								<div class="row">
+									<div class="col-sm-6">
+										<div id="barECharts" style="height: 300px;"></div>
+									</div>
+									<div class="col-sm-6">
+										<div id="pieECharts" style="height: 300px;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->
+	<script
+		th:src="@{bower_components/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+	<script th:src="@{js/index-bayonet.js}"></script>
+</body>
+</html>
