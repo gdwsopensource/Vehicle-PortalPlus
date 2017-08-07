@@ -1,0 +1,339 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title='OD分析'">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper od-analysis">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<section class="content container-fluid lg-bg-img-blue">
+				<div th:include="@{include/top-total}" class="row top-total"></div>
+				<div class="row" id="od-draw">
+					<div class="col-md-6">
+						<div class="box box-primary zw-bg-white">
+							<div class="box-title">
+								<div class="btn-group">
+									<button class="btn btn-primary active" id="choose-time-week">周</button>
+									<button class="btn btn-primary" id="choose-time-month">月</button>
+									<button class="btn btn-primary" id="choose-time-year">年</button>
+								</div>
+								<button class="btn btn-primary pull-right" id="create-report">生成报告</button>
+							</div>
+							<div id="draw-area"></div>
+						</div>
+					</div>
+					<div class="col-md-6" id="draw-right">
+						<div class="box box-primary zw-bg-white">
+							<div class="row">
+								<div class="col-xs-3 text-center" id="msg-time">
+									<h4>高峰时段</h4>
+									<p>08:00-08:15</p>
+									<p>
+										<span class="text-danger">50000</span>辆次出发
+									</p>
+									<p>09:00-09:07</p>
+									<p>
+										<span class="text-danger">60000</span>辆次到达
+									</p>
+								</div>
+								<div class="col-xs-9 draw-right" id="draw-time"></div>
+							</div>
+						</div>
+						<div class="box box-primary zw-bg-white">
+							<div class="row">
+								<div class="col-xs-3 text-center" id="msg-cross">
+									<h4>高峰卡口</h4>
+									<p>琶洲卡口004</p>
+									<p>
+										<span class="text-danger">50000</span>辆次出发
+									</p>
+									<p>琶洲卡口005</p>
+									<p>
+										<span class="text-danger">60000</span>辆次到达
+									</p>
+								</div>
+								<div class="col-xs-9 draw-right" id="draw-cross"></div>
+							</div>
+						</div>
+						<div class="box box-primary zw-bg-white">
+							<div class="row">
+								<div class="col-xs-3 text-center" id="msg-own">
+									<h4>外地车牌</h4>
+									<p>非广州市车牌</p>
+									<p>
+										<span class="text-danger">5000个(25.0%)</span>
+									</p>
+									<p>佛山市车牌</p>
+									<p>
+										<span class="text-danger">2500个(12.5%)</span>
+									</p>
+								</div>
+								<div class="col-xs-9 draw-right" id="draw-own"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="box box-warning" id="od-car-list">
+					<div class="box-header with-border line-height-box-header text-center">
+						近一周 海珠区 3-6点时段 /琶洲卡口001/佛山市车牌 OD车辆 共<span class="text-danger">50000</span>辆次
+					</div>
+					<div class="od-car-list-table-box">
+						<table class="table text-center table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>车辆归属</th>
+									<th>车牌号</th>
+									<th>起始时间</th>
+									<th>起始区域</th>
+									<th>起始卡口</th>
+									<th>历经时间</th>
+									<th>终到卡口</th>
+									<th>终到区域</th>
+									<th>终到时间</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="box box-warning" id="od-car-detailed">
+					<div class="box-header with-border">
+						<div class="row">
+							<div class="col-xs-3">
+								<div class="input-group">
+									<span class="input-group-addon" id="search-od-car"><i
+										class="fa fa-search"></i></span> <input type="text"
+										class="form-control text-center" value="粤A12345" />
+								</div>
+							</div>
+							<div class="col-xs-6 text-center line-height-box-header">
+								<span class="text-danger">粤A12345</span>&nbsp;
+								<span>小型汽车</span>&nbsp;
+								<span>重点关注</span>
+							</div>
+							<div class="col-xs-3"></div>
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="od-car-detailed-table-box">
+								<table class="table text-center table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>月份</th>
+											<th>初始卡口</th>
+											<th>终到卡口</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div id="draw-car-cross"></div>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="display: none;" id="report-box">
+					<div class="col-md-12">
+						<div class="box box-info">
+							<div class="box-header">
+								<h3 class="box-title">报告编辑区</h3>
+								<!-- tools box -->
+								<div class="pull-right box-tools">
+									<button type="button" class="btn btn-info btn-sm"
+										id="save-report">保存</button>
+									<button type="button" class="btn btn-info btn-sm"
+										data-widget="collapse" data-toggle="tooltip">
+										<i class="fa fa-minus"></i>
+									</button>
+									<button type="button" class="btn btn-info btn-sm">
+										<i class="fa fa-times" id="close-report"></i>
+									</button>
+								</div>
+								<!-- /. tools -->
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body pad">
+								<textarea id="editor1" name="editor1">
+                        </textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->
+	<!-- Select2 -->
+	<script th:src="@{webjars/select2/4.0.3/dist/js/select2.full.min.js}"></script>
+	<!-- InputMask -->
+	<script th:src="@{plugins/input-mask/jquery.inputmask.js}"></script>
+	<script
+		th:src="@{plugins/input-mask/jquery.inputmask.date.extensions.js}"></script>
+	<script th:src="@{plugins/input-mask/jquery.inputmask.extensions.js}"></script>
+	<!-- date-range-picker -->
+	<script th:src="@{webjars/moment/2.18.1/min/moment.min.js}"></script>
+	<script
+		th:src="@{webjars/bootstrap-daterangepicker/2.1.25/daterangepicker.js}"></script>
+	<!-- bootstrap datepicker -->
+	<script
+		th:src="@{webjars/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js}"></script>
+	<!-- bootstrap color picker -->
+	<script
+		th:src="@{webjars/bootstrap-colorpicker/2.5.1/dist/js/bootstrap-colorpicker.min.js}"></script>
+	<!-- bootstrap time picker -->
+	<script th:src="@{plugins/timepicker/bootstrap-timepicker.min.js}"></script>
+	<!-- SlimScroll -->
+	<script
+		th:src="@{webjars/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js}"></script>
+	<!-- iCheck 1.0.1 -->
+	<script th:src="@{plugins/iCheck/icheck.min.js}"></script>
+	<!-- FastClick -->
+	<script th:src="@{webjars/fastclick/1.0.6/lib/fastclick.js}"></script>
+	<script th:src="@{webjars/ckeditor/4.7.0/full/ckeditor.js}"></script>
+	<script
+		th:src="@{plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js}"></script>
+	<script th:src="@{plugins/saveword/FileSaver.js}"></script>
+	<script th:src="@{plugins/saveword/jquery.wordexport.js}"></script>
+	<script th:src="@{js/od-analysis3.js}"></script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head th:include="@{include/head}" th:with="title='OD分析'">
 </head>
  <!-- fullCalendar -->
-<link rel="stylesheet" th:href="@{bower_components/fullcalendar/dist/fullcalendar.min.css}"/>
-<link rel="stylesheet" th:href="@{bower_components/fullcalendar/dist/fullcalendar.print.min.css}" media="print"/>
+<link rel="stylesheet" th:href="@{webjars/fullcalendar/3.4.0/dist/fullcalendar.min.css}"/>
+<link rel="stylesheet" th:href="@{webjars/fullcalendar/3.4.0/dist/fullcalendar.print.min.css}" media="print"/>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 		<header th:include="@{include/header}" class="main-header"></header>
@@ -89,7 +89,7 @@
 								<div class="box-title">一周经过卡口统计</div>
 							</div>
 							<div class="box-body">
-								<div id="custom_polar_heatmap" style="height: 440px;"></div>
+								<div id="pieECharts" style="height: 440px;"></div>
 							</div>
 						</div>
 					</div>
@@ -264,12 +264,13 @@
 	</div>
 	<script th:src="@{js/common.js}"></script>
 	<!-- 该页面额外的js链接 -->
+	<!--jquery-slimScroll-->
 	<script
-		th:src="@{bower_components/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+		th:src="@{webjars/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js}"></script>
 	<!-- fullCalendar -->
-	<script th:src="@{bower_components/moment/moment.js}"></script>
-	<script th:src="@{bower_components/fullcalendar/dist/fullcalendar.min.js}"></script>
-	<script th:src="@{bower_components/fullcalendar/dist/locale-all.js}"></script>
+	<script th:src="@{webjars/moment/2.18.1/moment.js}"></script>
+	<script th:src="@{webjars/fullcalendar/3.4.0/dist/fullcalendar.min.js}"></script>
+	<script th:src="@{webjars/fullcalendar/3.4.0/dist/locale-all.js}"></script>
 	<script th:src="@{js/index-car.js}"></script>
 </body>
 </html>

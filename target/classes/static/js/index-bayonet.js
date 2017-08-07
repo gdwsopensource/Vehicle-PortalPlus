@@ -14,7 +14,7 @@
     }
 
     console.log(data());
-    
+
     // 基于准备好的dom，初始化echarts实例
     var gaugeECharts_1 = echarts.init(document.getElementById('gaugeECharts_1'));
     var gaugeECharts_1_option = {

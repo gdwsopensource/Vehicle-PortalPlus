@@ -1,14 +1,12 @@
 (function($){
-	// 百度地图API功能
+	 // 百度地图API功能
     var map = new BMap.Map("map");
     map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
-
     var p1 = new BMap.Point(116.301934,39.977552);
     var p2 = new BMap.Point(116.508328,39.919141);
-
     var driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true}});
     driving.search(p1, p2);
-    var myIcon = new BMap.Icon("image/mapcar-icon.png", new BMap.Size(26, 70), {    //小车图片
+    var myIcon = new BMap.Icon("../image/mapcar-icon.png", new BMap.Size(26, 70), {    //小车图片
         //offset: new BMap.Size(0, -2),    //相当于CSS精灵
         imageOffset: new BMap.Size(0, -0)    //图片的偏移量。为了是图片底部中心对准坐标点。
     });
@@ -60,7 +58,7 @@
         },
         height: 'auto'
     });
-
+    
     function renderItem(params, api) {
         var values = [api.value(0), api.value(1)];
         var coord = api.coord(values);
@@ -93,55 +91,57 @@
         return Math.max(max, item[2]);
     }, -Infinity);
 
+   
     // 基于准备好的dom，初始化echarts实例
-    var custom_polar_heatmap_Echarts = echarts.init(document.getElementById('custom_polar_heatmap'));
-    var custom_polar_heatmap_option = {
-        legend: {
-            data: ['Punch Card'],
-            show: false
-        },
-        polar: {},
-        tooltip: {},
-        visualMap: {
-            type: 'continuous',
-            min: 0,
-            max: maxValue,
-            top: 'middle',
-            dimension: 2,
-            calculable: true
-        },
-        angleAxis: {
-            type: 'category',
-            data: hours,
-            boundaryGap: false,
-            splitLine: {
-                show: true,
-                lineStyle: {
-                    color: '#ddd',
-                    type: 'dashed'
-                }
-            },
-            axisLine: {
-                show: false
-            }
-        },
-        radiusAxis: {
-            type: 'category',
-            data: days,
-            z: 100
-        },
-        series: [{
-            name: 'Punch Card',
-            type: 'custom',
-            coordinateSystem: 'polar',
-            itemStyle: {
-                normal: {
-                    color: '#d14a61'
-                }
-            },
-            renderItem: renderItem,
-            data: data
-        }]
-    };
-    custom_polar_heatmap_Echarts.setOption(custom_polar_heatmap_option);
+    var pieECharts = echarts.init(document.getElementById('pieECharts'));
+    var pieECharts_option={
+    		 legend: {
+    	            data: ['Punch Card'],
+    	            show: false
+    	        },
+    	        polar: {},
+    	        tooltip: {},
+    	        visualMap: {
+    	            type: 'continuous',
+    	            min: 0,
+    	            max: maxValue,
+    	            top: 'middle',
+    	            dimension: 2,
+    	            calculable: true
+    	        },
+    	        angleAxis: {
+    	            type: 'category',
+    	            data: hours,
+    	            boundaryGap: false,
+    	            splitLine: {
+    	                show: true,
+    	                lineStyle: {
+    	                    color: '#ddd',
+    	                    type: 'dashed'
+    	                }
+    	            },
+    	            axisLine: {
+    	                show: false
+    	            }
+    	        },
+    	        radiusAxis: {
+    	            type: 'category',
+    	            data: days,
+    	            z: 100
+    	        },
+    	        series: [{
+    	            name: 'Punch Card',
+    	            type: 'custom',
+    	            coordinateSystem: 'polar',
+    	            itemStyle: {
+    	                normal: {
+    	                    color: '#d14a61'
+    	                }
+    	            },
+    	            renderItem: renderItem,
+    	            data: data
+    	        }]
+    }
+    pieECharts.setOption(pieECharts_option);
+
 })(jQuery);

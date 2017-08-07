@@ -45,6 +45,14 @@
 .zw-bg-white {
 	background-color: rgb(255, 255, 255) !important;
 }
+
+.a-bg-blue {
+	background-color: rgba(88, 142, 188, 0.5) !important
+}
+
+.line-height-box-header{
+	line-height: 34px;
+}
 /*>>>复用样式*/
 
 /*<<<页面顶部总览和跳转*/
@@ -144,7 +152,7 @@
 
 .weather-wrapper .weather-text {
     float: right;
-    background: url("img/line-icon.png") no-repeat right;
+    background: url("../image/line-icon.png") no-repeat right;
     background-size: contain;
     padding-right: 20px;
     margin-right: 10px;
@@ -174,7 +182,7 @@
     display: inline-block;
     width: 8px;
     height: 20px;
-    background: url("img/police-icon.png") no-repeat center;
+    background: url("../image/police-icon.png") no-repeat center;
     background-size: contain;
     margin-right: 5px;
 }
@@ -217,7 +225,24 @@
 }
 /*>>>行为分析css*/
 
+/*<<<OD分析*/
+.od-analysis .od-car-list-table-box {
+	max-height: 350px;
+	overflow: auto;
+}
 
+.od-analysis table>tbody>tr:hover {
+	cursor: pointer;
+}
+
+.od-analysis #search-od-car{
+	cursor: pointer;
+}
+
+.od-analysis .od-car-detailed-table-box{
+	overflow: auto;
+}
+/*>>>OD分析*/
 /* 高频分析 */
 .frequency .nav-tabs-custom>.nav-tabs>li {
     border-top-width: 0;
