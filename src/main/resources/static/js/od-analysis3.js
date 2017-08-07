@@ -88,7 +88,7 @@
 		var img1Str = '<p style="text-align: center"><img src="' + canvas1Data
 				+ '" /></p>';
 		var title1Str = '<h3 style="text-align: center">图' + (i + 1) + '：'
-				+ (title || '') + '' + '<h3><br />';
+				+ (title || '') + '' + '<h3>';
 		reportBody.append(img1Str);
 		reportBody.append(title1Str);
 		reportBody.append(str || '');
@@ -392,8 +392,8 @@
 			},
 			series : [ {
 				type : 'pie',
-				radius : '70%',
-				center : [ '30%', '50%' ],
+				radius : '60%',
+				center : [ '30%', '60%' ],
 				data : [ {
 					value : 10000,
 					name : '广州市'
