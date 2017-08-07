@@ -158,8 +158,11 @@
 
 
 /* 高频分析 */
-.frequency .nav-tabs-custom>.nav-tabs>li .active {
-    /*border-top-color: #3c8dbc;*/
+.frequency .nav-tabs-custom>.nav-tabs>li {
+    border-top-width: 0;
+}
+.frequency .nav-tabs-custom>.nav-tabs>li.active>a,.frequency .nav-tabs-custom>.nav-tabs>li.active:hover>a{
+	border-top-color: #5bb4d9;
     background:#5bb4d9;
     color:#fff;
 }
@@ -236,3 +239,4 @@
 	background:#4fc3b9;
 	color:#fff;
 }
+/* 高频分析  end  */
