@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title='高频分析'">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper frequency">
+			<div class="nav-tabs-custom">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#tab_1" data-toggle="tab">周</a></li>
+					<li><a href="#tab_2" data-toggle="tab">月</a></li>
+					<li><a href="#tab_3" data-toggle="tab">年</a></li>
+				</ul>
+				<!-- /.tab-content -->
+			</div>
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-3 col-md-3 col-lg-3">
+						<div class="frequenecy-box" id="warnning-total">
+							<div class="img-box">
+								<img src="image/icon1.png" />
+							</div>
+							<div class="text-box">
+								<p class="text">上月告警总数</p>
+								<p class="sum">6243678</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-3 col-md-3 col-lg-3">
+						<div class="frequenecy-box" id="increasing">
+							<div class="img-box">
+								<img src="image/icon2.png" />
+							</div>
+							<div class="text-box">
+								<p class="text">同期增减</p>
+								<p class="sum">-7238</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-3 col-md-3 col-lg-3">
+						<div class="frequenecy-box " id="compare">
+							<div class="img-box">
+								<img src="image/icon3.png" />
+							</div>
+							<div class="text-box">
+								<p class="text">同比</p>
+								<p class="sum">-7.3</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-3 col-md-3 col-lg-3">
+						<div class="frequenecy-box " id="warnning-times">
+							<div class="img-box">
+								<img src="image/icon4.png" />
+							</div>
+							<div class="text-box">
+								<p class="text">严重违法车次</p>
+								<p class="sum">2324</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row ">
+					<div class="col-xs-12 col-md-12 col-lg-4">
+						<div class="box box-default">
+							<div class="box-header with-border">
+								<!-- <i class="fa fa-warning"></i> -->
+								<h3 class="box-title">报警类型分析</h3>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body">
+								<div id="alert-type-analysis"></div>
+							</div>
+							<!-- /.box-body -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-md-12 col-lg-4">
+						<div class="box box-success">
+							<div class="box-header with-border">
+								<!-- <i class="fa fa-warning"></i> -->
+								<h3 class="box-title">严重违法分析</h3>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body">
+								<div id="serious-illegal-analysis"></div>
+							</div>
+							<!-- /.box-body -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-md-12 col-lg-4">
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<!-- <i class="fa fa-warning"></i> -->
+								<h3 class="box-title">高频卡口分析</h3>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body">
+								<div id="high-frequency-bayonet-analysis"></div>
+							</div>
+							<!-- /.box-body -->
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-12 col-lg-12">
+						<div class="box box-warning" id="high-warning">
+							<div class="box-header">
+								<h3 class="box-title">高危车辆列表</h3>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body no-padding">
+								<table class="table table-condensed">
+									<tbody>
+										<tr>
+											<th>序号</th>
+											<th>车牌</th>
+											<th>最近出现卡口</th>
+											<th>卡口走向</th>
+											<th>车辆类型</th>
+											<th>违章类型</th>
+										</tr>
+										<tr>
+											<td class="index">1</td>
+											<td>粤xxxxxx</td>
+											<td>禺东西路省军区路段</td>
+											<td class="direction"><span>西向东</span></td>
+											<td>小轿车</td>
+											<td>未年检</td>
+										</tr>
+										<tr>
+											<td class="index">2</td>
+											<td>粤xxxxxx</td>
+											<td>禺东西路省军区路段</td>
+											<td class="direction"><span>西向东</span></td>
+											<td>小轿车</td>
+											<td>未年检</td>
+										</tr>
+										<tr>
+											<td class="index">3</td>
+											<td>粤xxxxxx</td>
+											<td>禺东西路省军区路段</td>
+											<td class="direction"><span>西向东</span></td>
+											<td>小轿车</td>
+											<td>未年检</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- /.box-body -->
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<script th:src="@{js/frequency-analysis.js}"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title='综合查询'">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<section class="content container-fluid">
+				<div th:include="@{include/top-total}" class="row top-total"></div>
+				<div class="box box-primary zw-bg-white" id="search">
+					<div class="box-header with-border">
+						<h3 class="box-title">车辆通过卡口记录</h3>
+					</div>
+					<div class="box-body">
+						<div class="form-horizontal">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="col-xs-2 control-label">日期:</label>
+									<div class="col-xs-9 input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input type="text" class="form-control pull-right"
+											id="reservation" />
+									</div>
+									<!-- /.input group -->
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="col-xs-2 control-label">预警类型:</label>
+									<div class="col-xs-9">
+										<select class="form-control select2" style="width: 100%;">
+											<option>多次违章</option>
+											<option>未年检</option>
+											<option>重点关注</option>
+										</select>
+									</div>
+
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="col-xs-2 control-label">卡口:</label>
+									<div class="col-xs-9 input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-search"></i>
+										</div>
+										<input type="text" class="form-control pull-right" id="" />
+									</div>
+									<!-- /.input group -->
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="col-xs-2 control-label">车牌:</label>
+									<div class="col-xs-9 input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-search"></i>
+										</div>
+										<input type="text" class="form-control pull-right" id="" />
+									</div>
+									<!-- /.input group -->
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="col-xs-2 control-label">车辆类型:</label>
+									<div class="col-xs-9">
+										<select class="form-control select2" style="width: 100%;">
+											<option>小型汽车</option>
+											<option>中型客车</option>
+											<option>大型货车</option>
+											<option>大型客车</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="col-xs-2 control-label">查询表:</label>
+									<div class="col-xs-9">
+										<select class="form-control select2" style="width: 100%;">
+											<option>车辆通过卡口记录</option>
+											<option>车辆黑名单</option>
+											<option>卡口信息</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6 text-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-danger btn-flat">查询</button>
+									<button type="button"
+										class="btn btn-danger btn-flat dropdown-toggle"
+										data-toggle="dropdown">
+										<span class="caret"></span> <span class="sr-only"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">车辆通过卡口记录</a></li>
+										<li><a href="#">车辆黑名单</a></li>
+										<li><a href="#">卡口信息</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-xs-6 text-center">
+								<button type="button" class="btn btn-primary">保存</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box box-warning zw-bg-white">
+							<p class="box-header with-border">车牌：粤A12345</p>
+							<table class="table table-bordered text-center">
+								<thead>
+									<tr>
+										<th class="bg-warning">通过时间</th>
+										<th class="bg-warning">车牌</th>
+										<th class="bg-warning">车辆类型</th>
+										<th class="bg-warning">预警类型</th>
+										<th class="bg-warning">卡口</th>
+										<th class="bg-warning">驶向</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>201-07-01 00:06</td>
+										<td>粤A12345</td>
+										<td>小型汽车</td>
+										<td>未年检</td>
+										<td>天河北路388号路段</td>
+										<td>南往北</td>
+									</tr>
+									<tr>
+										<td>201-07-01 00:06</td>
+										<td>粤A12345</td>
+										<td>小型汽车</td>
+										<td>未年检</td>
+										<td>天河北路388号路段</td>
+										<td>南往北</td>
+									</tr>
+									<tr>
+										<td>201-07-01 00:06</td>
+										<td>粤A12345</td>
+										<td>小型汽车</td>
+										<td>未年检</td>
+										<td>天河北路388号路段</td>
+										<td>南往北</td>
+									</tr>
+									<tr>
+										<td>201-07-01 00:06</td>
+										<td>粤A12345</td>
+										<td>小型汽车</td>
+										<td>未年检</td>
+										<td>天河北路388号路段</td>
+										<td>南往北</td>
+									</tr>
+									<tr>
+										<td>201-07-01 00:06</td>
+										<td>粤A12345</td>
+										<td>小型汽车</td>
+										<td>未年检</td>
+										<td>天河北路388号路段</td>
+										<td>南往北</td>
+									</tr>
+									<tr>
+										<td>201-07-01 00:06</td>
+										<td>粤A12345</td>
+										<td>小型汽车</td>
+										<td>未年检</td>
+										<td>天河北路388号路段</td>
+										<td>南往北</td>
+									</tr>
+									<tr>
+										<td>201-07-01 00:06</td>
+										<td>粤A12345</td>
+										<td>小型汽车</td>
+										<td>未年检</td>
+										<td>天河北路388号路段</td>
+										<td>南往北</td>
+									</tr>
+									<tr>
+										<td>201-07-01 00:06</td>
+										<td>粤A12345</td>
+										<td>小型汽车</td>
+										<td>未年检</td>
+										<td>天河北路388号路段</td>
+										<td>南往北</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Create the tabs -->
+			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+				<li class="active"><a href="#type-carcross" data-toggle="tab"><i
+						class="fa fa-home"></i></a></li>
+				<li><a href="#type-car" data-toggle="tab"><i
+						class="fa fa-home"></i></a></li>
+				<li><a href="#type-cross" data-toggle="tab"><i
+						class="fa fa-home"></i></a></li>
+				<li><a href="#type-police" data-toggle="tab"><i
+						class="fa fa-home"></i></a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content" id="type-choose">
+				<!-- Home tab content -->
+				<div class="tab-pane active" id="type-carcross">
+					<h3 class="control-sidebar-heading">通卡查询</h3>
+					<ul class="control-sidebar-menu">
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">车辆通过卡口记录</h4>
+							</div>
+						</li>
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">车辆通过卡口预测</h4>
+							</div>
+						</li>
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">车辆OD</h4>
+							</div>
+						</li>
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">初次入城</h4>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="tab-pane" id="type-car">
+					<h3 class="control-sidebar-heading">车辆查询</h3>
+					<ul class="control-sidebar-menu">
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">车辆信息</h4>
+							</div>
+						</li>
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">车主信息</h4>
+							</div>
+						</li>
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">黑名单车辆</h4>
+							</div>
+						</li>
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">假/套牌车辆</h4>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="tab-pane" id="type-cross">
+					<h3 class="control-sidebar-heading">卡口查询</h3>
+					<ul class="control-sidebar-menu">
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">卡口信息</h4>
+							</div>
+						</li>
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">卡口流量</h4>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="tab-pane" id="type-police">
+					<h3 class="control-sidebar-heading">警力查询</h3>
+					<ul class="control-sidebar-menu">
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">人员信息</h4>
+							</div>
+						</li>
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">执勤任务</h4>
+							</div>
+						</li>
+						<li>
+							<div class="menu-info">
+								<h4 class="control-sidebar-heading">执勤记录</h4>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- /.tab-pane -->
+			</div>
+		</aside>
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->
+	<!-- Select2 -->
+	<script
+		th:src="@{bower_components/select2/dist/js/select2.full.min.js}"></script>
+	<!-- InputMask -->
+	<script th:src="@{plugins/input-mask/jquery.inputmask.js}"></script>
+	<script
+		th:src="@{plugins/input-mask/jquery.inputmask.date.extensions.js}"></script>
+	<script th:src="@{plugins/input-mask/jquery.inputmask.extensions.js}"></script>
+	<!-- date-range-picker -->
+	<script th:src="@{bower_components/moment/min/moment.min.js}"></script>
+	<script
+		th:src="@{bower_components/bootstrap-daterangepicker/daterangepicker.js}"></script>
+	<!-- bootstrap datepicker -->
+	<script
+		th:src="@{bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
+	<!-- bootstrap color picker -->
+	<script
+		th:src="@{bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js}"></script>
+	<!-- bootstrap time picker -->
+	<script th:src="@{plugins/timepicker/bootstrap-timepicker.min.js}"></script>
+	<!-- SlimScroll -->
+	<script
+		th:src="@{bower_components/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+	<!-- iCheck 1.0.1 -->
+	<script th:src="@{plugins/iCheck/icheck.min.js}"></script>
+	<!-- FastClick -->
+	<script th:src="@{bower_components/fastclick/lib/fastclick.js}"></script>
+	<script th:src="@{js/all-query.js}"></script>
+</body>
+</html>

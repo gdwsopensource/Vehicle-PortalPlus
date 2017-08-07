@@ -8,25 +8,29 @@ $(function(){
     legend: {
         orient: 'vertical',
         x: 'left',
-        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+        data:['广州','佛山','东莞','清远']
     },
     series: [
         {
-            name:'访问来源',
+            name:'地区分布',
             type:'pie',
             radius: ['50%', '70%'],
             avoidLabelOverlap: false,
+            data:[
+                {value:335, name:'广州'},
+                {value:310, name:'佛山'},
+                {value:234, name:'东莞'},
+                {value:135, name:'清远'},
+                {value:1548, name:'福州'}
+            ]
+        },{
+            name:'地区分布',
+            type:'pie',
+            radius: ['0%', '45%'],
+            avoidLabelOverlap: false,
             label: {
                 normal: {
-                    show: false,
-                    position: 'center'
-                },
-                emphasis: {
-                    show: true,
-                    textStyle: {
-                        fontSize: '30',
-                        fontWeight: 'bold'
-                    }
+                    position: 'inner'
                 }
             },
             labelLine: {
@@ -35,14 +39,14 @@ $(function(){
                 }
             },
             data:[
-                {value:335, name:'直接访问'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1548, name:'搜索引擎'}
+                {value:1014, name:'省内'},
+                {value:1548, name:'省外'}
             ]
         }
     ]
 };
 myChart.setOption(option);
+$(window).on("resize", function () {
+	myChart.resize();
+   });
 })

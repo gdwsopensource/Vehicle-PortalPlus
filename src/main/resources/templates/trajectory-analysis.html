@@ -1,0 +1,574 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title='轨迹分析'">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<!-- Main content -->
+        <section class="content">
+            <!--form-->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">轨迹分析</div>
+                        <div class="box-body">
+                            <form action="#" method="get" class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text" name="plateNo" class="form-control"
+                                                   placeholder="请输入你的车牌"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control" id="startDate" name="startDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control" id="endDate" name="endDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-block btn-primary btn-flat">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--map-->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">交通概览图</div>
+                        <div class="box-body">
+                            <div id="trajectory_map" style="height: 500px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header">经过卡口列表</div>
+                        <div class="box-body">
+                            <div class="row" style="height: 420px;overflow-y: scroll;">
+                                <div class="col-md-12">
+                                    <dl class="dl-horizontal">
+                                        <dt>车牌号</dt>
+                                        <dd>粤XXX</dd>
+                                        <dt>路线</dt>
+                                        <dd>
+                                            花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1
+                                        </dd>
+                                        <dt>时间</dt>
+                                        <dd>2017-07-30</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>车牌号</dt>
+                                        <dd>粤XXX</dd>
+                                        <dt>路线</dt>
+                                        <dd>
+                                            花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1
+                                        </dd>
+                                        <dt>时间</dt>
+                                        <dd>2017-07-30</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>车牌号</dt>
+                                        <dd>粤XXX</dd>
+                                        <dt>路线</dt>
+                                        <dd>
+                                            花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1
+                                        </dd>
+                                        <dt>时间</dt>
+                                        <dd>2017-07-30</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>车牌号</dt>
+                                        <dd>粤XXX</dd>
+                                        <dt>路线</dt>
+                                        <dd>
+                                            花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1
+                                        </dd>
+                                        <dt>时间</dt>
+                                        <dd>2017-07-30</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>车牌号</dt>
+                                        <dd>粤XXX</dd>
+                                        <dt>路线</dt>
+                                        <dd>
+                                            花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1
+                                        </dd>
+                                        <dt>时间</dt>
+                                        <dd>2017-07-30</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <!--  <div class="row" style="height: 420px;overflow-y: scroll;">
+                                  <div class="col-md-12">
+                                      <table class="table text-center" style="border:1px solid #f4f4f4;">
+                                          <tbody>
+                                          <tr>
+                                              <td>车牌号</td>
+                                              <td>路线</td>
+                                              <td>时间</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          <tr>
+                                              <td>粤XXXX</td>
+                                              <td>花城大道口-天河北路卡口-卡口3卡口1卡口1卡口1-卡口4卡口1卡口1卡口1</td>
+                                              <td>2017-07-31</td>
+                                          </tr>
+                                          </tbody>
+                                      </table>
+                                  </div>
+                              </div>-->
+                              <div class="row" style="height: 80px;">
+                                  <div class="col-md-12 text-right">
+                                      <ul class="pagination">
+                                          <li class="paginate_button previous disabled" id="example2_previous">
+                                              <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">上一页</a>
+                                          </li>
+                                          <li class="paginate_button active">
+                                              <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a>
+                                          </li>
+                                          <li class="paginate_button ">
+                                              <a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a>
+                                          </li>
+                                          <li class="paginate_button ">
+                                              <a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a>
+                                          </li>
+                                          <li class="paginate_button ">
+                                              <a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a>
+                                          </li>
+                                          <li class="paginate_button ">
+                                              <a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a>
+                                          </li>
+                                          <li class="paginate_button ">
+                                              <a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a>
+                                          </li>
+                                          <li class="paginate_button next" id="example2_next">
+                                              <a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">下一页</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--analysis-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">统计经过的卡口的次数</div>
+                        <div class="box-body">
+                            <div id="barECharts" style="height: 400px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box box-danger">
+                        <div class="box-header">统计经过的卡口次数的占比</div>
+                        <div class="box-body">
+                            <div id="pieECharts_loop" style="height:400px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box box-default">
+                        <div class="box-header">统计经过的卡口次数的占比</div>
+                        <div class="box-body">
+                            <div id="pieECharts" style="height:400px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		</div>
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->	
+	<!--DatePicker-->
+<script src="@{bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
+<script src="@{bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js}"></script>
+	<script>
+
+    $('#startDate').datepicker({
+        format: 'yyyy-mm-dd',
+        language: 'zh-CN',
+        autoclose: true,
+        todayHighlight: true
+    });
+    $('#endDate').datepicker({
+        format: 'yyyy-mm-dd',
+        language: 'zh-CN',
+        autoclose: true,
+        todayHighlight: true
+    });
+
+    // 地图参数设置
+    var dom_map = document.getElementById('trajectory_map');
+    var myChart_map = echarts.init(dom_map);
+    var option_map = null;
+    option_map = {
+        title: {
+            text: '车辆轨迹图',
+            textStyle: {
+                color: '#fff'
+            },
+            top: 10,
+            left: 10
+        },
+        bmap: {
+            center: [113.366286, 23.130748], // 后台返回后动态设置成第一个出现的地方或最高频率的地方
+            zoom: 14,
+            roam: true,
+            mapStyle: { // 设置的地图的样式
+                styleJson: [{
+                    "featureType": "land",
+                    "elementType": "all",
+                    "stylers": {
+                        "color": "#444444",
+                        "visibility": "on"
+                    }
+                }, {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": {
+                        "color": "#444444",
+                        "visibility": "on"
+                    }
+                }, {
+                    "featureType": "building",
+                    "elementType": "all",
+                    "stylers": {
+                        "color": "#444444",
+                        "visibility": "on"
+                    }
+                }, {
+                    "featureType": "manmade",
+                    "elementType": "all",
+                    "stylers": {
+                        "color": "#444444",
+                        "visibility": "on"
+                    }
+                }, {
+                    "featureType": "poi",
+                    "elementType": "all",
+                    "stylers": {
+                        "visibility": "off"
+                    }
+                }, {
+                    "featureType": "subway",
+                    "elementType": "all",
+                    "stylers": {
+                        "visibility": "off"
+                    }
+                }, {
+                    "featureType": "highway",
+                    "elementType": "geometry",
+                    "stylers": {
+                        "color": "#3d85c6"
+                    }
+                }, {
+                    "featureType": "arterial",
+                    "elementType": "geometry",
+                    "stylers": {
+                        "color": "#3d85c6"
+                    }
+                }, {
+                    "featureType": "local",
+                    "elementType": "geometry",
+                    "stylers": {
+                        "color": "#3d85c6"
+                    }
+                }, {
+                    "featureType": "green",
+                    "elementType": "all",
+                    "stylers": {
+                        "color": "#444444"
+                    }
+                }, {
+                    "featureType": "railway",
+                    "elementType": "all",
+                    "stylers": {
+                        "color": "#073763",
+                        "visibility": "off"
+                    }
+                }, {
+                    "featureType": "highway",
+                    "elementType": "labels.text.stroke",
+                    "stylers": {
+                        "color": "#ffffff"
+                    }
+                }, {
+                    "featureType": "arterial",
+                    "elementType": "labels.text.stroke",
+                    "stylers": {
+                        "color": "#ffffff"
+                    }
+                }, {
+                    "featureType": "local",
+                    "elementType": "labels.text.stroke",
+                    "stylers": {
+                        "color": "#ffffff"
+                    }
+                }]
+            }
+        },
+        series: [{
+            type: 'lines',
+            zlevel: 2,
+            symbol: ['none', 'arrow'],
+            symbolSize: 10,
+            effect: {
+                show: true,
+                constantSpeed: 100,
+                trailLength: 0,
+                symbol: 'image://img/carwhite.png',
+                symbolSize: 25,
+                loop: true
+            },
+            coordinateSystem: 'bmap',
+            data: [{
+                coords: [["113.38182755552", "23.133498664979"], ["113.33674730643", "23.147301775747"], ["113.33673942181", "23.147295333327"], ["113.3621068926", "23.150707056714"]]
+            }],
+            polyline: true,
+            lineStyle: {
+                normal: {
+                    color: 'yellow',
+                    opacity: 0.5,
+                    width: 3,
+                    type: 'dashed'
+                }
+            }
+        }, {
+            type: 'scatter',
+            coordinateSystem: 'bmap',
+            //data: crossArr
+        }]
+    }
+
+    myChart_map.setOption(option_map);
+
+    // 基于准备好的dom，初始化echarts实例
+    var barECharts = echarts.init(document.getElementById('barECharts'));
+    var barECharts_option = {
+        color: ['#3c8dbc'],
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: ['卡口1', '卡口2', '卡口3', '卡口4', '卡口5', '卡口6', '卡口7'],
+                axisTick: {
+                    alignWithLabel: true
+                }
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: '过车频次',
+                type: 'bar',
+                barWidth: '60%',
+                data: [10, 52, 200, 334, 390, 330, 220]
+            }
+        ]
+    };
+    barECharts.setOption(barECharts_option);
+
+    // 基于准备好的dom，初始化echarts实例
+    var pieECharts_loop = echarts.init(document.getElementById('pieECharts_loop'));
+    var pieECharts_loop_option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'horizontal',
+            data: ['卡口1', '卡口2', '卡口3', '卡口4', '卡口5'],
+        },
+        series: [
+            {
+                name: '过车频次',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data: [
+                    {value: 335, name: '卡口1'},
+                    {value: 310, name: '卡口2'},
+                    {value: 234, name: '卡口3'},
+                    {value: 135, name: '卡口4'},
+                    {value: 1548, name: '卡口5'}
+                ]
+            }
+        ]
+    };
+    pieECharts_loop.setOption(pieECharts_loop_option);
+    // 基于准备好的dom，初始化echarts实例
+    var pieECharts = echarts.init(document.getElementById('pieECharts'));
+    var pieECharts_option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'horizontal',
+            data: ['卡口1', '卡口2', '卡口3', '卡口4', '卡口5'],
+        },
+        series: [
+            {
+                name: '过车频次',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '60%'],
+                data: [
+                    {value: 335, name: '卡口1'},
+                    {value: 310, name: '卡口2'},
+                    {value: 234, name: '卡口3'},
+                    {value: 135, name: '卡口4'},
+                    {value: 1548, name: '卡口5 '}
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    pieECharts.setOption(pieECharts_option);
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title='初次入城分析'">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<section class="content container-fluid">
+				<div th:include="@{include/top-total}" class="row top-total"></div>
+				<div class="row" id="">
+					<div class="col-sm-6 col-xs-12">
+						<div class="box box-primary zw-bg-white" id="total-left">
+							<div class="nav-tabs-custom">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tabs-to" data-toggle="tab"
+										aria-expanded="true">周</a></li>
+									<li class=""><a href="#tabs-to" data-toggle="tab"
+										aria-expanded="false">月</a></li>
+									<li class=""><a href="#tabs-to" data-toggle="tab"
+										aria-expanded="false">年</a></li>
+								</ul>
+								<div class="tab-content" id="tabs-to total-left">
+									<div class="tab-pane active" id="draw-chart0">
+										<h3>概览大图</h3>
+									</div>
+								</div>
+								<!-- /.tab-content -->
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-xs-12" id="simple-right">
+						<div class="row">
+							<div class="col-sm-6 col-xs-6">
+								<div class="box box-primary zw-bg-white" >
+									<div class="nav-tabs-custom">
+										<ul class="nav nav-tabs">
+											<li class="active" id="draw-chart1-o"><a href="#draw-chart1"
+												data-toggle="tab" aria-expanded="true">起始</a></li>
+											<li class="" id="draw-chart1-d"><a href="#draw-chart1" data-toggle="tab"
+												aria-expanded="false">终到</a></li>
+										</ul>
+										<div class="tab-content">
+											<div class="tab-pane active" id="draw-chart1"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-xs-6">
+								<div class="box box-primary zw-bg-white" id="draw-chart2"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 col-xs-6">
+								<div class="box box-primary zw-bg-white" id="draw-chart3"></div>
+							</div>
+							<div class="col-sm-6 col-xs-6">
+								<div class="box box-primary zw-bg-white" id="draw-chart4"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3 col-xs-12">
+						<div class="box box-warning">
+							<p class="box-header with-border">车牌：粤A12345</p>
+							<table class="table table-bordered cars-od-table text-center">
+								<thead>
+									<tr>
+										<th class="bg-warning">车牌</th>
+										<th class="bg-warning">次数</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>粤A12345</td>
+										<td>500</td>
+									</tr>
+									<tr>
+										<td>粤A12346</td>
+										<td>700</td>
+									</tr>
+									<tr>
+										<td>粤A12346</td>
+										<td>700</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+					<div class="col-sm-9 col-xs-12">
+						<div class="box box-danger">
+							<p class="box-header with-border">卡口：卡口1</p>
+							<table class="table table-bordered car-od-table text-center">
+								<thead>
+									<tr>
+										<th class="bg-danger">月份</th>
+										<th class="bg-danger">出发卡口</th>
+										<th class="bg-danger">终点卡口</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2017-07</td>
+										<td>天河北路388号路段</td>
+										<td>天河北路389号路段</td>
+									</tr>
+									<tr>
+										<td>2017-06</td>
+										<td>天河北路388号路段</td>
+										<td>天河北路389号路段</td>
+									</tr>
+									<tr>
+										<td>2017-05</td>
+										<td>天河北路388号路段</td>
+										<td>天河北路389号路段</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<!--行为分析-->
+				<div class="row">
+					<div class="col-sm-6 col-xs-12">
+						<div class="box box-success zw-bg-white"
+							id="behaviour-analysis-line"></div>
+					</div>
+					<div class="col-sm-3 col-xs-12">
+						<div class="box box-success zw-bg-white"
+							id="behaviour-analysis-pie"></div>
+					</div>
+					<div class="col-sm-3 col-xs-12">
+						<div class="box box-success zw-bg-white"
+							id="behaviour-analysis-bar"></div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->	
+	<script th:src="@{js/first-analysis.js}"></script>
+</body>
+</html>
