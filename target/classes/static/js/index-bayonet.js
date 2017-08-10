@@ -4,7 +4,16 @@
         size: '5px',
         color: '#d2d6de'
     });
-
+	
+	$('#car_result').slimScroll({
+        height: '400px',
+        size: '5px',
+        color: '#d2d6de'
+    });
+	$('#car_result').find('table').find('tbody').find('tr').not('.thead').on('click',function(){
+		window.location.href='/index-car';
+	});
+	
     function data() {
         var d = [];
         for (var i = 0; i < 24; i++) {

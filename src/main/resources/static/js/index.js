@@ -18,7 +18,7 @@
 				name: '过车频次',
 				map: 'guangzhou',
 				roam: true,
-				selectedMode: true,
+				selectedMode: 'single',
 				data: [
 					{name: "天河区", value: 203},
 					{name: "番禺区", value: 240},
@@ -30,7 +30,7 @@
 					{name: "白云区", value: 250},
 					{name: "花都区", value: 250},
 					{name: "越秀区", value: 250},
-					{name: "南沙区", value: 250}
+					{name: "南沙区", value: 250,selected:true}
 				],
 				markPoint: {
 					symbol: 'image://../image/map-pin.png',
@@ -129,6 +129,10 @@
 		});
 		chart.on('click', function (params) {
 			console.log(params);
+			if(params.componentType === "markPoint"){
+				console.log(1);
+				window.location.href='/index-bayonet';
+			}
 		});
 	});
 	// 基于准备好的dom，初始化echarts实例
