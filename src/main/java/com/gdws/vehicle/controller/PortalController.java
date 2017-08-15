@@ -62,23 +62,11 @@ public class PortalController {
     }
     @RequestMapping("od-analysis")
     String odAnalysis() {
-        return "od-analysis3";
-    }
-    @RequestMapping("od-analysis1")
-    String odAnalysis1() {
-        return "od-analysis1";
-    }
-    @RequestMapping("od-analysis2")
-    String odAnalysis2() {
-        return "od-analysis2";
+        return "od-analysis";
     }
     @RequestMapping("all-query")
     String allQuery() {
         return "all-query";
-    }
-    @RequestMapping("intelligence-analysis")
-    String intelligenceAnalysis(){
-    	return "intelligence-analysis";
     }
     @RequestMapping("outer-limit-economics")
     String outerLimitEconomics(){
@@ -96,7 +84,17 @@ public class PortalController {
     String outerLimitLawMission(){
     	return "outer-limit-law-mission";
     }
-    
-    
+    @RequestMapping("intelligence-analysis")
+    String intelligenceAnalysis(){
+    	return "intelligence-analysis";
+    }
+    @RequestMapping("limit-fullpage")
+    String limitFullpage(){
+    	return "limit-fullpage";
+    }
+    @RequestMapping("implementation-management")
+    String implementationManagement(){
+    	return "implementation-management";
+    }   
 }
 
