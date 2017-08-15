@@ -86,7 +86,7 @@
 		option = {
 			title : {
 				x : 'center',
-				text : '即时拥堵路段',
+				text : '拥堵路段',
 				subtext : crowdRoad+'条',
 				textStyle : {
 					fontSize : 20,
@@ -141,7 +141,7 @@
 			title : {
 
 				x : 'center',
-				text : '即时外牌车辆',
+				text : '外牌车辆',
 				subtext : nonlocalCar+'辆',
 				textStyle : {
 					fontSize : 20,
