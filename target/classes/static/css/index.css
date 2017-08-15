@@ -46,12 +46,23 @@
 	background-color: rgb(255, 255, 255) !important;
 }
 
+.zw-bg-orange {
+	background-color: rgb(244, 156, 16) !important;
+}
+
 .a-bg-blue {
 	background-color: rgba(88, 142, 188, 0.5) !important
 }
 
 .line-height-box-header {
 	line-height: 34px;
+}
+
+.text-white {
+	color: white;
+}
+.text-white:hover{
+	color: white;
 }
 /*>>>复用样式*/
 
@@ -244,6 +255,7 @@
 	overflow: auto;
 }
 /*>>>OD分析*/
+
 /* 高频分析 */
 .frequency .nav-tabs-custom>.nav-tabs>li {
 	border-top-width: 0;
@@ -394,16 +406,415 @@
 	padding: 0 25px;
 	cursor: pointer;
 }
-.content-tab .item>a{
-	display:block;
-	color:#333;
-}
+
 .content-tab .item.active {
 	background-color: #333333;
 	color: #ffffff;
 }
-.content-tab .item.active>a{
-	color: #ffffff;
-}
 /*执法辅助*/
 
+/*<<<限外满屏*/
+.limit-fullpage {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(#000020, #3060A0);
+	color: #FFFFFF;
+	font-size: 16px;
+	overflow: hidden;
+}
+
+.limit-fullpage #title {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 7%;
+	text-align: center;
+	font-size: 2em;
+	line-height: 3em;
+	z-index: 2;
+}
+
+.limit-fullpage #time {
+	position: absolute;
+	top: 7%;
+	left: 0%;
+	width: 100%;
+	height: 3%;
+	text-align: center;
+	font-size: 1em;
+	z-index: 2;
+}
+
+.limit-fullpage #time .fa-mail-reply {
+	cursor: pointer;
+	color: #FFFFFF;
+}
+
+.limit-fullpage #nonlocalratio {
+	position: absolute;
+	top: 10%;
+	left: 1%;
+	width: 12%;
+	height: 28%;
+	z-index: 2;
+	background: rgba(40, 40, 140, 0.2) !important;
+	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+}
+
+.limit-fullpage #nonlocalown {
+	position: absolute;
+	top: 10%;
+	left: 14%;
+	width: 16%;
+	height: 28%;
+	z-index: 2;
+	background: rgba(40, 40, 140, 0.2) !important;
+	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+}
+
+.limit-fullpage #crowdload {
+	position: absolute;
+	top: 40%;
+	left: 1%;
+	width: 29%;
+	height: 28%;
+	z-index: 2;
+	background: rgba(40, 40, 140, 0.2) !important;
+	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+}
+
+.limit-fullpage #quota {
+	position: absolute;
+	top: 70%;
+	left: 1%;
+	width: 29%;
+	height: 28%;
+	z-index: 2;
+	background: rgba(40, 40, 140, 0.2) !important;
+	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+}
+
+.limit-fullpage #voice {
+	position: absolute;
+	top: 70%;
+	left: 31%;
+	width: 29%;
+	height: 28%;
+	z-index: 2;
+	background: rgba(40, 40, 140, 0.2) !important;
+	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+}
+
+.limit-fullpage #voice #voice-title {
+	font-size: 20px;
+	font-weight: bolder;
+	text-align: center;
+	width: 100%;
+	height: 15%;
+}
+
+.limit-fullpage #voice #voice-head {
+	width: 100%;
+	height: 15%;
+}
+
+.limit-fullpage #voice #voice-head>span {
+	display: inline-block;
+	text-align: center;
+}
+
+.limit-fullpage #voice #voice-head>span:nth-child(1) {
+	width: 20%;
+}
+
+.limit-fullpage #voice #voice-head>span:nth-child(2) {
+	width: 50%;
+}
+
+.limit-fullpage #voice #voice-head>span:nth-child(3) {
+	width: 25%;
+}
+
+.limit-fullpage #voice #voice-body {
+	width: 100%;
+	height: 70%;
+}
+
+.limit-fullpage #voice #voice-body>ul {
+	list-style: none;
+	padding: 0;
+	height: 100%;
+}
+
+.limit-fullpage #voice #voice-body>ul>li {
+	width: 100%;
+	height: 20%;
+	line-height: 20%;
+}
+
+.limit-fullpage #voice #voice-body>ul>li>span {
+	display: inline-block;
+	text-align: center;
+}
+
+.limit-fullpage #voice #voice-body>ul>li>span:nth-child(1) {
+	width: 20%;
+}
+
+.limit-fullpage #voice #voice-body>ul>li>span:nth-child(2) {
+	width: 50%;
+}
+
+.limit-fullpage #voice #voice-body>ul>li>span:nth-child(3) {
+	width: 25%;
+}
+
+.limit-fullpage #voice #voice-body .hot>span {
+	margin-left: 5px;
+}
+
+.limit-fullpage #voice .ion-flame {
+	color: rgb(244, 116, 100);
+}
+
+.limit-fullpage #warning {
+	position: absolute;
+	top: 70%;
+	left: 61%;
+	right: 1%;
+	width: 38%;
+	height: 28%;
+	z-index: 2;
+	background: rgba(40, 40, 140, 0.2) !important;
+	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+	overflow: hidden;
+}
+
+.limit-fullpage #warning #warning-title {
+	font-size: 20px;
+	font-weight: bolder;
+	text-align: center;
+	width: 100%;
+	height: 15%;
+}
+
+.limit-fullpage #warning #warning-head {
+	width: 100%;
+	height: 15%;
+}
+
+.limit-fullpage #warning #warning-head>span {
+	display: inline-block;
+	text-align: center;
+}
+
+.limit-fullpage #warning #warning-head>span:nth-child(1) {
+	width: 5%;
+}
+
+.limit-fullpage #warning #warning-head>span:nth-child(2) {
+	width: 20%;
+}
+
+.limit-fullpage #warning #warning-head>span:nth-child(3) {
+	width: 20%;
+}
+
+.limit-fullpage #warning #warning-head>span:nth-child(4) {
+	width: 30%;
+}
+
+.limit-fullpage #warning #warning-head>span:nth-child(5) {
+	width: 20%;
+}
+
+.limit-fullpage #warning #warning-body {
+	width: 100%;
+	height: 70%;
+}
+
+.limit-fullpage #warning #warning-body>ul {
+	list-style: none;
+	padding: 0;
+	height: 100%;
+}
+
+.limit-fullpage #warning #warning-body>ul>li {
+	width: 100%;
+	height: 20%;
+	line-height: 20%;
+}
+
+.limit-fullpage #warning #warning-body>ul>li>span {
+	display: inline-block;
+	text-align: center;
+}
+
+.limit-fullpage #warning #warning-body>ul>li>span:nth-child(1) {
+	width: 5%;
+}
+
+.limit-fullpage #warning #warning-body>ul>li>span:nth-child(2) {
+	width: 20%;
+}
+
+.limit-fullpage #warning #warning-body>ul>li>span:nth-child(3) {
+	width: 20%;
+}
+
+.limit-fullpage #warning #warning-body>ul>li>span:nth-child(4) {
+	width: 30%;
+}
+
+.limit-fullpage #warning #warning-body>ul>li>span:nth-child(5) {
+	width: 20%;
+}
+
+.limit-fullpage #warning .fa-star {
+	color: rgb(244, 156, 16);
+}
+
+.limit-fullpage #crowdtime {
+	position: absolute;
+	top: 20%;
+	left: 71%;
+	right: 1%;
+	width: 28%;
+	height: 48%;
+	z-index: 2;
+	background: rgba(40, 40, 140, 0.2) !important;
+	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+}
+
+.limit-fullpage #msg {
+	position: absolute;
+	top: 10%;
+	left: 61%;
+	width: 9%;
+	height: 58%;
+	z-index: 2;
+	background: rgba(40, 40, 140, 0.2) !important;
+	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+}
+
+.limit-fullpage #msg-pie1 {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 50%;
+	z-index: 2;
+}
+
+.limit-fullpage #msg-pie2 {
+	position: absolute;
+	top: 50%;
+	left: 0%;
+	width: 100%;
+	height: 50%;
+	z-index: 2;
+}
+
+.limit-fullpage #map {
+	position: absolute;
+	top: 80%;
+	left: 20%;
+	width: 50%;
+	height: 90%;
+	z-index: 1;
+}
+
+.limit-fullpage #bg-earth {
+	position: absolute;
+	top: 80%;
+	left: 0%;
+	width: 100%;
+	height: 20%;
+	background: url(../image/bg-earth.png) no-repeat;
+	background-size: 100% 100%;
+	z-index: 1;
+}
+
+.limit-fullpage #bg-moon {
+	position: absolute;
+	top: 0%;
+	left: 30%;
+	width: 40%;
+	height: 15%;
+	background: url(../image/bg-moon.png) no-repeat;
+	background-size: 100% 100%;
+	z-index: 0;
+}
+
+.limit-fullpage #tpl {
+	position: absolute;
+	top:;
+	left:;
+	width:;
+	height:;
+	z-index: 2;
+}
+/*>>>限外满屏*/
+/*<<<执行支撑*/
+.implementation-management #btn-area button {
+	display: block;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #FFFFFF;
+}
+/*>>>执行支撑*/
+/*<<<智脑辅助执行任务管理*/
+.outer-limit-law-mission .list-title {
+	width: 100%;
+	height: 60px;
+	background-color: rgb(15, 152, 231);
+}
+
+.outer-limit-law-mission .list-title #list-title-pie {
+	font-size: 40px;
+	line-height: 60px;
+	color: rgb(244, 117, 100);
+	margin-left: 20px;
+}
+
+.outer-limit-law-mission .list-title #list-title-bar {
+	font-size: 40px;
+	line-height: 60px;
+	color: rgb(79, 195, 185);
+	margin-left: 20px;
+}
+
+.outer-limit-law-mission .list-title #list-title-plus {
+	font-size: 40px;
+	line-height: 60px;
+	color: rgb(255, 255, 255);
+	float: right;
+	margin-right: 20px;
+}
+
+.outer-limit-law-mission .list-table table {
+	width: 100%;
+}
+.outer-limit-law-mission .list-table table>thead>tr>th {
+	line-height: 60px;
+	font-size: 20px;
+}
+.outer-limit-law-mission .list-table table>tbody>tr{
+	border-top:1px solid rgb(200,200,200);
+}
+.outer-limit-law-mission .list-table table>tbody>tr>td {
+	line-height: 70px;
+	font-size: 20px;
+}
+
+.outer-limit-law-mission .list-table table>tbody>tr>td:nth-child(1) {
+	color: rgb(58, 140, 187);
+}
+.outer-limit-law-mission .list-table table>tbody>tr>td>span{
+	margin-left: 20px;
+}
+/*>>>智脑辅助执行任务管理*/

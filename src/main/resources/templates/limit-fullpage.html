@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title='广州外牌车辆监控台'">
+</head>
+<body class="limit-fullpage">
+	<div id="title">广州外牌车辆监控台</div>
+	<div id="time">
+		2017-08-08 周二 15：23 <a class="fa fa-mail-reply" href="outer-limit-dynamic"></a>
+	</div>
+	<div id="map">地图</div>
+	<div id="msg">
+		<div id="msg-pie1"></div>
+		<div id="msg-pie2"></div>
+	</div>
+	<div id="nonlocalratio">外内比例</div>
+	<div id="nonlocalown">外归属比例</div>
+	<div id="crowdtime">拥堵延时指数与外来车比</div>
+	<div id="voice">
+		<div id="voice-title">舆情监控</div>
+		<div id="voice-head">
+			<span>排名</span> <span>话题</span> <span>热度</span>
+		</div>
+		<div id="voice-body">
+			<ul>
+				<li><span>1</span> <span>广州限外</span> <span class="hot"><span
+						class="ion ion-flame"></span><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span></span></li>
+				<li><span>2</span> <span>广州首开罚单</span> <span class="hot"><span
+						class="ion ion-flame"></span><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span><span class="ion ion-flame"></span></span></li>
+				<li><span>3</span> <span>限外等于排外？</span> <span class="hot"><span
+						class="ion ion-flame"></span><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span></span></li>
+				<li><span>4</span> <span>佛山在广州工作者不满限外</span> <span class="hot"><span
+						class="ion ion-flame"></span><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span></span></li>
+				<li><span>5</span> <span>广州道路不拥堵了</span> <span class="hot"><span
+						class="ion ion-flame"></span><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span></span></li>
+			</ul>
+		</div>
+		<!--
+		<table>
+			<thead>
+				<tr>
+					<th>排名</th>
+					<th>话题</th>
+					<th>热度</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>广州限外</td>
+					<td><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span><span class="ion ion-flame"></span></td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>广州首开罚单</td>
+					<td><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span></td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>广州限外</td>
+					<td><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span><span class="ion ion-flame"></span></td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>广州首开罚单</td>
+					<td><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span></td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>广州限外</td>
+					<td><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span><span class="ion ion-flame"></span></td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>广州首开罚单</td>
+					<td><span class="ion ion-flame"></span><span
+						class="ion ion-flame"></span></td>
+				</tr>
+			</tbody>
+		</table>
+		  -->
+	</div>
+	<div id="warning">
+		<div id="warning-title">执法问题</div>
+		<div id="warning-head">
+			<span></span> <span>时间</span> <span>车辆</span> <span>路段</span> <span>问题</span>
+		</div>
+		<div id="warning-body">
+			<ul>
+				<li><span class="fa fa-star"></span> <span>08:07</span> <span>粤D12345</span>
+					<span>黄埔大道</span> <span>多次违章</span></li>
+				<li><span class="fa fa-star"></span> <span>08:07</span> <span>粤D22345</span>
+					<span>黄埔大道</span> <span>多次违章</span></li>
+				<li><span class="fa fa-star"></span> <span>08:07</span> <span>粤D32345</span>
+					<span>黄埔大道</span> <span>多次违章</span></li>
+				<li><span class="fa fa-star"></span> <span>08:07</span> <span>粤D42345</span>
+					<span>黄埔大道</span> <span>多次违章</span></li>
+				<li><span class="fa fa-star"></span> <span>08:07</span> <span>粤D52345</span>
+					<span>黄埔大道</span> <span>多次违章</span></li>
+				<li><span class="fa fa-star"></span> <span>08:07</span> <span>粤D62345</span>
+					<span>黄埔大道</span> <span>多次违章</span></li>
+				<li><span class="fa fa-star"></span> <span>08:07</span> <span>粤D72345</span>
+					<span>黄埔大道</span> <span>多次违章</span></li>
+				<li><span class="fa fa-star"></span> <span>08:07</span> <span>粤D82345</span>
+					<span>黄埔大道</span> <span>多次违章</span></li>
+			</ul>
+		</div>
+		<!--
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>时间</th>
+					<th>车辆</th>
+					<th>问题</th>
+					<th>路段</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><span class="fa fa-star"></span></td>
+					<td>08:07</td>
+					<td>粤D12345</td>
+					<td>多次违章</td>
+					<td>黄埔大道</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>08:04</td>
+					<td>粤A12345</td>
+					<td>多次违章</td>
+					<td>黄埔大道</td>
+				</tr>
+				<tr>
+					<td><span class="fa fa-star"></span></td>
+					<td>08:07</td>
+					<td>粤D12345</td>
+					<td>多次违章</td>
+					<td>黄埔大道</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>08:04</td>
+					<td>粤A12345</td>
+					<td>多次违章</td>
+					<td>黄埔大道</td>
+				</tr>
+				<tr>
+					<td><span class="fa fa-star"></span></td>
+					<td>08:07</td>
+					<td>粤D12345</td>
+					<td>多次违章</td>
+					<td>黄埔大道</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>08:04</td>
+					<td>粤A12345</td>
+					<td>多次违章</td>
+					<td>黄埔大道</td>
+				</tr>
+			</tbody>
+		</table>
+		  -->
+	</div>
+	<div id="crowdload">纵向柱状图，拥堵路段前10</div>
+	<div id="quota">今日几个指标的雷达图</div>
+	<div id="bg-earth"></div>
+	<!--<div id="bg-moon"></div>  -->
+	<script th:src="@{js/limit-fullpage.js}"></script>
+</body>
+</html>

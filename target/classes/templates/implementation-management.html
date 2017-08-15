@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title='施行管理'">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper implementation-management">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<section class="content container-fluid">
+				<div class="box box-warning" id="btn-area">
+					<div class="row">
+						<div class="col-xs-3">
+							<button class="btn zw-bg-blue">分析报告查看/编辑</button>
+						</div>
+						<div class="col-xs-3">
+							<button class="btn zw-bg-green">分析报告导出</button>
+						</div>
+						<div class="col-xs-3">
+							<button class="btn zw-bg-red">信息查看/编辑</button>
+						</div>
+						<div class="col-xs-3">
+							<button class="btn zw-bg-orange">信息发布</button>
+						</div>
+					</div>
+				</div>
+				<div class="box box-warning" id="report-box">
+
+					<div class="box-header with-border">分析报告</div>
+					<div class="box-body">
+
+						<textarea id="editor1" name="editor1">
+                        </textarea>
+					</div>
+				</div>
+			</section>
+		</div>
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->
+
+	<script th:src="@{webjars/ckeditor/4.7.0/full/ckeditor.js}"></script>
+	<script
+		th:src="@{plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js}"></script>
+	<script th:src="@{plugins/saveword/FileSaver.js}"></script>
+	<script th:src="@{plugins/saveword/jquery.wordexport.js}"></script>
+	<script th:src="@{js/implementation-management.js}"></script>
+</body>
+</html>
