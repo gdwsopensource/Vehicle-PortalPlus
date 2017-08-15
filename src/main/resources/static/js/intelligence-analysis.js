@@ -3,6 +3,7 @@
 
 	// 初始化
 	resizeInit();
+	
 	// 执行函数
 	drawActiveMap("active-map");
 	drawCrowdBar("crowd-bar");
@@ -10,9 +11,14 @@
 	drawCrowdLine("crowd-line");
 	drawOwnBar("own-bar");
 	drawOwnMap("own-map");
+	
+	
 	// 绑定事件
 	$(window).on('resize', function() {
 		resizeInit();
+	});
+	$("#top-create-report").on('click',function(){
+		sendReport("情报分析智能报告")
 	});
 
 	// 自定义函数
@@ -27,6 +33,34 @@
 		var ownMapW = $("#own-map").width();
 		$("#own-bar").css("height", ownMapW);
 		$("#own-map").css("height", ownMapW);
+	}
+	function sendReport(title){
+		if (window.localStorage) {
+			var textStr = "";
+			textStr+='<h1 style="text-align: center">'+title+'</h1>'
+			textStr+=drawReport(1,"标题","文字说明");
+			textStr+=drawReport(2,"标题","文字说明");
+			textStr+=drawReport(3,"标题","文字说明");
+			textStr+=drawReport(4,"标题","文字说明");
+			textStr+=drawReport(5,"标题","文字说明");
+			console.log(textStr);
+			localStorage.setItem("portalLimitReport", textStr);
+		}
+		
+	}
+	function drawReport(i, title, str) {
+		var canvas = $(".container-fluid canvas");
+		var canvas1 = canvas[i];
+		var canvas1Data = canvas1.toDataURL("image/png");
+		var img1Str = '<p style="text-align: center"><img src="' + canvas1Data
+				+ '" /></p>';
+		var title1Str = '<h3 style="text-align: center">图' + (i + 1) + '：'
+				+ (title || '') + '' + '<h3>';
+		return img1Str + title1Str + (str || '');
+	}
+	function writeReport(str) {
+		var reportBody = $(".cke_wysiwyg_frame").contents().find("body");
+		reportBody.append(str);
 	}
 	function drawActiveMap(id) {
 		var obj = document.getElementById(id);

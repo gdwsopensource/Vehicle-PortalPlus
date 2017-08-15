@@ -4,7 +4,9 @@
 	var globalTime="最近一周";
 	// 第一次初始
 	resizeInit();
-	CKEDITOR.replace('editor1');
+	CKEDITOR.replace('editor1',{
+		height:400
+	});
 	$('.textarea').wysihtml5();
 	
 	
