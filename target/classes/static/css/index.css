@@ -394,9 +394,15 @@
 	padding: 0 25px;
 	cursor: pointer;
 }
-
+.content-tab .item>a{
+	display:block;
+	color:#333;
+}
 .content-tab .item.active {
 	background-color: #333333;
+	color: #ffffff;
+}
+.content-tab .item.active>a{
 	color: #ffffff;
 }
 /*执法辅助*/

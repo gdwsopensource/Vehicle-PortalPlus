@@ -3,6 +3,7 @@
 <head th:include="@{include/head}" th:with="title='OD分析'">
 </head>
 <style>
+/*
 .zw-bg-blue {
 	background-color: rgb(88, 142, 188) !important;
 }
@@ -42,6 +43,7 @@
 .text-white:hover {
 	color: white;
 }
+
 .outer-limit-law-mission .list-title {
 	width: 100%;
 	height: 60px;
@@ -95,6 +97,7 @@
 .outer-limit-law-mission .list-table table>tbody>tr>td>span {
 	margin-left: 20px;
 }
+*/
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper  outer-limit-law-mission">
@@ -111,7 +114,7 @@
 				<div class="item">违法处理</div>
 				<div class="item">非法运营</div>
 			</section>
-			<!--content-->
+			<!--  
 			<section class="content">
 				<div class="row">
 					<div class="col-sm-4">
@@ -235,6 +238,333 @@
 								</tr>
 							</tbody>
 						</table>
+					</div>
+				</div>
+			</section>
+			-->
+			<!--content-->
+			<section class="content">
+				<form class="form-horizontal">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">任务编码</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control"
+										placeholder="例：12345678"/>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">任务名称</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" placeholder="例：任务1"/>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">时间段</label>
+								<div class="col-sm-10">
+									<select name="" id="" class="form-control">
+										<option value="0">00:00-01:00</option>
+										<option value="1">01:00-02:00</option>
+										<option value="2">02:00-03:00</option>
+										<option value="3">03:00-04:00</option>
+										<option value="4">04:00-05:00</option>
+										<option value="5">05:00-06:00</option>
+										<option value="6">06:00-07:00</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">任务类型</label>
+								<div class="col-sm-10">
+									<select name="" id="" class="form-control">
+										<option value="1">类型1</option>
+										<option value="2">类型2</option>
+										<option value="3">类型3</option>
+										<option value="4">类型4</option>
+										<option value="5">类型5</option>
+										<option value="6">类型6</option>
+										<option value="7">类型7</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-md-offset-4 text-right">
+							<button type="submit" class="btn btn-flat btn-primary margin-r-5">查询</button>
+							<button type="button" class="btn btn-flat bg-orange">新增</button>
+						</div>
+					</div>
+				</form>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box box-primary box-solid">
+							<div class="box-header">
+								<div class="box-title">
+									<span class="ion ion-ios-pie"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+										class="ion ion-stats-bars"></span>
+								</div>
+								<div class="box-tools">
+									<button type="button" class="btn btn-primary btn-sm"
+										data-widget="collapse">
+										<i class="fa fa-minus"></i>
+									</button>
+								</div>
+							</div>
+							<div class="box-body">
+								<table class="table text-center no-margin">
+									<tbody>
+										<tr>
+											<td>任务编码</td>
+											<td>任务名称</td>
+											<td>任务时间</td>
+											<td>任务类型</td>
+											<td>任务状态</td>
+											<td>执行人</td>
+											<td>操作</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">001</span></td>
+											<td>任务1</td>
+											<td>2017/08/09</td>
+											<td>巡逻</td>
+											<td>执行中</td>
+											<td>执行人</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">001</span></td>
+											<td>任务1</td>
+											<td>2017/08/09</td>
+											<td>巡逻</td>
+											<td>执行中</td>
+											<td>执行人</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">001</span></td>
+											<td>任务1</td>
+											<td>2017/08/09</td>
+											<td>巡逻</td>
+											<td>执行中</td>
+											<td>执行人</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">001</span></td>
+											<td>任务1</td>
+											<td>2017/08/09</td>
+											<td>巡逻</td>
+											<td>执行中</td>
+											<td>执行人</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">001</span></td>
+											<td>任务1</td>
+											<td>2017/08/09</td>
+											<td>巡逻</td>
+											<td>执行中</td>
+											<td>执行人</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">001</span></td>
+											<td>任务1</td>
+											<td>2017/08/09</td>
+											<td>巡逻</td>
+											<td>执行中</td>
+											<td>执行人</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">001</span></td>
+											<td>任务1</td>
+											<td>2017/08/09</td>
+											<td>巡逻</td>
+											<td>执行中</td>
+											<td>执行人</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">001</span></td>
+											<td>任务1</td>
+											<td>2017/08/09</td>
+											<td>巡逻</td>
+											<td>执行中</td>
+											<td>执行人</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">001</span></td>
+											<td>任务1</td>
+											<td>2017/08/09</td>
+											<td>巡逻</td>
+											<td>执行中</td>
+											<td>执行人</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">001</span></td>
+											<td>任务1</td>
+											<td>2017/08/09</td>
+											<td>巡逻</td>
+											<td>执行中</td>
+											<td>执行人</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">001</span></td>
+											<td>任务1</td>
+											<td>2017/08/09</td>
+											<td>巡逻</td>
+											<td>执行中</td>
+											<td>执行人</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
