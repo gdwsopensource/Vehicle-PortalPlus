@@ -123,37 +123,72 @@
         size: '5px',
         color: '#d2d6de'
     });
-
-    //地图
-    /*var myChart_map = echarts.init(document.getElementById('map'));
-    var option_map = null;
-    option_map = {
-        bmap: {
-            center: [113.366286, 23.130748], //113.366286,23.130748 天河
-            zoom: 14,
-            roam: true,
-            mapStyle: { //设置的地图的样式
-            },
-            series: [
-                {
-                    name: '',
-                    type: 'scatter',
-                    coordinateSystem: 'bmap',
-                    data: [[113.33674730643, 23.147301775747, 1]]
-                }
-            ]
-        }
-    };
-    myChart_map.setOption(option_map);*/
-
-
     // 百度地图API功能
     var map = new BMap.Map("map");
     var point = new BMap.Point(113.366286, 23.130748);
     map.centerAndZoom(point, 12);
-    var marker = new BMap.Marker(new BMap.Point(113.33674730643, 23.147301775747)); // 创建点
-    map.addOverlay(marker);
+   /* var marker = new BMap.Marker(new BMap.Point(113.33674730643, 23.147301775747)); // 创建点
+    map.addOverlay(marker);*/
     map.enableScrollWheelZoom(true);
+    var points = [
+        {
+            crossId:1000,
+            crossName:'卡口1',
+            cross_car_Number:500,
+            bd_longitude: 113.237017,
+            bd_latitude: 23.134245
+        },
+        {
+            crossId:2000,
+            crossName:'卡口2',
+            cross_car_Number:400,
+            bd_longitude: 113.249449,
+            bd_latitude: 23.159566
+        },
+        {
+            crossId:5000,
+            crossName:'卡口5',
+            cross_car_Number:400,
+            bd_longitude: 113.368026,
+            bd_latitude: 23.150328
+        },
+        {
+            crossId:4000,
+            crossName:'卡口4',
+            cross_car_Number:400,
+            bd_longitude: 113.344885,
+            bd_latitude: 23.107722
+        },
+        {
+            crossId:3000,
+            crossName:'卡口3',
+            cross_car_Number:200,
+            bd_longitude: 113.274027,
+            bd_latitude: 23.109118
+        }
+    ];
+
+    // 编写自定义函数,创建标注
+    function addMarker(point_1,point_2) {
+        var marker = new BMap.Marker(new BMap.Point(point_1,point_2));
+        map.addOverlay(marker);
+    }
+    //编写多边形
+    function addPolygon(points){
+        var polygon = new BMap.Polygon(points,{strokeColor:"red", strokeWeight:1, strokeOpacity:0.5,strokeStyle:"dashed"});
+        map.addOverlay(polygon);
+    }
+
+    var pointsT=[];
+    for(var i=0;i<points.length;i++){
+        pointsT.push(new BMap.Point(points[i].bd_longitude,points[i].bd_latitude));
+       // addMarker(points[i].bd_longitude,points[i].bd_latitude)
+    }
+    addPolygon(pointsT);
+  
+
+
+    
 
 
     var pieECharts_2 = echarts.init(document.getElementById('pieECharts_2'));
