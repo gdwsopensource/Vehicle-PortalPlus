@@ -3,272 +3,337 @@
 <head th:include="@{include/head}" th:with="title='OD分析'">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-	<div class="wrapper">
+	<div class="wrapper od-analysis">
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
 		<div class="content-wrapper">
-			<section class="content container-fluid">
+			<section class="content container-fluid lg-bg-img-blue">
 				<div th:include="@{include/top-total}" class="row top-total"></div>
-				<div class="row" id="">
-					<div class="col-sm-6 col-xs-12">
-						<div class="box box-primary zw-bg-white" id="total-left">
-							<div class="nav-tabs-custom">
-								<ul class="nav nav-tabs">
-									<li class="active"><a href="#tabs-to" data-toggle="tab"
-										aria-expanded="true">周</a></li>
-									<li class=""><a href="#tabs-to" data-toggle="tab"
-										aria-expanded="false">月</a></li>
-									<li class=""><a href="#tabs-to" data-toggle="tab"
-										aria-expanded="false">年</a></li>
-								</ul>
-								<div class="tab-content" id="tabs-to total-left">
-									<div class="tab-pane active" id="draw-chart0">
-										<h3>概览大图</h3>
-									</div>
+				<div class="row" id="od-draw">
+					<div class="col-md-6">
+						<div class="box box-primary zw-bg-white">
+							<div class="box-title">
+								<div class="btn-group">
+									<button class="btn btn-primary active" id="choose-time-week">周</button>
+									<button class="btn btn-primary" id="choose-time-month">月</button>
+									<button class="btn btn-primary" id="choose-time-year">年</button>
 								</div>
-								<!-- /.tab-content -->
+								<button class="btn btn-primary pull-right" id="create-report">生成报告</button>
 							</div>
+							<div id="draw-area"></div>
 						</div>
 					</div>
-					<div class="col-sm-6 col-xs-12" id="simple-right">
-						<div class="row">
-							<div class="col-sm-6 col-xs-6">
-								<div class="box box-primary zw-bg-white">
-									<div class="nav-tabs-custom">
-										<ul class="nav nav-tabs">
-											<li class="active" id="draw-chart1-o"><a
-												href="#draw-chart1" data-toggle="tab" aria-expanded="true">起始</a></li>
-											<li class="" id="draw-chart1-d"><a href="#draw-chart1"
-												data-toggle="tab" aria-expanded="false">终到</a></li>
-										</ul>
-										<div class="tab-content">
-											<div class="tab-pane active" id="draw-chart1"></div>
-										</div>
-									</div>
+					<div class="col-md-6" id="draw-right">
+						<div class="box box-primary zw-bg-white">
+							<div class="row">
+								<div class="col-xs-3 text-center" id="msg-time">
+									<h4>高峰时段</h4>
+									<p>08:00-08:15</p>
+									<p>
+										<span class="text-danger">50000</span>辆次出发
+									</p>
+									<p>09:00-09:07</p>
+									<p>
+										<span class="text-danger">60000</span>辆次到达
+									</p>
 								</div>
-							</div>
-							<div class="col-sm-6 col-xs-6">
-								<div class="box box-primary zw-bg-white" id="draw-chart2"></div>
+								<div class="col-xs-9 draw-right" id="draw-time"></div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-sm-6 col-xs-6">
-								<div class="box box-primary zw-bg-white" id="draw-chart3"></div>
+						<div class="box box-primary zw-bg-white">
+							<div class="row">
+								<div class="col-xs-3 text-center" id="msg-cross">
+									<h4>高峰卡口</h4>
+									<p>琶洲卡口004</p>
+									<p>
+										<span class="text-danger">50000</span>辆次出发
+									</p>
+									<p>琶洲卡口005</p>
+									<p>
+										<span class="text-danger">60000</span>辆次到达
+									</p>
+								</div>
+								<div class="col-xs-9 draw-right" id="draw-cross"></div>
 							</div>
-							<div class="col-sm-6 col-xs-6">
-								<div class="box box-primary zw-bg-white" id="draw-chart4"></div>
+						</div>
+						<div class="box box-primary zw-bg-white">
+							<div class="row">
+								<div class="col-xs-3 text-center" id="msg-own">
+									<h4>外地车牌</h4>
+									<p>非广州市车牌</p>
+									<p>
+										<span class="text-danger">5000个(25.0%)</span>
+									</p>
+									<p>佛山市车牌</p>
+									<p>
+										<span class="text-danger">2500个(12.5%)</span>
+									</p>
+								</div>
+								<div class="col-xs-9 draw-right" id="draw-own"></div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-sm-3 col-xs-12">
-						<div class="box box-warning">
-							<p class="box-header with-border">车牌：粤A12345</p>
-							<table class="table table-bordered cars-od-table text-center">
-								<thead>
-									<tr>
-										<th class="bg-warning">车牌</th>
-										<th class="bg-warning">次数</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>粤A12345</td>
-										<td>500</td>
-									</tr>
-									<tr>
-										<td>粤A12346</td>
-										<td>700</td>
-									</tr>
-									<tr>
-										<td>粤A12346</td>
-										<td>700</td>
-									</tr>
-								</tbody>
-							</table>
+
+				<div class="box box-warning" id="od-car-list">
+					<div class="box-header with-border line-height-box-header text-center">
+						近一周 海珠区 3-6点时段 /琶洲卡口001/佛山市车牌 OD车辆 共<span class="text-danger">50000</span>辆次
+					</div>
+					<div class="od-car-list-table-box">
+						<table class="table text-center table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>车辆归属</th>
+									<th>车牌号</th>
+									<th>起始时间</th>
+									<th>起始区域</th>
+									<th>起始卡口</th>
+									<th>历经时间</th>
+									<th>终到卡口</th>
+									<th>终到区域</th>
+									<th>终到时间</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+								<tr>
+									<td>佛山市</td>
+									<td><i class="fa fa-car"></i> 粤A12345</td>
+									<td>2017-08-03 16:30</td>
+									<td>海珠区</td>
+									<td>琶洲卡口001</td>
+									<td><i class="fa fa-clock-o"></i> 01:20</td>
+									<td>白云山卡口002</td>
+									<td>白云区</td>
+									<td>2017-08-03 17:50</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="box box-warning" id="od-car-detailed">
+					<div class="box-header with-border">
+						<div class="row">
+							<div class="col-xs-3">
+								<div class="input-group">
+									<span class="input-group-addon" id="search-od-car"><i
+										class="fa fa-search"></i></span> <input type="text"
+										class="form-control text-center" value="粤A12345" />
+								</div>
+							</div>
+							<div class="col-xs-6 text-center line-height-box-header">
+								<span class="text-danger">粤A12345</span>&nbsp;
+								<span>小型汽车</span>&nbsp;
+								<span>重点关注</span>
+							</div>
+							<div class="col-xs-3"></div>
 						</div>
 
 					</div>
-					<div class="col-sm-9 col-xs-12">
-						<div class="box box-danger">
-							<p class="box-header with-border">卡口：卡口1</p>
-							<table class="table table-bordered car-od-table text-center">
-								<thead>
-									<tr>
-										<th class="bg-danger">月份</th>
-										<th class="bg-danger">出发卡口</th>
-										<th class="bg-danger">终点卡口</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>2017-07</td>
-										<td>天河北路388号路段</td>
-										<td>天河北路389号路段</td>
-									</tr>
-									<tr>
-										<td>2017-06</td>
-										<td>天河北路388号路段</td>
-										<td>天河北路389号路段</td>
-									</tr>
-									<tr>
-										<td>2017-05</td>
-										<td>天河北路388号路段</td>
-										<td>天河北路389号路段</td>
-									</tr>
-								</tbody>
-							</table>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="od-car-detailed-table-box">
+								<table class="table text-center table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>月份</th>
+											<th>初始卡口</th>
+											<th>终到卡口</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+										<tr>
+											<td>2017-07</td>
+											<td>天河北路388号路段</td>
+											<td>天河北路389号路段</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div id="draw-car-cross"></div>
 						</div>
 					</div>
 				</div>
-
-				<!--行为分析-->
-				<div class="row">
-					<div class="col-sm-6 col-xs-12">
-						<div class="box box-success zw-bg-white"
-							id="behaviour-analysis-line"></div>
-					</div>
-					<div class="col-sm-3 col-xs-12">
-						<div class="box box-success zw-bg-white"
-							id="behaviour-analysis-pie"></div>
-					</div>
-					<div class="col-sm-3 col-xs-12">
-						<div class="box box-success zw-bg-white"
-							id="behaviour-analysis-bar"></div>
+				<div class="row" style="display: none;" id="report-box">
+					<div class="col-md-12">
+						<div class="box box-info">
+							<div class="box-header">
+								<h3 class="box-title">报告编辑区</h3>
+								<!-- tools box -->
+								<div class="pull-right box-tools">
+									<button type="button" class="btn btn-info btn-sm"
+										id="save-report">保存</button>
+									<button type="button" class="btn btn-info btn-sm"
+										data-widget="collapse" data-toggle="tooltip">
+										<i class="fa fa-minus"></i>
+									</button>
+									<button type="button" class="btn btn-info btn-sm">
+										<i class="fa fa-times" id="close-report"></i>
+									</button>
+								</div>
+								<!-- /. tools -->
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body pad">
+								<textarea id="editor1" name="editor1">
+                        </textarea>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
 		</div>
-		<aside class="control-sidebar control-sidebar-dark">
-			<!-- Create the tabs -->
-			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-				<li class="active"><a href="#type-total" data-toggle="tab"><i
-						class="fa fa-home"></i></a></li>
-				<li><a href="#type-area" data-toggle="tab"><i
-						class="fa fa-home"></i></a></li>
-				<li><a href="#type-time" data-toggle="tab"><i
-						class="fa fa-home"></i></a></li>
-				<li><a href="#type-cross" data-toggle="tab"><i
-						class="fa fa-home"></i></a></li>
-				<li><a href="#type-own" data-toggle="tab"><i
-						class="fa fa-home"></i></a></li>
-			</ul>
-			<!-- Tab panes -->
-			<div class="tab-content" id="type-choose">
-				<!-- Home tab content -->
-				<div class="tab-pane active" id="type-total">
-					<h3 class="control-sidebar-heading">概览</h3>
-					<ul class="control-sidebar-menu">
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">11个区</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">24小时</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">400个卡口</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">省内外归属地</h4>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="tab-pane" id="type-area">
-					<h3 class="control-sidebar-heading">区域</h3>
-					<ul class="control-sidebar-menu">
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading" data-type="天河区">天河区</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">海珠区</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">白云区</h4>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="tab-pane" id="type-time">
-					<h3 class="control-sidebar-heading">时段</h3>
-					<ul class="control-sidebar-menu">
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">00：00-03：00</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">03：00-06：00</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">09：00-12：00</h4>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="tab-pane" id="type-cross">
-					<h3 class="control-sidebar-heading">卡口</h3>
-					<ul class="control-sidebar-menu">
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">琶洲卡口001</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">琶洲卡口002</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">琶洲卡口003</h4>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="tab-pane" id="type-own">
-					<h3 class="control-sidebar-heading">归属</h3>
-					<ul class="control-sidebar-menu">
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">广州市</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">深圳市</h4>
-							</div>
-						</li>
-						<li>
-							<div class="menu-info">
-								<h4 class="control-sidebar-heading">广东省其他市</h4>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<!-- /.tab-pane -->
-			</div>
-		</aside>
 		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
 	</div>
 	<script th:src="@{js/common.js}"></script>
 	<!-- 该页面额外的js链接 -->
+	<!-- Select2 -->
+	<script th:src="@{webjars/select2/4.0.3/dist/js/select2.full.min.js}"></script>
+	<!-- InputMask -->
+	<script th:src="@{plugins/input-mask/jquery.inputmask.js}"></script>
+	<script
+		th:src="@{plugins/input-mask/jquery.inputmask.date.extensions.js}"></script>
+	<script th:src="@{plugins/input-mask/jquery.inputmask.extensions.js}"></script>
+	<!-- date-range-picker -->
+	<script th:src="@{webjars/moment/2.18.1/min/moment.min.js}"></script>
+	<script
+		th:src="@{webjars/bootstrap-daterangepicker/2.1.25/daterangepicker.js}"></script>
+	<!-- bootstrap datepicker -->
+	<script
+		th:src="@{webjars/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js}"></script>
+	<!-- bootstrap color picker -->
+	<script
+		th:src="@{webjars/bootstrap-colorpicker/2.5.1/dist/js/bootstrap-colorpicker.min.js}"></script>
+	<!-- bootstrap time picker -->
+	<script th:src="@{plugins/timepicker/bootstrap-timepicker.min.js}"></script>
+	<!-- SlimScroll -->
+	<script
+		th:src="@{webjars/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js}"></script>
+	<!-- iCheck 1.0.1 -->
+	<script th:src="@{plugins/iCheck/icheck.min.js}"></script>
+	<!-- FastClick -->
+	<script th:src="@{webjars/fastclick/1.0.6/lib/fastclick.js}"></script>
+	<script th:src="@{webjars/ckeditor/4.7.0/full/ckeditor.js}"></script>
+	<script
+		th:src="@{plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js}"></script>
+	<script th:src="@{plugins/saveword/FileSaver.js}"></script>
+	<script th:src="@{plugins/saveword/jquery.wordexport.js}"></script>
 	<script th:src="@{js/od-analysis.js}"></script>
 </body>
 </html>
