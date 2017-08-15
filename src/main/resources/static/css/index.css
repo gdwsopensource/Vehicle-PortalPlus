@@ -406,10 +406,16 @@
 	padding: 0 25px;
 	cursor: pointer;
 }
-
+.content-tab .item>a{
+	display:block;
+	color:#333;
+}
 .content-tab .item.active {
 	background-color: #333333;
 	color: #ffffff;
+}
+.content-tab .item.active>a{
+	color:#ffffff;
 }
 /*执法辅助*/
 
@@ -767,54 +773,4 @@
 	color: #FFFFFF;
 }
 /*>>>执行支撑*/
-/*<<<智脑辅助执行任务管理*/
-.outer-limit-law-mission .list-title {
-	width: 100%;
-	height: 60px;
-	background-color: rgb(15, 152, 231);
-}
 
-.outer-limit-law-mission .list-title #list-title-pie {
-	font-size: 40px;
-	line-height: 60px;
-	color: rgb(244, 117, 100);
-	margin-left: 20px;
-}
-
-.outer-limit-law-mission .list-title #list-title-bar {
-	font-size: 40px;
-	line-height: 60px;
-	color: rgb(79, 195, 185);
-	margin-left: 20px;
-}
-
-.outer-limit-law-mission .list-title #list-title-plus {
-	font-size: 40px;
-	line-height: 60px;
-	color: rgb(255, 255, 255);
-	float: right;
-	margin-right: 20px;
-}
-
-.outer-limit-law-mission .list-table table {
-	width: 100%;
-}
-.outer-limit-law-mission .list-table table>thead>tr>th {
-	line-height: 60px;
-	font-size: 20px;
-}
-.outer-limit-law-mission .list-table table>tbody>tr{
-	border-top:1px solid rgb(200,200,200);
-}
-.outer-limit-law-mission .list-table table>tbody>tr>td {
-	line-height: 70px;
-	font-size: 20px;
-}
-
-.outer-limit-law-mission .list-table table>tbody>tr>td:nth-child(1) {
-	color: rgb(58, 140, 187);
-}
-.outer-limit-law-mission .list-table table>tbody>tr>td>span{
-	margin-left: 20px;
-}
-/*>>>智脑辅助执行任务管理*/
