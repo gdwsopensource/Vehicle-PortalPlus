@@ -1,10 +1,10 @@
 /*去除地图的作者和百度标记 */
 .BMap_cpyCtrl {
-    display: none;
+	display: none;
 }
 
 .anchorBL {
-    display: none;
+	display: none;
 }
 /*<<<修改栅格边距*/
 .row {
@@ -50,7 +50,7 @@
 	background-color: rgba(88, 142, 188, 0.5) !important
 }
 
-.line-height-box-header{
+.line-height-box-header {
 	line-height: 34px;
 }
 /*>>>复用样式*/
@@ -125,66 +125,67 @@
 #map-tab .tab-content.active {
 	display: block;
 }
+
 .content-tip {
-    height: 40px;
-    line-height: 40px;
-    width: 100%;
-    border-bottom: 1px solid #000000;
-    margin-bottom: 10px;
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	border-bottom: 1px solid #000000;
+	margin-bottom: 10px;
 }
 
-.content-tip > h1 {
-    margin: 0;
-    font-size: 14px;
-    display: inline-block;
-    margin-left: 35px;
-    height: 40px;
-    line-height: 40px;
-    background-color: #000000;
-    color: #ffffff;
-    padding: 0 15px;
+.content-tip>h1 {
+	margin: 0;
+	font-size: 14px;
+	display: inline-block;
+	margin-left: 35px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #000000;
+	color: #ffffff;
+	padding: 0 15px;
 }
 
 .weather-wrapper .time {
-    float: left;
-    font-size: 40px;
+	float: left;
+	font-size: 40px;
 }
 
 .weather-wrapper .weather-text {
-    float: right;
-    background: url("../image/line-icon.png") no-repeat right;
-    background-size: contain;
-    padding-right: 20px;
-    margin-right: 10px;
-    text-align: center;
+	float: right;
+	background: url("../image/line-icon.png") no-repeat right;
+	background-size: contain;
+	padding-right: 20px;
+	margin-right: 10px;
+	text-align: center;
 }
 
-.weather-wrapper .weather-text > h3 {
-    margin: 0;
-    font-size: 26px;
+.weather-wrapper .weather-text>h3 {
+	margin: 0;
+	font-size: 26px;
 }
 
-.weather-wrapper .weather-text > p {
-    margin-bottom: 0;
-    font-size: 16px;
+.weather-wrapper .weather-text>p {
+	margin-bottom: 0;
+	font-size: 16px;
 }
 
 .weather-wrapper .weather-icon {
-    float: right;
+	float: right;
 }
 
 .weather-wrapper .weather-icon .weather-tip {
-    text-align: center;
-    margin-top: 4px;
+	text-align: center;
+	margin-top: 4px;
 }
 
 .police-icon {
-    display: inline-block;
-    width: 8px;
-    height: 20px;
-    background: url("../image/police-icon.png") no-repeat center;
-    background-size: contain;
-    margin-right: 5px;
+	display: inline-block;
+	width: 8px;
+	height: 20px;
+	background: url("../image/police-icon.png") no-repeat center;
+	background-size: contain;
+	margin-right: 5px;
 }
 /*>>>重点关注css*/
 
@@ -235,94 +236,168 @@
 	cursor: pointer;
 }
 
-.od-analysis #search-od-car{
+.od-analysis #search-od-car {
 	cursor: pointer;
 }
 
-.od-analysis .od-car-detailed-table-box{
+.od-analysis .od-car-detailed-table-box {
 	overflow: auto;
 }
 /*>>>OD分析*/
 /* 高频分析 */
 .frequency .nav-tabs-custom>.nav-tabs>li {
-    border-top-width: 0;
+	border-top-width: 0;
 }
-.frequency .nav-tabs-custom>.nav-tabs>li.active>a,.frequency .nav-tabs-custom>.nav-tabs>li.active:hover>a{
+
+.frequency .nav-tabs-custom>.nav-tabs>li.active>a, .frequency .nav-tabs-custom>.nav-tabs>li.active:hover>a
+	{
 	border-top-color: #5bb4d9;
-    background:#5bb4d9;
-    color:#fff;
+	background: #5bb4d9;
+	color: #fff;
 }
+
 .frequency	.nav-tabs-custom {
-    margin-bottom: 0px;
-   /*  background: #fff;
+	margin-bottom: 0px;
+	/*  background: #fff;
     box-shadow: 0 1px 1px rgba(0,0,0,0.1);
     border-radius: 3px; */
 }
-.frequency .nav-tabs-custom>.nav-tabs{
-	    border-bottom-color: #000000;
+
+.frequency .nav-tabs-custom>.nav-tabs {
+	border-bottom-color: #000000;
 }
-.frequency .nav-tabs{
+
+.frequency .nav-tabs {
 	border-bottom: 1px solid #ddd;
 }
-.frequency .frequenecy-box{
-	border-radius:5px;
-	box-shadow:0 0 10px #ddd;
+
+.frequency .frequenecy-box {
+	border-radius: 5px;
+	box-shadow: 0 0 10px #ddd;
 	/* background:#5bb4d9; */
-	padding:20px ;
+	padding: 20px;
 	margin-bottom: 10px;
 }
-.frequency .frequenecy-box .img-box{
-	width:20%;
-	height:50%;
-	display:inline-block;
+
+.frequency .frequenecy-box .img-box {
+	width: 20%;
+	height: 50%;
+	display: inline-block;
 	/* margin-left:10%;
 	margin-top:10%; */
 }
-.frequency .frequenecy-box .img-box img{
-	width:100%;
-}
-.frequency .frequenecy-box .text-box{
-	width:75%; 
-	display:inline-block;
-	vertical-align: middle;
-	color:#fff;
-	text-align:center;
-}
-.frequency .frequenecy-box .text-box .text{
-	font-size:18px;
-}
-.frequency .frequenecy-box .text-box .sum{
-	font-size:34px;
-}
-.frequency #warnning-total{
-	background:#5bb4d9;
-}
-.frequency #increasing{
-	background:#4fc3b9;
-}
-.frequency #compare{
-	background:#f47564;
-}
-.frequency #warnning-times{
-	background:#f39c12;
-}
-.frequency #alert-type-analysis,
-.frequency #serious-illegal-analysis,.frequency #high-frequency-bayonet-analysis{
-	height:270px;
-}
-.frequency .box{
-	    border-radius: 0px;
-}
-.frequency  #high-warning .table td,.frequency  #high-warning .table th{
-	text-align:center;
-}
-.frequency  #high-warning .index{
-	color:#3a8cbb;
+
+.frequency .frequenecy-box .img-box img {
+	width: 100%;
 }
 
-.frequency  #high-warning .direction span{
-	padding:3px;
-	background:#4fc3b9;
-	color:#fff;
+.frequency .frequenecy-box .text-box {
+	width: 75%;
+	display: inline-block;
+	vertical-align: middle;
+	color: #fff;
+	text-align: center;
+}
+
+.frequency .frequenecy-box .text-box .text {
+	font-size: 18px;
+}
+
+.frequency .frequenecy-box .text-box .sum {
+	font-size: 34px;
+}
+
+.frequency #warnning-total {
+	background: #5bb4d9;
+}
+
+.frequency #increasing {
+	background: #4fc3b9;
+}
+
+.frequency #compare {
+	background: #f47564;
+}
+
+.frequency #warnning-times {
+	background: #f39c12;
+}
+
+.frequency #alert-type-analysis, .frequency #serious-illegal-analysis,
+	.frequency #high-frequency-bayonet-analysis {
+	height: 270px;
+}
+
+.frequency .box {
+	border-radius: 0px;
+}
+
+.frequency  #high-warning .table td, .frequency  #high-warning .table th
+	{
+	text-align: center;
+}
+
+.frequency  #high-warning .index {
+	color: #3a8cbb;
+}
+
+.frequency  #high-warning .direction span {
+	padding: 3px;
+	background: #4fc3b9;
+	color: #fff;
 }
 /* 高频分析  end  */
+/*智能辅助 决策辅助*/
+.outer-economics-title {
+	height: 65px;
+	line-height: 65px;
+	text-align: center;
+	font-size: 26px;
+}
+
+.region-explain {
+	padding-top: 100px;
+}
+
+.region-explain .title {
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.region-explain .data-list {
+	list-style-type: none;
+	padding: 0;
+	font-size: 0;
+}
+
+.region-explain .data-list>li {
+	font-size: 14px;
+	display: inline-block;
+	width: 9%;
+}
+/*智能辅助 决策辅助*/
+
+/*执法辅助*/
+.content-tab {
+	width: 1000%;
+	height: 50px;
+	border-bottom: 1px solid #333333;
+	font-size: 0;
+	padding-left: 60px;
+	line-height: 50px;
+}
+
+.content-tab .item {
+	font-size: 18px;
+	display: inline-block;
+	padding: 0 25px;
+	cursor: pointer;
+}
+
+.content-tab .item.active {
+	background-color: #333333;
+	color: #ffffff;
+}
+/*执法辅助*/
+

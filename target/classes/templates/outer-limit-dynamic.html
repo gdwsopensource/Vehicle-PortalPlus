@@ -1,0 +1,455 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title=''">
+</head>
+<style>
+.icon-fire {
+	display: inline-block;
+	width: 14px;
+	height: 20px;
+	background: url("image/icon-fire.png") no-repeat center;
+	background-size: contain;
+	margin-right: 5px;
+}
+
+.text-blue-badge {
+	color: #ffffff;
+	background-color: #a7c0e0;
+}
+
+.map-analysis {
+	height: 400px;
+	background-color: #3a8cbb;
+}
+
+.map-analysis .map-rank {
+	margin-top: 45px;
+}
+
+.map-analysis .map-rank .title {
+	font-size: 18px;
+	margin-bottom: 10px;
+	color: #ffffff;
+	text-align: center;
+}
+
+.map-analysis .map-rank .item {
+	color: #a7c0e0;
+	line-height: 25px;
+	position: relative;
+	left: 50%;
+	margin-left: -45px;
+	width: 150px;
+}
+
+.map-analysis .map-rank .item>span {
+	vertical-align: middle;
+	margin-right: 5px;
+	margin-bottom: 2px;
+}
+
+.map-total {
+	height: 190px;
+	text-align: center;
+	padding-top: 40px;
+}
+</style>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<!--content-header-->
+			<section class="content-header">
+				<h1>
+					限外专题&nbsp;&nbsp;&gt;&nbsp;&nbsp;<small>动态概览</small>
+				</h1>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<div class="box-title">交通外牌路网实时监控</div>
+							</div>
+							<div class="box-body no-padding">
+								<div class="row">
+									<div class="col-md-7">
+										<div id="mapECharts" style="height: 590px;"></div>
+									</div>
+									<div class="col-md-5">
+										<div class="map-analysis">
+											<div id="map_pieECharts" style="height: 230px;"></div>
+											<div class="map-rank">
+												<div class="title">重点限外路段排名</div>
+												<div class="item">
+													<span class="badge text-blue-badge">1</span>禹山路段
+												</div>
+												<div class="item">
+													<span class="badge text-blue-badge">2</span>科韵路
+												</div>
+												<div class="item">
+													<span class="badge text-blue-badge">3</span>黄埔大道
+												</div>
+											</div>
+										</div>
+										<div class="row map-total">
+											<div class="col-xs-6">
+												<h2>2136</h2>
+												<h4>外牌车车辆总数</h4>
+											</div>
+											<div class="col-xs-6">
+												<h2>3726</h2>
+												<h4>本市车流总量</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<div class="box-title">执法问题</div>
+							</div>
+							<div class="box-body no-padding" id="problem_result">
+								<table class="table text-center no-margin">
+									<tbody>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="badge text-blue-badge">
+													<span>1</span>
+												</div>
+											</td>
+											<td>粤A8888</td>
+											<td>黄埔大道</td>
+											<td>违章<span class="">1</span>次
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box box-success">
+							<div class="box-header with-border">
+								<div class="box-title">舆情监控</div>
+							</div>
+							<div class="box-body no-padding" id="monitor_result">
+								<table class="table no-margin">
+									<tbody>
+										<tr>
+											<td class="text-center"><span
+												class="badge text-blue-badge">1</span></td>
+											<td>广州市区部分路段汽车限行</td>
+											<td><span class="icon-fire"></span><span
+												class="icon-fire"></span><span class="icon-fire"></span><span
+												class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge text-blue-badge">1</span></td>
+											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
+											</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge text-blue-badge">1</span></td>
+											<td>广州市区部分路段汽车限行</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
+											</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州市区部分路段汽车限行</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
+											</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州市区部分路段汽车限行</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
+											</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州市区部分路段汽车限行</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
+											</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州市区部分路段汽车限行</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
+											</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州市区部分路段汽车限行</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
+											</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州市区部分路段汽车限行</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+										<tr>
+											<td class="text-center"><span
+												class="badge bg-light-blue">1</span></td>
+											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
+											</td>
+											<td><span class="icon-fire"></span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box box-warning">
+							<div class="box-header with-border">
+								<div class="box-title">今日限外状况雷达图</div>
+							</div>
+							<div class="box-body no-padding">
+								<div id="radarECharts" style="height: 350px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="box box-success">
+							<div class="box-header with-border">
+								<div class="box-title">外地车和本地车占比</div>
+							</div>
+							<div class="box-body">
+								<div id="pieECharts_1" style="height: 350px;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box">
+							<div class="box-header with-border">
+								<div class="box-title">外牌车归属地</div>
+							</div>
+							<div class="box-body">
+								<div id="pieECharts_2" style="height: 350px;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box">
+							<div class="box-header with-border">
+								<div class="box-title">今日外牌车辆变化时序图</div>
+							</div>
+							<div class="box-body">
+								<div id="barECharts" style="height: 350px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /.content -->
+		</div>
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->
+	<!--jquery-slimScroll-->
+	<script
+		th:src="@{webjars/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js}"></script>
+	<script th:src="@{js/outer-limit-dynamic.js}"></script>
+</body>
+</html>

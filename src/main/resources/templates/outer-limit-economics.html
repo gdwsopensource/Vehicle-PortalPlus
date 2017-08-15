@@ -1,0 +1,475 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title='OD分析'">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<!--content-header-->
+	        <section class="content-header">
+	            <h1>智脑辅助&nbsp;&nbsp;&gt;&nbsp;&nbsp;<small>决策辅助</small></h1>
+	        </section>
+	        <section class="content">
+            <form class="form-group" style="background-color: #ffffff;padding: 20px;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>option 1</option>
+                                <option>option 2</option>
+                                <option>option 3</option>
+                                <option>option 4</option>
+                                <option>option 5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>option 1</option>
+                                <option>option 2</option>
+                                <option>option 3</option>
+                                <option>option 4</option>
+                                <option>option 5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>option 1</option>
+                                <option>option 2</option>
+                                <option>option 3</option>
+                                <option>option 4</option>
+                                <option>option 5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button type="submit" class="btn btn-primary">查询</button>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="outer-economics-title bg-light-blue">交通外牌路网实时监控</div>
+                    <div class="box box-solid">
+                        <div class="box-header">
+                            <div class="box-title">交通拥堵概况</div>
+                        </div>
+                        <div class="box-body no-padding">
+                            <div id="mapECharts" style="height: 590px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box box-danger">
+                        <div class="box-header with-border">
+                            <div class="box-title">交通拥堵指数</div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-description text-center">天河区</div>
+                                </div>
+                                <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 40%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-number text-center">40%</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-description text-center">番禺区</div>
+                                </div>
+                                <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 40%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-number text-center">40%</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-description text-center">海珠区</div>
+                                </div>
+                                <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 40%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-number text-center">40%</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-description text-center">黄埔区</div>
+                                </div>
+                                <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 40%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-number text-center">40%</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-description text-center">荔湾区</div>
+                                </div>
+                                <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 40%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-number text-center">40%</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-description text-center">从化区</div>
+                                </div>
+                                <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 40%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-number text-center">40%</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-description text-center">增城区</div>
+                                </div>
+                                <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 40%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-number text-center">40%</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-description text-center">南沙区</div>
+                                </div>
+                                <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 40%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-number text-center">40%</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-description text-center">花都区</div>
+                                </div>
+                                <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 40%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                                    <div class="progress-number text-center">40%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <div class="box-title">车辆数量</div>
+                        </div>
+                        <div class="box-body">
+                            <div id="lineECharts" style="height: 360px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <div class="box-title">平均速度</div>
+                        </div>
+                        <div class="box-body">
+                            <div id="pieECharts_1" style="height: 360px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="outer-economics-title  bg-green">经济情况分析</div>
+                </div>
+                <div class="col-md-7">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div class="box-title">区域经济变化</div>
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div id="regionECharts" style="height: 590px;"></div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="region-explain">
+                                            <div class="title">平均：615710 /亿</div>
+                                            <div class="row">
+                                                <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9 col-md-offset-3 col-lg-offset-3 col-sm-offset-3 col-xs-offset-3">
+                                                    <ul class="data-list">
+                                                        <li>0</li>
+                                                        <li>10</li>
+                                                        <li>20</li>
+                                                        <li>30</li>
+                                                        <li>40</li>
+                                                        <li>50</li>
+                                                        <li>60</li>
+                                                        <li>70</li>
+                                                        <li>80</li>
+                                                        <li>90</li>
+                                                        <li>100</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                                                <div class="progress-description">天河区</div>
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-green" role="progressbar"
+                                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 40%">
+                                                        <div class="progress-number">40%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                                                <div class="progress-description">花都区</div>
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-green" role="progressbar"
+                                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 40%">
+                                                        <div class="progress-number">40%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                                                <div class="progress-description">南沙区</div>
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-green" role="progressbar"
+                                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 40%">
+                                                        <div class="progress-number">40%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                                                <div class="progress-description">从化区</div>
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-green" role="progressbar"
+                                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 40%">
+                                                        <div class="progress-number">40%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                                                <div class="progress-description">增城区</div>
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-green" role="progressbar"
+                                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 40%">
+                                                        <div class="progress-number">40%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                                                <div class="progress-description">黄埔区</div>
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-green" role="progressbar"
+                                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 40%">
+                                                        <div class="progress-number">40%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                                                <div class="progress-description">荔湾区</div>
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-green" role="progressbar"
+                                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 40%">
+                                                        <div class="progress-number">40%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                                                <div class="progress-description">海珠区</div>
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-green" role="progressbar"
+                                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 40%">
+                                                        <div class="progress-number">40%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                                                <div class="progress-description">番禺区</div>
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-green" role="progressbar"
+                                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                                         style="width: 40%">
+                                                        <div class="progress-number">40%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div class="box-title">经济指标分析</div>
+                        </div>
+                        <div class="box-body no-padding">
+                            <div id="parallel_nutrients" style="height: 590px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="outer-economics-title  bg-orange">社会治安分析</div>
+                </div>
+                <div class="col-md-5">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div class="box-title">不同地区限外执法情况</div>
+                        </div>
+                        <div class="box-body">
+                            <div id="pieECharts_2" style="height: 500px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div class="box-title">不同案件类型案件案发率变化</div>
+                        </div>
+                        <div class="box-body">
+                            <div id="lineECharts_2" style="height: 500px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div class="box-title">不同地区案发量</div>
+                        </div>
+                        <div class="box-body">
+                            <div id="barECharts" style="height: 500px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div class="box-title">社会治安日常预警</div>
+                        </div>
+                        <div class="box-body">
+                            <div id="radarECharts" style="height: 500px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		</div>
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->	
+	<script th:src="@{js/outer-limit-economics.js}"></script>
+</body>
+</html>

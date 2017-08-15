@@ -80,5 +80,23 @@ public class PortalController {
     String intelligenceAnalysis(){
     	return "intelligence-analysis";
     }
+    @RequestMapping("outer-limit-economics")
+    String outerLimitEconomics(){
+    	return "outer-limit-economics";
+    }
+    @RequestMapping("outer-limit-law")
+    String outerLimitlaw(){
+    	return "outer-limit-law";
+    }
+    @RequestMapping("outer-limit-dynamic")
+    String outerLimitDynamic(){
+    	return "outer-limit-dynamic";
+    }
+    @RequestMapping("outer-limit-law-mission")
+    String outerLimitLawMission(){
+    	return "outer-limit-law-mission";
+    }
+    
+    
 }
 
