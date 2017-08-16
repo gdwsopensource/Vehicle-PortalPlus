@@ -257,7 +257,10 @@
     var barECharts = echarts.init(document.getElementById('barECharts'));
     var barECharts_option = {
         tooltip: {
-            trigger: 'item',
+        	trigger: 'axis',
+			axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+				type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+			},
             formatter: "{a} <br/>{b}: {c}件"
         },
         xAxis: {

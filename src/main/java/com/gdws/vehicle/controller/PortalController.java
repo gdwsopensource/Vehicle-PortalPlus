@@ -38,7 +38,7 @@ public class PortalController {
     
     @RequestMapping("behavior-prediction")
     String behaviorPrediction() {
-        return "behavior-prediction";
+        return "index-bayonet";
     }
     @RequestMapping("first-analysis")
     String firstAnalysis() {

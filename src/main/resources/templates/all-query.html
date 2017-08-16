@@ -14,101 +14,110 @@
 						<h3 class="box-title">车辆通过卡口记录</h3>
 					</div>
 					<div class="box-body">
-						<div class="form-horizontal">
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label class="col-xs-2 control-label">日期:</label>
-									<div class="col-xs-9 input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-calendar"></i>
+						<form class="form-horizontal">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-sm-2 control-label">日期:</label>
+										<div class="col-sm-8">
+											<div class="input-group">
+												<div class="input-group-addon">
+													<i class="fa fa-calendar"></i>
+												</div>
+												<input type="text" class="form-control" />
+											</div>
 										</div>
-										<input type="text" class="form-control pull-right"
-											id="reservation" />
 									</div>
-									<!-- /.input group -->
 								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label class="col-xs-2 control-label">预警类型:</label>
-									<div class="col-xs-9">
-										<select class="form-control select2" style="width: 100%;">
-											<option>多次违章</option>
-											<option>未年检</option>
-											<option>重点关注</option>
-										</select>
-									</div>
-
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label class="col-xs-2 control-label">卡口:</label>
-									<div class="col-xs-9 input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-search"></i>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-sm-2 control-label">预警类型:</label>
+										<div class="col-sm-8">
+											<select class="form-control">
+												<option>多次违章</option>
+												<option>未年检</option>
+												<option>重点关注</option>
+											</select>
 										</div>
-										<input type="text" class="form-control pull-right" id="" />
 									</div>
-									<!-- /.input group -->
 								</div>
 							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label class="col-xs-2 control-label">车牌:</label>
-									<div class="col-xs-9 input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-search"></i>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-xs-2 control-label">卡口:</label>
+										<div class="col-xs-8">
+											<div class="input-group">
+												<div class="input-group-addon">
+													<i class="fa fa-search"></i>
+												</div>
+												<input type="text" class="form-control pull-right" id="" />
+											</div>		
 										</div>
-										<input type="text" class="form-control pull-right" id="" />
 									</div>
-									<!-- /.input group -->
 								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label class="col-xs-2 control-label">车辆类型:</label>
-									<div class="col-xs-9">
-										<select class="form-control select2" style="width: 100%;">
-											<option>小型汽车</option>
-											<option>中型客车</option>
-											<option>大型货车</option>
-											<option>大型客车</option>
-										</select>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-xs-2 control-label">车牌:</label>
+										<div class="col-xs-8">
+											<div class="input-group">
+												<div class="input-group-addon">
+													<i class="fa fa-search"></i>
+												</div>
+												<input type="text" class="form-control pull-right" id="" />
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label class="col-xs-2 control-label">查询表:</label>
-									<div class="col-xs-9">
-										<select class="form-control select2" style="width: 100%;">
-											<option>车辆通过卡口记录</option>
-											<option>车辆黑名单</option>
-											<option>卡口信息</option>
-										</select>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-xs-2 control-label">车辆类型:</label>
+										<div class="col-xs-8">
+											<select class="form-control">
+												<option>小型汽车</option>
+												<option>中型客车</option>
+												<option>大型货车</option>
+												<option>大型客车</option>
+											</select>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-xs-6 text-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-danger btn-flat">查询</button>
-									<button type="button"
-										class="btn btn-danger btn-flat dropdown-toggle"
-										data-toggle="dropdown">
-										<span class="caret"></span> <span class="sr-only"></span>
-									</button>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">车辆通过卡口记录</a></li>
-										<li><a href="#">车辆黑名单</a></li>
-										<li><a href="#">卡口信息</a></li>
-									</ul>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-xs-2 control-label">查询表:</label>
+										<div class="col-xs-8">
+											<select class="form-control">
+												<option>车辆通过卡口记录</option>
+												<option>车辆黑名单</option>
+												<option>卡口信息</option>
+											</select>
+										</div>
+									</div>		
 								</div>
 							</div>
-							<div class="col-xs-6 text-center">
-								<button type="button" class="btn btn-primary">保存</button>
+							<div class="row">
+								<div class="col-xs-6 text-center">
+									<div class="btn-group">
+										<button type="button" class="btn btn-danger btn-flat">查询</button>
+										<button type="button"
+											class="btn btn-danger btn-flat dropdown-toggle"
+											data-toggle="dropdown">
+											<span class="caret"></span> <span class="sr-only"></span>
+										</button>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="#">车辆通过卡口记录</a></li>
+											<li><a href="#">车辆黑名单</a></li>
+											<li><a href="#">卡口信息</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-xs-6 text-center">
+									<button type="button" class="btn btn-primary">保存</button>
+								</div>
 							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 
@@ -307,8 +316,7 @@
 	<script th:src="@{js/common.js}"></script>
 	<!-- 该页面额外的js链接 -->
 	<!-- Select2 -->
-	<script
-		th:src="@{webjars/select2/4.0.3/dist/js/select2.full.min.js}"></script>
+	<script th:src="@{webjars/select2/4.0.3/dist/js/select2.full.min.js}"></script>
 	<!-- InputMask -->
 	<script th:src="@{plugins/input-mask/jquery.inputmask.js}"></script>
 	<script
