@@ -104,15 +104,15 @@ public class PortalController {
     String intelligenceAnalysisEconomics(){
     	return "intelligence-analysis-economics";
     }
-    @RequestMapping("intelligence-analysis-environmental ")
+    @RequestMapping("intelligence-analysis-environmental")
     String intelligenceAnalysisEnvironmental(){
     	return "intelligence-analysis-environmental";
     }
-    @RequestMapping("intelligence-analysis-feelings ")
+    @RequestMapping("intelligence-analysis-feelings")
     String intelligenceAnalysisFeelings(){
     	return "intelligence-analysis-feelings";
     }
-    @RequestMapping("intelligence-analysis-traffic ")
+    @RequestMapping("intelligence-analysis-traffic")
     String intelligenceAnalysisTraffic(){
     	return "intelligence-analysis-traffic";
     }
@@ -125,5 +125,9 @@ public class PortalController {
     String implementationManagement(){
     	return "implementation-management";
     }   
+    @RequestMapping("outer-limit-law-accurate")
+    String outerLimitLawAccurate(){
+      return "outer-limit-law-accurate";
+    }
 }
 
