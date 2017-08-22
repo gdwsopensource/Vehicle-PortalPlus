@@ -61,7 +61,8 @@
 .text-white {
 	color: white;
 }
-.text-white:hover{
+
+.text-white:hover {
 	color: white;
 }
 /*>>>复用样式*/
@@ -76,7 +77,7 @@
 }
 
 .top-total .top-total-carcount {
-	background-image: url(../image/cross.png);
+	background-image: url(../image/car.png);
 	background-repeat: no-repeat;
 	background-size: 60px 60px;
 	background-position-x: 10px;
@@ -84,7 +85,7 @@
 }
 
 .top-total .top-total-crosscount {
-	background-image: url(../image/car.png);
+	background-image: url(../image/cross.png);
 	background-repeat: no-repeat;
 	background-size: 60px 60px;
 	background-position-x: 10px;
@@ -406,16 +407,19 @@
 	padding: 0 25px;
 	cursor: pointer;
 }
-.content-tab .item>a{
-	display:block;
-	color:#333;
+
+.content-tab .item>a {
+	display: block;
+	color: #333;
 }
+
 .content-tab .item.active {
 	background-color: #333333;
 	color: #ffffff;
 }
-.content-tab .item.active>a{
-	color:#ffffff;
+
+.content-tab .item.active>a {
+	color: #ffffff;
 }
 /*执法辅助*/
 
@@ -427,8 +431,14 @@
 	width: 100%;
 	background: linear-gradient(#000020, #3060A0);
 	color: #FFFFFF;
-	font-size: 16px;
+	font-size: 24px;
 	overflow: hidden;
+}
+
+@media screen and (max-width:1600px) {
+	.limit-fullpage {
+		font-size: 16px;
+	}
 }
 
 .limit-fullpage #title {
@@ -436,32 +446,35 @@
 	top: 0%;
 	left: 0%;
 	width: 100%;
-	height: 7%;
+	height: 2em;
 	text-align: center;
 	font-size: 2em;
-	line-height: 3em;
+	line-height: 2em;
 	z-index: 2;
 }
 
 .limit-fullpage #time {
 	position: absolute;
-	top: 7%;
+	top: 4em;
 	left: 0%;
 	width: 100%;
-	height: 3%;
+	height: 1em;
 	text-align: center;
 	font-size: 1em;
+	line-height: 1em;
 	z-index: 2;
 }
 
 .limit-fullpage #time .fa-mail-reply {
 	cursor: pointer;
 	color: #FFFFFF;
+	font-size: 0.75em;
+	line-height: 1em;
 }
 
 .limit-fullpage #nonlocalratio {
 	position: absolute;
-	top: 10%;
+	top: 70%;
 	left: 1%;
 	width: 12%;
 	height: 28%;
@@ -472,7 +485,7 @@
 
 .limit-fullpage #nonlocalown {
 	position: absolute;
-	top: 10%;
+	top: 70%;
 	left: 14%;
 	width: 16%;
 	height: 28%;
@@ -494,13 +507,33 @@
 
 .limit-fullpage #quota {
 	position: absolute;
-	top: 70%;
+	top: 10%;
 	left: 1%;
 	width: 29%;
 	height: 28%;
 	z-index: 2;
 	background: rgba(40, 40, 140, 0.2) !important;
 	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+}
+
+.limit-fullpage #quota #quota-title{
+	font-size: 20px;
+	font-weight: bolder;
+	font-family: '微软雅黑'; text-align : center;
+	width: 100%;
+	height: 20%;
+	text-align: center;
+}
+.limit-fullpage #quota #quota-day{
+	display: inline-block;
+	margin-left: 5%;
+	width: 45%;
+	height: 80%;
+}
+.limit-fullpage #quota #quota-night{
+	display: inline-block;
+	width: 45%;
+	height: 80%;
 }
 
 .limit-fullpage #voice {
@@ -517,9 +550,10 @@
 .limit-fullpage #voice #voice-title {
 	font-size: 20px;
 	font-weight: bolder;
-	text-align: center;
+	font-family: '微软雅黑'; text-align : center;
 	width: 100%;
 	height: 15%;
+	text-align: center;
 }
 
 .limit-fullpage #voice #voice-head {
@@ -559,6 +593,8 @@
 	width: 100%;
 	height: 20%;
 	line-height: 20%;
+	font-size:0.75em;
+	overflow: hidden;
 }
 
 .limit-fullpage #voice #voice-body>ul>li>span {
@@ -586,6 +622,87 @@
 	color: rgb(244, 116, 100);
 }
 
+.limit-fullpage #police {
+	position: absolute;
+	top: 70%;
+	left: 61%;
+	right: 1%;
+	width: 38%;
+	height: 28%;
+	z-index: 2;
+	background: rgba(40, 40, 140, 0.2) !important;
+	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+	overflow: hidden;
+}
+
+.limit-fullpage #police #police-title {
+	font-size: 20px;
+	font-weight: bolder;
+	font-family: '微软雅黑';
+	text-align: center;
+	width: 100%;
+	height: 15%;
+}
+
+.limit-fullpage #police #police-head {
+	width: 100%;
+	height: 15%;
+}
+
+.limit-fullpage #police #police-head>span {
+	display: inline-block;
+	text-align: center;
+}
+
+.limit-fullpage #police #police-head>span:nth-child(1) {
+	width: 40%;
+}
+
+.limit-fullpage #police #police-head>span:nth-child(2) {
+	width: 35%;
+}
+
+.limit-fullpage #police #police-head>span:nth-child(3) {
+	width: 20%;
+}
+
+.limit-fullpage #police #police-body {
+	width: 100%;
+	height: 70%;
+}
+
+.limit-fullpage #police #police-body>ul {
+	list-style: none;
+	padding: 0;
+	height: 100%;
+}
+
+.limit-fullpage #police #police-body>ul>li {
+	width: 100%;
+	height: 20%;
+	line-height: 20%;
+		font-size:0.75em;
+	overflow: hidden;
+}
+
+.limit-fullpage #police #police-body>ul>li>span {
+	display: inline-block;
+	text-align: center;
+}
+
+.limit-fullpage #police #police-body>ul>li>span:nth-child(1) {
+	width: 40%;
+}
+
+.limit-fullpage #police #police-body>ul>li>span:nth-child(2) {
+	width: 35%;
+}
+
+.limit-fullpage #police #police-body>ul>li>span:nth-child(3) {
+	width: 20%;
+}
+
+
 .limit-fullpage #warning {
 	position: absolute;
 	top: 70%;
@@ -602,6 +719,7 @@
 .limit-fullpage #warning #warning-title {
 	font-size: 20px;
 	font-weight: bolder;
+	font-family: '微软雅黑';
 	text-align: center;
 	width: 100%;
 	height: 15%;
@@ -685,11 +803,11 @@
 
 .limit-fullpage #crowdtime {
 	position: absolute;
-	top: 20%;
+	top: 10%;
 	left: 71%;
 	right: 1%;
 	width: 28%;
-	height: 48%;
+	height: 58%;
 	z-index: 2;
 	background: rgba(40, 40, 140, 0.2) !important;
 	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
@@ -774,3 +892,128 @@
 }
 /*>>>执行支撑*/
 
+/*<<<行为分析*/
+.behavior-analysis .tab-head {
+	width: 100%;
+	height: 44px;
+	margin: 0;
+	border-bottom: 1px solid rgb(34, 45, 50);
+}
+
+.behavior-analysis .tab-head .menu {
+	font-size: 18px;
+	line-height: 44px;
+	display: inline-block;
+	padding: 0 25px;
+	cursor: pointer;
+	color: rgb(34, 45, 50);
+}
+
+.behavior-analysis .tab-head .active {
+	background-color: rgb(30, 40, 44);
+	color: rgb(255, 255, 255);
+}
+
+.behavior-analysis .search-datarange {
+	height: 34px;
+	width: 300px;
+	outline: none;
+	padding: 6px;
+	border: none;
+	font-size: 14px;
+	text-align: center;
+	color: #FFF;
+	background-color: rgb(0, 192, 239);
+	background-image: url(../image/date.png);
+	background-repeat: no-repeat;
+	background-position: 260px 1px;
+	background-size: 30px 30px;
+}
+
+.behavior-analysis .search-datarange:hover {
+	background-color: rgb(0, 172, 214);
+}
+
+.behavior-analysis #total-search-daterange {
+	margin-right: 32px;
+}
+
+.behavior-analysis #car-search-daterange {
+	margin-right: 32px;
+}
+
+.behavior-analysis #car-search-plateno {
+	height: 34px;
+	width: 300px;
+	outline: none;
+	padding: 6px;
+	border: none;
+	font-size: 14px;
+	text-align: center;
+	color: #FFF;
+	background-color: rgb(0, 192, 239);
+	background-image: url(../image/car.png);
+	background-repeat: no-repeat;
+	background-position: 260px 1px;
+	background-size: 30px 30px;
+	margin-right: 32px;
+}
+
+.behavior-analysis #car-search-plateno:hover {
+	background-color: rgb(0, 172, 214);
+}
+
+.behavior-analysis #tip-car-day {
+	background-image: url(../image/tip-day.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.behavior-analysis #cars-search-plateno {
+	height: 34px;
+	width: 300px;
+	outline: none;
+	padding: 6px;
+	border: none;
+	font-size: 14px;
+	text-align: center;
+	color: #FFF;
+	background-color: rgb(0, 192, 239);
+	background-image: url(../image/car.png);
+	background-repeat: no-repeat;
+	background-position: 260px 1px;
+	background-size: 30px 30px;
+}
+
+.behavior-analysis #cars-search-plateno:hover {
+	background-color: rgb(0, 172, 214);
+}
+
+.behavior-analysis .cars-list {
+	width: 120px;
+	margin-right: 8px;
+	margin-top: 8px;
+	text-align: left;
+	background-image: url(../image/car.png);
+	background-repeat: no-repeat;
+	background-position: 80px 1px;
+	background-size: 30px 30px;
+}
+
+.behavior-analysis .cars-list:hover {
+	background-image: url(../image/delete.png);
+}
+
+.behavior-analysis #cars-search-daterange {
+	margin-right: 32px;
+}
+
+.behavior-analysis #cars-search-plateno {
+	margin-right: 32px;
+}
+
+.behavior-analysis #cars-add {
+	margin-right: 16px;
+}
+
+/*>>>行为分析*/

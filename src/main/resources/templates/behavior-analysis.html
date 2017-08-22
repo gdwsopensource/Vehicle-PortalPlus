@@ -1,159 +1,205 @@
 <!doctype html>
 <html>
-<head th:include="@{include/head}" th:with="title='行为分析'">
+<head th:include="@{include/head}" th:with="title='OD分析'">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-	<div class="wrapper">
+	<div class="wrapper behavior-analysis">
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
 		<div class="content-wrapper">
-			<section class="content">
-				<div class="row summary">
-					<div class="col-xs-12 col-md-4 col-lg-4">
-						<div id="data-summary">
-							<div class="info-box bg-green">
-								<span class="info-box-icon"><i class="fa fa fa-flag-o"></i></span>
+			<div class="tab-head">
+				<div class="menu active" id="menu-total">概览分析</div>
+				<div class="menu" id="menu-car">单车分析</div>
+				<div class="menu" id="menu-cars">多车对比</div>
+			</div>
+			<section class="content container-fluid">
 
-								<div class="info-box-content">
-									<span class="info-box-text">车辆总数<label class="car-sum">41,658,689</label></span>
-									<span class="info-box-text">今日过车<label class="car-sum">41,783</label></span>
+				<div class="tab-body">
+					<div class="tab-pane" id="tab-total">
+						<div class="total-search search" style="margin-bottom: 15px;">
+							<div class="btn-group">
+								<button class="btn btn-info btn-search-week" id="total-search-week">周</button>
+								<button class="btn btn-info btn-search-month" id="total-search-month">月</button>
+								<button class="btn btn-info btn-search-year" id="total-search-year">年</button>
+								<input type="text" class="search-datarange"
+									id="total-search-daterange" />
 
-									<div class="progress">
-										<div class="progress-bar" style="width: 70%"></div>
+							</div>
+							<button class="btn btn-success search-button">概览分析</button>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="box box-info">
+									<div class="box-header with-border">
+										<h3 class="box-title">归属地分布</h3>
 									</div>
-									<span class="progress-description">70% Increase in 30 Days</span>
+									<div class="box-body" id="draw-total-carown"
+										style="height: 300px;"></div>
 								</div>
-
-								<!-- /.info-box-content -->
 							</div>
-						</div>
-						<div class="box box-success">
-							<div class="box-header with-border">
-								<h3 class="box-title">行为类型</h3>
-							</div>
-							<!-- /.box-header -->
-							<div class="box-body">
-								<div id="car-type"></div>
-								<!-- /.box-body -->
-							</div>
-
-						</div>
-					</div>
-					<div class="col-xs-12 col-md-4 col-lg-4">
-						<!--地域分布-->
-						<div class="box box-success">
-							<div class="box-header with-border">
-								<h3 class="box-title">地区分布</h3>
-							</div>
-							<!-- /.box-header -->
-							<div class="box-body">
-								<div id="geographical-distribution"></div>
-							</div>
-							<!-- /.box-body -->
-						</div>
-					</div>
-					<div class="col-xs-12 col-md-4 col-lg-4">
-						<!--数据汇总-->
-						<div class="box box-success">
-							<div class="box-header with-border">
-								<h3 class="box-title">车辆性质排名</h3>
-							</div>
-							<!-- /.box-header -->
-							<div class="box-body">
-								<div id="data-summary-bar"></div>
-							</div>
-							<!-- /.box-body -->
-						</div>
-					</div>
-				</div>
-
-				<!--end of summary-->
-				<div class="row search-content">
-					<div class="col-xs-12">
-						<div class="box box-primary">
-							<div class="nav-tabs-custom">
-								<ul class="nav nav-tabs">
-									<li class="active"><a href="#tabs-to" data-toggle="tab"
-										aria-expanded="true">周</a></li>
-									<li class=""><a href="#tabs-to" data-toggle="tab"
-										aria-expanded="false">月</a></li>
-									<li class=""><a href="#tabs-to" data-toggle="tab"
-										aria-expanded="false">年</a></li>
-									<li>
-										<div class="input-group input-group-sm" style="width: 150px;">
-											<input type="text" name="table_search"
-												class="form-control pull-right" placeholder="粤xxxxxx" />
-
-											<div class="input-group-btn">
-												<button type="submit" class="btn btn-primary">
-													<i class="fa fa-search"></i>
-												</button>
-											</div>
-										</div>
-									</li>
-								</ul>
-								<div class="tab-content" id="tabs-to total-left">
-									<div id="behavior-analysis-heatmap"></div>
+							<div class="col-md-4">
+								<div class="box box-danger">
+									<div class="box-header with-border">
+										<h3 class="box-title">车辆性质</h3>
+									</div>
+									<div class="box-body" id="draw-total-carpro"
+										style="height: 300px;"></div>
 								</div>
-								<!-- /.tab-content -->
+							</div>
+							<div class="col-md-4">
+								<div class="box box-success">
+									<div class="box-header with-border">
+										<h3 class="box-title">出行天数</h3>
+									</div>
+									<div class="box-body" id="draw-total-carcount"
+										style="height: 300px;"></div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-md-6 col-lg-6">
-						<div class="box box-primary white-head">
-							<div class="box-header with-border">
-								<i class="ion ion-clipboard"></i>
-								<h3 class="box-title">时段波动</h3>
+					<!-- /.tab-pane -->
+					<div class="tab-pane" id="tab-car" style="display: none">
+						<div class="car-search search" style="margin-bottom: 15px;">
+							<div class="btn-group">
+								<button class="btn btn-info btn-search-week" id="car-search-week">周</button>
+								<button class="btn btn-info btn-search-month" id="car-search-month">月</button>
+								<button class="btn btn-info btn-search-year" id="car-search-year">年</button>
+								<input type="text" class="search-datarange"
+									id="car-search-daterange" /> <input type="text"
+									id="car-search-plateno" />
+
 							</div>
-							<div class="box-body">
-								<div id="behavior-analysis-sub1"></div>
+							<button class="btn btn-success search-button">单车分析</button>
+						</div>
+						<div class="row">
+							<div class="col-xs-4">
+								<div class="box box-info">
+									<div class="box-header with-border">
+										<h3 class="box-title">行为标签</h3>
+									</div>
+									<div class="box-body" id="tip-car-day" style="height: 300px;"></div>
+								</div>
+							</div>
+							<div class="col-xs-8">
+								<div class="box box-info">
+									<div class="box-header with-border">
+										<h3 class="box-title">日活跃时段（经过卡口次数）</h3>
+									</div>
+									<div class="box-body" id="draw-car-day" style="height: 300px;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="box box-success">
+									<div class="box-header with-border">
+										<h3 class="box-title">活跃热力图</h3>
+									</div>
+									<div class="box-body" id="draw-car-active"
+										style="height: 300px;"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="box box-warning">
+									<div class="box-header with-border">
+										<h3 class="box-title">周活跃卡口（经过次数最多的卡口）</h3>
+									</div>
+									<div class="box-body" id="draw-car-week" style="height: 300px;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="box box-info">
+									<div class="box-header with-border">
+										<h3 class="box-title">活跃卡口</h3>
+									</div>
+									<div class="box-body" id="draw-car-crosspie"
+										style="height: 400px;"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="box box-danger">
+									<div class="box-header with-border">
+										<h3 class="box-title">单卡口规律</h3>
+									</div>
+									<div class="box-body" id="draw-car-crosssingle"
+										style="height: 400px;"></div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-md-6 col-lg-6">
-						<div class="box box-primary white-head">
-							<div class="box-header with-border">
-								<i class="ion ion-clipboard"></i>
-								<h3 class="box-title">活跃时段</h3>
+					<!-- /.tab-pane -->
+					<div class="tab-pane" id="tab-cars" style="display: none">
+						<div class="cars-search search" style="margin-bottom: 15px;">
+							<div class="btn-group">
+								<button class="btn btn-info btn-search-week" id="cars-search-week">周</button>
+								<button class="btn btn-info btn-search-month" id="cars-search-month">月</button>
+								<button class="btn btn-info btn-search-year" id="cars-search-year">年</button>
+								<input type="text" class="search-datarange"
+									id="cars-search-daterange" /> <input type="text"
+									id="cars-search-plateno" />
+
 							</div>
-							<div class="box-body">
-								<div id="behavior-analysis-sub2"></div>
+
+							<div class="btn-group">
+								<div class="btn btn-success" id="cars-add">添加车辆</div>
+								<div class="btn btn-success">多车对比</div>
+							</div>
+							<div class="cars-list-box"></div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="box box-info">
+									<div class="box-header with-border">
+										<h3 class="box-title">日活跃时段</h3>
+									</div>
+									<div class="box-body" id="draw-cars-day" style="height: 400px;"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="box box-danger">
+									<div class="box-header with-border">
+										<h3 class="box-title">周活跃分布</h3>
+									</div>
+									<div class="box-body" id="draw-cars-active"
+										style="height: 400px;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="box box-success">
+									<div class="box-header with-border">
+										<h3 class="box-title">经过卡口分布</h3>
+									</div>
+									<div class="box-body" id="draw-cars-cross"
+										style="height: 400px;"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="box box-warning">
+									<div class="box-header with-border">
+										<h3 class="box-title">重叠指数</h3>
+									</div>
+									<div class="box-body" id="draw-cars-overlap"
+										style="height: 400px;"></div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-md-6 col-lg-6">
-						<div class="box box-primary white-head">
-							<div class="box-header with-border">
-								<i class="ion ion-clipboard"></i>
-								<h3 class="box-title">活跃卡口</h3>
-							</div>
-							<div class="box-body">
-								<div id="behavior-analysis-sub3"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-md-6 col-lg-6">
-						<div class="box box-primary white-head">
-							<div class="box-header with-border">
-								<i class="ion ion-clipboard"></i>
-								<h3 class="box-title">单卡口规律</h3>
-							</div>
-							<div class="box-body">
-								<div id="behavior-analysis-sub4"></div>
-							</div>
-						</div>
-					</div>
+					<!-- /.tab-pane -->
 				</div>
 			</section>
 		</div>
-
 		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
 	</div>
 	<script th:src="@{js/common.js}"></script>
 	<!-- 该页面额外的js链接 -->
-	<script th:src="@{js/car-type.js}"></script>
-	<script th:src="@{js/geographical-distribution.js}"></script>
-	<script th:src="@{js/data-summary-bar.js}"></script>
-	<script th:src="@{js/car-behavior-analysis-search.js}"></script>
+	<!-- date-range-picker -->
+	<script th:src="@{webjars/moment/2.18.1/min/moment.min.js}"></script>
+	<script
+		th:src="@{webjars/bootstrap-daterangepicker/2.1.25/daterangepicker.js}"></script>
+	<script th:src="@{js/behavior-analysis.js}"></script>
 </body>
 </html>

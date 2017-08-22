@@ -7,23 +7,6 @@
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
 		<div class="content-wrapper intelligence-analysis">
-			<section class="content-tab">
-				<div class="item active">
-					<a th:href="intelligence-analysis">首页</a>
-				</div>
-				<div class="item">
-					<a th:href="intelligence-analysis-traffic">交通分析</a>
-				</div>
-				<div class="item">
-					<a th:href="intelligence-analysis-economics">经济分析</a>
-				</div>
-				<div class="item">
-					<a th:href="intelligence-analysis-environmental">环境分析</a>
-				</div>
-				<div class="item">
-					<a th:href="intelligence-analysis-feelings">舆情分析</a>
-				</div>
-			</section>
 			<section class="content container-fluid">
 				<div class="box box-primary zw-bg-white">
 					<div class="box-header with-border">
@@ -64,14 +47,40 @@
 						</div>
 					</div>
 				</div>
-				<div class="box box-warning zw-bg-white">
-					<div class="box-header with-border">
-						<h3 class="box-title">城市拥堵路段Top10</h3>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="box box-success zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">城市拥堵路段Top10</h3>
+							</div>
+							<div class="box-body" id="crowd-bar" style="height:300px;"></div>
+						</div>
 					</div>
-					<div class="box-body">
-						<div class="row">
-							<div class="col-sm-4" id="crowd-bar">柱状图</div>
-							<div class="col-sm-8" id="crowd-table">
+					<div class="col-md-3">
+						<div class="box box-warning zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">入广车辆归属地Top10</h3>
+							</div>
+							<div class="box-body" id="own-bar" style="height:300px;"></div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="box box-danger zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">拥堵延时指数和外来车流量占比</h3>
+							</div>
+							<div class="box-body" id="crowd-line" style="height:300px;"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box box-info zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">拥堵路段</h3>
+							</div>
+							<div class="box-body" id="crowd-table">
 								<table class="table table-bordered table-hover text-center">
 									<thead>
 										<tr>
@@ -167,44 +176,7 @@
 									</tbody>
 								</table>
 							</div>
-						</div>
-					</div>
-				</div>
 
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="box box-success zw-bg-white">
-							<div class="box-header with-border">
-								<h3 class="box-title">拥堵路段外来车流量占比</h3>
-							</div>
-							<div class="box-body" id="crowd-pie">饼图</div>
-						</div>
-					</div>
-					<div class="col-sm-8">
-						<div class="box box-success zw-bg-white" id="">
-							<div class="box-header with-border">
-								<h3 class="box-title">拥堵延时指数和外来车流量占比</h3>
-							</div>
-							<div class="box-body" id="crowd-line">折线图</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="box box-danger zw-bg-white" id="">
-							<div class="box-header with-border">
-								<h3 class="box-title">入广车辆归属地Top10</h3>
-							</div>
-							<div class="box-body" id="own-bar">柱状图</div>
-						</div>
-					</div>
-					<div class="col-sm-8">
-						<div class="box box-danger zw-bg-white" id="">
-							<div class="box-header with-border">
-								<h3 class="box-title">入广高速车流量</h3>
-							</div>
-							<div class="box-body" id="own-map">箭头地图</div>
 						</div>
 					</div>
 				</div>

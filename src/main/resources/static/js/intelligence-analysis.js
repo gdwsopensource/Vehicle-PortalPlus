@@ -7,10 +7,8 @@
 	// 执行函数
 	drawActiveMap("active-map");
 	drawCrowdBar("crowd-bar");
-	drawCrowdPie("crowd-pie");
 	drawCrowdLine("crowd-line");
 	drawOwnBar("own-bar");
-	drawOwnMap("own-map");
 	
 	
 	// 绑定事件
@@ -25,14 +23,16 @@
 	function resizeInit() {
 		var activeIconH = $("#active-icon").height();
 		$("#active-map").css("height", activeIconH);
+		/*
 		var crowdTableH = $("#crowd-table").height();
 		$("#crowd-bar").css("height", crowdTableH);
 		var crowdPieW = $("#crowd-pie").width();
 		$("#crowd-pie").css("height", crowdPieW);
 		$("#crowd-line").css("height", crowdPieW);
-		var ownMapW = $("#own-map").width();
+		var ownMapW = parseInt($("#own-map").width())*2/3;
 		$("#own-bar").css("height", ownMapW);
 		$("#own-map").css("height", ownMapW);
+		*/
 	}
 	function sendReport(title){
 		if (window.localStorage) {

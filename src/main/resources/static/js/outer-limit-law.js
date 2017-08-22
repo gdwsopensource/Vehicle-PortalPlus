@@ -1,24 +1,4 @@
 (function($){
-	//Date range picker
-    $('#reservation').daterangepicker(
-        {
-            locale: {
-                format: 'YYYY-MM-DD',
-                cancelLabel: '取消',
-                applyLabel: '确定',
-                monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
-                daysOfWeek:["日","一","二","三","四","五","六"]
-            },
-            startDate: new Date(),
-        },
-        function(start, end, label) {
-            console.log(start);
-            console.log(end);
-            console.log(label);
-        }
-    )
-	
-	
 	var pieECharts_1 = echarts.init(document.getElementById('pieECharts_1'));
     var pieECharts_1_option = {
         color: ['#5bb4d9', '#f47564', '#1da02b', '#4f5c65', '#f39c12'],
@@ -139,7 +119,7 @@
         color: '#d2d6de'
     });
     $('#search_result').slimScroll({
-        height: '360px',
+        height: '633px',
         size: '5px',
         color: '#d2d6de'
     });
@@ -251,7 +231,7 @@
     };
     pieECharts_2.setOption(pieECharts_2_option);
 
-    //drawCrowdLine('lineECharts');
+    drawCrowdLine('lineECharts');
 
     function drawCrowdLine(id) {
         var obj = document.getElementById(id);
