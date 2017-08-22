@@ -2,7 +2,7 @@
 <html>
 <head th:include="@{include/head}" th:with="title=''">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 	<div class="wrapper">
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
@@ -33,7 +33,10 @@
                         <div class="form-group">
                             <select class="form-control">
                                 <option>限外规则选取</option>
-                                <option>不能连续行驶2日</option>
+                                <option>规则1</option>
+                                <option>规则2</option>
+                                <option>规则3</option>
+                                <option>规则4</option>
                             </select>
                         </div>
                     </div>
@@ -41,7 +44,10 @@
                         <div class="form-group">
                             <select class="form-control">
                                 <option>限牌来源选取</option>
-                                <option>佛山</option>
+                                <option>来源1</option>
+                                <option>来源2</option>
+                                <option>来源3</option>
+                                <option>来源4</option>
                             </select>
                         </div>
                     </div>
@@ -49,7 +55,10 @@
                         <div class="form-group">
                             <select class="form-control">
                                 <option>限牌区域选取</option>
-                                <option>五山路</option>
+                                <option>区域1</option>
+                                <option>区域2</option>
+                                <option>区域3</option>
+                                <option>区域4</option>
                             </select>
                         </div>
                     </div>
@@ -77,7 +86,7 @@
               	<div class="col-md-12">
                     <div class="outer-economics-title bg-light-blue">交通外牌路网实时监控</div>
                 </div>
-            	<div class="col-md-4">
+            	<div class="col-md-3">
             		 <div class="box box-solid">
                         <div class="box-header">
                             <div class="box-title">交通拥堵概况</div>
@@ -87,7 +96,7 @@
                         </div>
                     </div>
             	</div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="box box-solid">
                         <div class="box-header with-border">
                             <div class="box-title">交通拥堵指数</div>
@@ -106,7 +115,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
-                                    <div class="progress-number text-center">1.4</div>
+                                    <div class="progress-number text-center">40%</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -122,7 +131,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
-                                    <div class="progress-number text-center">1.2</div>
+                                    <div class="progress-number text-center">20%</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -138,7 +147,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
-                                    <div class="progress-number text-center">0.5</div>
+                                    <div class="progress-number text-center">5%</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -154,7 +163,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
-                                    <div class="progress-number text-center">0.5</div>
+                                    <div class="progress-number text-center">5%</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -170,7 +179,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
-                                    <div class="progress-number text-center">0.5</div>
+                                    <div class="progress-number text-center">5%</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -186,7 +195,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
-                                    <div class="progress-number text-center">0.5</div>
+                                    <div class="progress-number text-center">5%</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -202,7 +211,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
-                                    <div class="progress-number text-center">0.5</div>
+                                    <div class="progress-number text-center">5%</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -218,7 +227,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
-                                    <div class="progress-number text-center">0.5</div>
+                                    <div class="progress-number text-center">5%</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -234,13 +243,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
-                                    <div class="progress-number text-center">0.5</div>
+                                    <div class="progress-number text-center">5%</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="box box-solid">
                         <div class="box-header with-border">
                             <div class="box-title">车辆数量</div>
@@ -250,7 +259,7 @@
                         </div>
                     </div>
                 </div>
-               <!-- <div class="col-md-3">
+               <div class="col-md-3">
                     <div class="box box-solid">
                         <div class="box-header with-border">
                             <div class="box-title">平均速度</div>
@@ -259,8 +268,9 @@
                             <div id="pieECharts_1" style="height: 460px;"></div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
+ 
         </section>
 		</div>
 		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>

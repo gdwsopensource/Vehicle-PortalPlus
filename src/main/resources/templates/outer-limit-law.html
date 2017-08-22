@@ -4,7 +4,7 @@
 </head>
 <!-- daterange picker -->
 <link rel="stylesheet"
-	th:href="@{webjars/bootstrap-daterangepicker/2.1.25/daterangepicker.css}" />
+	href="@{webjars/bootstrap-daterangepicker/2.1.25/daterangepicker.css}" />
 <style>
 #tab_1 li.active {
 	border-top-color: #f47564;
@@ -14,7 +14,7 @@
 	border-top-color: #4fc3b9;
 }
 </style>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 	<div class="wrapper">
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
@@ -276,8 +276,15 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="box box-success">
-							<div class="box-header with-border" style="padding: 15px 10px;">
-								<div class="box-title">任务简表</div>
+							<div class="box-header with-border">
+								<div class="box-title" style="margin-top: 6px;">任务简表</div>
+								<ul class="pagination pagination-sm no-margin pull-right">
+									<li><a href="#">«</a></li>
+									<li><a href="#">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">»</a></li>
+								</ul>
 							</div>
 							<div class="box-body">
 								<form class="form-group">
@@ -288,7 +295,7 @@
 										<input type="text" class="form-control flat" name="date"
 											placeholder="2017/08/07 - 2017/08/08" id="reservation" />
 										<div class="input-group-btn">
-											<button type="button" class="btn btn-primary flat">搜索</button>
+											<button type="submit" class="btn btn-primary flat">搜索</button>
 										</div>
 									</div>
 								</form>
@@ -301,63 +308,63 @@
 												<td>时间</td>
 											</tr>
 											<tr>
-												<td>天河北路388号路段</td>
+												<td>卡口1</td>
 												<td><span class="police-icon"></span><span
 													class="police-icon"></span><span class="police-icon"></span><span
 													class="police-icon"></span></td>
 												<td>2017/08/07</td>
 											</tr>
 											<tr>
-												<td>广园快速农科院路段</td>
+												<td>卡口1</td>
 												<td><span class="police-icon"></span><span
 													class="police-icon"></span><span class="police-icon"></span><span
 													class="police-icon"></span></td>
 												<td>2017/08/07</td>
 											</tr>
 											<tr>
-												<td>广园快速369号路段</td>
+												<td>卡口1</td>
 												<td><span class="police-icon"></span><span
 													class="police-icon"></span><span class="police-icon"></span><span
 													class="police-icon"></span></td>
 												<td>2017/08/07</td>
 											</tr>
 											<tr>
-												<td>禺东西路省军区路段</td>
+												<td>卡口1</td>
 												<td><span class="police-icon"></span><span
 													class="police-icon"></span><span class="police-icon"></span><span
 													class="police-icon"></span></td>
 												<td>2017/08/07</td>
 											</tr>
 											<tr>
-												<td>广州大道中天河北路路段</td>
+												<td>卡口1</td>
 												<td><span class="police-icon"></span><span
 													class="police-icon"></span><span class="police-icon"></span><span
 													class="police-icon"></span></td>
 												<td>2017/08/07</td>
 											</tr>
 											<tr>
-												<td>花城大道珠江公园路段</td>
+												<td>卡口1</td>
 												<td><span class="police-icon"></span><span
 													class="police-icon"></span><span class="police-icon"></span><span
 													class="police-icon"></span></td>
 												<td>2017/08/07</td>
 											</tr>
 											<tr>
-												<td>金穗路公交车站路段</td>
+												<td>卡口1</td>
 												<td><span class="police-icon"></span><span
 													class="police-icon"></span><span class="police-icon"></span><span
 													class="police-icon"></span></td>
 												<td>2017/08/07</td>
 											</tr>
 											<tr>
-												<td>临江大道华南快速路段</td>
+												<td>卡口1</td>
 												<td><span class="police-icon"></span><span
 													class="police-icon"></span><span class="police-icon"></span><span
 													class="police-icon"></span></td>
 												<td>2017/08/07</td>
 											</tr>
 											<tr>
-												<td>大观路岭南学院以北路段</td>
+												<td>卡口1</td>
 												<td><span class="police-icon"></span><span
 													class="police-icon"></span><span class="police-icon"></span><span
 													class="police-icon"></span></td>
@@ -445,77 +452,7 @@
 															aria-hidden="true"></i></td>
 													</tr>
 													<tr>
-														<td>2</td>
-														<td>佛山&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-right text-primary disabled"
-															aria-hidden="true"></i>&nbsp;&nbsp;广州
-														</td>
-														<td>55&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
-														<td><i class="fa fa-minus text-orange"
-															aria-hidden="true"></i></td>
-														<td>1.10&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-down text-teal"
-															aria-hidden="true"></i></td>
-													</tr>
-													<tr>
-														<td>3</td>
-														<td>佛山&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-right text-primary disabled"
-															aria-hidden="true"></i>&nbsp;&nbsp;广州
-														</td>
-														<td>60&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
-														<td><i class="fa fa-minus text-orange"
-															aria-hidden="true"></i></td>
-														<td>2.12&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-down text-teal"
-															aria-hidden="true"></i></td>
-													</tr>
-													<tr>
-														<td>4</td>
-														<td>佛山&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-right text-primary disabled"
-															aria-hidden="true"></i>&nbsp;&nbsp;广州
-														</td>
-														<td>55&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
-														<td><i class="fa fa-minus text-orange"
-															aria-hidden="true"></i></td>
-														<td>1.10&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-down text-teal"
-															aria-hidden="true"></i></td>
-													</tr>
-													<tr>
-														<td>5</td>
-														<td>佛山&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-right text-primary disabled"
-															aria-hidden="true"></i>&nbsp;&nbsp;广州
-														</td>
-														<td>66&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
-														<td><i class="fa fa-minus text-orange"
-															aria-hidden="true"></i></td>
-														<td>1.10&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-down text-teal"
-															aria-hidden="true"></i></td>
-													</tr>
-													<tr>
-														<td>6</td>
-														<td>佛山&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-right text-primary disabled"
-															aria-hidden="true"></i>&nbsp;&nbsp;广州
-														</td>
-														<td>50&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
-														<td><i class="fa fa-minus text-orange"
-															aria-hidden="true"></i></td>
-														<td>2.10&nbsp;&nbsp;<i
-															class="fa fa-long-arrow-down text-teal"
-															aria-hidden="true"></i></td>
-													</tr>
-													<tr>
-														<td>7</td>
+														<td>1</td>
 														<td>佛山&nbsp;&nbsp;<i
 															class="fa fa-long-arrow-right text-primary disabled"
 															aria-hidden="true"></i>&nbsp;&nbsp;广州
@@ -529,16 +466,86 @@
 															aria-hidden="true"></i></td>
 													</tr>
 													<tr>
-														<td>8</td>
+														<td>1</td>
 														<td>佛山&nbsp;&nbsp;<i
 															class="fa fa-long-arrow-right text-primary disabled"
 															aria-hidden="true"></i>&nbsp;&nbsp;广州
 														</td>
-														<td>65&nbsp;&nbsp;<i
+														<td>70&nbsp;&nbsp;<i
 															class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
 														<td><i class="fa fa-minus text-orange"
 															aria-hidden="true"></i></td>
-														<td>1.10&nbsp;&nbsp;<i
+														<td>2.10&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-down text-teal"
+															aria-hidden="true"></i></td>
+													</tr>
+													<tr>
+														<td>1</td>
+														<td>佛山&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-right text-primary disabled"
+															aria-hidden="true"></i>&nbsp;&nbsp;广州
+														</td>
+														<td>70&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+														<td><i class="fa fa-minus text-orange"
+															aria-hidden="true"></i></td>
+														<td>2.10&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-down text-teal"
+															aria-hidden="true"></i></td>
+													</tr>
+													<tr>
+														<td>1</td>
+														<td>佛山&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-right text-primary disabled"
+															aria-hidden="true"></i>&nbsp;&nbsp;广州
+														</td>
+														<td>70&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+														<td><i class="fa fa-minus text-orange"
+															aria-hidden="true"></i></td>
+														<td>2.10&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-down text-teal"
+															aria-hidden="true"></i></td>
+													</tr>
+													<tr>
+														<td>1</td>
+														<td>佛山&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-right text-primary disabled"
+															aria-hidden="true"></i>&nbsp;&nbsp;广州
+														</td>
+														<td>70&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+														<td><i class="fa fa-minus text-orange"
+															aria-hidden="true"></i></td>
+														<td>2.10&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-down text-teal"
+															aria-hidden="true"></i></td>
+													</tr>
+													<tr>
+														<td>1</td>
+														<td>佛山&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-right text-primary disabled"
+															aria-hidden="true"></i>&nbsp;&nbsp;广州
+														</td>
+														<td>70&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+														<td><i class="fa fa-minus text-orange"
+															aria-hidden="true"></i></td>
+														<td>2.10&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-down text-teal"
+															aria-hidden="true"></i></td>
+													</tr>
+													<tr>
+														<td>1</td>
+														<td>佛山&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-right text-primary disabled"
+															aria-hidden="true"></i>&nbsp;&nbsp;广州
+														</td>
+														<td>70&nbsp;&nbsp;<i
+															class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+														<td><i class="fa fa-minus text-orange"
+															aria-hidden="true"></i></td>
+														<td>2.10&nbsp;&nbsp;<i
 															class="fa fa-long-arrow-down text-teal"
 															aria-hidden="true"></i></td>
 													</tr>
