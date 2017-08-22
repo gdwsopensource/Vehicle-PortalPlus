@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title=''">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<section class="content-tab">
+				<div class="item">
+					<a th:href="intelligence-analysis">首页</a>
+				</div>
+				<div class="item active">
+					<a th:href="intelligence-analysis-traffic">交通分析</a>
+				</div>
+				<div class="item">
+					<a th:href="intelligence-analysis-economics">经济分析</a>
+				</div>
+				<div class="item">
+					<a th:href="intelligence-analysis-environmental">环境分析</a>
+				</div>
+				<div class="item">
+					<a th:href="intelligence-analysis-feelings">舆情分析</a>
+				</div>
+			</section>
+		</div>	
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->	
+</body>
+</html>
