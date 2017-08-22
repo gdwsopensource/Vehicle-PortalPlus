@@ -7,6 +7,23 @@
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
 		<div class="content-wrapper intelligence-analysis">
+			<section class="content-tab">
+				<div class="item active">
+					<a th:href="intelligence-analysis">首页</a>
+				</div>
+				<div class="item">
+					<a th:href="intelligence-analysis-traffic">交通分析</a>
+				</div>
+				<div class="item">
+					<a th:href="intelligence-analysis-economics">经济分析</a>
+				</div>
+				<div class="item">
+					<a th:href="intelligence-analysis-environmental">环境分析</a>
+				</div>
+				<div class="item">
+					<a th:href="intelligence-analysis-feelings">舆情分析</a>
+				</div>
+			</section>
 			<section class="content container-fluid">
 				<div class="box box-primary zw-bg-white">
 					<div class="box-header with-border">
@@ -47,7 +64,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="box box-warning zw-bg-white">
 					<div class="box-header with-border">
 						<h3 class="box-title">城市拥堵路段Top10</h3>

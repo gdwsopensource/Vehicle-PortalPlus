@@ -139,7 +139,7 @@
         color: '#d2d6de'
     });
     $('#search_result').slimScroll({
-        height: '633px',
+        height: '360px',
         size: '5px',
         color: '#d2d6de'
     });
@@ -251,7 +251,7 @@
     };
     pieECharts_2.setOption(pieECharts_2_option);
 
-    drawCrowdLine('lineECharts');
+    //drawCrowdLine('lineECharts');
 
     function drawCrowdLine(id) {
         var obj = document.getElementById(id);

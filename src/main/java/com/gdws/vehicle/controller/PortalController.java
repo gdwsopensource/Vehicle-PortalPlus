@@ -72,6 +72,18 @@ public class PortalController {
     String outerLimitEconomics(){
     	return "outer-limit-economics";
     }
+    @RequestMapping("outer-limit-sociology")
+    String outerLimitSociology(){
+    	return "outer-limit-sociology";
+    }
+    @RequestMapping("outer-limit-monitoring")
+    String outerLimitMonitoring(){
+    	return "outer-limit-monitoring";
+    }
+    @RequestMapping("outer-limit-environmental")
+    String outerLimitEnvironmental(){
+    	return "outer-limit-environmental";
+    }
     @RequestMapping("outer-limit-law")
     String outerLimitlaw(){
     	return "outer-limit-law";
@@ -88,6 +100,23 @@ public class PortalController {
     String intelligenceAnalysis(){
     	return "intelligence-analysis";
     }
+    @RequestMapping("intelligence-analysis-economics")
+    String intelligenceAnalysisEconomics(){
+    	return "intelligence-analysis-economics";
+    }
+    @RequestMapping("intelligence-analysis-environmental ")
+    String intelligenceAnalysisEnvironmental(){
+    	return "intelligence-analysis-environmental";
+    }
+    @RequestMapping("intelligence-analysis-feelings ")
+    String intelligenceAnalysisFeelings(){
+    	return "intelligence-analysis-feelings";
+    }
+    @RequestMapping("intelligence-analysis-traffic ")
+    String intelligenceAnalysisTraffic(){
+    	return "intelligence-analysis-traffic";
+    }
+    
     @RequestMapping("limit-fullpage")
     String limitFullpage(){
     	return "limit-fullpage";

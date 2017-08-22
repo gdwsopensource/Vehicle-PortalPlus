@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head th:include="@{include/head}" th:with="title=''">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:include="@{include/header}" class="main-header"></header>
+		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
+		<div class="content-wrapper">
+			<section class="content-tab">
+				<div class="item">
+					<a th:href="outer-limit-monitoring">实时监控</a>
+				</div>
+				<div class="item">
+					<a th:href="outer-limit-economics">经济情况</a>
+				</div>
+				<div class="item">
+					<a th:href="outer-limit-sociology">社会治安</a>
+				</div>
+				<div class="item active">
+					<a th:href="outer-limit-environmental">环境情况</a>
+				</div>
+			</section>
+			<section class="content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="outer-economics-title  bg-teal">环境情况分析</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-solid">
+							<div class="box-header with-border">
+								<div class="box-title">污染物排放量分析</div>
+							</div>
+							<div class="box-body">
+								<div id="parallel_nutrients" style="height: 590px;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="box box-solid">
+							<div class="box-header with-border">
+								<div class="box-title">排放标准分析</div>
+							</div>
+							<div class="box-body">
+								<div id="pieECharts" style="height:590px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
+	</div>
+	<script th:src="@{js/common.js}"></script>
+	<!-- 该页面额外的js链接 -->
+	<script th:src="@{js/outer-limit-environmental.js}"></script>
+</body>
+</html>
