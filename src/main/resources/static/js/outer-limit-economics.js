@@ -1,4 +1,369 @@
 (function($){
+	var uploadedDataURL = "../data/data-1477626617822-SJMboHgel.txt";
+
+    function convertData(sourceData) {
+        return [].concat.apply([], $.map(sourceData, function (busLine, index) {
+            var prevPoint = null;
+            var points = [];
+            var value = busLine.shift();
+            for (var i = 0; i < busLine.length; i += 2) {
+                var point = [busLine[i], busLine[i + 1]];
+                if (i > 0) {
+                    point = [
+                        prevPoint[0] + point[0],
+                        prevPoint[1] + point[1]
+                    ];
+                }
+                prevPoint = point;
+
+                points.push([point[0] / 1e5, point[1] / 1e5]);
+            }
+            return {
+                value: value,
+                coords: points
+            };
+        }));
+    }
+
+    var option = {
+        bmap: {
+            roam: true
+        },
+        visualMap: {
+            type: "piecewise",
+            left: 'right',
+            /*            pieces: [
+                    {min: 15}, // 不指定 max，表示 max 为无限大（Infinity）。
+                    {min: 12, max: 15},
+                    {min: 9, max: 12},
+                    {min: 6, max: 9},
+                    {min: 3, max: 6},
+                    {max: 3}     // 不指定 min，表示 min 为无限大（-Infinity）。
+                ],*/
+            min: 0,
+            max: 15,
+            splitNumber: 5,
+            maxOpen: true,
+            color: ['red', 'yellow', 'green']
+        },
+        tooltip: {
+            formatter: function (params, ticket, callback) {
+                return "拥堵指数:" + params.value;
+            },
+            trigger: 'item'
+        },
+        series: [{
+            type: 'lines',
+            coordinateSystem: 'bmap',
+            polyline: true,
+            lineStyle: {
+                normal: {
+                    opacity: 1,
+                    width: 4
+                },
+                emphasis: {
+                    width: 6
+                }
+            },
+            effect: {
+                show: true,
+                symbolSize: 2,
+                color: "white"
+            }
+        }]
+    };
+
+    $.getJSON(uploadedDataURL, function (rawData) {
+        option.series[0].data = convertData(rawData);
+        var mapECharts = echarts.init(document.getElementById('mapECharts'));
+        mapECharts.setOption(option);
+        // console.log(option);
+        //获取echart中使用的bmap实例
+        var map = mapECharts.getModel().getComponent('bmap').getBMap();
+        map.disableDoubleClickZoom();
+        map.centerAndZoom("嘉兴", 13);
+
+    });
+
+    var lineECharts = echarts.init(document.getElementById('lineECharts'));
+    var lineECharts_option = {
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: ['总量']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['私家车', '货运车', '面包车', '出租车', '客车', '其他']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name: '总量',
+                type: 'line',
+                data: [40, 30, 40, 52, 15, 85, 81],
+                itemStyle: {
+                    normal: {
+                        color: '#4fc3b9'
+                    }
+                }
+            }
+        ]
+    };
+    lineECharts.setOption(lineECharts_option);
+
+    var pieECharts_1 = echarts.init(document.getElementById('pieECharts_1'));
+    var pieECharts_1_option = {
+        tooltip: {
+            formatter: "{a} <br/>{b} : {c} KM/H"
+        },
+        series: [
+            {
+                name: '平均速度',
+                type: 'gauge',
+                detail: {
+                    formatter: '{value} KM/H',
+                    textStyle: {
+                        fontSize: 15
+                    }
+                },
+                data: [{value: 50, name: '速度'}]
+            }
+        ]
+    };
+    pieECharts_1.setOption(pieECharts_1_option);
+
+
+    var pieECharts_2 = echarts.init(document.getElementById('pieECharts_2'));
+    var pieECharts_2_option = {
+        color: ['#1da02b', '#f4563c', '#14aae4', '#f29503', '#4f5c65'],// 调色盘颜色列表。
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        series: [
+            {
+                name: '执法情况',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        formatter: function (param) {
+                            return param.name;
+                        }
+                    }
+                },
+                data: [
+                    {value: 1548, name: '闯红灯'},
+                    {value: 335, name: '假套牌'},
+                    {value: 310, name: '其他'},
+                    {value: 234, name: '多次违章'},
+                    {value: 135, name: '违反交通规则'}
+                ]
+            }
+        ]
+    };
+    pieECharts_2.setOption(pieECharts_2_option);
+
+    var lineECharts_2 = echarts.init(document.getElementById('lineECharts_2'));
+    var lineECharts_2_option = {
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: ['案件1', '案件2', '案件3', '案件4', '案件5']
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        series: [
+            {
+                name: '案件1',
+                type: 'line',
+                data: [40, 30, 40, 52, 15, 85, 52],
+                itemStyle: {
+                    normal: {
+                        color: '#1da02b'
+                    }
+                }
+            },
+            {
+                name: '案件2',
+                type: 'line',
+                data: [50, 20, 60, 58, 56, 35, 30],
+                itemStyle: {
+                    normal: {
+                        color: '#4fc3b9'
+                    }
+                }
+            },
+            {
+                name: '案件3',
+                type: 'line',
+                data: [20, 40, 60, 72, 16, 85, 65],
+                itemStyle: {
+                    normal: {
+                        color: '#f39402'
+                    }
+                }
+            },
+            {
+                name: '案件4',
+                type: 'line',
+                data: [10, 60, 77, 22, 35, 55, 63],
+                itemStyle: {
+                    normal: {
+                        color: '#f47564'
+                    }
+                }
+            },
+            {
+                name: '案件5',
+                type: 'line',
+                data: [60, 20, 45, 36, 25, 45, 88],
+                itemStyle: {
+                    normal: {
+                        color: '#5bb4d9'
+                    }
+                }
+            }
+        ]
+    };
+    lineECharts_2.setOption(lineECharts_2_option);
+
+
+    var barECharts = echarts.init(document.getElementById('barECharts'));
+    var barECharts_option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c}件"
+        },
+        xAxis: {
+            data: ["天河区", "黄埔区", "海珠区", "番禺区", "荔湾区", "南沙区", "从化区", "花都区", "增城区"]
+        },
+        yAxis: {
+            name: '次数',
+            type: 'value'
+        },
+        series: [
+            {
+                name: '案发量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 22, 23, 25, 63],
+                itemStyle: {
+                    normal: {
+                        color: function (params) {
+                            var colorList = ['#5bb4d9', '#4fc3b9', '#f47564', '#f39c12', '#63869e', '#3b5e75', '#1da02b', '#f47564', '#f39c12'];
+                            return colorList[params.dataIndex];
+                        }
+                    }
+                }
+            }
+        ]
+    }
+    barECharts.setOption(barECharts_option);
+
+    var radarECharts = echarts.init(document.getElementById('radarECharts'));
+    var radarECharts_option = {
+        tooltip: {
+            trigger: 'item',
+        },
+        radar: [
+            {
+                indicator: [
+                    {text: '预警1'},
+                    {text: '预警2'},
+                    {text: '预警3'},
+                    {text: '预警4'},
+                    {text: '预警5'},
+                    {text: '预警6'}
+                ],
+                startAngle: 90,
+                splitNumber: 4
+            }
+        ],
+        series: [
+            {
+                name: '每日预警',
+                type: 'radar',
+                data: [
+                    {
+                        value: [120, 118, 130, 100, 99, 70],
+                        name: '今天预警',
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    return params.value;
+                                }
+                            }
+                        },
+                        lineStyle: {
+                            normal: {
+                                color: '#5e9ea6'
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#5e9ea6'
+                            }
+                        },
+                    },
+                    {
+                        value: [90, 113, 140, 30, 70, 60],
+                        name: '昨天预警',
+                        areaStyle: {
+                            normal: {
+                                color: '#b4d0e1'
+                            }
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    return params.value;
+                                }
+                            }
+                        },
+                        lineStyle: {
+                            normal: {
+                                color: '#d89982'
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#d89982'
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+    radarECharts.setOption(radarECharts_option);
+
     $.get('data/guangzhou.json', function (GuangZhouJson) {
         echarts.registerMap('guangzhou', GuangZhouJson);
         var chart = echarts.init(document.getElementById('regionECharts'));
@@ -15,16 +380,11 @@
                     return params.name + '</br>' + '经济总量：' + params.value + '&nbsp;/亿' + '<br/>' + index;
                 }
             },
-            label:{
-            	normal:{
-            		show:true
-            	}
-            },
             series: [{
                 type: 'map',
                 name: '过车频次',
                 map: 'guangzhou',
-                roam: false,
+                roam: true,
                 selectedMode: 'single',
                 data: [
                     {name: "天河区", value: 203, index: 0.15},
@@ -38,110 +398,7 @@
                     {name: "花都区", value: 250, index: -0.15},
                     {name: "越秀区", value: 250, index: -0.15},
                     {name: "南沙区", value: 250, index: 0.15}
-                ],
-                /*itemStyle: {
-                    normal: {
-                        label: {
-                            show: true
-                        }
-                    },
-                    emphasis: {
-                        label: {
-                            show: true
-                        }
-                    }
-                },*/
-                markPoint: {
-					symbol: 'image://../image/map-pin.png',
-					symbolSize: [36, 48],
-					itemStyle: {
-						normal: {
-							label: {
-								show: true,
-								formatter: function (params) {
-									console.log(params);
-									if (params.data.index > 0) {
-				                        var index ='+'+(Math.abs(params.data.index) * 100) + '%';
-				                    } else {
-				                        var index ='-'+(Math.abs(params.data.index) * 100) + '%';
-				                    }
-				                    return index;
-								}
-							}
-						}
-					},
-					label: {
-						normal: {
-							textStyle: {
-								color: '#a4ca49',
-								fontSize: 10
-							},
-							offset: [0, -5]
-						}
-					},
-					data: [
-						{
-							name: "天河区",
-							index: '0.15',
-							value: 203,
-							coord: [113.384483,23.17578]
-						},
-						{
-							name: "番禺区",
-							index: '-0.15',
-							value: 203,
-							coord: [113.355737,22.977358]
-						},
-						{
-							name: "黄埔区",
-							index: '-0.15',
-							value: 203,
-							coord: [113.479631,23.190663]
-						},
-						{
-							name: "海珠区",
-							index: '0.25',
-							value: 203,
-							coord: [113.285597,23.108785]
-						},
-						{
-							name: "荔湾区",
-							index: '0.35',
-							value: 203,
-							coord: [113.2202,23.112774]
-						},
-						{
-							name: "南沙区",
-							index: '0.35',
-							value: 203,
-							coord: [113.473594,22.851129]
-						},
-						{
-							name: "白云区",
-							index: '0.25',
-							value: 203,
-							coord: [113.266337,23.224409]
-						},
-						{
-							name: "花都区",
-							index: '-0.15',
-							value: 203,
-							coord: [113.139856,23.428297]
-						},
-						{
-							name: "从化区",
-							index: '-0.05',
-							value: 203,
-							coord: [113.531373,23.555035]
-						},
-						{
-							name: "增城区",
-							index: '-0.05',
-							value: 203,
-							coord: [113.832629,23.288158]
-						}
-					]
-                }
+                ]
             }]
         });
         chart.on('click', function (params) {
@@ -234,14 +491,14 @@
             '#5bb4d9', '#f47564', '#4fc3b9', '#f39c12', '#1da02b', '#63869e'
         ],
         legend: {
-            bottom: 5,
+            bottom: 10,
             data: ['工业产值', '建筑业产值', '农业产值', '运输业产值', '商业产值', '消费水平'],
             itemGap: 20,
             textStyle: {
                 color: '#333',
                 fontSize: 14
             },
-            width: '90%'
+            width: '60%'
         },
         tooltip: {},
         parallelAxis: [
