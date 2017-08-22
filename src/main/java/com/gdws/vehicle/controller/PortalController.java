@@ -124,5 +124,9 @@ public class PortalController {
     String implementationManagement(){
     	return "implementation-management";
     }   
+    @RequestMapping("outer-limit-law-accurate")
+    String outerLimitLawAccurate(){
+      return "outer-limit-law-accurate";
+    }
 }
 

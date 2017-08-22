@@ -1,20 +1,21 @@
 <!doctype html>
 <html>
-<head th:include="@{include/head}" th:with="title='执法辅助/任务管理'">
+<head th:include="@{include/head}" th:with="title='执法辅助/精准限外'">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper  outer-limit-law-mission">
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
 		<div class="content-wrapper">
+
 			<section class="content-tab">
 				<div class="item">
 					<a th:href="outer-limit-law">首页</a>
 				</div>
-				<div class="item active">
+				<div class="item">
 					<a th:href="outer-limit-law-mission">任务管理</a>
 				</div>
-				<div class="item">
+				<div class="item active">
 					<a href="outer-limit-law-accurate">精准限外</a>
 				</div>
 				<div class="item">非法运营</div>
@@ -23,9 +24,56 @@
 			<section class="content">
 				<form class="form-horizontal">
 					<div class="row">
+						<div class="col-md-3">
+							<div class="small-box bg-aqua-gradient"
+								style="background-color: #5bb4d9;">
+								<div class="inner">
+									<h1>112</h1>
+									<h4 style="margin-top: 20px;">今日申请通行的外来车牌</h4>
+								</div>
+								<div class="icon">
+									<i class="ion ion-android-car"></i>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="small-box bg-green-gradient">
+								<div class="inner">
+									<h1>800</h1>
+									<h4 style="margin-top: 20px;">黑名单数量</h4>
+								</div>
+								<div class="icon">
+									<i class="ion ion-pie-graph"></i>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="small-box bg-red-gradient">
+								<div class="inner">
+									<h1>1120</h1>
+									<h4 style="margin-top: 20px;">外牌违章车辆数</h4>
+								</div>
+								<div class="icon">
+									<i class="ion ion-alert-circled"></i>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="small-box bg-orange">
+								<div class="inner">
+									<h1>6500</h1>
+									<h4 style="margin-top: 20px;">本地化使用外牌车数量</h4>
+								</div>
+								<div class="icon">
+									<i class="ion ion-ios-information-outline"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group" style="margin: 0 0 15px 0;">
-								<label for="" class="col-sm-3 control-label">任务编码</label>
+								<label for="" class="col-sm-3 control-label">编号</label>
 								<div class="col-sm-9">
 									<input type="text" class="form-control"
 										placeholder="例：12345678" />
@@ -34,25 +82,17 @@
 						</div>
 						<div class="col-md-4">
 							<div class="form-group" style="margin: 0 0 15px 0;">
-								<label for="" class="col-sm-3 control-label">任务名称</label>
+								<label for="" class="col-sm-3 control-label">车牌号</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control" placeholder="例：任务1" />
+									<input type="text" class="form-control" placeholder="例：粤B12345" />
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group" style="margin: 0 0 15px 0;">
-								<label for="" class="col-sm-3 control-label">时间段</label>
+								<label for="" class="col-sm-3 control-label">添加人</label>
 								<div class="col-sm-9">
-									<select name="" id="" class="form-control">
-										<option value="0">00:00-01:00</option>
-										<option value="1">01:00-02:00</option>
-										<option value="2">02:00-03:00</option>
-										<option value="3">03:00-04:00</option>
-										<option value="4">04:00-05:00</option>
-										<option value="5">05:00-06:00</option>
-										<option value="6">06:00-07:00</option>
-									</select>
+									<input type="text" class="form-control" placeholder="例：王警员" />
 								</div>
 							</div>
 						</div>
@@ -60,26 +100,35 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group" style="margin: 0 0 15px 0;">
-								<label for="" class="col-sm-3 control-label">任务类型</label>
+								<label for="" class="col-sm-3 control-label">车辆类型</label>
 								<div class="col-sm-9">
 									<select name="" id="" class="form-control">
-										<option value="1">类型1</option>
-										<option value="2">类型2</option>
-										<option value="3">类型3</option>
-										<option value="4">类型4</option>
-										<option value="5">类型5</option>
-										<option value="6">类型6</option>
-										<option value="7">类型7</option>
+										<option value="">小型汽车</option>
+										<option value="">小型自动挡汽车</option>
+										<option value="">中型客车</option>
+										<option value="">大型货车</option>
 									</select>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-md-offset-4 text-right">
+						<div class="col-md-4">
+							<div class="form-group" style="margin: 0 0 15px 0;">
+								<label for="" class="col-sm-3 control-label">拉黑类型</label>
+								<div class="col-sm-9">
+									<select name="" id="" class="form-control">
+										<option value="">重点关注</option>
+										<option value="">多次违章</option>
+										<option value="">改造车牌</option>
+										<option value="">限外区行驶</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 text-right">
 							<div class="form-group" style="margin: 0 0 15px 0;">
 								<div class="col-sm-12">
-									<button type="submit"
-										class="btn btn-flat btn-primary margin-r-5">查询</button>
-									<button type="button" class="btn btn-flat bg-orange">新增</button>
+									<button class="btn btn-flat btn-primary margin-r-5">查询</button>
+									<button class="btn btn-flat bg-orange">新增</button>
 								</div>
 							</div>
 						</div>
@@ -91,7 +140,7 @@
 							<div class="box-header">
 								<div class="box-title">
 									<span class="ion ion-ios-pie"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span
-										class="ion ion-stats-bars"></span>
+										class="ion ion-stats-bars"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span>黑名单管理</span>
 								</div>
 								<div class="box-tools">
 									<button type="button" class="btn btn-primary btn-sm"
@@ -104,21 +153,189 @@
 								<table class="table text-center no-margin">
 									<tbody>
 										<tr>
-											<td>任务编码</td>
-											<td>任务名称</td>
-											<td>任务时间</td>
-											<td>任务类型</td>
-											<td>任务状态</td>
-											<td>执行人</td>
+											<td>编号</td>
+											<td>添加日期</td>
+											<td>车牌号</td>
+											<td>车辆类型</td>
+											<td>违法类型</td>
+											<td>添加人</td>
 											<td>操作</td>
 										</tr>
 										<tr>
-											<td><span class="text-primary">001</span></td>
-											<td>任务1</td>
+											<td><span class="text-primary">010</span></td>
 											<td>2017/08/09</td>
-											<td>巡逻</td>
-											<td>执行中</td>
-											<td>执行人</td>
+											<td>粤D12345</td>
+											<td>小型汽车</td>
+											<td>限外区行驶</td>
+											<td>张三</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>						
+										<tr>
+											<td><span class="text-primary">009</span></td>
+											<td>2017/08/07</td>
+											<td>粤B12346</td>
+											<td>小型汽车</td>
+											<td>限外区行驶</td>
+											<td>张四</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">008</span></td>
+											<td>2017/08/07</td>
+											<td>粤C12347</td>
+											<td>小型汽车</td>
+											<td>多次违章</td>
+											<td>张三</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">007</span></td>
+											<td>2017/08/06</td>
+											<td>粤C12348</td>
+											<td>小型汽车</td>
+											<td>限外区行驶</td>
+											<td>张四</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">006</span></td>
+											<td>2017/08/05</td>
+											<td>粤B12349</td>
+											<td>中型客车</td>
+											<td>限外区行驶</td>
+											<td>张三</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">005</span></td>
+											<td>2017/08/04</td>
+											<td>粤B55555</td>
+											<td>小型汽车</td>
+											<td>限外区行驶</td>
+											<td>张三</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">004</span></td>
+											<td>2017/08/03</td>
+											<td>粤B44444</td>
+											<td>小型汽车</td>
+											<td>限外区行驶</td>
+											<td>张三</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">003</span></td>
+											<td>2017/08/02</td>
+											<td>粤B33333</td>
+											<td>小型汽车</td>
+											<td>限外区行驶</td>
+											<td>张三</td>
+											<td>
+												<button type="button"
+													class="btn btn-primary btn-flat btn-sm margin-r-5">
+													<i class="fa fa-angle-double-right"></i>&nbsp;查看
+												</button>
+												<button type="button"
+													class="btn bg-orange btn-sm btn-flat margin-r-5">
+													<i class="fa fa-edit"></i>&nbsp;编辑
+												</button>
+												<button type="button" class="btn btn-danger btn-sm btn-flat">
+													<i class="fa fa-trash-o"></i>&nbsp;删除
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td><span class="text-primary">002</span></td>
+											<td>2017/08/01</td>
+											<td>粤D22222</td>
+											<td>小型汽车</td>
+											<td>限外区行驶</td>
+											<td>张三</td>
 											<td>
 												<button type="button"
 													class="btn btn-primary btn-flat btn-sm margin-r-5">
@@ -135,200 +352,11 @@
 										</tr>
 										<tr>
 											<td><span class="text-primary">001</span></td>
-											<td>任务1</td>
-											<td>2017/08/09</td>
-											<td>巡逻</td>
-											<td>执行中</td>
-											<td>执行人</td>
-											<td>
-												<button type="button"
-													class="btn btn-primary btn-flat btn-sm margin-r-5">
-													<i class="fa fa-angle-double-right"></i>&nbsp;查看
-												</button>
-												<button type="button"
-													class="btn bg-orange btn-sm btn-flat margin-r-5">
-													<i class="fa fa-edit"></i>&nbsp;编辑
-												</button>
-												<button type="button" class="btn btn-danger btn-sm btn-flat">
-													<i class="fa fa-trash-o"></i>&nbsp;删除
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="text-primary">001</span></td>
-											<td>任务1</td>
-											<td>2017/08/09</td>
-											<td>巡逻</td>
-											<td>执行中</td>
-											<td>执行人</td>
-											<td>
-												<button type="button"
-													class="btn btn-primary btn-flat btn-sm margin-r-5">
-													<i class="fa fa-angle-double-right"></i>&nbsp;查看
-												</button>
-												<button type="button"
-													class="btn bg-orange btn-sm btn-flat margin-r-5">
-													<i class="fa fa-edit"></i>&nbsp;编辑
-												</button>
-												<button type="button" class="btn btn-danger btn-sm btn-flat">
-													<i class="fa fa-trash-o"></i>&nbsp;删除
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="text-primary">001</span></td>
-											<td>任务1</td>
-											<td>2017/08/09</td>
-											<td>巡逻</td>
-											<td>执行中</td>
-											<td>执行人</td>
-											<td>
-												<button type="button"
-													class="btn btn-primary btn-flat btn-sm margin-r-5">
-													<i class="fa fa-angle-double-right"></i>&nbsp;查看
-												</button>
-												<button type="button"
-													class="btn bg-orange btn-sm btn-flat margin-r-5">
-													<i class="fa fa-edit"></i>&nbsp;编辑
-												</button>
-												<button type="button" class="btn btn-danger btn-sm btn-flat">
-													<i class="fa fa-trash-o"></i>&nbsp;删除
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="text-primary">001</span></td>
-											<td>任务1</td>
-											<td>2017/08/09</td>
-											<td>巡逻</td>
-											<td>执行中</td>
-											<td>执行人</td>
-											<td>
-												<button type="button"
-													class="btn btn-primary btn-flat btn-sm margin-r-5">
-													<i class="fa fa-angle-double-right"></i>&nbsp;查看
-												</button>
-												<button type="button"
-													class="btn bg-orange btn-sm btn-flat margin-r-5">
-													<i class="fa fa-edit"></i>&nbsp;编辑
-												</button>
-												<button type="button" class="btn btn-danger btn-sm btn-flat">
-													<i class="fa fa-trash-o"></i>&nbsp;删除
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="text-primary">001</span></td>
-											<td>任务1</td>
-											<td>2017/08/09</td>
-											<td>巡逻</td>
-											<td>执行中</td>
-											<td>执行人</td>
-											<td>
-												<button type="button"
-													class="btn btn-primary btn-flat btn-sm margin-r-5">
-													<i class="fa fa-angle-double-right"></i>&nbsp;查看
-												</button>
-												<button type="button"
-													class="btn bg-orange btn-sm btn-flat margin-r-5">
-													<i class="fa fa-edit"></i>&nbsp;编辑
-												</button>
-												<button type="button" class="btn btn-danger btn-sm btn-flat">
-													<i class="fa fa-trash-o"></i>&nbsp;删除
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="text-primary">001</span></td>
-											<td>任务1</td>
-											<td>2017/08/09</td>
-											<td>巡逻</td>
-											<td>执行中</td>
-											<td>执行人</td>
-											<td>
-												<button type="button"
-													class="btn btn-primary btn-flat btn-sm margin-r-5">
-													<i class="fa fa-angle-double-right"></i>&nbsp;查看
-												</button>
-												<button type="button"
-													class="btn bg-orange btn-sm btn-flat margin-r-5">
-													<i class="fa fa-edit"></i>&nbsp;编辑
-												</button>
-												<button type="button" class="btn btn-danger btn-sm btn-flat">
-													<i class="fa fa-trash-o"></i>&nbsp;删除
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="text-primary">001</span></td>
-											<td>任务1</td>
-											<td>2017/08/09</td>
-											<td>巡逻</td>
-											<td>执行中</td>
-											<td>执行人</td>
-											<td>
-												<button type="button"
-													class="btn btn-primary btn-flat btn-sm margin-r-5">
-													<i class="fa fa-angle-double-right"></i>&nbsp;查看
-												</button>
-												<button type="button"
-													class="btn bg-orange btn-sm btn-flat margin-r-5">
-													<i class="fa fa-edit"></i>&nbsp;编辑
-												</button>
-												<button type="button" class="btn btn-danger btn-sm btn-flat">
-													<i class="fa fa-trash-o"></i>&nbsp;删除
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="text-primary">001</span></td>
-											<td>任务1</td>
-											<td>2017/08/09</td>
-											<td>巡逻</td>
-											<td>执行中</td>
-											<td>执行人</td>
-											<td>
-												<button type="button"
-													class="btn btn-primary btn-flat btn-sm margin-r-5">
-													<i class="fa fa-angle-double-right"></i>&nbsp;查看
-												</button>
-												<button type="button"
-													class="btn bg-orange btn-sm btn-flat margin-r-5">
-													<i class="fa fa-edit"></i>&nbsp;编辑
-												</button>
-												<button type="button" class="btn btn-danger btn-sm btn-flat">
-													<i class="fa fa-trash-o"></i>&nbsp;删除
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="text-primary">001</span></td>
-											<td>任务1</td>
-											<td>2017/08/09</td>
-											<td>巡逻</td>
-											<td>执行中</td>
-											<td>执行人</td>
-											<td>
-												<button type="button"
-													class="btn btn-primary btn-flat btn-sm margin-r-5">
-													<i class="fa fa-angle-double-right"></i>&nbsp;查看
-												</button>
-												<button type="button"
-													class="btn bg-orange btn-sm btn-flat margin-r-5">
-													<i class="fa fa-edit"></i>&nbsp;编辑
-												</button>
-												<button type="button" class="btn btn-danger btn-sm btn-flat">
-													<i class="fa fa-trash-o"></i>&nbsp;删除
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="text-primary">001</span></td>
-											<td>任务1</td>
-											<td>2017/08/09</td>
-											<td>巡逻</td>
-											<td>执行中</td>
-											<td>执行人</td>
+											<td>2017/08/01</td>
+											<td>粤F11111</td>
+											<td>小型汽车</td>
+											<td>限外区行驶</td>
+											<td>张三</td>
 											<td>
 												<button type="button"
 													class="btn btn-primary btn-flat btn-sm margin-r-5">

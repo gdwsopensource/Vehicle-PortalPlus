@@ -5,9 +5,10 @@
 <body class="limit-fullpage">
 	<div id="title">广州外牌车辆监控台</div>
 	<div id="time">
-		2017-08-08 周二 15：23 <a class="fa fa-mail-reply" href="outer-limit-dynamic"></a>
+		<span id="time-real">2017-01-01 周日 00:00:00</span> <a
+			class="fa fa-mail-reply" href="outer-limit-dynamic"></a>
 	</div>
-	<div id="map">地图</div>
+	<div id="map"></div>
 	<div id="msg">
 		<div id="msg-pie1"></div>
 		<div id="msg-pie2"></div>
@@ -90,6 +91,34 @@
 		</table>
 		  -->
 	</div>
+	<div id="police">
+		<div id="police-title">警力部署</div>
+		<div id="police-head">
+			<span>卡口</span> <span>时间</span> <span>人员</span>
+		</div>
+		<div id="police-body">
+			<ul>
+				<li><span>东风东路烈士陵园路段</span> <span>2017-08-25 07-09时</span> <span><span
+						class="police-icon"></span><span
+						class="police-icon"></span><span
+						class="police-icon"></span><span class="police-icon"></span><span
+						class="police-icon"></span></span></li>
+				<li><span>东风中路越秀桥路段</span> <span>2017-08-26 14-18时</span> <span><span
+						class="police-icon"></span><span class="police-icon"></span><span
+						class="police-icon"></span></span></li>
+				<li><span>东风西路广州医学院路段</span> <span>2017-08-26 20-22时</span> <span><span
+						class="police-icon"></span><span class="police-icon"></span><span
+						class="police-icon"></span></span></li>
+				<li><span>解放中路惠福路路段</span> <span>2017-08-27 07-09时</span> <span><span
+						class="police-icon"></span><span class="police-icon"></span><span
+						class="police-icon"></span></span></li>
+				<li><span>解放北路迎宾馆路段</span> <span>2017-08-28 09-12时</span> <span><span
+						class="police-icon"></span><span class="police-icon"></span><span
+						class="police-icon"></span></span></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 
 	<div id="warning">
 		<div id="warning-title">执法问题</div>
 		<div id="warning-head">
@@ -115,7 +144,7 @@
 					<span>黄埔大道</span> <span>多次违章</span></li>
 			</ul>
 		</div>
-		<!--
+		//这里下面也是隐藏
 		<table>
 			<thead>
 				<tr>
@@ -171,10 +200,15 @@
 				</tr>
 			</tbody>
 		</table>
-		  -->
+		  
 	</div>
+	-->
 	<div id="crowdload">纵向柱状图，拥堵路段前10</div>
-	<div id="quota">今日几个指标的雷达图</div>
+	<div id="quota">
+		<div id="quota-title">今日指标</div>
+		<div id="quota-day"></div>
+		<div id="quota-night"></div>
+	</div>
 	<div id="bg-earth"></div>
 	<!--<div id="bg-moon"></div>  -->
 	<script th:src="@{js/limit-fullpage.js}"></script>
