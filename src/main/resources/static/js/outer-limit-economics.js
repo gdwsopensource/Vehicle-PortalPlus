@@ -163,7 +163,7 @@
     ];
 
     var schema = [
-        {name: '周期', index: 0, text: '周期'},
+        {name: '周期', index: 0, text: '未来四周'},
         {name: '工业产值', index: 1, text: '工业产值'},
         {name: '建筑业产值', index: 2, text: '建筑业产值'},
         {name: '农业产值', index: 3, text: '农业产值'},

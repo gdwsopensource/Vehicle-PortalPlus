@@ -56,7 +56,7 @@
 	var schema = [ {
 		name : 'date',
 		index : 0,
-		text : '年份'
+		text : '未来四周'
 	}, {
 		name : '一氧化碳',
 		index : 1,

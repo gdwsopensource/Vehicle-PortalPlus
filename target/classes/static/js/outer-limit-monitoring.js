@@ -1,4 +1,5 @@
 (function($){
+	/*
 	var uploadedDataURL = "../data/data-1477626617822-SJMboHgel.txt";
 
     function convertData(sourceData) {
@@ -32,11 +33,11 @@
         visualMap: {
             type: "piecewise",
             left: 'right',
-            /*
-			 * pieces: [ {min: 15}, // 不指定 max，表示 max 为无限大（Infinity）。 {min: 12,
-			 * max: 15}, {min: 9, max: 12}, {min: 6, max: 9}, {min: 3, max: 6},
-			 * {max: 3} // 不指定 min，表示 min 为无限大（-Infinity）。 ],
-			 */
+            
+			 //pieces: [ {min: 15}, // 不指定 max，表示 max 为无限大（Infinity）。 {min: 12,
+			// max: 15}, {min: 9, max: 12}, {min: 6, max: 9}, {min: 3, max: 6},
+			// {max: 3} // 不指定 min，表示 min 为无限大（-Infinity）。 ],
+			 
             min: 0,
             max: 15,
             splitNumber: 5,
@@ -81,6 +82,51 @@
         map.centerAndZoom("嘉兴", 13);
 
     });
+    */
+    drawActiveMap("mapECharts");
+    function drawActiveMap(id) {
+		var obj = document.getElementById(id);
+		var chart = echarts.init(obj);
+		var option = null;
+		option = {
+			bmap : {
+				center : [ 113.366286, 23.130748 ],
+				zoom : 13,
+				roam : true
+			},
+			visualMap : {
+				show : false,
+				top : 'top',
+				min : 0,
+				max : 5,
+				seriesIndex : 0,
+				calculable : true,
+				inRange : {
+					color : [ 'blue', 'blue', 'green', 'yellow', 'red' ]
+				}
+			},
+			series : [ {
+				type : 'heatmap',
+				coordinateSystem : 'bmap',
+				data : [ [ 113.326286, 23.140748, 10 ],
+						[ 113.326286, 23.150748, 20 ],
+						[ 113.336286, 23.160748, 30 ],
+						[ 113.337286, 23.160748, 30 ],
+						[ 113.336286, 23.170748, 40 ],
+						[ 113.366286, 23.180748, 40 ],
+						[ 113.366286, 23.190748, 50 ] ],
+				pointSize : 5,
+				blurSize : 6
+			} ]
+		};
+		chart.setOption(option);
+		$(window).on("resize", function() {
+			chart.resize();
+		});
+	}
+    
+    
+    
     var lineECharts = echarts.init(document.getElementById('lineECharts'));
     var lineECharts_option = {
         tooltip: {
@@ -117,6 +163,7 @@
         ]
     };
     lineECharts.setOption(lineECharts_option);
+    /*
     var pieECharts_1 = echarts.init(document.getElementById('pieECharts_1'));
     var pieECharts_1_option = {
         tooltip: {
@@ -137,5 +184,5 @@
         ]
     };
     pieECharts_1.setOption(pieECharts_1_option);
-    
+    */
 })(jQuery);
