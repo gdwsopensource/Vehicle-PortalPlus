@@ -37,7 +37,7 @@
                 "高峰卡口为琶洲卡口004有50000辆次出发，琶洲卡口005有60000辆次到达");
             drawReport(3, globalArea + "OD归属地图",
                 "非广州市车牌共有5000个(25.0%)，其中佛山市车牌车牌最多有2500个(12.5%)");
-            scrollTo("report-box");
+            scrollToFixed("#report-box");
             $("#create-report").html("重新生成报告");
           });
   $("#save-report").on('click', function() {
@@ -45,7 +45,7 @@
   });
   $("#close-report").on('click', function() {
     $("#report-box").hide();
-    scrollTo("od-draw");
+    scrollToFixed("#od-draw");
   });
   $("#od-car-list table>tbody>tr").on(
       'mouseover',
@@ -64,7 +64,7 @@
   $("#od-car-list table>tbody>tr").on('click', function() {
     var plateNo = $(this).find('td').eq(1).text();
     plateNo = trim(plateNo);
-    scrollTo("od-car-detailed");
+    scrollToFixed("#od-car-detailed");
   });
 
   // 自定义函数
@@ -78,6 +78,13 @@
     var drawCarCrossH = parseInt($("#draw-car-cross").width());
     $("#draw-car-cross").css("height", drawCarCrossH);
     $(".od-car-detailed-table-box").css("max-height", drawCarCrossH + "px");
+  }
+  function scrollToFixed(dom,add,time) {  
+    add=add||50;
+    time=time||1000;
+    $('html, body').animate({
+      scrollTop : (parseInt($(dom).offset().top)-add)
+    }, time);
   }
   function scrollTo(divId) {
     document.getElementById(divId).scrollIntoView();
@@ -254,7 +261,7 @@
           // 加载该区数据，重绘该地图，联动右边三图
           globalArea = params.name;
           drawArea("draw-area", area + "OD流向图");
-          scrollTo("od-draw");
+          scrollToFixed("#od-draw");
         } else {
           console.log(params);
         }
@@ -305,7 +312,7 @@
     chart.on("click", function(params) {
       if (params.seriesType == 'line') {
         console.log(params.name);
-        scrollTo("od-car-list");
+        scrollToFixed("#od-car-list");
       }
     });
     $(window).on("resize", function() {
@@ -351,7 +358,7 @@
     chart.on("click", function(params) {
       if (params.seriesType == 'bar') {
         console.log(params.name);
-        scrollTo("od-car-list");
+        scrollToFixed("#od-car-list");
       }
     });
     $(window).on("resize", function() {
@@ -409,7 +416,7 @@
     chart.on("click", function(params) {
       if (params.seriesType == 'pie') {
         console.log(params.name);
-        scrollTo("od-car-list");
+        scrollToFixed("#od-car-list");
       }
     });
     $(window).on("resize", function() {
