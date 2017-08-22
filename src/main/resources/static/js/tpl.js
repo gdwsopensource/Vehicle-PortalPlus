@@ -683,26 +683,5 @@
      chart.resize();
      });
      */
-    
-    /*
-      var obj = document.getElementById(id);
-     var chart = echarts.init(obj);
-     var option = null;
-     option={
-
-     };
-     chart.setOption(option);
-     $(window).on("resize", function () {
-     chart.resize();
-     }); 
-     */
-    
-    function scrollToFixed(dom,add,time) {  
-      add=add||50;
-      time=time||1000;
-      $('html, body').animate({
-        scrollTop : (parseInt($(dom).offset().top)-add)
-      }, time);
-    }
 
 })(jQuery);

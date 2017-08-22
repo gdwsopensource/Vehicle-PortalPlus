@@ -1,18 +1,19 @@
 <!doctype html>
 <html>
-<head th:include="@{include/head}" th:with="title='行为分析'">
+<head th:include="@{include/head}" th:with="title='OD分析'">
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed">
+<body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper behavior-analysis">
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
 		<div class="content-wrapper">
-			<div class="fixed-menu tab-head">
+			<div class="tab-head">
 				<div class="menu active" id="menu-total">概览分析</div>
 				<div class="menu" id="menu-car">单车分析</div>
 				<div class="menu" id="menu-cars">多车对比</div>
 			</div>
-			<section class="content container-fluid for-fixed-top">
+			<section class="content container-fluid">
+
 				<div class="tab-body">
 					<div class="tab-pane" id="tab-total">
 						<div class="total-search search" style="margin-bottom: 15px;">
@@ -22,8 +23,9 @@
 								<button class="btn btn-info btn-search-year" id="total-search-year">年</button>
 								<input type="text" class="search-datarange"
 									id="total-search-daterange" />
+
 							</div>
-							<button class="btn btn-success search-button" id="total-submit-button">概览分析</button>
+							<button class="btn btn-success search-button">概览分析</button>
 						</div>
 						<div class="row">
 							<div class="col-md-4">
@@ -67,7 +69,7 @@
 									id="car-search-plateno" />
 
 							</div>
-							<button class="btn btn-success search-button" id="car-submit-button">单车分析</button>
+							<button class="btn btn-success search-button">单车分析</button>
 						</div>
 						<div class="row">
 							<div class="col-xs-4">
@@ -142,7 +144,7 @@
 
 							<div class="btn-group">
 								<div class="btn btn-success" id="cars-add">添加车辆</div>
-								<div class="btn btn-success" id="cars-submit-button">多车对比</div>
+								<div class="btn btn-success">多车对比</div>
 							</div>
 							<div class="cars-list-box"></div>
 						</div>

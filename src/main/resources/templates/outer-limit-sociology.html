@@ -2,7 +2,7 @@
 <html>
 <head th:include="@{include/head}" th:with="title=''">
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed">
+<body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
@@ -19,20 +19,17 @@
 				</div>
 				<div class="item">
 					<a th:href="outer-limit-environmental">环境情况</a>
-				</div>		
+				</div>
 			</section>
 			<section class="content">
-				<!--  <form class="form-group"
+				<form class="form-group"
 					style="background-color: #ffffff; padding: 20px;">
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
 								<select class="form-control">
 									<option>限外规则选取</option>
-									<option>规则1</option>
-									<option>规则2</option>
-									<option>规则3</option>
-									<option>规则4</option>
+									<option>不能连续行驶2日</option>
 								</select>
 							</div>
 						</div>
@@ -40,10 +37,7 @@
 							<div class="form-group">
 								<select class="form-control">
 									<option>限牌来源选取</option>
-									<option>来源1</option>
-									<option>来源2</option>
-									<option>来源3</option>
-									<option>来源4</option>
+									<option>佛山</option>
 								</select>
 							</div>
 						</div>
@@ -51,10 +45,7 @@
 							<div class="form-group">
 								<select class="form-control">
 									<option>限牌区域选取</option>
-									<option>区域1</option>
-									<option>区域2</option>
-									<option>区域3</option>
-									<option>区域4</option>
+									<option>五山路</option>
 								</select>
 							</div>
 						</div>
@@ -64,7 +55,7 @@
 							<button type="submit" class="btn btn-primary">查询</button>
 						</div>
 					</div>
-				</form>-->
+				</form>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="outer-economics-title bg-orange">社会治安分析</div>
@@ -117,6 +108,6 @@
 	<script th:src="@{js/common.js}"></script>
 	<!-- 该页面额外的js链接 -->
 	<script th:src="@{js/outer-limit-sociology.js}"></script>
-	
+
 </body>
 </html>
