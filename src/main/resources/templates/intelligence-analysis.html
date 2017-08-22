@@ -2,75 +2,122 @@
 <html>
 <head th:include="@{include/head}" th:with="title='情报分析'">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 	<div class="wrapper">
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
 		<div class="content-wrapper intelligence-analysis">
-			<section class="content-tab">
-				<div class="item active">
-					<a th:href="intelligence-analysis">首页</a>
-				</div>
-				<div class="item">
-					<a th:href="intelligence-analysis-traffic">交通分析</a>
-				</div>
-				<div class="item">
-					<a th:href="intelligence-analysis-economics">经济分析</a>
-				</div>
-				<div class="item">
-					<a th:href="intelligence-analysis-environmental">环境分析</a>
-				</div>
-				<div class="item">
-					<a th:href="intelligence-analysis-feelings">舆情分析</a>
-				</div>
-			</section>
-			<section class="content container-fluid">
-				<div class="box box-primary zw-bg-white">
-					<div class="box-header with-border">
-						<h3 class="box-title">长期在广外牌车辆活跃区域</h3>
+			<div class="fixed-menu tab-head">
+				<div class="menu active" id="menu-traffic">交通分析</div>
+				<div class="menu" id="menu-economic">经济分析</div>
+				<div class="menu" id="menu-environment">环境分析</div>
+				<div class="menu" id="menu-feelings">舆情分析</div>
+			</div>
+			<section class="content container-fluid for-fixed-top">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="small-box bg-green-gradient">
+							<div class="inner">
+								<h4 class="text-center">外牌车数量</h4>
+								<h3>
+									243万辆 <span style="font-size: 20px">30%</span>
+								</h3>
+							</div>
+							<div class="icon">
+								<i class="ion ion-android-car"></i>
+							</div>
+						</div>
 					</div>
-					<div class="box-body">
-						<div class="row">
-							<div class="col-sm-8" id="active-map">热点图</div>
-							<div class="col-sm-4 text-white" id="active-icon">
-								<div class="small-box zw-bg-blue">
+					<div class="col-md-3">
+						<div class="small-box bg-red-gradient">
+							<div class="inner">
+								<h4 class="text-center">外牌车经济效益</h4>
+								<h3>
+									234亿元<span style="font-size: 20px"> 33%</span>
+								</h3>
+							</div>
+							<div class="icon">
+								<i class="ion ion-arrow-graph-up-right"></i>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="small-box bg-light-blue-gradient">
+							<div class="inner">
+								<h4 class="text-center">外牌车排放量</h4>
+								<h3>
+									234亿吨<span style="font-size: 20px"> 32%</span>
+								</h3>
+							</div>
+							<div class="icon">
+								<i class="ion ion-trash-a"></i>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="small-box bg-yellow-gradient">
+							<div class="inner">
+								<h4 class="text-center">限外舆情热度</h4>
+								<h3>
+									3450条<span style="font-size: 20px"> <span
+										class="fa fa-arrow-up"></span>8%
+									</span>
+								</h3>
+							</div>
+							<div class="icon">
+								<i class="ion ion-ios-flame"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="traffic">
+					<div class="col-md-12 module-title">
+						<p class="bg-green-gradient text-center">交通情报分析</p>
+					</div>
+					<div class="col-md-8">
+						<div class="box box-danger zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">长期在广外牌车辆活跃区域</h3>
+							</div>
+							<div class="box-body" id="active-map" style="height: 360px;"></div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box box-info zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">长期在广外牌车辆标签</h3>
+							</div>
+							<div class="box-body text-white" id="active-icon"
+								style="height: 360px;">
+								<div class="small-box zw-bg-blue" style="height: 100px;">
 									<div class="inner">
-										<h3>53%</h3>
+										<h3>23%</h3>
 										<p>长期在广外车辆的外牌车辆占比</p>
 									</div>
 									<div class="icon">
 										<i class="ion ion-pie-graph"></i>
 									</div>
 								</div>
-								<div class="small-box zw-bg-red">
+								<div class="small-box zw-bg-red" style="height: 100px;">
 									<div class="inner">
-										<h3>32</h3>
+										<h3>32km</h3>
 										<p>长期在广外牌车的月平均行驶里程</p>
 									</div>
 									<div class="icon">
 										<i class="ion ion-model-s"></i>
 									</div>
 								</div>
-								<div class="small-box zw-bg-green">
+								<div class="small-box zw-bg-green" style="height: 100px;">
 									<div class="inner">
-										<h3>25</h3>
+										<h3>25次</h3>
 										<p>每月使用次数</p>
 									</div>
 									<div class="icon">
 										<i class="ion ion-pinpoint"></i>
 									</div>
 								</div>
+								s
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3">
-						<div class="box box-success zw-bg-white">
-							<div class="box-header with-border">
-								<h3 class="box-title">城市拥堵路段Top10</h3>
-							</div>
-							<div class="box-body" id="crowd-bar" style="height: 300px;"></div>
 						</div>
 					</div>
 					<div class="col-md-3">
@@ -81,7 +128,15 @@
 							<div class="box-body" id="own-bar" style="height: 300px;"></div>
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-4">
+						<div class="box box-success zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">城市拥堵路段Top10</h3>
+							</div>
+							<div class="box-body" id="crowd-bar" style="height: 300px;"></div>
+						</div>
+					</div>
+					<div class="col-md-5">
 						<div class="box box-danger zw-bg-white">
 							<div class="box-header with-border">
 								<h3 class="box-title">拥堵延时指数和外来车流量占比</h3>
@@ -89,9 +144,6 @@
 							<div class="box-body" id="crowd-line" style="height: 300px;"></div>
 						</div>
 					</div>
-				</div>
-
-				<div class="row">
 					<div class="col-xs-12">
 						<div class="box box-info zw-bg-white">
 							<div class="box-header with-border">
@@ -102,7 +154,7 @@
 									<thead>
 										<tr>
 											<th>排名</th>
-											<th>区域名</th>
+											<th>路段名</th>
 											<th>排名变化</th>
 											<th>高峰拥堵延时指数↓</th>
 											<th>高峰平均速度（KM/H）</th>
@@ -112,81 +164,82 @@
 									<tbody>
 										<tr>
 											<td>1</td>
-											<td>黄埔大道</td>
-											<td class="text-info">←→</td>
-											<td>2.10</td>
+											<td>广园快速广本汽车公司路段</td>
+											<td class="text-info"><i class="fa fa-arrows-h"></i></td>
+											<td>3.10</td>
 											<td>22.45</td>
 											<td>46.82</td>
 										</tr>
 										<tr>
 											<td>2</td>
-											<td>花城大道</td>
-											<td class="text-danger">↑</td>
-											<td>2.10</td>
+											<td>环城高速三滘立交以西K41+400路段</td>
+											<td class="text-danger"><i class="fa fa-long-arrow-up"></i></td>
+											<td>2.95</td>
 											<td>22.45</td>
 											<td>46.82</td>
 										</tr>
 										<tr>
 											<td>3</td>
-											<td>琶洲</td>
-											<td class="text-success">↓</td>
-											<td>2.10</td>
+											<td>江海大道新光快速入口路段</td>
+											<td class="text-success"><i
+												class="fa fa-long-arrow-down"></i></td>
+											<td>2.85</td>
 											<td>22.45</td>
 											<td>46.82</td>
 										</tr>
 										<tr>
 											<td>4</td>
-											<td>琶洲</td>
-											<td class="text-success">↓</td>
-											<td>2.10</td>
+											<td>广园快速路大观路以西路段</td>
+											<td class="text-info"><i class="fa fa-arrows-h"></i></td>
+											<td>2.73</td>
 											<td>22.45</td>
 											<td>46.82</td>
 										</tr>
 										<tr>
 											<td>5</td>
-											<td>琶洲</td>
-											<td class="text-success">↓</td>
-											<td>2.10</td>
+											<td>机场高速公路黄石路路段</td>
+											<td class="text-info"><i class="fa fa-arrows-h"></i></td>
+											<td>2.55</td>
 											<td>22.45</td>
 											<td>46.82</td>
 										</tr>
 										<tr>
 											<td>6</td>
-											<td>琶洲</td>
-											<td class="text-success">↓</td>
-											<td>2.10</td>
+											<td>广从公路(G105)华快三期以南路段</td>
+											<td class="text-info"><i class="fa fa-arrows-h"></i></td>
+											<td>2.54</td>
 											<td>22.45</td>
 											<td>46.82</td>
 										</tr>
 										<tr>
 											<td>7</td>
-											<td>琶洲</td>
-											<td class="text-success">↓</td>
-											<td>2.10</td>
+											<td>广园快速路中海康城路段</td>
+											<td class="text-info"><i class="fa fa-arrows-h"></i></td>
+											<td>2.43</td>
 											<td>22.45</td>
 											<td>46.82</td>
 										</tr>
 										<tr>
 											<td>8</td>
-											<td>琶洲</td>
-											<td class="text-success">↓</td>
-											<td>2.10</td>
+											<td>增槎路第二巴士公司路段</td>
+											<td class="text-info"><i class="fa fa-arrows-h"></i></td>
+											<td>2.42</td>
 											<td>22.45</td>
 											<td>46.82</td>
 										</tr>
 										<tr>
 											<td>9</td>
-											<td>琶洲</td>
-											<td class="text-success">↓</td>
-											<td>2.10</td>
+											<td>广园快速路东二环入口路段</td>
+											<td class="text-info"><i class="fa fa-arrows-h"></i></td>
+											<td>2.40</td>
 											<td>22.45</td>
 											<td>46.82</td>
 										</tr>
 										<tr>
 											<td>10</td>
-											<td>琶洲</td>
-											<td class="text-success">↓</td>
-											<td>2.10</td>
+											<td>广深沿江高速夏港入口路段</td>
+											<td class="text-info"><i class="fa fa-arrows-h"></i></td>
+											<td>2.39</td>
 											<td>22.45</td>
 											<td>46.82</td>
 										</tr>
@@ -197,12 +250,106 @@
 						</div>
 					</div>
 				</div>
+				<div class="row" id="economic">
+					<div class="col-md-12 module-title">
+						<p class="bg-red-gradient text-center">经济情报分析</p>
+					</div>
+					<div class="col-md-5">
+						<div class="box box-info zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">区域经济</h3>
+							</div>
+							<div class="box-body" id="economic-area" style="height: 500px;"></div>
+						</div>
+					</div>
+					<div class="col-md-7">
+						<div class="box box-warning zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">经济指标</h3>
+							</div>
+							<div class="box-body" id="economic-type" style="height: 500px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="environment">
+					<div class="col-md-12 module-title">
+						<p class="bg-light-blue-gradient text-center">环境情报分析</p>
+					</div>
+					<div class="col-md-6">
+						<div class="box box-warning zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">污染物排放量</h3>
+							</div>
+							<div class="box-body" id="environment-gas" style="height: 500px;"></div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="box box-success zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">排放标准</h3>
+							</div>
+							<div class="box-body" id="environment-type"
+								style="height: 500px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="feelings">
+					<div class="col-md-12 module-title">
+						<p class="bg-yellow-gradient text-center">舆情情报分析</p>
+					</div>
+					<div class="col-md-4">
+						<div class="box box-success zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">舆情满意度</h3>
+							</div>
+							<div class="box-body" id="feelings-score" style="height: 400px;"></div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box box-danger zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">舆情热点</h3>
+							</div>
+							<div class="box-body" id="tagscloud" style="height: 400px;">
+								<a class="tagc1">广州限外了？</a> <a class="tagc2">限外</a> <a
+									class="tagc5">佛山居民不满限外</a> <a class="tagc1">交通改善</a> <a
+									class="tagc2">出门搭公交</a> <a class="tagc5">地铁挤满了人</a> <a
+									class="tagc1">你怎么看限外</a> <a class="tagc2">广州居民满意限外</a> <a
+									class="tagc5">佛限车牌不限人</a><a class="tagc1">广州限外了？</a> <a
+									class="tagc2">限外</a> <a class="tagc5">佛山居民不满限外</a> <a
+									class="tagc1">交通改善</a> <a class="tagc2">出门搭公交</a> <a
+									class="tagc5">地铁挤满了人</a> <a class="tagc1">你怎么看限外</a> <a
+									class="tagc2">广州居民满意限外</a> <a class="tagc5">佛限车牌不限人</a><a
+									class="tagc1">广州限外了？</a> <a class="tagc2">限外</a> <a
+									class="tagc5">佛山居民不满限外</a> <a class="tagc1">交通改善</a> <a
+									class="tagc2">出门搭公交</a> <a class="tagc5">地铁挤满了人</a> <a
+									class="tagc1">你怎么看限外</a> <a class="tagc2">广州居民满意限外</a> <a
+									class="tagc5">佛限车牌不限人</a><a class="tagc1">广州限外了？</a> <a
+									class="tagc2">限外</a> <a class="tagc5">佛山居民不满限外</a> <a
+									class="tagc1">交通改善</a> <a class="tagc2">出门搭公交</a> <a
+									class="tagc5">地铁挤满了人</a> <a class="tagc1">你怎么看限外</a> <a
+									class="tagc2">广州居民满意限外</a> <a class="tagc5">佛限车牌不限人</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box box-info zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">舆情关注度</h3>
+							</div>
+							<div class="box-body" id="feelings-way" style="height: 400px;">
+
+							</div>
+						</div>
+					</div>
+				</div>
 			</section>
 		</div>
 		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
 	</div>
 	<script th:src="@{js/common.js}"></script>
 	<!-- 该页面额外的js链接 -->
+	<script th:src="@{plugins/tagscloud/tagscloud.js}"></script>
 	<script th:src="@{js/intelligence-analysis.js}"></script>
 </body>
 </html>
