@@ -8,7 +8,7 @@
 		},
 		legend : {
 			orient : 'horizontal',
-			data : [ '类型1', '类型2', '类型3', '类型4', '类型5' ],
+			data : [ '闯红灯', '逆向行驶', '酒驾', '多次违章', '其他' ],
 			bottom : 0,
 			width : '90%',
 			itemGap : 20
@@ -39,19 +39,19 @@
 			},
 			data : [ {
 				value : 335,
-				name : '类型1'
+				name : '闯红灯'
 			}, {
 				value : 310,
-				name : '类型2'
+				name : '逆向行驶'
 			}, {
 				value : 234,
-				name : '类型3'
+				name : '酒驾'
 			}, {
 				value : 135,
-				name : '类型4'
+				name : '多次违章'
 			}, {
 				value : 1548,
-				name : '类型5'
+				name : '其他'
 			} ]
 		} ]
 	}
@@ -60,12 +60,12 @@
 	// 基于准备好的dom，初始化echarts实例
 	var barECharts = echarts.init(document.getElementById('barECharts'));
 	var barECharts_option = {
-		tooltip : {
-			trigger : 'axis',
-			axisPointer : { // 坐标轴指示器，坐标轴触发有效
-				type : 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-			}
-		},
+		 tooltip : {
+	        trigger: 'axis',
+	        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+	            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+	        }
+	    },
 		grid : {
 			left : '3%',
 			right : '4%',
@@ -74,7 +74,8 @@
 		},
 		xAxis : [ {
 			type : 'category',
-			data : [ '卡口1', '卡口2', '卡口3', '卡口4', '卡口5' ],
+			data : ['科韵路', '花城大道', '临江大道', '珠吉路',
+					'广园快速路'],
 			axisTick : {
 				alignWithLabel : true
 			}
@@ -86,7 +87,7 @@
 			name : '过车频次',
 			type : 'bar',
 			barWidth : '60%',
-			data : [ 10, 52, 200, 334, 390 ],
+			data : [1020, 5200, 20000, 33400, 39000],
 			itemStyle : {
 				normal : {
 					color : function(params) {
@@ -101,7 +102,7 @@
 	barECharts.setOption(barECharts_option);
 
 	$('#tab_2-2').find('div').slimScroll({
-		height : '380px',
+		height : '390px',
 		size : '5px',
 		color : '#d2d6de'
 	});
@@ -132,7 +133,8 @@
 					cancelLabel : '取消',
 					applyLabel : '确认',
 					daysOfWeek : [ "日", "一", "二", "三", "四", "五", "六" ],
-					monthNames:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"]
+					monthNames : [ "一月", "二月", "三月", "四月", "五月", "六月", "七月",
+							"八月", "九月", "十月", "十一月", "十二月" ]
 				},
 				startDate : new Date(),
 			},

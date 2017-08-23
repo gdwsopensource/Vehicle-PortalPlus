@@ -54,7 +54,7 @@
 	padding-top: 40px;
 }
 </style>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 	<div class="wrapper">
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
@@ -71,7 +71,7 @@
 					<div class="col-md-12">
 						<div class="box box-info">
 							<div class="box-header with-border">
-								<div class="box-title">交通外牌路网实时监控</div>
+								<div class="box-title">交通外牌车活跃区域</div>
 							</div>
 							<div class="box-body no-padding">
 								<div class="row">
@@ -237,7 +237,7 @@
 					<div class="col-md-4">
 						<div class="box box-success">
 							<div class="box-header with-border">
-								<div class="box-title">舆情监控</div>
+								<div class="box-title">舆情分析</div>
 							</div>
 							<div class="box-body no-padding" id="monitor_result">
 								<table class="table no-margin">
@@ -260,94 +260,21 @@
 										<tr>
 											<td class="text-center"><span
 												class="badge bg-light-blue">3</span></td>
-											<td>广州市区部分路段汽车限行</td>
+											<td>限外等于排外？</td>
 											<td><span class="icon-fire"></span></td>
 										</tr>
 										<tr>
 											<td class="text-center"><span
 												class="badge text-blue-badge">4</span></td>
-											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
-											</td>
+											<td>佛山在广州工作者不满限外</td>
 											<td><span class="icon-fire"></span></td>
 										</tr>
 										<tr>
 											<td class="text-center"><span
 												class="badge text-blue-badge">5</span></td>
-											<td>广州市区部分路段汽车限行</td>
+											<td>广州道路不拥堵了</td>
 											<td><span class="icon-fire"></span></td>
-										</tr>
-										<tr>
-											<td class="text-center"><span
-												class="badge text-blue-badge">6</span></td>
-											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
-											</td>
-											<td><span class="icon-fire"></span></td>
-										</tr>
-										<tr>
-											<td class="text-center"><span
-												class="badge text-blue-badge">7</span></td>
-											<td>广州市区部分路段汽车限行</td>
-											<td><span class="icon-fire"></span></td>
-										</tr>
-										<tr>
-											<td class="text-center"><span
-												class="badge text-blue-badge">8</span></td>
-											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
-											</td>
-											<td><span class="icon-fire"></span></td>
-										</tr>
-										<tr>
-											<td class="text-center"><span
-												class="badge text-blue-badge">9</span></td>
-											<td>广州市区部分路段汽车限行</td>
-											<td><span class="icon-fire"></span></td>
-										</tr>
-										<tr>
-											<td class="text-center"><span
-												class="badge text-blue-badge">10</span></td>
-											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
-											</td>
-											<td><span class="icon-fire"></span></td>
-										</tr>
-										<tr>
-											<td class="text-center"><span
-												class="badge text-blue-badge">11</span></td>
-											<td>广州市区部分路段汽车限行</td>
-											<td><span class="icon-fire"></span></td>
-										</tr>
-										<tr>
-											<td class="text-center"><span
-												class="badge text-blue-badge">12</span></td>
-											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
-											</td>
-											<td><span class="icon-fire"></span></td>
-										</tr>
-										<tr>
-											<td class="text-center"><span
-												class="badge text-blue-badge">13</span></td>
-											<td>广州市区部分路段汽车限行</td>
-											<td><span class="icon-fire"></span></td>
-										</tr>
-										<tr>
-											<td class="text-center"><span
-												class="badge text-blue-badge">14</span></td>
-											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
-											</td>
-											<td><span class="icon-fire"></span></td>
-										</tr>
-										<tr>
-											<td class="text-center"><span
-												class="badge text-blue-badge">15</span></td>
-											<td>广州市区部分路段汽车限行</td>
-											<td><span class="icon-fire"></span></td>
-										</tr>
-										<tr>
-											<td class="text-center"><span
-												class="badge text-blue-badge">16</span></td>
-											<td>广州首开限外罚单，<span class="text-blue">262</span>辆外地牌车被罚
-											</td>
-											<td><span class="icon-fire"></span></td>
-										</tr>
+										</tr>										
 									</tbody>
 								</table>
 							</div>
@@ -368,7 +295,7 @@
 					<div class="col-md-4">
 						<div class="box box-success">
 							<div class="box-header with-border">
-								<div class="box-title">外地车和本地车占比</div>
+								<div class="box-title">外地车和本地车数量分析</div>
 							</div>
 							<div class="box-body">
 								<div id="pieECharts_1" style="height: 350px;"></div>
@@ -388,7 +315,7 @@
 					<div class="col-md-4">
 						<div class="box">
 							<div class="box-header with-border">
-								<div class="box-title">今日外牌车辆变化时序图</div>
+								<div class="box-title">今日外牌车数量时序变化</div>
 							</div>
 							<div class="box-body">
 								<div id="barECharts" style="height: 350px;"></div>

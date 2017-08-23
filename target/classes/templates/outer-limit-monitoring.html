@@ -2,7 +2,7 @@
 <html>
 <head th:include="@{include/head}" th:with="title=''">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 	<div class="wrapper">
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <select class="form-control">
                                 <option>限外规则选取</option>
-                                <option>不能连续行驶2日</option>
+                                <option selected="selected">不能连续行驶2日</option>
                             </select>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         <div class="form-group">
                             <select class="form-control">
                                 <option>限牌来源选取</option>
-                                <option>佛山</option>
+                                <option selected="selected">佛山</option>
                             </select>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <select class="form-control">
                                 <option>限牌区域选取</option>
-                                <option>五山路</option>
+                                <option selected="selected">五山路</option>
                             </select>
                         </div>
                     </div>

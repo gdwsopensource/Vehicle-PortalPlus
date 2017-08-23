@@ -85,46 +85,47 @@
     */
     drawActiveMap("mapECharts");
     function drawActiveMap(id) {
-		var obj = document.getElementById(id);
-		var chart = echarts.init(obj);
-		var option = null;
-		option = {
-			bmap : {
-				center : [ 113.366286, 23.130748 ],
-				zoom : 13,
-				roam : true
-			},
-			visualMap : {
-				show : false,
-				top : 'top',
-				min : 0,
-				max : 5,
-				seriesIndex : 0,
-				calculable : true,
-				inRange : {
-					color : [ 'blue', 'blue', 'green', 'yellow', 'red' ]
-				}
-			},
-			series : [ {
-				type : 'heatmap',
-				coordinateSystem : 'bmap',
-				data : [ [ 113.326286, 23.140748, 10 ],
-						[ 113.326286, 23.150748, 20 ],
-						[ 113.336286, 23.160748, 30 ],
-						[ 113.337286, 23.160748, 30 ],
-						[ 113.336286, 23.170748, 40 ],
-						[ 113.366286, 23.180748, 40 ],
-						[ 113.366286, 23.190748, 50 ] ],
-				pointSize : 5,
-				blurSize : 6
-			} ]
-		};
-		chart.setOption(option);
-		$(window).on("resize", function() {
-			chart.resize();
-		});
-	}
-    
+        $.get('data/limit-fullpage-cross.json', function(data) {
+          var len = data.length;
+          var hotData = [];
+          for (var i = 0; i < len; i += 2) {
+            hotData[i / 2] = [ data[i].long, data[i].lat, data[i].count ];
+          }
+          var obj = document.getElementById(id);
+          var chart = echarts.init(obj);
+          var option = null;
+          option = {
+            bmap : {
+              center : [113.335974,23.12906],
+              zoom : 12,
+              roam : 'move'
+            },
+            visualMap : {
+              show : false,
+              top : 'top',
+              min : 0,
+              max : 5,
+              seriesIndex : 0,
+              calculable : true,
+              inRange : {
+                color : [ 'blue', 'blue', 'green', 'yellow', 'red' ]
+              }
+            },
+            series : [ {
+              type : 'heatmap',
+              coordinateSystem : 'bmap',
+              data : hotData,
+              pointSize : 10,
+              blurSize : 20
+            } ]
+          };
+          chart.setOption(option);
+          $(window).on("resize", function() {
+            chart.resize();
+          });
+        })
+
+      }
     
     
     var lineECharts = echarts.init(document.getElementById('lineECharts'));

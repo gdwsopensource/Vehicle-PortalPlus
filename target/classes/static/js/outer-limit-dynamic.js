@@ -42,45 +42,47 @@
 	 */
 	drawActiveMap("mapECharts");
 	function drawActiveMap(id) {
-		var obj = document.getElementById(id);
-		var chart = echarts.init(obj);
-		var option = null;
-		option = {
-			bmap : {
-				center : [ 113.366286, 23.130748 ],
-				zoom : 13,
-				roam : true
-			},
-			visualMap : {
-				show : false,
-				top : 'top',
-				min : 0,
-				max : 5,
-				seriesIndex : 0,
-				calculable : true,
-				inRange : {
-					color : [ 'blue', 'blue', 'green', 'yellow', 'red' ]
-				}
-			},
-			series : [ {
-				type : 'heatmap',
-				coordinateSystem : 'bmap',
-				data : [ [ 113.326286, 23.140748, 10 ],
-						[ 113.326286, 23.150748, 20 ],
-						[ 113.336286, 23.160748, 30 ],
-						[ 113.337286, 23.160748, 30 ],
-						[ 113.336286, 23.170748, 40 ],
-						[ 113.366286, 23.180748, 40 ],
-						[ 113.366286, 23.190748, 50 ] ],
-				pointSize : 5,
-				blurSize : 6
-			} ]
-		};
-		chart.setOption(option);
-		$(window).on("resize", function() {
-			chart.resize();
-		});
-	}
+	    $.get('data/limit-fullpage-cross.json', function(data) {
+	      var len = data.length;
+	      var hotData = [];
+	      for (var i = 0; i < len; i += 2) {
+	        hotData[i / 2] = [ data[i].long, data[i].lat, data[i].count ];
+	      }
+	      var obj = document.getElementById(id);
+	      var chart = echarts.init(obj);
+	      var option = null;
+	      option = {
+	        bmap : {
+	          center : [ 113.366286, 23.130748 ],
+	          zoom : 12,
+	          roam : 'move'
+	        },
+	        visualMap : {
+	          show : false,
+	          top : 'top',
+	          min : 0,
+	          max : 5,
+	          seriesIndex : 0,
+	          calculable : true,
+	          inRange : {
+	            color : [ 'blue', 'blue', 'green', 'yellow', 'red' ]
+	          }
+	        },
+	        series : [ {
+	          type : 'heatmap',
+	          coordinateSystem : 'bmap',
+	          data : hotData,
+	          pointSize : 10,
+	          blurSize : 20
+	        } ]
+	      };
+	      chart.setOption(option);
+	      $(window).on("resize", function() {
+	        chart.resize();
+	      });
+	    })
+
+	  }
     $('#problem_result').slimScroll({
         height: '350px',
         size: '5px',
@@ -94,14 +96,23 @@
 
     var radarECharts = echarts.init(document.getElementById('radarECharts'));
     var radarECharts_option = {
+		tooltip : {
+			trigger : 'item',
+			//formatter : "{a} <br/>{b}: {c} ({d}%)"
+		},	
+		legend:{
+			top:10,
+			right:10,
+			data:["今日限外","昨日限外"]
+		},
         radar: [
             {
                 indicator: [
-                    {text: '违章'},
-                    {text: '车流压力'},
-                    {text: '通行指数'},
-                    {text: '其他'},
-                    {text: '指标五'}
+                    {text: '违章数量'},
+                    {text: '外牌车辆占比'},
+                    {text: '通畅指数'},
+                    {text: '舆情满意度'},
+                    {text: '污染排放量'}
                 ],
                 radius: 120,
                 startAngle: 90,
@@ -149,7 +160,7 @@
                 data: [
                     {
                         value: [100, 8, 0.40, -80, 2000],
-                        name: '图一',
+                        name: '今日限外',
                         symbol: 'rect',
                         symbolSize: 5,
                         lineStyle: {
@@ -160,7 +171,7 @@
                     },
                     {
                         value: [60, 5, 0.30, -100, 1500],
-                        name: '图二',
+                        name: '昨日限外',
                         areaStyle: {
                             normal: {
                                 color: 'rgba(255, 255, 255, 0.5)'

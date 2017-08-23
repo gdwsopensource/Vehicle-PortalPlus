@@ -6,18 +6,16 @@
 		},
 		radar : [ {
 			indicator : [ {
-				text : '预警1'
+				text : '闯红灯'
 			}, {
-				text : '预警2'
+				text : '假套牌'
 			}, {
-				text : '预警3'
+				text : '其他'
 			}, {
-				text : '预警4'
+				text : '多次违章'
 			}, {
-				text : '预警5'
-			}, {
-				text : '预警6'
-			} ],
+				text : '违法交通规则'
+			}],
 			startAngle : 90,
 			splitNumber : 4
 		} ],
@@ -25,7 +23,7 @@
 			name : '每日预警',
 			type : 'radar',
 			data : [ {
-				value : [ 120, 118, 130, 100, 99, 70 ],
+				value : [ 120, 118, 130, 100, 99],
 				name : '今天预警',
 				label : {
 					normal : {
@@ -45,8 +43,8 @@
 						color : '#5e9ea6'
 					}
 				},
-			}, {
-				value : [ 90, 113, 140, 30, 70, 60 ],
+			}/*, {
+				value : [ 90, 113, 140, 30, 70],
 				name : '昨天预警',
 				areaStyle : {
 					normal : {
@@ -71,7 +69,7 @@
 						color : '#d89982'
 					}
 				}
-			} ]
+			}*/ ]
 		} ]
 	};
 	radarECharts.setOption(radarECharts_option);
@@ -155,7 +153,7 @@
 			trigger : 'axis'
 		},
 		legend : {
-			data : [ '案件1', '案件2', '案件3', '案件4', '案件5' ]
+			data : [ '闯红灯', '假套牌', '其他', '多次违章', '违反交通规则' ]
 		},
 		xAxis : {
 			type : 'category',
@@ -172,7 +170,7 @@
 			containLabel : true
 		},
 		series : [ {
-			name : '案件1',
+			name : '闯红灯',
 			type : 'line',
 			data : [ 40, 30, 40, 52, 15, 85, 52 ],
 			itemStyle : {
@@ -181,7 +179,7 @@
 				}
 			}
 		}, {
-			name : '案件2',
+			name : '假套牌',
 			type : 'line',
 			data : [ 50, 20, 60, 58, 56, 35, 30 ],
 			itemStyle : {
@@ -190,7 +188,7 @@
 				}
 			}
 		}, {
-			name : '案件3',
+			name : '其他',
 			type : 'line',
 			data : [ 20, 40, 60, 72, 16, 85, 65 ],
 			itemStyle : {
@@ -199,7 +197,7 @@
 				}
 			}
 		}, {
-			name : '案件4',
+			name : '多次违章',
 			type : 'line',
 			data : [ 10, 60, 77, 22, 35, 55, 63 ],
 			itemStyle : {
@@ -208,7 +206,7 @@
 				}
 			}
 		}, {
-			name : '案件5',
+			name : '违反交通规则',
 			type : 'line',
 			data : [ 60, 20, 45, 36, 25, 45, 88 ],
 			itemStyle : {
