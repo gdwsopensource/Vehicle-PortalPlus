@@ -27,8 +27,10 @@
   //drawGauge("quota-night", 24, "晚高峰平均速度");
   
   //drawGauge2("quota-day", 20, 24, "早晚高峰平均速度");
-  drawGauge("quota-day", 20, "高峰平均车速");
-  drawGauge3("quota-night", 40, "公共交通出行使用率");
+  drawGauge("quota-day", 25, "高峰平均车速");
+  drawGauge3("quota-night", 63, "公共交通出行使用率");
+  
+  drawGauge4("totalnumber", 60, "限外指数");
   
   // drawQuota("quota");
   dynamic();
@@ -471,8 +473,8 @@
       yAxis : {
         type : 'category',
         name : '拥堵路段',
-        data : [   '增槎路第二巴士公司路段', '广园快速路中海康城路段', '广从公路(G105)华快三期以南路段', '机场高速公路黄石路路段', '广园快速路大观路以西路段', '江海大道新光快速入口路段',
-                   '环城高速三滘立交以西K41+400路段','广园快速广本汽车公司路段' ],
+        data : [   '增槎路', '广园快速路', '广从公路', '机场高速公路', '广园快速路', '江海大道',
+                   '环城高速','东风东路' ],
         axisLabel : {
           textStyle : {
             color : '#FFFFFF',
@@ -548,11 +550,11 @@
       series : [ {
         name : '外牌车辆占比',
         type : 'line',
-        data : [ 0.28, 0.33, 0.14, 0.32, 0.35, 0.24, 0.23, 0.37, 0.28 ]
+        data : [ 0.28, 0.33, 0.31, 0.32, 0.35, 0.24, 0.31, 0.26, 0.28 ]
       }, {
         name : '拥堵延时指数',
         type : 'line',
-        data : [ 1.2, 1.2, 1.2, 1.45, 1.4, 1.2, 1.2, 1.1, 1.2 ]
+        data : [ 1.2, 1.2, 1.2, 1.3, 1.4, 1.2, 1.3, 1.25, 1.2 ]
       } ],
       color : [ 'rgb(92,180,218)', 'rgb(244,156,16)', 'rgb(244,116,100)',
           'rgb(80,196,186)', 'rgb(134,118,168)' ]
@@ -637,7 +639,7 @@
         x : 'center',
         y : '0',
         textStyle : {
-          fontSize : 12,
+          fontSize : 20,
           color : '#FFFFFF'
         }
       },
@@ -750,7 +752,7 @@
         x : 'center',
         y : '0',
         textStyle : {
-          fontSize : 12,
+          fontSize : 20,
           color : '#FFFFFF'
         }
       },
@@ -761,6 +763,59 @@
           formatter : '{value}%',
           textStyle : {
             fontSize : 12
+          },
+          offsetCenter : [ 0, '20%' ]
+        },
+        data : [ {
+          value : value
+        } ],
+        min : 0,
+        max : 100,
+        splitNumber : 10,
+        axisLine : {
+          show : true,
+          lineStyle : {
+            width : 15,
+            color : [ [ 0.2, 'rgb(255,0,51)' ], [ 0.4, 'rgb(255,51,51)' ],
+                [ 0.6, 'rgb(255,102,51)' ], [ 0.8, 'rgb(255,153,51)' ],
+                [ 1.0, 'rgb(255,204,51)' ] ]
+          }
+        },
+        splitLine : {
+          length : 15
+        },
+        pointer : {
+          length : '50%',
+          width : 5
+        }
+      } ]
+    };
+    chart.setOption(option);
+    $(window).on("resize", function() {
+      chart.resize();
+    });
+  }
+  function drawGauge4(id, value, title) {
+    var obj = document.getElementById(id);
+    var chart = echarts.init(obj);
+    var option = null;
+    option = {
+      title : {
+        text : title || '',
+        x : 'center',
+        y : '0',
+        textStyle : {
+          fontSize : 20,
+          color : '#FFFFFF'
+        }
+      },
+      series : [ {
+        type : 'gauge',
+        radius : '70%',
+        detail : {
+          formatter : '{value}',
+          textStyle : {
+            fontSize : 20
           },
           offsetCenter : [ 0, '20%' ]
         },
