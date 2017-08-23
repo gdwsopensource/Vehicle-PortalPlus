@@ -339,7 +339,7 @@
 				}
 			},
 			data : [ {
-				name : '公园',
+				name : '深圳',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -347,7 +347,7 @@
 					}
 				}
 			}, {
-				name : '高校',
+				name : '珠海',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -355,7 +355,7 @@
 					}
 				}
 			}, {
-				name : '小区',
+				name : '东莞',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -363,7 +363,7 @@
 					}
 				}
 			}, {
-				name : '别墅',
+				name : '中山',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -371,7 +371,7 @@
 					}
 				}
 			}, {
-				name : '养生',
+				name : '佛山',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -379,7 +379,7 @@
 					}
 				}
 			}, {
-				name : '大学城',
+				name : '番禺',
 				symbolSize : 20,
 				itemStyle : {
 					normal : {
@@ -395,7 +395,7 @@
 					}
 				}
 			}, {
-				name : '黄埔大道',
+				name : '海珠',
 				symbolSize : 20,
 				itemStyle : {
 					normal : {
@@ -403,7 +403,7 @@
 					}
 				}
 			}, {
-				name : '番禺',
+				name : '黄埔',
 				symbolSize : 20,
 				itemStyle : {
 					normal : {
@@ -411,7 +411,7 @@
 					}
 				}
 			}, {
-				name : '度假村',
+				name : '清远',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -419,7 +419,7 @@
 					}
 				}
 			}, {
-				name : '展览馆',
+				name : '肇庆',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -427,7 +427,7 @@
 					}
 				}
 			}, {
-				name : '五星酒店',
+				name : '江门',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -435,7 +435,7 @@
 					}
 				}
 			}, {
-				name : '专营店',
+				name : '惠州',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -443,7 +443,7 @@
 					}
 				}
 			}, {
-				name : '家具',
+				name : '汕头',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -451,7 +451,7 @@
 					}
 				}
 			}, {
-				name : '购物',
+				name : '云浮',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -459,7 +459,7 @@
 					}
 				}
 			}, {
-				name : '驾校',
+				name : '茂名',
 				symbolSize : 12,
 				itemStyle : {
 					normal : {
@@ -468,41 +468,41 @@
 				}
 			} ],
 			links : [ {
-				source : '别墅',
+				source : '茂名',
 				target : '番禺'
 			}, {
-				source : '养生',
+				source : '云浮',
 				target : '番禺'
 			}, {
-				source : '度假村',
+				source : '汕头',
 				target : '番禺'
 			}, {
-				source : '展览馆',
-				target : '黄埔大道'
+				source : '惠州',
+				target : '黄埔'
 			}, {
-				source : '五星酒店',
-				target : '黄埔大道'
+				source : '深圳',
+				target : '黄埔'
 			}, {
-				source : '专营店',
-				target : '黄埔大道'
+				source : '东莞',
+				target : '黄埔'
 			}, {
-				source : '家具',
+				source : '清远',
 				target : '天河'
 			}, {
-				source : '购物',
+				source : '佛山',
 				target : '天河'
 			}, {
-				source : '驾校',
+				source : '中山',
 				target : '天河'
 			}, {
-				source : '公园',
-				target : '大学城'
+				source : '珠海',
+				target : '海珠'
 			}, {
-				source : '高校',
-				target : '大学城'
+				source : '江门',
+				target : '海珠'
 			}, {
-				source : '小区',
-				target : '大学城'
+				source : '肇庆',
+				target : '海珠'
 			} ]
 		} ]
 	};
