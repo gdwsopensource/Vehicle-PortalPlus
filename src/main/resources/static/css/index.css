@@ -75,7 +75,7 @@
 	width: 100%;
 	height: 44px;
 	line-height: 44px;
-	z-index: 10000;
+	z-index: 900;
 	overflow: hidden;
 	font-size: 18px;
 	background-color: rgb(236,240,245);
@@ -498,6 +498,23 @@
 	font-size: 0.75em;
 	line-height: 1em;
 }
+.limit-fullpage #total {
+	position: absolute;
+	top: 10%;
+	left: 1%;
+	width: 29%;
+	height: 28%;
+	z-index: 2;
+	background: rgba(40, 40, 140, 0.2) !important;
+	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+}
+
+.limit-fullpage #total #totalnumber{
+	width: 100%;
+	height: 90%;
+	margin-top: 5%;
+}
+
 
 .limit-fullpage #nonlocalratio {
 	position: absolute;
@@ -534,9 +551,9 @@
 
 .limit-fullpage #quota {
 	position: absolute;
-	top: 10%;
-	left: 1%;
-	width: 29%;
+	top: 70%;
+	left: 61%;
+	width: 38%;
 	height: 28%;
 	z-index: 2;
 	background: rgba(40, 40, 140, 0.2) !important;
@@ -556,14 +573,16 @@
 .limit-fullpage #quota #quota-day {
 	display: inline-block;
 	margin-left: 5%;
+	margin-top: 5%;
 	width: 45%;
-	height: 80%;
+	height: 90%;
 }
 
 .limit-fullpage #quota #quota-night {
 	display: inline-block;
+	margin-top: 5%;
 	width: 45%;
-	height: 80%;
+	height: 90%;
 }
 
 .limit-fullpage #voice {
