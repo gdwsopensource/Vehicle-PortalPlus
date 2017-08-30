@@ -60,12 +60,12 @@
 	// 基于准备好的dom，初始化echarts实例
 	var barECharts = echarts.init(document.getElementById('barECharts'));
 	var barECharts_option = {
-		 tooltip : {
-	        trigger: 'axis',
-	        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-	            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-	        }
-	    },
+		tooltip : {
+			trigger : 'axis',
+			axisPointer : { // 坐标轴指示器，坐标轴触发有效
+				type : 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+			}
+		},
 		grid : {
 			left : '3%',
 			right : '4%',
@@ -74,8 +74,7 @@
 		},
 		xAxis : [ {
 			type : 'category',
-			data : ['科韵路', '花城大道', '临江大道', '珠吉路',
-					'广园快速路'],
+			data : [ '科韵路', '花城大道', '临江大道', '珠吉路', '广园快速路' ],
 			axisTick : {
 				alignWithLabel : true
 			}
@@ -87,7 +86,7 @@
 			name : '过车频次',
 			type : 'bar',
 			barWidth : '60%',
-			data : [1020, 5200, 20000, 33400, 39000],
+			data : [ 1020, 5200, 20000, 33400, 39000 ],
 			itemStyle : {
 				normal : {
 					color : function(params) {
@@ -142,72 +141,68 @@
 				console.log(start.format('YYYY-MM-DD') + ' to '
 						+ end.format('YYYY-MM-DD'));
 			});
-
-	// 百度地图API功能
-	var map = new BMap.Map("map");
-	var point = new BMap.Point(113.366286, 23.130748);
-	map.centerAndZoom(point, 12);
-	/*
-	 * var marker = new BMap.Marker(new BMap.Point(113.33674730643,
-	 * 23.147301775747)); // 创建点 map.addOverlay(marker);
-	 */
-	map.enableScrollWheelZoom(true);
-	var points = [ {
-		crossId : 1000,
-		crossName : '卡口1',
-		cross_car_Number : 500,
-		bd_longitude : 113.237017,
-		bd_latitude : 23.134245
-	}, {
-		crossId : 2000,
-		crossName : '卡口2',
-		cross_car_Number : 400,
-		bd_longitude : 113.249449,
-		bd_latitude : 23.159566
-	}, {
-		crossId : 5000,
-		crossName : '卡口5',
-		cross_car_Number : 400,
-		bd_longitude : 113.368026,
-		bd_latitude : 23.150328
-	}, {
-		crossId : 4000,
-		crossName : '卡口4',
-		cross_car_Number : 400,
-		bd_longitude : 113.344885,
-		bd_latitude : 23.107722
-	}, {
-		crossId : 3000,
-		crossName : '卡口3',
-		cross_car_Number : 200,
-		bd_longitude : 113.274027,
-		bd_latitude : 23.109118
-	} ];
-
-	// 编写自定义函数,创建标注
-	function addMarker(point_1, point_2) {
-		var marker = new BMap.Marker(new BMap.Point(point_1, point_2));
-		map.addOverlay(marker);
-	}
-	// 编写多边形
-	function addPolygon(points) {
-		var polygon = new BMap.Polygon(points, {
-			strokeColor : "red",
-			strokeWeight : 1,
-			strokeOpacity : 0.5,
-			strokeStyle : "dashed"
-		});
-		map.addOverlay(polygon);
-	}
-
-	var pointsT = [];
-	for (var i = 0; i < points.length; i++) {
-		pointsT.push(new BMap.Point(points[i].bd_longitude,
-				points[i].bd_latitude));
-		// addMarker(points[i].bd_longitude,points[i].bd_latitude)
-	}
-	addPolygon(pointsT);
-
+	 // 百度地图API功能
+    var map = new BMap.Map("map");
+    var point = new BMap.Point(113.366286, 23.130748);
+    map.centerAndZoom(point, 12);
+	var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_ZOOM}); //右上角，仅包含平移和缩放按钮
+	map.addControl(top_right_navigation);
+	var points = [
+        {
+            crossId: 1000,
+            crossName: '卡口1',
+            cross_car_Number: 500,
+            bd_longitude: 113.237017,
+            bd_latitude: 23.134245
+        }, {
+            crossId: 2000,
+            crossName: '卡口2',
+            cross_car_Number: 400,
+            bd_longitude: 113.249449,
+            bd_latitude: 23.159566
+        }, {
+            crossId: 5000,
+            crossName: '卡口5',
+            cross_car_Number: 400,
+            bd_longitude: 113.368026,
+            bd_latitude: 23.150328
+        }, {
+            crossId: 4000,
+            crossName: '卡口4',
+            cross_car_Number: 400,
+            bd_longitude: 113.344885,
+            bd_latitude: 23.107722
+        }, {
+            crossId: 3000,
+            crossName: '卡口3',
+            cross_car_Number: 200,
+            bd_longitude: 113.274027,
+            bd_latitude: 23.109118
+        }
+    ];
+    var pointsT = [];
+    for (var i = 0; i < points.length; i++) {
+        (function (i) {
+            var newPoint = new BMap.Point(points[i].bd_longitude, points[i].bd_latitude);
+            var marker = new BMap.Marker(newPoint);        // 创建标注
+            pointsT.push(newPoint);
+            map.addOverlay(marker);
+        })(i);
+    }
+    // 编写多边形
+    function addPolygon(points) {
+        var polygon = new BMap.Polygon(points, {
+            strokeColor : "red",
+            strokeWeight : 1,
+            strokeOpacity : 0.5,
+            strokeStyle : "dashed"
+        });
+        map.addOverlay(polygon);
+    }
+    addPolygon(pointsT);
+    
+    
+    
 	var pieECharts_2 = echarts.init(document.getElementById('pieECharts_2'));
 	var pieECharts_2_option = {
 		color : [ '#8676a7', '#eda637', '#3a8cbb', '#d0d0d0' ],

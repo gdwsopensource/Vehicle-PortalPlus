@@ -123,6 +123,8 @@
           $(window).on("resize", function() {
             chart.resize();
           });
+          var bmap = chart.getModel().getComponent('bmap').getBMap();
+	      bmap.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type:BMAP_NAVIGATION_CONTROL_ZOOM}));	     
         })
 
       }
@@ -186,4 +188,63 @@
     };
     pieECharts_1.setOption(pieECharts_1_option);
     */
+    var pieECharts = echarts.init(document.getElementById('pieECharts'));
+	var pieECharts_option = {
+		color : [ '#5bb4d9', '#f47564', '#1da02b', '#4f5c65', '#f39c12' ],
+		tooltip : {
+			trigger : 'item',
+			formatter : "{a} <br/>{b}: {c} ({d}%)"
+		},
+		legend : {
+			orient : 'horizontal',
+			data : [ '私家车', '货运车', '出租车','客车','其他' ],
+			bottom : 0,
+			width : '90%',
+			itemGap : 20
+		},
+		series : [ {
+			name : '车辆类型',
+			type : 'pie',
+			center : [ '50%', '45%' ],
+			radius : [ '50%', '70%' ],
+			avoidLabelOverlap : false,
+			label : {
+				normal : {
+					show : false,
+					position : 'center'
+				},
+				emphasis : {
+					show : true,
+					textStyle : {
+						fontSize : '30',
+						fontWeight : 'bold'
+					}
+				}
+			},
+			labelLine : {
+				normal : {
+					show : false
+				}
+			},
+			data : [ {
+				value : 3350,
+				name : '私家车'
+			}, {
+				value : 3100,
+				name : '货运车'
+			}, {
+				value : 2340,
+				name : '出租车'
+			},{
+				value:1320,
+				name:'客车'
+			},{
+				value : 15480,
+				name : '其他'
+			} ]
+		} ]
+	}
+	pieECharts.setOption(pieECharts_option);
+    
+    
 })(jQuery);

@@ -2,6 +2,47 @@
 <html>
 <head th:include="@{include/head}" th:with="title=''">
 </head>
+<style>
+	.weather-group{
+		width:100%;
+	}
+	.weather-group .item{
+		width:20%;
+		float:left;
+		text-align:center;
+		padding:20px;
+		position:relative;
+		z-index:1;
+		cursor: pointer;
+	}
+	.weather-group .item .explain{
+		position:absolute;
+		top:0;
+		right:0;
+		bottom:0;
+		left:0;
+		z-index:2;
+		background-color:rgba(71,164,147,.8);
+		color:#fff;
+		padding:10px 0;
+		display:none;
+	}
+	.weather-group .item:hover .explain{
+		display:block;
+	}
+	.weather-group .item .explain>p{
+		margin-bottom:5px;
+	}
+	.weather-group .item .name{
+		margin-bottom:10px;
+	}
+	.weather-group .item .num{
+		width:50px;
+		background-color:rgb(66,205,25);
+		color:#fff;
+		display:inline-block;
+	}
+</style>
 <body class="hold-transition skin-blue sidebar-mini fixed">
 	<div class="wrapper">
 		<header th:include="@{include/header}" class="main-header"></header>
@@ -83,8 +124,204 @@
 						</div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-md-7">
+						<div class="box box-success">
+							<div class="box-header with-border">
+								<div class="box-title">广州各天气总览</div>
+							</div>
+							<div class="box-body" style="height:444px;">
+								<div class="weather-group">
+									<div class="item">
+										<div class="name">天河区</div>
+										<div class="num">94</div>
+										<div class="explain">
+											<p>AOI：94</p>
+											<p>首要污染物：PM2.5</p>
+											<p>出行指数：<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i></p>
+										</div>
+									</div>
+									<div class="item">
+										<div class="name">黄埔区</div>
+										<div class="num">84</div>
+										<div class="explain">
+											<p>AOI：84</p>
+											<p>首要污染物：PM2.5</p>
+											<p>出行指数：<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i></p>
+										</div>
+									</div>
+									<div class="item">
+										<div class="name">番禺区</div>
+										<div class="num">80</div>
+										<div class="explain">
+											<p>AOI：80</p>
+											<p>首要污染物：PM2.5</p>
+											<p>出行指数：<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i></p>
+										</div>
+									</div>
+									<div class="item">
+										<div class="name">海珠区</div>
+										<div class="num">74</div>
+										<div class="explain">
+											<p>AOI：74</p>
+											<p>首要污染物：PM2.5</p>
+											<p>出行指数：<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i></p>
+										</div>
+									</div>
+									<div class="item">
+										<div class="name">荔湾区</div>
+										<div class="num">76</div>
+										<div class="explain">
+											<p>AOI：76</p>
+											<p>首要污染物：PM2.5</p>
+											<p>出行指数：<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i></p>
+										</div>
+									</div>
+									<div class="item">
+										<div class="name">南沙区</div>
+										<div class="num">76</div>
+										<div class="explain">
+											<p>AOI：76</p>
+											<p>首要污染物：PM2.5</p>
+											<p>出行指数：<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i></p>
+										</div>
+									</div>
+									<div class="item">
+										<div class="name">白云区</div>
+										<div class="num">76</div>
+										<div class="explain">
+											<p>AOI：76</p>
+											<p>首要污染物：PM2.5</p>
+											<p>出行指数：<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i></p>
+										</div>
+									</div>
+									<div class="item">
+										<div class="name">增城区</div>
+										<div class="num">76</div>
+										<div class="explain">
+											<p>AOI：76</p>
+											<p>首要污染物：PM2.5</p>
+											<p>出行指数：<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i></p>
+										</div>
+									</div>
+									<div class="item">
+										<div class="name">从化区</div>
+										<div class="num">76</div>
+										<div class="explain">
+											<p>AOI：76</p>
+											<p>首要污染物：PM2.5</p>
+											<p>出行指数：<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i></p>
+										</div>
+									</div>
+									<div class="item">
+										<div class="name">花都区</div>
+										<div class="num">76</div>
+										<div class="explain">
+											<p>AOI：76</p>
+											<p>首要污染物：PM2.5</p>
+											<p>出行指数：<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i></p>
+										</div>
+									</div>
+									<div class="item">
+										<div class="name">越秀区</div>
+										<div class="num">76</div>
+										<div class="explain">
+											<p>AOI：76</p>
+											<p>首要污染物：PM2.5</p>
+											<p>出行指数：<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i>&nbsp;<i class="fa fa-star text-orange" aria-hidden="true"></i></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="box box-warning">
+							<div class="box-header">
+								<div class="box-title">空气质量排名趋势</div>
+							</div>
+							<div class="box-body no-padding" style="height:444px;">
+								<table class="table text-center">
+									<tbody>
+										<tr>
+											<td>排名</td>
+											<td>区域</td>
+											<td>趋势</td>
+											<td>AQI</td>
+										</tr>
+										<tr>
+											<td><span class="text-aqua">1</span></td>
+											<td>番禺区</td>
+											<td><i class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+											<td>80</td>
+										</tr>
+										<tr>
+											<td><span class="text-aqua">2</span></td>
+											<td>天河区</td>
+											<td><i class="fa fa-long-arrow-down text-light-blue" aria-hidden="true"></i></td>
+											<td>70</td>
+										</tr>
+										<tr>
+											<td><span class="text-aqua">3</span></td>
+											<td>海珠区</td>
+											<td><i class="fa fa-arrows-h text-green" aria-hidden="true"></i></td>
+											<td>70</td>
+										</tr>
+										<tr>
+											<td><span class="text-aqua">4</span></td>
+											<td>白云区</td>
+											<td><i class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+											<td>80</td>
+										</tr>	
+										<tr>
+											<td><span class="text-aqua">5</span></td>
+											<td>荔湾区</td>
+											<td><i class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+											<td>90</td>
+										</tr>
+										<tr>
+											<td><span class="text-aqua">6</span></td>
+											<td>越秀区</td>
+											<td><i class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+											<td>90</td>
+										</tr>
+										<tr>
+											<td><span class="text-aqua">7</span></td>
+											<td>黄埔区</td>
+											<td><i class="fa fa-long-arrow-down text-light-blue" aria-hidden="true"></i></td>
+											<td>70</td>
+										</tr>
+										<tr>
+											<td><span class="text-aqua">8</span></td>
+											<td>南沙区</td>
+											<td><i class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+											<td>90</td>
+										</tr>
+										<tr>
+											<td><span class="text-aqua">9</span></td>
+											<td>增城区</td>
+											<td><i class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+											<td>90</td>
+										</tr>
+										<tr>
+											<td><span class="text-aqua">10</span></td>
+											<td>花都区</td>
+											<td><i class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+											<td>90</td>
+										</tr>
+										<tr>
+											<td><span class="text-aqua">11</span></td>
+											<td>从化区</td>
+											<td><i class="fa fa-long-arrow-up text-red" aria-hidden="true"></i></td>
+											<td>90</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
 			</section>
-
 		</div>
 		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
 	</div>

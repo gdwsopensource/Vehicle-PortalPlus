@@ -80,6 +80,8 @@
 	      $(window).on("resize", function() {
 	        chart.resize();
 	      });
+	      var bmap = chart.getModel().getComponent('bmap').getBMap();
+	      bmap.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type:BMAP_NAVIGATION_CONTROL_ZOOM}));	      
 	    })
 
 	  }
@@ -103,7 +105,7 @@
 		legend:{
 			top:10,
 			right:10,
-			data:["今日限外","昨日限外"]
+			data:["今日","昨日"]
 		},
         radar: [
             {
@@ -111,7 +113,7 @@
                     {text: '违章数量'},
                     {text: '外牌车辆占比'},
                     {text: '通畅指数'},
-                    {text: '舆情满意度'},
+                    {text: '社情民意满意度'},
                     {text: '污染排放量'}
                 ],
                 radius: 120,
@@ -159,8 +161,8 @@
                 },
                 data: [
                     {
-                        value: [100, 8, 0.40, -80, 2000],
-                        name: '今日限外',
+                        value: [100, 8, 0.40, 0.9, 2000],
+                        name: '今日',
                         symbol: 'rect',
                         symbolSize: 5,
                         lineStyle: {
@@ -170,8 +172,8 @@
                         }
                     },
                     {
-                        value: [60, 5, 0.30, -100, 1500],
-                        name: '昨日限外',
+                        value: [60, 5, 0.30, 0.6, 1500],
+                        name: '昨日',
                         areaStyle: {
                             normal: {
                                 color: 'rgba(255, 255, 255, 0.5)'
