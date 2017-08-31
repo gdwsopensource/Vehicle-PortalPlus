@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+<input type="text" id="text"/>
+<button type="button" id="btn">提交</button>
+<script th:src="@{webjars/jquery/3.2.1/jquery.min.js}"></script>
+<script>
+	(function($){
+		$('#btn').on('click',function(){
+			var text=$('#text').val();
+			console.log(text);
+			$.post("/postTestAll",{content:text},function(res){
+				console.log(res);
+			});
+			return false;
+		});
+	})(jQuery);
+</script>
+</body>
+</html>

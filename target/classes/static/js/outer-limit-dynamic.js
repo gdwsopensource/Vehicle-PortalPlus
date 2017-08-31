@@ -356,7 +356,7 @@
             trigger: 'item',
             formatter: "{a}:{d}%"
         },
-        color: ['#ffffff', '#abc3e2'],
+        color: ['#c23531','#2f4554',],
         grid: {
             bottom: 30
         },
@@ -371,7 +371,7 @@
             axisLabel: {
                 interval: 0,
                 textStyle: {
-                    color: '#fff',
+                    color: '#333',
                     fontSize: 18
                 }
             },
@@ -384,7 +384,7 @@
             {
                 name: "今日拥堵延迟指数",
                 type: 'pie',
-                radius: ['60%', '65%'],
+                radius: ['40%', '65%'],
                 labelLine: {
                     normal: {
                         show: false
@@ -394,7 +394,6 @@
                 data: [
                     {
                         value: 25,
-                        name: '',
                         label: {
                             normal: {
                                 formatter: '{d} %',
@@ -403,14 +402,13 @@
                                 textStyle: {
                                     fontSize: '26',
                                     fontWeight: 'bold',
-                                    color: '#fff'
+                                    color: '#333'
                                 }
                             }
                         }
                     },
                     {
                         value: 75,
-                        name: '',
                         tooltip: {
                             show: false
                         },
@@ -421,7 +419,7 @@
             {
                 name: "今日外牌车占比",
                 type: 'pie',
-                radius: ['60%', '65%'],
+                radius: ['40%', '65%'],
                 labelLine: {
                     normal: {
                         show: false
@@ -431,7 +429,6 @@
                 data: [
                     {
                         value: 50,
-                        name: '',
                         label: {
                             normal: {
                                 formatter: '{d} %',
@@ -440,14 +437,13 @@
                                 textStyle: {
                                     fontSize: '26',
                                     fontWeight: 'bold',
-                                    color: '#fff'
+                                    color: '#333'
                                 }
                             }
                         }
                     },
                     {
                         value: 50,
-                        name: '',
                         tooltip: {
                             show: false
                         },
@@ -459,4 +455,59 @@
 
     };
     map_pieECharts.setOption(map_pieECharts_option);
+    
+    drawCrowdload("crowdload");
+    function drawCrowdload(id) {
+        var obj = document.getElementById(id);
+        var chart = echarts.init(obj);
+        var option = null;
+        option = {
+        		 color: ['#f47564', '#4fc3b9'],
+        		  tooltip : {
+        		        trigger: 'axis',
+        		        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+        		            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        		        }
+        		    },
+        		    legend: {
+        		        data: ['本地车牌占比', '外地车牌占比'],
+        		        top: 20
+        		    },
+        		    grid: {
+        		        left: '3%',
+        		        right: '15%',
+        		        bottom: '3%',
+        		        containLabel: true
+        		    },
+        		    xAxis:  {
+        		        type: 'value',
+        		        name : '拥堵指数'
+        		    },
+        		    yAxis: {
+        		        type: 'category',
+        		        name : '拥堵路段',
+        		        data : [   '增槎路', '广园快速路', '广从公路', '机场高速公路', '广园快速路', '江海大道',
+        		                   '环城高速','东风东路' ]
+        		    },
+        		    series: [
+        		        {
+        		            name: '本地车牌占比',
+        		            type: 'bar',
+        		            stack: '总量',    		           
+        		            data: [ 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0]
+        		        },
+        		        {
+        		            name: '外地车牌占比',
+        		            type: 'bar',
+        		            stack: '总量',		            
+        		            data: [2.60, 2.65, 2.70, 2.75, 2.80, 2.85, 2.90, 2.95]
+        		        }
+        		    ]
+        };
+        chart.setOption(option);
+        $(window).on("resize", function() {
+          chart.resize();
+        });
+      }
+    
 })(jQuery);

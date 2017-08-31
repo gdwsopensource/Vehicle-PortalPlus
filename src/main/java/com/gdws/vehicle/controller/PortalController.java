@@ -8,6 +8,7 @@
 package com.gdws.vehicle.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -128,5 +129,9 @@ public class PortalController {
     String outerLimitLawAccurate(){
       return "outer-limit-law-accurate";
     }
+    @RequestMapping("postTestAll1")
+	String PostTestAll() {
+		return "Test";
+	}
 }
 
