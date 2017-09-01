@@ -39,6 +39,7 @@ public class HttpClientUtils {
 
     public static String doPost(String url, String body, String contentLength, String authorization) {
         StringBuffer stringBuffer = new StringBuffer();
+        System.out.println("1111");
         HttpEntity entity = null;
         BufferedReader in = null;
         CloseableHttpResponse response = null;

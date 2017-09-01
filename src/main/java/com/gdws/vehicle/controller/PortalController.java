@@ -129,7 +129,7 @@ public class PortalController {
     String outerLimitLawAccurate(){
       return "outer-limit-law-accurate";
     }
-    @RequestMapping("postTestAll1")
+    @RequestMapping("postTestAll")
 	String PostTestAll() {
 		return "Test";
 	}
