@@ -161,7 +161,7 @@
                 },
                 data: [
                     {
-                        value: [100, 8, 0.40, 0.9, 2000],
+                        value: [100, 0.5, 0.70, 0.9, 2000],
                         name: '今日',
                         symbol: 'rect',
                         symbolSize: 5,
@@ -172,7 +172,7 @@
                         }
                     },
                     {
-                        value: [60, 5, 0.30, 0.6, 1500],
+                        value: [60, 0.5, 0.40, 0.6, 1500],
                         name: '昨日',
                         areaStyle: {
                             normal: {
@@ -212,8 +212,8 @@
                 selectedMode: 'single',
                 selectedOffset: 2,
                 data: [
-                    {value: 310, name: '本地车', selected: true},
-                    {value: 335, name: '外牌车'}
+                    {value: 11142731, name: '本地车', selected: true},
+                    {value: 11053945, name: '外牌车'}
                 ]
             },
             {
@@ -223,8 +223,8 @@
                 selectedOffset: 5,
                 radius: ['40%', '55%'],
                 data: [
-                    {value: 310, name: '本地车', selected: true},
-                    {value: 335, name: '外牌车'}
+                    {value: 11142731, name: '本地车', selected: true},
+                    {value: 11053945, name: '外牌车'}
                 ]
             }
         ]
@@ -244,14 +244,14 @@
                 radius: [30, 110],
                 roseType: 'area',
                 data: [
-                    {value: 10, name: '深圳'},
-                    {value: 5, name: '佛山'},
-                    {value: 15, name: '东莞'},
-                    {value: 25, name: '清远'},
-                    {value: 20, name: '肇庆'},
-                    {value: 35, name: '珠海'},
-                    {value: 30, name: '中山'},
-                    {value: 40, name: '江门'}
+                    {value: 208617, name: '深圳'},
+                    {value: 208617, name: '佛山'},
+                    {value: 100617 ,name: '东莞'},
+                    {value: 103617, name: '清远'},
+                    {value: 116452, name: '肇庆'},
+                    {value: 105617, name: '珠海'},
+                    {value: 258936, name: '外省'},
+                    {value: 200936, name: '其他'}
                 ]
             }
         ]
@@ -311,7 +311,7 @@
                 name: '频次',
                 type: 'line',
                 smooth: true,
-                data: [300, 280, 250, 260, 270, 300, 550, 500, 500],
+                data: [1000, 2000, 50002, 60060, 18000, 20000, 30000, 25000, 1000],
                 markArea: {
                     label: {
                         normal: {

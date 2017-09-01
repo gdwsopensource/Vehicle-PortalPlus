@@ -147,7 +147,7 @@
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['私家车', '货运车', '面包车', '出租车', '客车', '其他']
+            data: ['私家车', '货运车', '出租车', '客车', '其他']
         },
         yAxis: {
             type: 'value'
@@ -156,7 +156,7 @@
             {
                 name: '总量',
                 type: 'line',
-                data: [40000, 10000, 40200, 52125, 15000, 8561, 81656],
+                data: [33500, 31000, 23400, 13200,154800],
                 itemStyle: {
                     normal: {
                         color: '#4fc3b9'
@@ -227,19 +227,19 @@
 				}
 			},
 			data : [ {
-				value : 3350,
+				value : 33500,
 				name : '私家车'
 			}, {
-				value : 3100,
+				value : 31000,
 				name : '货运车'
 			}, {
-				value : 2340,
+				value : 23400,
 				name : '出租车'
 			},{
-				value:1320,
+				value:13200,
 				name:'客车'
 			},{
-				value : 15480,
+				value : 154800,
 				name : '其他'
 			} ]
 		} ]
