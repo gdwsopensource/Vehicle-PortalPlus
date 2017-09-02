@@ -8,23 +8,99 @@
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
 		<div class="content-wrapper intelligence-analysis">
 			<div class="fixed-menu tab-head">
-				<div class="menu active" id="menu-traffic">交通分析</div>
+				<div class="menu active" id="menu-search">查询入口</div>
+				<div class="menu" id="menu-traffic">交通分析</div>
+				<div class="menu" id="menu-feelings">社情民意分析</div>
 				<div class="menu" id="menu-economic">经济分析</div>
 				<div class="menu" id="menu-environment">环境分析</div>
-				<div class="menu" id="menu-feelings">舆情分析</div>
 			</div>
 			<section class="content container-fluid for-fixed-top">
+				<div class="row" id="search">
+					<div class="col-md-12 module-title">
+						<p class="bg-black-gradient text-center">查询入口</p>
+					</div>
+					<div class="col-md-4">
+						<div class="box box-defalt zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">查询条件</h3>
+								<button class="pull-right btn btn-sm btn-default"
+									id="search-sublit"
+									style="padding: 0 3px; font-size: 14px; width: 44px; height: 20px; line-height: 18px;">查询</button>
+							</div>
+							<div class="box-body" id="search-list" style="height: 500px;">
+								<div class="form-group">
+									<label>时间：</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input type="text" class="form-control pull-right"
+											id="search-date" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label>区域：</label> <select
+										class="form-control select2 select2-hidden-accessible"
+										id="search-area" style="width: 100%;" tabindex="-1"
+										aria-hidden="true">
+										<option selected="selected">广州市</option>
+										<option>天河区</option>
+										<option>海珠区</option>
+										<option>越秀区</option>
+										<option>白云区</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>卡口：</label> <select
+										class="form-control select2 select2-hidden-accessible"
+										id="search-cross" style="width: 100%;" tabindex="-1"
+										aria-hidden="true">
+										<option value="所有卡口" selected="selected">所有卡口</option>
+									</select>
+								</div>
+								<div id="search-crosslist">
+									<label>卡口列表：</label>
+									<ul class="list-unstyled">
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="box box-defalt zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">空间选择</h3>
+							</div>
+							<div class="box-body" id="search-map" style="height: 500px;"></div>
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-md-3">
 						<div class="small-box bg-green-gradient">
 							<div class="inner">
 								<h4 class="text-center">外牌车数量</h4>
 								<h3>
-									243万辆 <span style="font-size: 20px">30%</span>
+									106万辆 <span style="font-size: 20px">50%</span>
 								</h3>
 							</div>
 							<div class="icon">
 								<i class="ion ion-android-car"></i>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="small-box bg-yellow-gradient">
+							<div class="inner">
+								<h4 class="text-center">社情热度</h4>
+								<h3>
+									3450条<span style="font-size: 20px"> <span
+										class="fa fa-arrow-up"></span>8%
+									</span>
+								</h3>
+							</div>
+							<div class="icon">
+								<i class="ion ion-ios-flame"></i>
 							</div>
 						</div>
 					</div>
@@ -54,25 +130,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
-						<div class="small-box bg-yellow-gradient">
-							<div class="inner">
-								<h4 class="text-center">限外舆情热度</h4>
-								<h3>
-									34550条<span style="font-size: 20px"> <span
-										class="fa fa-arrow-up"></span>8%
-									</span>
-								</h3>
-							</div>
-							<div class="icon">
-								<i class="ion ion-ios-flame"></i>
-							</div>
-						</div>
-					</div>
 				</div>
 				<div class="row" id="traffic">
 					<div class="col-md-12 module-title">
-						<p class="bg-green-gradient text-center">交通情报分析</p>
+						<p class="bg-green-gradient text-center">交通分析</p>
 					</div>
 					<div class="col-md-8">
 						<div class="box box-danger zw-bg-white">
@@ -250,9 +311,108 @@
 						</div>
 					</div>
 				</div>
+				<div class="row" id="feelings">
+					<div class="col-md-12 module-title">
+						<p class="bg-yellow-gradient text-center">社情民意分析</p>
+					</div>
+					<div class="col-md-4">
+						<div class="box box-success zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">民意满意度</h3>
+							</div>
+							<div class="box-body" id="feelings-score" style="height: 400px;"></div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box box-danger zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">社情热点</h3>
+							</div>
+							<div class="box-body" id="tagscloud" style="height: 400px;overflow: hidden;">
+								 <a class="tagc1">外牌车辆管理</a>
+                <a class="tagc2">广州市交通堵塞</a>
+                <a class="tagc3">海珠区工业大道长期塞车</a>
+                <a class="tagc4">内环路经常交通堵塞</a>
+                <a class="tagc5">龙口西往天河北方向闯红灯</a>
+                <a class="tagc1">外牌车辆如何治理</a>
+                <a class="tagc2">小区门口被外牌车辆堵住</a>
+                <a class="tagc3">内环路上下班堵塞</a>
+                <a class="tagc4">市民建议限制外牌车辆行驶</a>
+                <a class="tagc5">塞车半小时</a>
+                <a class="tagc1">外牌车辆管理</a>
+                <a class="tagc2">广州市交通堵塞</a>
+                <a class="tagc3">海珠区工业大道长期塞车</a>
+                <a class="tagc4">内环路经常交通堵塞</a>
+                <a class="tagc5">龙口西往天河北方向闯红灯</a>
+                <a class="tagc1">外牌车辆如何治理</a>
+                <a class="tagc2">小区门口被外牌车辆堵住</a>
+                <a class="tagc3">内环路上下班堵塞</a>
+                <a class="tagc4">市民建议限制外牌车辆行驶</a>
+                <a class="tagc5">塞车半小时</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box box-info zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">社情民意关注度</h3>
+							</div>
+							<div class="box-body" id="feelings-way" style="height: 400px;">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="box box-warning zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">社情民意事件类别</h3>
+							</div>
+							<div class="box-body" id="feelings-type" style="height: 300px;">
+
+								<div class="small-box" style="height: 130px;">
+									<div class="inner">
+										<p style="color: gray; font-size: 14px;font-weight: bold;">事件倾向</p>
+										<br />
+										<p style="color: gray; font-size: 14px">
+											<span style="color: blue; font-size: 20px;">522</span>舆情，<span
+												style="color: green; font-size: 20px;">328</span>正面，<span
+												style="color: red; font-size: 20px;">128</span>负面
+										</p>
+									</div>
+									<div class="icon">
+										<i class="fa fa-book" style="color: rgb(100, 200, 150);"></i>
+									</div>
+								</div>
+								<div class="small-box" style="height: 130px;">
+									<div class="inner">
+										<p style="color: gray; font-size: 14px;font-weight: bold;">事件级别</p>
+										<br />
+										<p style="color: gray; font-size: 14px">
+											<span style="color: red; font-size: 20px;">522</span>重点，<span
+												style="color: green; font-size: 20px;">328</span>比较，<span
+												style="color: blue; font-size: 20px;">128</span>一般
+										</p>
+									</div>
+									<div class="icon">
+										<i class="fa fa-exclamation-triangle"
+											style="color: rgb(100, 150, 200);"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-7">
+						<div class="box box-success zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">每日社情热度变化</h3>
+							</div>
+							<div class="box-body" id="feelings-day" style="height: 300px;">
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="row" id="economic">
 					<div class="col-md-12 module-title">
-						<p class="bg-red-gradient text-center">经济情报分析</p>
+						<p class="bg-red-gradient text-center">经济分析</p>
 					</div>
 					<div class="col-md-5">
 						<div class="box box-info zw-bg-white">
@@ -270,10 +430,28 @@
 							<div class="box-body" id="economic-type" style="height: 500px;"></div>
 						</div>
 					</div>
+					<div class="col-md-7">
+						<div class="box box-success zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">外牌车对区域经济变化</h3>
+							</div>
+							<div class="box-body" id="economic-nonlocalchange"
+								style="height: 400px;"></div>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="box box-danger zw-bg-white">
+							<div class="box-header with-border">
+								<h3 class="box-title">外牌车对经济指标贡献占比</h3>
+							</div>
+							<div class="box-body" id="economic-nonlocaltype"
+								style="height: 400px;"></div>
+						</div>
+					</div>
 				</div>
 				<div class="row" id="environment">
 					<div class="col-md-12 module-title">
-						<p class="bg-light-blue-gradient text-center">环境情报分析</p>
+						<p class="bg-light-blue-gradient text-center">环境分析</p>
 					</div>
 					<div class="col-md-6">
 						<div class="box box-warning zw-bg-white">
@@ -293,56 +471,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="row" id="feelings">
-					<div class="col-md-12 module-title">
-						<p class="bg-yellow-gradient text-center">舆情情报分析</p>
-					</div>
-					<div class="col-md-4">
-						<div class="box box-success zw-bg-white">
-							<div class="box-header with-border">
-								<h3 class="box-title">舆情满意度</h3>
-							</div>
-							<div class="box-body" id="feelings-score" style="height: 400px;"></div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="box box-danger zw-bg-white">
-							<div class="box-header with-border">
-								<h3 class="box-title">舆情热点</h3>
-							</div>
-							<div class="box-body" id="tagscloud" style="height: 400px;">
-								<a class="tagc1">广州限外了？</a> <a class="tagc2">限外</a> <a
-									class="tagc5">佛山居民不满限外</a> <a class="tagc1">交通改善</a> <a
-									class="tagc2">出门搭公交</a> <a class="tagc5">地铁挤满了人</a> <a
-									class="tagc1">你怎么看限外</a> <a class="tagc2">广州居民满意限外</a> <a
-									class="tagc5">佛限车牌不限人</a><a class="tagc1">广州限外了？</a> <a
-									class="tagc2">限外</a> <a class="tagc5">佛山居民不满限外</a> <a
-									class="tagc1">交通改善</a> <a class="tagc2">出门搭公交</a> <a
-									class="tagc5">地铁挤满了人</a> <a class="tagc1">你怎么看限外</a> <a
-									class="tagc2">广州居民满意限外</a> <a class="tagc5">佛限车牌不限人</a><a
-									class="tagc1">广州限外了？</a> <a class="tagc2">限外</a> <a
-									class="tagc5">佛山居民不满限外</a> <a class="tagc1">交通改善</a> <a
-									class="tagc2">出门搭公交</a> <a class="tagc5">地铁挤满了人</a> <a
-									class="tagc1">你怎么看限外</a> <a class="tagc2">广州居民满意限外</a> <a
-									class="tagc5">佛限车牌不限人</a><a class="tagc1">广州限外了？</a> <a
-									class="tagc2">限外</a> <a class="tagc5">佛山居民不满限外</a> <a
-									class="tagc1">交通改善</a> <a class="tagc2">出门搭公交</a> <a
-									class="tagc5">地铁挤满了人</a> <a class="tagc1">你怎么看限外</a> <a
-									class="tagc2">广州居民满意限外</a> <a class="tagc5">佛限车牌不限人</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="box box-info zw-bg-white">
-							<div class="box-header with-border">
-								<h3 class="box-title">舆情关注度</h3>
-							</div>
-							<div class="box-body" id="feelings-way" style="height: 400px;">
-
-							</div>
-						</div>
-					</div>
-				</div>
 			</section>
 		</div>
 		<footer th:include="@{include/footer}" class="main-footer text-center"></footer>
@@ -350,6 +478,21 @@
 	<script th:src="@{js/common.js}"></script>
 	<!-- 该页面额外的js链接 -->
 	<script th:src="@{plugins/tagscloud/tagscloud.js}"></script>
+	<script th:src="@{plugins/bmapdraw/DrawingManager_min.js}"></script>
+	<!-- Select2 -->
+	<script th:src="@{webjars/select2/4.0.3/dist/js/select2.full.min.js}"></script>
+	<!-- InputMask -->
+	<script th:src="@{plugins/input-mask/jquery.inputmask.js}"></script>
+	<script
+		th:src="@{plugins/input-mask/jquery.inputmask.date.extensions.js}"></script>
+	<script th:src="@{plugins/input-mask/jquery.inputmask.extensions.js}"></script>
+	<!-- date-range-picker -->
+	<script th:src="@{webjars/moment/2.18.1/min/moment.min.js}"></script>
+	<script
+		th:src="@{webjars/bootstrap-daterangepicker/2.1.25/daterangepicker.js}"></script>
+	<!-- bootstrap datepicker -->
+	<script
+		th:src="@{webjars/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js}"></script>
 	<script th:src="@{js/intelligence-analysis.js}"></script>
 </body>
 </html>
