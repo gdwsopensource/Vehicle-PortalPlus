@@ -230,7 +230,6 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
-
       tooltip : {
         trigger : 'axis',
         axisPointer : {

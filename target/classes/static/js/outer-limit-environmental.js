@@ -90,8 +90,7 @@
 			.getElementById('parallel_nutrients'));
 
 	var parallel_nutrients_option = {
-		color : [ '#5bb4d9', '#f47564', '#4fc3b9', '#f39c12', '#1da02b',
-				'#63869e' ],
+	    color:colorRgba(),
 		legend : {
 			bottom : 5,
 			data : [ '天河区', '番禺区', '海珠区', '南沙区', '黄埔区', '白云区' ],
@@ -167,19 +166,12 @@
 
 	var pieECharts = echarts.init(document.getElementById('pieECharts'));
 	var pieECharts_option = {
+	    color:colorRgba(),
 		tooltip : {
 			trigger : 'item',
 			formatter : "{a} <br/>{b} : {c} ({d}%)"
 		},
 
-		visualMap : {
-			show : false,
-			min : 80,
-			max : 600,
-			inRange : {
-				colorLightness : [ 0, 1 ]
-			}
-		},
 		series : [ {
 			name : '排放标准',
 			type : 'pie',
@@ -219,11 +211,6 @@
 					smooth : 0.2,
 					length : 10,
 					length2 : 20
-				}
-			},
-			itemStyle : {
-				normal : {
-					color : '#c23531'
 				}
 			},
 			animationType : 'scale',

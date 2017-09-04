@@ -77,37 +77,10 @@ public class TestController {
         System.out.println("返回结果："+EntityUtils.toString(entity, "utf-8")); // 获取网页内容
         response.close(); // response关闭
         httpclient.close(); // httpClient关闭
-	    
-		
-		/*URL obj = new URL(requestUrl);
-		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-		con.setRequestMethod("POST");
-		con.setDoOutput(true);
-		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-		wr.writeBytes(body);
-		wr.flush();
-		wr.close();
-		int responseCode = con.getResponseCode();
-		String responseBody = readResponseBody(con.getInputStream());
-		System.out.println(responseBody);*/
-
+	   
 		return "ok";
 		// return JSONObject.parseObject(HttpClientUtils.doPost(requestUrl, body));
 	}
-
-	/*private static String readResponseBody(InputStream inputStream) throws IOException {
-
-		BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
-
-		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
-		}
-		in.close();
-
-		return response.toString();
-	}*/
 
 	@Scheduled(fixedDelay = 7200000)
 	// 7200秒执行一次

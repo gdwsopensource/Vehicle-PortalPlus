@@ -1,7 +1,7 @@
 (function($) {
 	var pieECharts_1 = echarts.init(document.getElementById('pieECharts_1'));
 	var pieECharts_1_option = {
-		color : [ '#5bb4d9', '#f47564', '#1da02b', '#4f5c65', '#f39c12' ],
+	    color:colorRgba(),
 		tooltip : {
 			trigger : 'item',
 			formatter : "{a} <br/>{b}: {c} ({d}%)"
@@ -60,6 +60,7 @@
 	// 基于准备好的dom，初始化echarts实例
 	var barECharts = echarts.init(document.getElementById('barECharts'));
 	var barECharts_option = {
+	    color:colorRgba(),
 		tooltip : {
 			trigger : 'axis',
 			axisPointer : { // 坐标轴指示器，坐标轴触发有效
@@ -88,14 +89,13 @@
 			barWidth : '60%',
 			data : [ 1020, 5200, 20000, 33400, 39000 ],
 			itemStyle : {
-				normal : {
-					color : function(params) {
-						var colorList = [ '#5bb4d9', '#4fc3b9', '#f29503',
-								'#1da02b', '#f4563c' ];
-						return colorList[params.dataIndex];
-					}
-				}
-			}
+        normal : {
+          color : function(params) {
+            var colorList = colorRgba().concat(colorRgba()).concat(colorRgba());
+            return colorList[params.dataIndex];
+          }
+        }
+      }
 		} ]
 	};
 	barECharts.setOption(barECharts_option);
@@ -205,7 +205,7 @@
     
 	var pieECharts_2 = echarts.init(document.getElementById('pieECharts_2'));
 	var pieECharts_2_option = {
-		color : [ '#8676a7', '#eda637', '#3a8cbb', '#d0d0d0' ],
+	    color:colorRgba(),
 		tooltip : {
 			trigger : 'item',
 			formatter : "{a} <br/>{b}: {c} ({d}%)"
@@ -256,7 +256,7 @@
 		var chart = echarts.init(obj);
 		var option = null;
 		option = {
-			color : [ '#9ed0e0', '#2881b5' ],
+		    color:colorRgba(),
 			xAxis : {
 				type : 'category',
 				boundaryGap : false,
@@ -305,6 +305,7 @@
 
 	var graphECharts = echarts.init(document.getElementById('graphECharts'));
 	var graphECharts_option = {
+	    color:colorRgba(),
 		animationDurationUpdate : 1500,
 		animationEasingUpdate : 'quinticInOut',
 		series : [ {

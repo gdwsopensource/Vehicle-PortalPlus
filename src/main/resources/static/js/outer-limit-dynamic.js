@@ -195,7 +195,7 @@
             {
                 name: '外牌车和本地车占比',
                 type: 'pie',
-                radius: [0, '30%'],
+                radius: [0, '40%'],
                 label: {
                     normal: {
                         position: 'inner',
@@ -219,7 +219,7 @@
                 type: 'pie',
                 selectedMode: 'single',
                 selectedOffset: 5,
-                radius: ['40%', '55%'],
+                radius: ['50%', '65%'],
                 data: [
                     {value: 11142731, name: '本地车', selected: true},
                     {value: 11053945, name: '外牌车'}
@@ -240,11 +240,11 @@
             {
                 name: '外牌车归属',
                 type: 'pie',
-                radius: [30, 110],
+                radius: [50, 130],
                 roseType: 'area',
                 data: [
                     {value: 208617, name: '深圳'},
-                    {value: 208617, name: '佛山'},
+                    {value: 222612, name: '佛山'},
                     {value: 100617 ,name: '东莞'},
                     {value: 103617, name: '清远'},
                     {value: 116452, name: '肇庆'},
@@ -358,7 +358,7 @@
             formatter: "{a}:{d}%"
         },
         grid: {
-            bottom: 30
+            bottom:60
         },
         xAxis: [{
             type: 'category',
@@ -375,7 +375,7 @@
                     fontSize: 18
                 }
             },
-            data: ['今日拥堵延迟指数', '今日外牌车占比'],
+            data: ['今日拥堵延时指数', '今日外牌车占比'],
         }],
         yAxis: [{
             show: false
@@ -390,13 +390,13 @@
                         show: false
                     }
                 },
-                center: ['30%', '50%'],
+                center: ['30%', '40%'],
                 data: [
                     {
-                        value: 25,
+                        value: 2.5,
                         label: {
                             normal: {
-                                formatter: '{d} %',
+                                formatter: '{c}',
                                 position: 'center',
                                 show: true,
                                 textStyle: {
@@ -405,10 +405,13 @@
                                     color: '#333'
                                 }
                             }
+                        },
+                        tooltip:{
+                        	formatter:'{a}：{c}'
                         }
                     },
                     {
-                        value: 75,
+                        value: 7.5,
                         tooltip: {
                             show: false
                         },
@@ -425,7 +428,7 @@
                         show: false
                     }
                 },
-                center: ['70%', '50%'],
+                center: ['70%', '40%'],
                 data: [
                     {
                         value: 50,
@@ -450,6 +453,7 @@
                         hoverAnimation: false
                     }
                 ]
+                
             }
         ]
 
@@ -476,7 +480,7 @@
         		    grid: {
         		        left: '3%',
         		        right: '15%',
-        		        bottom: '3%',
+        		        bottom: '7%',
         		        containLabel: true
         		    },
         		    xAxis:  {

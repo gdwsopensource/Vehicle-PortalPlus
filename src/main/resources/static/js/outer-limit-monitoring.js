@@ -140,9 +140,9 @@
             data: ['总量']
         },
         grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
+            left: '5%',
+            right: '7%',
+            bottom: '7%',
             containLabel: true
         },
         xAxis: {
@@ -241,6 +241,4 @@
 		} ]
 	}
 	pieECharts.setOption(pieECharts_option);
-    
-    
 })(jQuery);

@@ -132,6 +132,7 @@
     
     var lineECharts = echarts.init(document.getElementById('lineECharts'));
     var lineECharts_option = {
+        color:colorRgba(),
         tooltip: {
             trigger: 'axis'
         },
@@ -139,9 +140,9 @@
             data: ['总量']
         },
         grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
+            left: '5%',
+            right: '7%',
+            bottom: '7%',
             containLabel: true
         },
         xAxis: {
@@ -156,12 +157,7 @@
             {
                 name: '总量',
                 type: 'line',
-                data: [33500, 31000, 23400, 13200,154800],
-                itemStyle: {
-                    normal: {
-                        color: '#4fc3b9'
-                    }
-                }
+                data: [33500, 31000, 23400, 13200,154800]
             }
         ]
     };
@@ -190,7 +186,7 @@
     */
     var pieECharts = echarts.init(document.getElementById('pieECharts'));
 	var pieECharts_option = {
-		color : [ '#5bb4d9', '#f47564', '#1da02b', '#4f5c65', '#f39c12' ],
+	    color:colorRgba(),
 		tooltip : {
 			trigger : 'item',
 			formatter : "{a} <br/>{b}: {c} ({d}%)"
@@ -245,6 +241,4 @@
 		} ]
 	}
 	pieECharts.setOption(pieECharts_option);
-    
-    
 })(jQuery);

@@ -17,27 +17,33 @@
   fly();
   // drawMsgPie1("msg-pie1", 50, 350);
   // drawMsgPie2("msg-pie2", 20000, 100000);
-  drawMsgPie("msg-pie1", 27000, 100000, "外牌车辆");
+  drawMsgPie("msg-pie1", 1059845, 2113790, "外牌车辆");
   drawMsgPie("msg-pie2", 6000, 10000, "外牌违章车辆");
   drawNonlocalratio("nonlocalratio");
   drawNonlocalown("nonlocalown");
   drawCrowdload("crowdload");
   drawCrowdtime("crowdtime");
-  //drawGauge("quota-day", 20, "早高峰平均速度");
-  //drawGauge("quota-night", 24, "晚高峰平均速度");
-  
-  //drawGauge2("quota-day", 20, 24, "早晚高峰平均速度");
+  // drawGauge("quota-day", 20, "早高峰平均速度");
+  // drawGauge("quota-night", 24, "晚高峰平均速度");
+
+  // drawGauge2("quota-day", 20, 24, "早晚高峰平均速度");
   drawGauge("quota-day", 25, "高峰平均车速");
   drawGauge3("quota-night", 63, "公共交通出行使用率");
-  
-  drawGauge4("totalnumber", 60, "限外指数");
-  
+
+  drawGauge4("totalnumber", 60, "外牌车辆管理指数");
+
   // drawQuota("quota");
   dynamic();
 
   // 绑定事件
 
   // 自定义函数
+  function colorRgba(a) {
+    a = a || 1;
+    return [ 'rgba(91,180,217,' + a + ')', 'rgba(244,117,100,' + a + ')',
+        'rgba(79,195,186,' + a + ')', 'rgba(243,156,18,' + a + ')',
+        'rgba(64,199,129,' + a + ')', 'rgba(149,161,194,' + a + ')' ];
+  };
   function dateFormat() {
     Date.prototype.format = function(fmt) { // author: meizz
       var weekday = new Array(7)
@@ -176,7 +182,7 @@
     var obj = document.getElementById(id);
     var chart = echarts.init(obj);
     var option = null;
-    option = {
+    option = {        
       title : {
         x : 'center',
         text : text,
@@ -216,7 +222,7 @@
           value : 100 - crowdRatio,
           name : ''
         }, ],
-        color : [ 'rgb(92,180,218)', 'rgb(255,255,255)' ]
+        color : ['rgba(91,180,217,1)','rgba(91,180,217,0.2)']
       } ]
     };
     chart.setOption(option);
@@ -271,7 +277,7 @@
           value : 100 - crowdRatio,
           name : ''
         }, ],
-        color : [ 'rgb(92,180,218)', 'rgb(255,255,255)' ]
+        color : ['rgba(91,180,217,1)','rgba(91,180,217,0.2)']
       } ]
     };
     chart.setOption(option);
@@ -327,7 +333,7 @@
           value : 100 - nonlocalRatio,
           name : ''
         }, ],
-        color : [ 'rgb(92,180,218)', 'rgb(255,255,255)' ]
+        color : ['rgba(91,180,217,1)','rgba(91,180,217,0.2)']
       } ]
     };
     chart.setOption(option);
@@ -340,6 +346,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+        color : colorRgba(), 
       title : {
         text : '今日外牌车',
         x : 'center',
@@ -350,13 +357,13 @@
       },
       series : [ {
         type : 'pie',
-        radius : '55%',
+        radius : '40%',
         center : [ '50%', '60%' ],
         data : [ {
-          value : 200,
+          value : 1059845,
           name : '外地\n车牌'
         }, {
-          value : 900,
+          value : 1053945,
           name : '广州市\n车牌'
         } ],
         itemStyle : {
@@ -366,9 +373,7 @@
             shadowColor : 'rgba(0, 0, 0, 0.5)'
           }
         }
-      } ],
-      color : [ 'rgb(92,180,218)', 'rgb(244,156,16)', 'rgb(244,116,100)',
-          'rgb(80,196,186)', 'rgb(134,118,168)' ]
+      } ]
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -380,6 +385,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+        color : colorRgba(), 
       title : {
         text : '今日外牌车归属地',
         x : 'center',
@@ -409,9 +415,7 @@
           value : 20,
           name : '其他省'
         } ]
-      } ],
-      color : [ 'rgb(92,180,218)', 'rgb(244,156,16)', 'rgb(244,116,100)',
-          'rgb(80,196,186)', 'rgb(134,118,168)' ]
+      } ]
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -423,6 +427,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+        color : colorRgba(), 
       title : {
         text : '今日拥堵路段',
         x : 'center',
@@ -462,9 +467,9 @@
             color : '#FFFFFF'
           }
         },
-        min:0,
-        max:10,
-        
+        min : 0,
+        max : 10,
+
         nameTextStyle : {
           color : '#FFFFFF'
         }
@@ -473,8 +478,8 @@
       yAxis : {
         type : 'category',
         name : '拥堵路段',
-        data : [   '增槎路', '广园快速路', '广从公路', '机场高速公路', '广园快速路', '江海大道',
-                   '环城高速','东风东路' ],
+        data : [ '增槎路', '广园快速路', '广从公路', '机场高速公路', '广园快速路', '江海大道', '环城高速',
+            '东风东路' ],
         axisLabel : {
           textStyle : {
             color : '#FFFFFF',
@@ -489,15 +494,13 @@
         name : '本地车牌占比',
         type : 'bar',
         stack : '合并',
-        data : [  4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0 ]
+        data : [ 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0 ]
       }, {
         name : '外地车牌占比',
         type : 'bar',
         stack : '合并',
         data : [ 2.60, 2.65, 2.70, 2.75, 2.80, 2.85, 2.90, 2.95 ]
-      } ],
-      color : [ 'rgb(92,180,218)', 'rgb(244,156,16)', 'rgb(244,116,100)',
-          'rgb(80,196,186)', 'rgb(134,118,168)' ]
+      } ]
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -509,6 +512,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+        color : colorRgba(), 
       title : {
         text : '拥堵延时指数与外牌车占比关系',
         x : 'center',
@@ -550,14 +554,12 @@
       series : [ {
         name : '外牌车辆占比',
         type : 'line',
-        data : [ 0.28, 0.33, 0.31, 0.32, 0.35, 0.24, 0.31, 0.26, 0.28 ]
+        data : [ 0.51, 0.49, 0.48, 0.53, 0.53, 0.51, 0.50, 0.49, 0.5 ]
       }, {
         name : '拥堵延时指数',
         type : 'line',
         data : [ 1.2, 1.2, 1.2, 1.3, 1.4, 1.2, 1.3, 1.25, 1.2 ]
-      } ],
-      color : [ 'rgb(92,180,218)', 'rgb(244,156,16)', 'rgb(244,116,100)',
-          'rgb(80,196,186)', 'rgb(134,118,168)' ]
+      } ]
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -569,6 +571,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+        color : colorRgba(), 
       title : {
         text : '今日指标',
         x : '40',
@@ -620,9 +623,7 @@
           name : '昨日',
           value : [ 15, 400, 50, 120, 1.6 ]
         } ]
-      } ],
-      color : [ 'rgb(92,180,218)', 'rgb(244,156,16)', 'rgb(244,116,100)',
-          'rgb(80,196,186)', 'rgb(134,118,168)' ]
+      } ]
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -700,7 +701,7 @@
         type : 'gauge',
         radius : '70%',
         detail : {
-          show:true,
+          show : true,
           formatter : '{value}km/h',
           textStyle : {
             fontSize : 12
@@ -730,9 +731,10 @@
         pointer : {
           length : '50%',
           width : 5
-        },itemStyle:{
-          normal:{
-            color:'auto'
+        },
+        itemStyle : {
+          normal : {
+            color : 'auto'
           }
         }
       } ]
@@ -851,36 +853,27 @@
   function dynamic() {
     var warningBodyUl = $("#warning-body>ul");
     /*
-    var tDynamicFast = setInterval(function() {
-      // ajax后台获取数据
-      var liH = warningBodyUl.find("li").height();
-      var nowDate = new Date;
-      var nowHourMin = nowDate.getHours() + ":" + nowDate.getMinutes();
-      var random3 = 100 + Math.floor(Math.random() * 900);
-      var random5 = 10000 + Math.floor(Math.random() * 90000);
-      warningBodyUl.animate({
-        'marginTop' : liH + "px"
-      }, 500, function() {
-        warningBodyUl.prepend('<li><span class="fa fa-star"></span> <span>'
-            + nowHourMin + '</span> <span>粤A' + random5 + '</span> <span>黄埔大道'
-            + random3 + '号</span> <span>多次违章</span></li>');
-        warningBodyUl.css({
-          'marginTop' : 0
-        });
-      });
-
-    }, 1000);
-    */
+     * var tDynamicFast = setInterval(function() { // ajax后台获取数据 var liH =
+     * warningBodyUl.find("li").height(); var nowDate = new Date; var nowHourMin =
+     * nowDate.getHours() + ":" + nowDate.getMinutes(); var random3 = 100 +
+     * Math.floor(Math.random() * 900); var random5 = 10000 +
+     * Math.floor(Math.random() * 90000); warningBodyUl.animate({ 'marginTop' :
+     * liH + "px" }, 500, function() { warningBodyUl.prepend('<li><span
+     * class="fa fa-star"></span> <span>' + nowHourMin + '</span> <span>粤A' +
+     * random5 + '</span> <span>黄埔大道' + random3 + '号</span> <span>多次违章</span></li>');
+     * warningBodyUl.css({ 'marginTop' : 0 }); });
+     *  }, 1000);
+     */
     var tDynamicSlow = setInterval(function() {
       /*
-      var randomRoad = 30 + Math.floor(Math.random() * 60);
-      drawMsgPie1("msg-pie1", randomRoad, 350);
-      var randomNonlocalCar = 18000 + Math.floor(Math.random() * 4000);
-      drawMsgPie2("msg-pie2", randomNonlocalCar, 100000);
-      */
-      var random1 = 20000 + Math.floor(Math.random() * 5000);
+       * var randomRoad = 30 + Math.floor(Math.random() * 60);
+       * drawMsgPie1("msg-pie1", randomRoad, 350); var randomNonlocalCar = 18000 +
+       * Math.floor(Math.random() * 4000); drawMsgPie2("msg-pie2",
+       * randomNonlocalCar, 100000);
+       */
+      var random1 = 959845 + Math.floor(Math.random() * 100000);
       var random2 = 5000 + Math.floor(Math.random() * 3000);
-      drawMsgPie("msg-pie1", random1, 100000, "外牌车辆");
+      drawMsgPie("msg-pie1", random1, 2113790, "外牌车辆");
       drawMsgPie("msg-pie2", random2, 10000, "外牌违章车辆");
     }, 5000);
   }

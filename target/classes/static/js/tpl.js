@@ -704,5 +704,11 @@
         scrollTop : (parseInt($(dom).offset().top)-add)
       }, time);
     }
+    
+    /*
+      百度地图嵌入到echarts
+      var bmap = chart.getModel().getComponent('bmap').getBMap();
+      bmap.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}));
+     */
 
 })(jQuery);
