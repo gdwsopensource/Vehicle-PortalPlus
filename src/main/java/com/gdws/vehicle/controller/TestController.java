@@ -1,14 +1,13 @@
 package com.gdws.vehicle.controller;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -48,8 +47,8 @@ public class TestController {
 
 	// 用户群发
 	@PostMapping(value = "/postTestAll")
-	public String PostTestAll(@RequestParam(value = "content", required = true) String content) throws IOException{
-		//JSONObject obj = new JSONObject();
+	public String PostTestAll(@RequestParam(value = "content", required = true) String content) throws IOException {
+		// JSONObject obj = new JSONObject();
 		// obj.put("content", request.getParameter("content"));
 		// String str="{'test':'shuifeng'}";
 		/*
@@ -59,55 +58,29 @@ public class TestController {
 
 		// System.out.println(request.getParameter("content"));
 		// return obj;
-		//obj.put("filter", "{'is_to_all:true'}");
-		//obj.put("text", "{'content:'+content+'}");
-	
-		String body = "{\"filter\":{\"is_to_all\":true},\"text\":{\"content\":\"" + content+ "\"},\"msgtype\":\"text\"}";
+		// obj.put("filter", "{'is_to_all:true'}");
+		// obj.put("text", "{'content:'+content+'}");
+
+		String body = "{\"filter\":{\"is_to_all\":true},\"text\":{\"content\":\"" + content
+				+ "\"},\"msgtype\":\"text\"}";
 
 		String access_token = (String) GetAccessToken().get("access_token");
 		String requestUrl = post_test_all_url.replace("ACCESS_TOKEN", access_token);
 		System.out.println(body);
-		
-	    CloseableHttpClient httpclient = HttpClients.createDefault();
-	    HttpPost httpPost = new HttpPost(requestUrl);
-        httpPost.setEntity(new StringEntity(body, "UTF-8"));
-        CloseableHttpResponse response = httpclient.execute(httpPost);
-        System.out.println(response.getStatusLine());
-        HttpEntity entity = response.getEntity();
-        System.out.println("返回结果："+EntityUtils.toString(entity, "utf-8")); // 获取网页内容
-        response.close(); // response关闭
-        httpclient.close(); // httpClient关闭
-	    
-		
-		/*URL obj = new URL(requestUrl);
-		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-		con.setRequestMethod("POST");
-		con.setDoOutput(true);
-		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-		wr.writeBytes(body);
-		wr.flush();
-		wr.close();
-		int responseCode = con.getResponseCode();
-		String responseBody = readResponseBody(con.getInputStream());
-		System.out.println(responseBody);*/
+
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		HttpPost httpPost = new HttpPost(requestUrl);
+		httpPost.setEntity(new StringEntity(body, "UTF-8"));
+		CloseableHttpResponse response = httpclient.execute(httpPost);
+		System.out.println(response.getStatusLine());
+		HttpEntity entity = response.getEntity();
+		System.out.println("返回结果：" + EntityUtils.toString(entity, "utf-8")); // 获取网页内容
+		response.close(); // response关闭
+		httpclient.close(); // httpClient关闭
 
 		return "ok";
 		// return JSONObject.parseObject(HttpClientUtils.doPost(requestUrl, body));
 	}
-
-	/*private static String readResponseBody(InputStream inputStream) throws IOException {
-
-		BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
-
-		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
-		}
-		in.close();
-
-		return response.toString();
-	}*/
 
 	@Scheduled(fixedDelay = 7200000)
 	// 7200秒执行一次
@@ -120,4 +93,47 @@ public class TestController {
 		}
 		return (JSONObject) accessToken;
 	}
+
+	@GetMapping(value = "/getWeather")
+	public JSONObject GetWeather(@RequestParam(value = "city", required = true) String city) throws IOException {
+		System.out.println(city);
+		String url = "http://jisutqybmf.market.alicloudapi.com";
+		String appcode = "6be2e6f73e8348f58e465fa17797043e";
+		Map<String, String> headers = new HashMap<String, String>();
+		// 最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105
+		headers.put("Authorization", "APPCODE " + appcode);
+		
+		/*
+		 *  Map<String, String> querys = new HashMap<String, String>();
+		 * querys.put("citycode", "citycode"); querys.put("cityid", "cityid");
+		 * querys.put("ip", "ip"); querys.put("location", "location");
+		 */
+		return JSONObject.parseObject(HttpClientUtils.doGet(url + "/weather/query?city" + city, headers));
+	}
+
+	@GetMapping(value = "/getImgMedia")
+	public JSONObject getImgMedia() {
+		String access_token = (String) GetAccessToken().get("access_token");
+		String []cmds = {"curl","-F","media=@D:/workplace/test/src/test.jpeg","https://api.weixin.qq.com/cgi-bin/media/upload?access_token="+access_token+"&type=image"};
+		ProcessBuilder pb=new ProcessBuilder(cmds);
+		pb.redirectErrorStream(true);
+		Process p;
+		try {
+			p = pb.start();
+			BufferedReader br=null;
+			String line=null;
+			
+			br=new BufferedReader(new InputStreamReader(p.getInputStream()));
+			while((line=br.readLine())!=null){
+					System.out.println("\t"+line);
+			}
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 }

@@ -197,7 +197,7 @@
             {
                 name: '外牌车和本地车占比',
                 type: 'pie',
-                radius: [0, '30%'],
+                radius: [0, '40%'],
                 label: {
                     normal: {
                         position: 'inner',
@@ -221,7 +221,7 @@
                 type: 'pie',
                 selectedMode: 'single',
                 selectedOffset: 5,
-                radius: ['40%', '55%'],
+                radius: ['50%', '65%'],
                 data: [
                     {value: 11142731, name: '本地车', selected: true},
                     {value: 11053945, name: '外牌车'}
@@ -358,7 +358,7 @@
         },
         color: ['#c23531','#2f4554',],
         grid: {
-            bottom: 30
+            bottom: 0
         },
         xAxis: [{
             type: 'category',
@@ -476,7 +476,7 @@
         		    grid: {
         		        left: '3%',
         		        right: '15%',
-        		        bottom: '3%',
+        		        bottom: '8%',
         		        containLabel: true
         		    },
         		    xAxis:  {
