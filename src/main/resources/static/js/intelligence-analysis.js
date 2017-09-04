@@ -24,157 +24,154 @@
   drawFeelingsWay("feelings-way");
   drawFellingsDay("feelings-day");
 
-  $
-      .get(
-          'data/new_cross_info.json',
-          function(data) {
-            // 卡口列表动态获取
-            crossInfo = data;
-            var searchCross = $("#search-cross");
-            var optionStr = "";
-            for (var i = 0; i < crossInfo.length; i++) {
-              optionStr += ('<option value="' + data[i].road_name + '">'
-                  + data[i].road_name + '</option>');
-            }
-            searchCross.append(optionStr);
-            $("#search-cross").change(function() {
-              var crossName = $(this).val();
-              $("#search-crosslist ul").prepend('<li>' + crossName + '</li>');
-              $("#search-crosslist ul>li").click(deleteCross);
-            });
+  $.get('data/new_cross_info.json', function(data) {
+    // 卡口列表动态获取
+    crossInfo = data;
+    var searchCross = $("#search-cross");
+    var optionStr = "";
+    for (var i = 0; i < crossInfo.length; i++) {
+      optionStr += ('<option value="' + data[i].road_name + '">'
+          + data[i].road_name + '</option>');
+    }
+    searchCross.append(optionStr);
+    $("#search-cross").change(function() {
+      var crossName = $(this).val();
+      $("#search-crosslist ul").prepend('<li>' + crossName + '</li>');
+      $("#search-crosslist ul>li").click(deleteCross);
+    });
 
-            // 画百度地图
-            var map = new BMap.Map('search-map');
-            var poi = new BMap.Point(113.268781, 23.136371);
-            map.centerAndZoom(poi, 15);
-            // map.enableScrollWheelZoom();
-            map.addControl(new BMap.NavigationControl({
-              anchor : BMAP_ANCHOR_TOP_LEFT,
-              type : BMAP_NAVIGATION_CONTROL_SMALL
-            }));
-            var menu = new BMap.ContextMenu();
-            var txtMenuItem = [ {
-              text : '放大',
-              callback : function() {
-                map.zoomIn()
-              }
-            }, {
-              text : '缩小',
-              callback : function() {
-                map.zoomOut()
-              }
-            }, {
-              text : '清空',
-              callback : function() {
-                remove_overlay();
-                if ($(".BMapLib_hander")[0]) {
-                  $(".BMapLib_hander")[0].click();
-                }
-              }
-            } ];
-            for (var i = 0; i < txtMenuItem.length; i++) {
-              menu.addItem(new BMap.MenuItem(txtMenuItem[i].text,
-                  txtMenuItem[i].callback, 100));
-            }
-            map.addContextMenu(menu);
+    // 画百度地图
+    var map = new BMap.Map('search-map');
+    var poi = new BMap.Point(113.268781, 23.136371);
+    map.centerAndZoom(poi, 15);
+    // map.enableScrollWheelZoom();
+    map.addControl(new BMap.NavigationControl({
+      anchor : BMAP_ANCHOR_TOP_LEFT,
+      type : BMAP_NAVIGATION_CONTROL_SMALL
+    }));
+    var menu = new BMap.ContextMenu();
+    var txtMenuItem = [ {
+      text : '放大',
+      callback : function() {
+        map.zoomIn()
+      }
+    }, {
+      text : '缩小',
+      callback : function() {
+        map.zoomOut()
+      }
+    }, {
+      text : '清空',
+      callback : function() {
+        remove_overlay();
+        if ($(".BMapLib_hander")[0]) {
+          $(".BMapLib_hander")[0].click();
+        }
+      }
+    } ];
+    for (var i = 0; i < txtMenuItem.length; i++) {
+      menu.addItem(new BMap.MenuItem(txtMenuItem[i].text,
+          txtMenuItem[i].callback, 100));
+    }
+    map.addContextMenu(menu);
 
-            var overlays = [];
-            var overlaycomplete = function(e) {
-              overlays.push(e.overlay);
-              if (e.drawingMode == "circle") {
-                // 圆形
-                // xa相差5次方，应该是半径，单位是米
-                // console.log(e.overlay);
-                var x1 = e.overlay.point.lng;
-                var y1 = e.overlay.point.lat;
-                var r = parseFloat(e.overlay.xa);
-                var inArr = [];
-                var len = data.length;
-                for (var i = 0; i < len; i += 2) {
-                  if (calcDistance(x1, y1, data[i].bd_long, data[i].bd_lat) < r) {
-                    inArr.push(data[i]);
-                  }
-                }
-                for (var i = 0; i < inArr.length; i++) {
-                  $("#search-crosslist ul").prepend(
-                      '<li>' + inArr[i].road_name + '</li>');
-                }
-                $("#search-crosslist ul>li").click(deleteCross);
-                console.log(inArr);
-                for (var i = 0; i < inArr.length; i++) {
-                  var point = new BMap.Point(inArr[i].bd_long, inArr[i].bd_lat);
-                  addMarker(point);
-                }
-              } else if (e.drawingMode == "rectangle") {
-                // 矩形
-                // console.log(e.overlay);
-                var x1 = e.overlay.po[0].lng;
-                var y1 = e.overlay.po[0].lat;
-                var x2 = e.overlay.po[2].lng;
-                var y2 = e.overlay.po[2].lat;
-                var inArr = [];
-                var len = data.length;
-                for (var i = 0; i < len; i += 2) {
-                  data[i].bd_long = parseFloat(data[i].bd_long);
-                  data[i].bd_lat = parseFloat(data[i].bd_lat);
-                  if (data[i].bd_long < Math.max(x1, x2)
-                      && data[i].bd_long > Math.min(x1, x2)
-                      && data[i].bd_lat < Math.max(y1, y2)
-                      && data[i].bd_lat > Math.min(y1, y2)) {
-                    inArr.push(data[i]);
-                  }
-                }
-                for (var i = 0; i < inArr.length; i++) {
-                  $("#search-crosslist ul").prepend(
-                      '<li>' + inArr[i].road_name + '</li>');
-                }
-                $("#search-crosslist ul>li").click(deleteCross);
-                console.log(inArr);
-                for (var i = 0; i < inArr.length; i++) {
-                  var point = new BMap.Point(inArr[i].bd_long, inArr[i].bd_lat);
-                  addMarker(point);
-                }
-              }
+    var overlays = [];
+    var overlaycomplete = function(e) {
+      overlays.push(e.overlay);
+      if (e.drawingMode == "circle") {
+        // 圆形
+        // xa相差5次方，应该是半径，单位是米
+        // console.log(e.overlay);
+        var x1 = e.overlay.point.lng;
+        var y1 = e.overlay.point.lat;
+        var r = parseFloat(e.overlay.xa);
+        var inArr = [];
+        var len = data.length;
+        for (var i = 0; i < len; i += 2) {
+          if (calcDistance(x1, y1, data[i].bd_long, data[i].bd_lat) < r) {
+            inArr.push(data[i]);
+          }
+        }
+        for (var i = 0; i < inArr.length; i++) {
+          $("#search-crosslist ul").prepend(
+              '<li>' + inArr[i].road_name + '</li>');
+        }
+        $("#search-crosslist ul>li").click(deleteCross);
+        console.log(inArr);
+        for (var i = 0; i < inArr.length; i++) {
+          var point = new BMap.Point(inArr[i].bd_long, inArr[i].bd_lat);
+          addMarker(point);
+        }
+      } else if (e.drawingMode == "rectangle") {
+        // 矩形
+        // console.log(e.overlay);
+        var x1 = e.overlay.po[0].lng;
+        var y1 = e.overlay.po[0].lat;
+        var x2 = e.overlay.po[2].lng;
+        var y2 = e.overlay.po[2].lat;
+        var inArr = [];
+        var len = data.length;
+        for (var i = 0; i < len; i += 2) {
+          data[i].bd_long = parseFloat(data[i].bd_long);
+          data[i].bd_lat = parseFloat(data[i].bd_lat);
+          if (data[i].bd_long < Math.max(x1, x2)
+              && data[i].bd_long > Math.min(x1, x2)
+              && data[i].bd_lat < Math.max(y1, y2)
+              && data[i].bd_lat > Math.min(y1, y2)) {
+            inArr.push(data[i]);
+          }
+        }
+        for (var i = 0; i < inArr.length; i++) {
+          $("#search-crosslist ul").prepend(
+              '<li>' + inArr[i].road_name + '</li>');
+        }
+        $("#search-crosslist ul>li").click(deleteCross);
+        console.log(inArr);
+        for (var i = 0; i < inArr.length; i++) {
+          var point = new BMap.Point(inArr[i].bd_long, inArr[i].bd_lat);
+          addMarker(point);
+        }
+      }
 
-            };
-            var styleOptions = {
-              strokeColor : "red", // 边线颜色。
-              fillColor : "red", // 填充颜色。当参数为空时，圆形将没有填充效果。
-              strokeWeight : 3, // 边线的宽度，以像素为单位。
-              strokeOpacity : 0.8, // 边线透明度，取值范围0 - 1。
-              fillOpacity : 0.6, // 填充的透明度，取值范围0 - 1。
-              strokeStyle : 'solid' // 边线的样式，solid或dashed。
-            }
-            // 实例化鼠标绘制工具
-            var drawingManager = new BMapLib.DrawingManager(map, {
-              isOpen : false, // 是否开启绘制模式
-              enableDrawingTool : true, // 是否显示工具栏
-              drawingToolOptions : {
-                anchor : BMAP_ANCHOR_TOP_RIGHT, // 位置
-                offset : new BMap.Size(5, 5), // 偏离值
-              },
-              circleOptions : styleOptions, // 圆的样式
-              polylineOptions : styleOptions, // 线的样式
-              polygonOptions : styleOptions, // 多边形的样式
-              rectangleOptions : styleOptions
-            // 矩形的样式
-            });
-            // 添加鼠标绘制工具监听事件，用于获取绘制结果
-            drawingManager.addEventListener('overlaycomplete', overlaycomplete);
-            function clearAll() {
-              for (var i = 0; i < overlays.length; i++) {
-                map.removeOverlay(overlays[i]);
-              }
-              overlays.length = 0
-            }
-            function remove_overlay() {
-              map.clearOverlays();
-            }
-            function addMarker(point) {
-              var marker = new BMap.Marker(point);
-              map.addOverlay(marker);
-            }
-          });
+    };
+    var styleOptions = {
+      strokeColor : "red", // 边线颜色。
+      fillColor : "red", // 填充颜色。当参数为空时，圆形将没有填充效果。
+      strokeWeight : 3, // 边线的宽度，以像素为单位。
+      strokeOpacity : 0.8, // 边线透明度，取值范围0 - 1。
+      fillOpacity : 0.6, // 填充的透明度，取值范围0 - 1。
+      strokeStyle : 'solid' // 边线的样式，solid或dashed。
+    }
+    // 实例化鼠标绘制工具
+    var drawingManager = new BMapLib.DrawingManager(map, {
+      isOpen : false, // 是否开启绘制模式
+      enableDrawingTool : true, // 是否显示工具栏
+      drawingToolOptions : {
+        anchor : BMAP_ANCHOR_TOP_RIGHT, // 位置
+        offset : new BMap.Size(5, 5), // 偏离值
+      },
+      circleOptions : styleOptions, // 圆的样式
+      polylineOptions : styleOptions, // 线的样式
+      polygonOptions : styleOptions, // 多边形的样式
+      rectangleOptions : styleOptions
+    // 矩形的样式
+    });
+    // 添加鼠标绘制工具监听事件，用于获取绘制结果
+    drawingManager.addEventListener('overlaycomplete', overlaycomplete);
+    function clearAll() {
+      for (var i = 0; i < overlays.length; i++) {
+        map.removeOverlay(overlays[i]);
+      }
+      overlays.length = 0
+    }
+    function remove_overlay() {
+      map.clearOverlays();
+    }
+    function addMarker(point) {
+      var marker = new BMap.Marker(point);
+      map.addOverlay(marker);
+    }
+  });
 
   // console.log(calcDistance(114.265224, 23.138298, 113.265224, 24.138298));
   function calcDistance(x1, y1, x2, y2) {
@@ -249,40 +246,37 @@
   }
   function sendReport(title) {
     if (window.localStorage) {
-      
       var textStr = "";
       textStr += '<h1 style="text-align: center">' + title + '</h1>';
       textStr += '<h2>一、概览分析</h2>';
       textStr += '<p>近一月（2017年07月22日-2017年08月21日）中，广州外牌车数量106万辆，占总车辆的50%；外牌车带来的经济效益为8.5万亿元，有33%的经济与此相关；外牌车总排放量为5.6万吨，占汽车总排放量的32%；跟限外相关的话题共产生3450条次，同比上月上升8%。</p>';
       textStr += '<h2>二、交通分析</h2>';
-      textStr+=drawReportById("own-bar","入广外牌车归属地Top5","最多的外地城市佛山市有20万辆。");
-      textStr+=drawReportById("crowd-bar","城市拥堵路段Top5","东风东路最拥堵，拥堵延时指数2.0。");
-      textStr+=drawReportById("crowd-line","城市拥堵路段Top5","8点和18点拥堵情况最严重，此时外牌车占比也达到较大值。");
+      textStr += drawReportById("crowd-bar", "城市拥堵路段Top5", "东风东路最拥堵，拥堵延时指数2.0。");
+      textStr += drawReportById("crowd-line", "城市拥堵路段Top5",
+          "8点和18点拥堵情况最严重，此时外牌车占比也达到较大值。");
       textStr += '<h2>三、社情民意分析</h2>';
-      textStr+=drawReportById("feelings-score","民意满意度","民意满意99分，多一分怕骄傲。");
+      textStr += drawReportById("feelings-score", "民意满意度", "民意满意99分，多一分怕骄傲。");
       textStr += '<h2>四、经济分析</h2>';
-      textStr+=drawReportById("economic-area","区域经济","荔湾区经济总值上升35%，花都区经济总值下降15%，跟限外政策相关度不大。");
+      textStr += drawReportById("economic-area", "区域经济",
+          "荔湾区经济总值上升35%，花都区经济总值下降15%，跟限外政策相关度不大。");
       textStr += '<h2>五、环境分析</h2>';
-      textStr+=drawReportById("environment-type","排放标准","国Ⅳ及以后占比最多，达到34.15%。");
+      textStr += drawReportById("environment-type", "排放标准",
+          "国Ⅳ及以后占比最多，达到34.15%。");
       /*
-      textStr += '<h1 style="text-align: center">' + title + '</h1>';
-      textStr += '<h2>一、概览分析</h2>';
-      textStr += '<p>近一月（2017年07月22日-2017年08月21日）中，广州外牌车数量243万辆，占总车辆的30%；外牌车带来的经济效益为8.5万亿元，有33%的经济与此相关；外牌车总排放量为5.6万吨，占汽车总排放量的32%；跟限外相关的话题共产生3450条次，同比上月上升8%。</p>';
-      textStr += '<h2>二、交通分析</h2>';
-      textStr += drawReport(1, "入广外牌车归属地Top5", "佛山市最多，有50万辆。");
-      textStr += drawReport(2, "城市拥堵路段Top5", "东风东路最为拥挤，拥堵指数为2。");
-      textStr += drawReport(3, "拥堵延时指数和外来车流量占比",
-          "12时、18时附近的高峰期，拥堵延时指数和外来车流量占比呈正相关关系，外来车流量占比提高1个百分点，拥堵延时指数平均上升0.2。");
-      textStr += '<h2>三、经济分析</h2>';
-      textStr += drawReport(4, "区域经济", "荔湾区经济总值上升35%，花都区经济总值下降15%，跟限外政策相关度不大。");
-      textStr += drawReport(5, "经济指标", "逐年增长。");
-      textStr += '<h2>四、环境分析</h2>';
-      textStr += drawReport(6, "污染物排放量", "环境污染问题越来越严峻。");
-      textStr += drawReport(7, "排放标准", "国Ⅳ及以后占比最多，达到34.15%。");
-      textStr += '<h2>五、舆情分析</h2>';
-      textStr += drawReport(8, "舆情满意度", "舆情满意99分，多一分怕骄傲。");
-      textStr += drawReport(9, "舆情关注度", "平均每天有1150条跟限外有关的话题，百度贴吧和新浪微博的热度最高。");
-      */
+       * textStr += '<h1 style="text-align: center">' + title + '</h1>';
+       * textStr += '<h2>一、概览分析</h2>'; textStr += '<p>近一月（2017年07月22日-2017年08月21日）中，广州外牌车数量243万辆，占总车辆的30%；外牌车带来的经济效益为8.5万亿元，有33%的经济与此相关；外牌车总排放量为5.6万吨，占汽车总排放量的32%；跟限外相关的话题共产生3450条次，同比上月上升8%。</p>';
+       * textStr += '<h2>二、交通分析</h2>'; textStr += drawReport(1,
+       * "入广外牌车归属地Top5", "佛山市最多，有50万辆。"); textStr += drawReport(2, "城市拥堵路段Top5",
+       * "东风东路最为拥挤，拥堵指数为2。"); textStr += drawReport(3, "拥堵延时指数和外来车流量占比",
+       * "12时、18时附近的高峰期，拥堵延时指数和外来车流量占比呈正相关关系，外来车流量占比提高1个百分点，拥堵延时指数平均上升0.2。");
+       * textStr += '<h2>三、经济分析</h2>'; textStr += drawReport(4, "区域经济",
+       * "荔湾区经济总值上升35%，花都区经济总值下降15%，跟限外政策相关度不大。"); textStr += drawReport(5,
+       * "经济指标", "逐年增长。"); textStr += '<h2>四、环境分析</h2>'; textStr +=
+       * drawReport(6, "污染物排放量", "环境污染问题越来越严峻。"); textStr += drawReport(7,
+       * "排放标准", "国Ⅳ及以后占比最多，达到34.15%。"); textStr += '<h2>五、舆情分析</h2>';
+       * textStr += drawReport(8, "舆情满意度", "舆情满意99分，多一分怕骄傲。"); textStr +=
+       * drawReport(9, "舆情关注度", "平均每天有1150条跟限外有关的话题，百度贴吧和新浪微博的热度最高。");
+       */
       localStorage.setItem("portalLimitReport", textStr);
     }
 
@@ -298,7 +292,7 @@
     return img1Str + title1Str + (str || '');
   }
   function drawReportById(id, title, str) {
-    var canvas = $("#"+id+" canvas")[0];
+    var canvas = $("#" + id + " canvas")[0];
     var canvas1Data = canvas.toDataURL("image/png");
     var img1Str = '<p style="text-align: center"><img src="' + canvas1Data
         + '" /></p>';
@@ -362,6 +356,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+      color : colorRgba(),
       tooltip : {
         trigger : 'axis',
         axisPointer : {
@@ -371,9 +366,9 @@
       },
       grid : {
         left : '10',
-        right : '80',
-        bottom : '10',
-        top : '10',
+        right : '90',
+        bottom : '20',
+        top : '40',
         containLabel : true
       },
       xAxis : {
@@ -387,14 +382,16 @@
         type : 'category',
         data : [ '机场高速公路', '广园快速路', '江海大道', '环城高速', '东风东路' ]
       },
-      itemStyle : {
-        normal : {
-          color : 'rgba(53,127,166,0.8)'
-        }
-      },
       series : [ {
         type : 'bar',
-        data : [ 1.6, 1.7, 1.8, 1.9, 2.0 ]
+        data : [ 1.6, 1.7, 1.8, 1.9, 2.0 ],itemStyle : {
+          normal : {
+            color : function(params) {
+              var colorList = colorRgba().concat(colorRgba()).concat(colorRgba());
+              return colorList[params.dataIndex];
+            }
+          }
+        }
       } ]
     };
     chart.setOption(option);
@@ -407,7 +404,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
-
+      color : colorRgba(),
       tooltip : {
         trigger : 'item',
         formatter : "{b}<br>{c} ({d}%)"
@@ -450,7 +447,14 @@
           value : 1500,
           name : '科韵路'
         } ]
-      } ]
+      } ],itemStyle : {
+        normal : {
+          color : function(params) {
+            var colorList = colorRgba().concat(colorRgba()).concat(colorRgba());
+            return colorList[params.dataIndex];
+          }
+        }
+      }
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -462,6 +466,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+      color : colorRgba(),
       xAxis : {
         name : '时间',
         type : 'category',
@@ -500,6 +505,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+      color : colorRgba(),
       tooltip : {
         trigger : 'axis',
         axisPointer : {
@@ -525,14 +531,16 @@
         type : 'category',
         data : [ '清远市', '绍兴市', '深圳市', '佛山市', '其他省' ]
       },
-      itemStyle : {
-        normal : {
-          color : 'rgba(53,127,166,0.8)'
-        }
-      },
       series : [ {
         type : 'bar',
-        data : [ 5.0942, 5.1551, 11.6452, 20.0000, 25.8936 ]
+        data : [ 5.0942, 5.1551, 11.6452, 20.0000, 25.8936 ],itemStyle : {
+          normal : {
+            color : function(params) {
+              var colorList = colorRgba().concat(colorRgba()).concat(colorRgba());
+              return colorList[params.dataIndex];
+            }
+          }
+        }
       } ]
     };
     chart.setOption(option);
@@ -914,8 +922,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
-      color : [ '#5bb4d9', '#f47564', '#4fc3b9', '#f39c12', '#1da02b',
-          '#63869e' ],
+      color : colorRgba(),
       legend : {
         bottom : 5,
         data : [ '天河区', '海珠区', '黄埔区', '番禺区', '白云区', '荔湾区' ],
@@ -1002,6 +1009,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+      color : colorRgba(),
       tooltip : {
         trigger : 'axis'
       },
@@ -1043,6 +1051,7 @@
       }, {
         name : '外牌车比例',
         type : 'bar',
+        barWidth : '60%',
         yAxisIndex : 1,
         data : [ 50.2, 49.8, 51.5, 50.2, 49.1, 51.6 ]
       } ]
@@ -1057,6 +1066,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+      color : colorRgba(),
       tooltip : {
         trigger : 'axis',
         axisPointer : {
@@ -1064,9 +1074,10 @@
         }
       },
       grid : {
-        left : '3%',
-        right : '4%',
-        bottom : '3%',
+        left : '5%',
+        right : '5%',
+        bottom : '5%',
+        top:'10%',
         containLabel : true
       },
       xAxis : [ {
@@ -1122,6 +1133,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+      color : colorRgba(),
       tooltip : {
         trigger : 'axis'
       },
@@ -1185,6 +1197,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+      color : colorRgba(),
       xAxis : {
         name : '时间',
         type : 'category',
@@ -1192,10 +1205,10 @@
         data : [ '0', '3', '6', '9', '12', '15', '18', '21', '24' ]
       },
       yAxis : {
-        name:'热度(条)',
+        name : '热度(条)',
         type : 'value'
       },
-      tooltip:{
+      tooltip : {
         trigger : 'axis'
       },
       grid : {
@@ -1207,8 +1220,8 @@
       series : [ {
         name : '社情热度',
         type : 'line',
-        data : [ 200,50,30,50,250,100,260,300,200]
-      }]
+        data : [ 200, 50, 30, 50, 250, 100, 260, 300, 200 ]
+      } ]
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -1261,8 +1274,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
-      color : [ '#5bb4d9', '#f47564', '#4fc3b9', '#f39c12', '#1da02b',
-          '#63869e' ],
+      color : colorRgba(),
       legend : {
         bottom : 5,
         data : [ '天河区', '番禺区', '海珠区', '南沙区', '黄埔区', '白云区' ],
@@ -1343,18 +1355,10 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+      color : colorRgba(),
       tooltip : {
         trigger : 'item',
         formatter : "{a} <br/>{b} : {c} ({d}%)"
-      },
-
-      visualMap : {
-        show : false,
-        min : 80,
-        max : 600,
-        inRange : {
-          colorLightness : [ 0, 1 ]
-        }
       },
       series : [ {
         name : '排放标准',
@@ -1393,11 +1397,6 @@
             smooth : 0.2,
             length : 10,
             length2 : 20
-          }
-        },
-        itemStyle : {
-          normal : {
-            color : '#c23531'
           }
         },
         animationType : 'scale',

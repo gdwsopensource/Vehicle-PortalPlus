@@ -98,6 +98,7 @@
 
     var radarECharts = echarts.init(document.getElementById('radarECharts'));
     var radarECharts_option = {
+        color : colorRgba(), 
 		tooltip : {
 			trigger : 'item',
 			//formatter : "{a} <br/>{b}: {c} ({d}%)"
@@ -123,14 +124,11 @@
                 name: {
                     formatter: '【{value}】',
                     textStyle: {
-                        color: '#72ACD1'
+                      color : colorRgba()
                     }
                 },
                 splitArea: {
                     areaStyle: {
-                        color: ['rgba(114, 172, 209, 0.2)',
-                            'rgba(114, 172, 209, 0.4)', 'rgba(114, 172, 209, 0.6)',
-                            'rgba(114, 172, 209, 0.8)', 'rgba(114, 172, 209, 1)'],
                         shadowColor: 'rgba(0, 0, 0, 0.3)',
                         shadowBlur: 10
                     }
@@ -188,11 +186,11 @@
 
     var pieECharts_1 = echarts.init(document.getElementById('pieECharts_1'))
     var pieECharts_1_option = {
+      color : colorRgba(), 
         tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
-        color: ['#f47564', '#4fc3b9'],
         series: [
             {
                 name: '外牌车和本地车占比',
@@ -233,6 +231,7 @@
 
     var pieECharts_2 = echarts.init(document.getElementById('pieECharts_2'));
     var pieECharts_2_option = {
+        color : colorRgba(), 
         tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -260,6 +259,7 @@
 
     var barECharts = echarts.init(document.getElementById('barECharts'));
     var barECharts_option = {
+        color : colorRgba(), 
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -352,11 +352,11 @@
 
     var map_pieECharts = echarts.init(document.getElementById('map_pieECharts'));
     var map_pieECharts_option = {
+        color : ['rgba(91,180,217,1)','rgba(91,180,217,0.2)'], 
         tooltip: {
             trigger: 'item',
             formatter: "{a}:{d}%"
         },
-        color: ['#c23531','#2f4554',],
         grid: {
             bottom: 30
         },
@@ -462,7 +462,7 @@
         var chart = echarts.init(obj);
         var option = null;
         option = {
-        		 color: ['#f47564', '#4fc3b9'],
+            color : colorRgba(), 
         		  tooltip : {
         		        trigger: 'axis',
         		        axisPointer : {            // 坐标轴指示器，坐标轴触发有效

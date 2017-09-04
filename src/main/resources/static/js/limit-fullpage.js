@@ -38,6 +38,12 @@
   // 绑定事件
 
   // 自定义函数
+  function colorRgba(a) {
+    a = a || 1;
+    return [ 'rgba(91,180,217,' + a + ')', 'rgba(244,117,100,' + a + ')',
+        'rgba(79,195,186,' + a + ')', 'rgba(243,156,18,' + a + ')',
+        'rgba(64,199,129,' + a + ')', 'rgba(149,161,194,' + a + ')' ];
+  };
   function dateFormat() {
     Date.prototype.format = function(fmt) { // author: meizz
       var weekday = new Array(7)
@@ -176,7 +182,7 @@
     var obj = document.getElementById(id);
     var chart = echarts.init(obj);
     var option = null;
-    option = {
+    option = {        
       title : {
         x : 'center',
         text : text,
@@ -216,7 +222,7 @@
           value : 100 - crowdRatio,
           name : ''
         }, ],
-        color : [ 'rgb(92,180,218)', 'rgb(255,255,255)' ]
+        color : ['rgba(91,180,217,1)','rgba(91,180,217,0.2)']
       } ]
     };
     chart.setOption(option);
@@ -271,7 +277,7 @@
           value : 100 - crowdRatio,
           name : ''
         }, ],
-        color : [ 'rgb(92,180,218)', 'rgb(255,255,255)' ]
+        color : ['rgba(91,180,217,1)','rgba(91,180,217,0.2)']
       } ]
     };
     chart.setOption(option);
@@ -327,7 +333,7 @@
           value : 100 - nonlocalRatio,
           name : ''
         }, ],
-        color : [ 'rgb(92,180,218)', 'rgb(255,255,255)' ]
+        color : ['rgba(91,180,217,1)','rgba(91,180,217,0.2)']
       } ]
     };
     chart.setOption(option);
@@ -340,6 +346,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+        color : colorRgba(), 
       title : {
         text : '今日外牌车',
         x : 'center',
@@ -366,9 +373,7 @@
             shadowColor : 'rgba(0, 0, 0, 0.5)'
           }
         }
-      } ],
-      color : [ 'rgb(92,180,218)', 'rgb(244,156,16)', 'rgb(244,116,100)',
-          'rgb(80,196,186)', 'rgb(134,118,168)' ]
+      } ]
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -380,6 +385,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+        color : colorRgba(), 
       title : {
         text : '今日外牌车归属地',
         x : 'center',
@@ -409,9 +415,7 @@
           value : 20,
           name : '其他省'
         } ]
-      } ],
-      color : [ 'rgb(92,180,218)', 'rgb(244,156,16)', 'rgb(244,116,100)',
-          'rgb(80,196,186)', 'rgb(134,118,168)' ]
+      } ]
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -423,6 +427,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+        color : colorRgba(), 
       title : {
         text : '今日拥堵路段',
         x : 'center',
@@ -495,9 +500,7 @@
         type : 'bar',
         stack : '合并',
         data : [ 2.60, 2.65, 2.70, 2.75, 2.80, 2.85, 2.90, 2.95 ]
-      } ],
-      color : [ 'rgb(92,180,218)', 'rgb(244,156,16)', 'rgb(244,116,100)',
-          'rgb(80,196,186)', 'rgb(134,118,168)' ]
+      } ]
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -509,6 +512,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+        color : colorRgba(), 
       title : {
         text : '拥堵延时指数与外牌车占比关系',
         x : 'center',
@@ -555,9 +559,7 @@
         name : '拥堵延时指数',
         type : 'line',
         data : [ 1.2, 1.2, 1.2, 1.3, 1.4, 1.2, 1.3, 1.25, 1.2 ]
-      } ],
-      color : [ 'rgb(92,180,218)', 'rgb(244,156,16)', 'rgb(244,116,100)',
-          'rgb(80,196,186)', 'rgb(134,118,168)' ]
+      } ]
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -569,6 +571,7 @@
     var chart = echarts.init(obj);
     var option = null;
     option = {
+        color : colorRgba(), 
       title : {
         text : '今日指标',
         x : '40',
@@ -620,9 +623,7 @@
           name : '昨日',
           value : [ 15, 400, 50, 120, 1.6 ]
         } ]
-      } ],
-      color : [ 'rgb(92,180,218)', 'rgb(244,156,16)', 'rgb(244,116,100)',
-          'rgb(80,196,186)', 'rgb(134,118,168)' ]
+      } ]
     };
     chart.setOption(option);
     $(window).on("resize", function() {

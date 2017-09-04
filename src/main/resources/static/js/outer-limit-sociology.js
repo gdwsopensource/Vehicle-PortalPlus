@@ -1,6 +1,7 @@
 (function($) {
 	var radarECharts = echarts.init(document.getElementById('radarECharts'));
 	var radarECharts_option = {
+	    color:colorRgba(),
 		tooltip : {
 			trigger : 'item',
 		},
@@ -75,6 +76,7 @@
 	radarECharts.setOption(radarECharts_option);
 	var barECharts = echarts.init(document.getElementById('barECharts'));
 	var barECharts_option = {
+	    color:colorRgba(),
 		tooltip : {
 			trigger : 'axis',
 			axisPointer : { // 坐标轴指示器，坐标轴触发有效
@@ -97,9 +99,7 @@
 			itemStyle : {
 				normal : {
 					color : function(params) {
-						var colorList = [ '#5bb4d9', '#4fc3b9', '#f47564',
-								'#f39c12', '#63869e', '#3b5e75', '#1da02b',
-								'#f47564', '#f39c12' ];
+						var colorList = colorRgba().concat(colorRgba()).concat(colorRgba());
 						return colorList[params.dataIndex];
 					}
 				}
@@ -110,7 +110,7 @@
 
 	var pieECharts_2 = echarts.init(document.getElementById('pieECharts_2'));
 	var pieECharts_2_option = {
-		color : [ '#1da02b', '#f4563c', '#14aae4', '#f29503', '#4f5c65' ],// 调色盘颜色列表。
+	    color:colorRgba(),// 调色盘颜色列表。
 		tooltip : {
 			trigger : 'item',
 			formatter : "{a} <br/>{b}: {c} ({d}%)"
@@ -149,6 +149,7 @@
 
 	var lineECharts_2 = echarts.init(document.getElementById('lineECharts_2'));
 	var lineECharts_2_option = {
+	    color:colorRgba(),
 		tooltip : {
 			trigger : 'axis'
 		},

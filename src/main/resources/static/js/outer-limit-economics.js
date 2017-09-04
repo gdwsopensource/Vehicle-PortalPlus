@@ -183,9 +183,7 @@
     var parallel_nutrients = echarts.init(document.getElementById('parallel_nutrients'));
 
     var parallel_nutrients_option = {
-        color: [
-            '#5bb4d9', '#f47564', '#4fc3b9', '#f39c12', '#1da02b', '#63869e'
-        ],
+        color:colorRgba(),
         legend: {
             bottom: 5,
             data: ['天河区', '海珠区', '黄埔区', '番禺区', '白云区', '荔湾区'],
