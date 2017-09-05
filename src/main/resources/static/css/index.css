@@ -1080,7 +1080,7 @@
 /*>>>行为分析*/
 /*<<<情报分析*/
 #search-crosslist ul{
-	height: 230px; overflow: auto;
+	height: 200px; overflow: auto;
 }
 #search-crosslist ul>li{
 	font-size:14px;
