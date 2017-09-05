@@ -221,8 +221,8 @@
                 selectedOffset: 5,
                 radius: ['50%', '65%'],
                 data: [
-                    {value: 11142731, name: '本地车', selected: true},
-                    {value: 11053945, name: '外牌车'}
+                    {value: 1059845, name: '本地车', selected: true},
+                    {value: 1053945, name: '外牌车'}
                 ]
             }
         ]
@@ -243,14 +243,14 @@
                 radius: [50, 130],
                 roseType: 'area',
                 data: [
-                    {value: 208617, name: '深圳'},
-                    {value: 222612, name: '佛山'},
-                    {value: 100617 ,name: '东莞'},
-                    {value: 103617, name: '清远'},
-                    {value: 116452, name: '肇庆'},
-                    {value: 105617, name: '珠海'},
+                    {value: 116452, name: '深圳'},
+                    {value: 208617, name: '佛山'},
+                    {value: 105317 ,name: '东莞'},
+                    {value: 86017, name: '清远'},
+                    {value: 51551, name: '肇庆'},
+                    {value: 84617, name: '珠海'},
                     {value: 258936, name: '外省'},
-                    {value: 200936, name: '其他'}
+                    {value: 436035, name: '其他'}
                 ]
             }
         ]
@@ -311,7 +311,7 @@
                 name: '频次',
                 type: 'line',
                 smooth: true,
-                data: [1000, 2000, 50002, 60060, 18000, 20000, 30000, 25000, 1000],
+                data: [9405, 2758, 7553, 15274, 16926, 16905, 17852, 13880, 9405],
                 markArea: {
                     label: {
                         normal: {
@@ -498,13 +498,13 @@
         		            name: '本地车牌占比',
         		            type: 'bar',
         		            stack: '总量',    		           
-        		            data: [ 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0]
+        		            data: [0.5, 0.6, 0.5, 0.6, 0.8, 0.7, 1.3, 1.3]
         		        },
         		        {
         		            name: '外地车牌占比',
         		            type: 'bar',
         		            stack: '总量',		            
-        		            data: [2.60, 2.65, 2.70, 2.75, 2.80, 2.85, 2.90, 2.95]
+        		            data: [0.4, 0.55, 0.9, 0.9, 1.2, 1.4, 0.9, 1.0]
         		        }
         		    ]
         };

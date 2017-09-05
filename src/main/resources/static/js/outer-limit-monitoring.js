@@ -129,6 +129,41 @@
 
       }
     
+    function drawLineEcharts(id){
+    	var lineECharts = echarts.init(document.getElementById(id));
+    	 var lineECharts_option = {
+    		        color:colorRgba(),
+    		        tooltip: {
+    		            trigger: 'axis'
+    		        },
+    		        legend: {
+    		            data: ['总量']
+    		        },
+    		        grid: {
+    		            left: '5%',
+    		            right: '7%',
+    		            bottom: '7%',
+    		            containLabel: true
+    		        },
+    		        xAxis: {
+    		            type: 'category',
+    		            boundaryGap: false,
+    		            data: ['私家车', '货运车', '出租车', '客车', '其他']
+    		        },
+    		        yAxis: {
+    		            type: 'value'
+    		        },
+    		        series: [
+    		            {
+    		                name: '总量',
+    		                type: 'line',
+    		                data: [33500, 8000,4520, 4200,86800]
+    		            }
+    		        ]
+    		    };
+    	 lineECharts.setOption(lineECharts_option);
+    }
+    
     
     var lineECharts = echarts.init(document.getElementById('lineECharts'));
     var lineECharts_option = {
@@ -157,7 +192,7 @@
             {
                 name: '总量',
                 type: 'line',
-                data: [33500, 31000, 23400, 13200,154800]
+                data: [33500, 8000,4520, 4200,86800]
             }
         ]
     };
@@ -241,4 +276,68 @@
 		} ]
 	}
 	pieECharts.setOption(pieECharts_option);
+	
+	$('#btn-submit').on('click',function(){
+		var rule_value=$('#rule').val();
+		if( rule_value == 1 ){
+			$.getJSON("../data/outer-limit-monitoring.json",function(data){
+				if(data.code === 0){
+					lineECharts.setOption({
+						xAxis:{
+							data:data.data.carTotal.status
+						},
+						series:[
+							 {
+					                name: '总量',
+					                type: 'line',
+					                data: data.data.carTotal.value
+					         }
+						]
+					});	
+					var indexData=data.data.congestion.value;
+					$("#index").html(readIndexFrame(indexData));	
+					console.log(readIndexFrame(indexData));				
+				}
+			});
+		}else{
+			lineECharts.setOption({
+				xAxis:{
+					data: ['私家车', '货运车', '出租车', '客车', '其他']
+				},
+				series:[
+					 {
+			                name: '总量',
+			                type: 'line',
+			                data: [33500, 8000,4520, 4200,86800]
+			         }
+				]
+			})
+		}
+	});
+	
+	function readIndexFrame(data){
+		var html="";
+		for(var i=0;i<data.length;i++){
+			html+="<div class='row'>";
+			html+="<div class='col-md-2 col-xs-2 col-sm-2 col-lg-2'>";
+			html+="<div class='progress-description text-center'>"+data[i].region+"</div>";
+			html+="</div>"
+			html+="<div class='col-md-8 col-xs-8 col-sm-8 col-lg-8'>";
+			html+="<div class='progress'>";
+			html+="<div class='progress-bar progress-bar-warning' role='progressbar' aria-valuenow='"+data[i].percentage * 100+"' aria-valuemin='0' aria-valuemax='100' style='width:"+data[i].percentage * 100+"%'>";
+			html+="</div>";
+			html+="</div>";
+			html+="</div>";
+			html+="<div class='col-md-2 col-xs-2 col-sm-2 col-lg-2'>";
+			html+="<div class='progress-number text-center'>"+data[i].index+"</div>";
+			html+="</div>";
+			html+="</div>";	
+		}
+		return html;
+	}
+	
+	
+	
+	
+	
 })(jQuery);
