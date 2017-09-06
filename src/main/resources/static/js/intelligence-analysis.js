@@ -203,6 +203,7 @@
   });
   $("#search-submit").on('click',function(){
     changeActiveMapCenter(activeMapCenter,15);
+    scrollToFixed("#traffic", 95);
   });
   $("#top-create-report").on('click', function() {
     sendReport("近一月情报分析智能报告")
