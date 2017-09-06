@@ -218,4 +218,20 @@
 		} ]
 	};
 	lineECharts_2.setOption(lineECharts_2_option);
+	
+	var testBoolean=false;
+	$("#btn-submit").on('click',function(){
+		alert(1);
+		if(!testBoolean){
+			
+		}else{
+			
+		}
+		
+		return false;
+	})
+	
+	
+	
+	
 })(jQuery);

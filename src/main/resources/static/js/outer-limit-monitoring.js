@@ -261,42 +261,53 @@
 				value : 33500,
 				name : '私家车'
 			}, {
-				value : 31000,
+				value : 8000,
 				name : '货运车'
 			}, {
-				value : 23400,
+				value : 4520,
 				name : '出租车'
 			},{
 				value:13200,
 				name:'客车'
 			},{
-				value : 154800,
+				value : 86800,
 				name : '其他'
 			} ]
 		} ]
 	}
 	pieECharts.setOption(pieECharts_option);
 	
+	
+	var TestBoolean=false;
+	
 	$('#btn-submit').on('click',function(){
 		var rule_value=$('#rule').val();
 		if( rule_value == 1 ){
 			$.getJSON("../data/outer-limit-monitoring.json",function(data){
 				if(data.code === 0){
+					var lineEChartsArrVal=[],carTotal=data.data.carTotal;
+					for(var i=0;i<carTotal.length;i++){
+						lineEChartsArrVal[i]=carTotal[i].value;
+					}
+					console.log(lineEChartsArrVal);
 					lineECharts.setOption({
-						xAxis:{
-							data:data.data.carTotal.status
-						},
 						series:[
 							 {
 					                name: '总量',
 					                type: 'line',
-					                data: data.data.carTotal.value
+					                data: lineEChartsArrVal
 					         }
 						]
-					});	
+					});
 					var indexData=data.data.congestion.value;
 					$("#index").html(readIndexFrame(indexData));	
-					console.log(readIndexFrame(indexData));				
+					console.log(readIndexFrame(indexData));	
+					
+					pieECharts.setOption({
+						series:[{
+							data:data.data.carTotal
+						}]
+					});	
 				}
 			});
 		}else{
@@ -311,7 +322,30 @@
 			                data: [33500, 8000,4520, 4200,86800]
 			         }
 				]
-			})
+			});
+			$.get("../data/out-limit-monitoring.txt",function(data){
+				$("#index").html(data);
+			},"text");			
+			pieECharts.setOption({
+				series:[{
+					data:[ {
+						value : 33500,
+						name : '私家车'
+					}, {
+						value : 8000,
+						name : '货运车'
+					}, {
+						value : 4520,
+						name : '出租车'
+					},{
+						value:13200,
+						name:'客车'
+					},{
+						value : 86800,
+						name : '其他'
+					} ]
+				}]
+			});
 		}
 	});
 	
@@ -335,6 +369,9 @@
 		}
 		return html;
 	}
+	
+	
+	
 	
 	
 	

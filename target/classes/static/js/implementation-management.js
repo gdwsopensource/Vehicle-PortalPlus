@@ -25,7 +25,10 @@
     $("#cke_22").click();
   });
   $("#publish-report").on('click', function() {
-    publishWechat();
+    var date=new Date;
+    var now=""+date.getFullYear()+"年"+(date.getMonth()+1)+"月"+date.getDate()+"日 "+date.getHours()+":"+date.getMinutes();
+    var str="今日("+date.getFullYear()+"年"+(date.getMonth()+1)+"月"+date.getDate()+"日"+")，本市车流总量2113790辆，同比（2083790辆）上升1.4%，外牌车辆总数1059845辆，占比50.1%，同比（1035738辆）上升2.3%，外牌车辆主要归属外省258936辆，同比（264863辆）下降2.2%，佛山201834辆，同比（195317辆）上升3.3%。社情民意的关注度973条，社情民意热点“内环路上下班拥堵”、“龙口西往天河北方向闯红灯现象多”等，民意满意度99分--"+now;
+    publishWechat(str);
   });
   // 自定义函数
   function exportWord(title) {
@@ -39,25 +42,14 @@
    * 1000);
    */
 
-  function publishWechat() {
-    var access_token = "OepZaX1NwBwpElsyCW5gpE0S49ajtI5ol6DhtTbw7Aw479UydxmN4Ej6DEoQ-qgKJyDmCd-eK4A-qHimakYlfPq945uu_a8mgrlO8uxQJwB7HfbwdDqnX6AkbTJTCcqPTNEjAEALFW";
-    $
-        .ajax({
-          url : "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token="
-              + access_token,
-          type : "post",
-          dataType:"jsonp",
-          data : {
-            "touser" : [ "o4Qjmvz5HTwNbLh1HD9fQga6rp3w" ],
-            "msgtype" : "text",
-            "text" : {
-              "content" : "hello from boxer."
-            }
-          },
-          success : function(data) {
-            console.log(data);
-          }
-        });
+  
+  
+  function publishWechat(text) {
+    console.log(text);
+    $.post("/postTestAll",{content:text},function(res){
+      console.log(res);
+    });
+    return false;
   }
 
 })(jQuery);

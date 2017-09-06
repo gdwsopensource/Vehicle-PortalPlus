@@ -20,9 +20,6 @@
 						<div class="box box-defalt zw-bg-white">
 							<div class="box-header with-border">
 								<h3 class="box-title">查询条件</h3>
-								<button class="pull-right btn btn-sm btn-default"
-									id="search-sublit"
-									style="padding: 0 3px; font-size: 14px; width: 44px; height: 20px; line-height: 18px;">查询</button>
 							</div>
 							<div class="box-body" id="search-list" style="height: 500px;">
 								<div class="form-group">
@@ -60,6 +57,9 @@
 									<ul class="list-unstyled">
 									</ul>
 								</div>
+								<button class="btn btn-sm btn-info"
+									id="search-submit"
+									style="display: block;margin: auto;padding: 0 4px; font-size: 20px; width: 60px; height: 30px; line-height: 28px;">查询</button>
 							</div>
 						</div>
 					</div>
@@ -78,7 +78,7 @@
 							<div class="inner">
 								<h4 class="text-center">外牌车数量</h4>
 								<h3>
-									106万辆 <span style="font-size: 20px">50%</span>
+									106万辆 <span style="font-size: 20px"> ↑1.4%</span>
 								</h3>
 							</div>
 							<div class="icon">
@@ -91,8 +91,7 @@
 							<div class="inner">
 								<h4 class="text-center">社情热度</h4>
 								<h3>
-									3450条<span style="font-size: 20px"> ↓8%
-									</span>
+									3450条<span style="font-size: 20px"> ↓8.5%</span>
 								</h3>
 							</div>
 							<div class="icon">
@@ -105,7 +104,7 @@
 							<div class="inner">
 								<h4 class="text-center">外牌车经济效益</h4>
 								<h3>
-									8.5万亿<span style="font-size: 20px"> 33%</span>
+									8.5万亿<span style="font-size: 20px"> ↑0.8%</span>
 								</h3>
 							</div>
 							<div class="icon">
@@ -118,7 +117,7 @@
 							<div class="inner">
 								<h4 class="text-center">外牌车排放量</h4>
 								<h3>
-									5.6万吨<span style="font-size: 20px"> 32%</span>
+									5.6万吨<span style="font-size: 20px"> ↑4.5%</span>
 								</h3>
 							</div>
 							<div class="icon">
@@ -324,27 +323,18 @@
 							<div class="box-header with-border">
 								<h3 class="box-title">社情热点</h3>
 							</div>
-							<div class="box-body" id="tagscloud" style="height: 400px;overflow: hidden;">
-								 <a class="tagc1">外牌车辆管理</a>
-                <a class="tagc2">广州市交通堵塞</a>
-                <a class="tagc3">海珠区工业大道长期塞车</a>
-                <a class="tagc4">内环路经常交通堵塞</a>
-                <a class="tagc5">龙口西往天河北方向闯红灯</a>
-                <a class="tagc1">外牌车辆如何治理</a>
-                <a class="tagc2">小区门口被外牌车辆堵住</a>
-                <a class="tagc3">内环路上下班堵塞</a>
-                <a class="tagc4">市民建议限制外牌车辆行驶</a>
-                <a class="tagc5">塞车半小时</a>
-                <a class="tagc1">外牌车辆管理</a>
-                <a class="tagc2">广州市交通堵塞</a>
-                <a class="tagc3">海珠区工业大道长期塞车</a>
-                <a class="tagc4">内环路经常交通堵塞</a>
-                <a class="tagc5">龙口西往天河北方向闯红灯</a>
-                <a class="tagc1">外牌车辆如何治理</a>
-                <a class="tagc2">小区门口被外牌车辆堵住</a>
-                <a class="tagc3">内环路上下班堵塞</a>
-                <a class="tagc4">市民建议限制外牌车辆行驶</a>
-                <a class="tagc5">塞车半小时</a>
+							<div class="box-body" id="tagscloud"
+								style="height: 400px; overflow: hidden;">
+								<a class="tagc1">外牌车辆管理</a> <a class="tagc2">广州市交通堵塞</a> <a
+									class="tagc3">海珠区工业大道长期塞车</a> <a class="tagc4">内环路经常交通堵塞</a> <a
+									class="tagc5">龙口西往天河北方向闯红灯</a> <a class="tagc1">外牌车辆如何治理</a> <a
+									class="tagc2">小区门口被外牌车辆堵住</a> <a class="tagc3">内环路上下班堵塞</a> <a
+									class="tagc4">市民建议限制外牌车辆行驶</a> <a class="tagc5">塞车半小时</a> <a
+									class="tagc1">外牌车辆管理</a> <a class="tagc2">广州市交通堵塞</a> <a
+									class="tagc3">海珠区工业大道长期塞车</a> <a class="tagc4">内环路经常交通堵塞</a> <a
+									class="tagc5">龙口西往天河北方向闯红灯</a> <a class="tagc1">外牌车辆如何治理</a> <a
+									class="tagc2">小区门口被外牌车辆堵住</a> <a class="tagc3">内环路上下班堵塞</a> <a
+									class="tagc4">市民建议限制外牌车辆行驶</a> <a class="tagc5">塞车半小时</a>
 							</div>
 						</div>
 					</div>
@@ -366,11 +356,11 @@
 
 								<div class="small-box" style="height: 130px;">
 									<div class="inner">
-										<p style="color: gray; font-size: 14px;font-weight: bold;">事件倾向</p>
+										<p style="color: gray; font-size: 14px; font-weight: bold;">事件倾向</p>
 										<br />
 										<p style="color: gray; font-size: 14px">
-											<span style="color: blue; font-size: 20px;">522</span>舆情，<span
-												style="color: green; font-size: 20px;">328</span>正面，<span
+											<span style="color: blue; font-size: 20px;">522</span>积极，<span
+												style="color: green; font-size: 20px;">328</span>普通，<span
 												style="color: red; font-size: 20px;">128</span>负面
 										</p>
 									</div>
@@ -380,12 +370,12 @@
 								</div>
 								<div class="small-box" style="height: 130px;">
 									<div class="inner">
-										<p style="color: gray; font-size: 14px;font-weight: bold;">事件级别</p>
+										<p style="color: gray; font-size: 14px; font-weight: bold;">事件级别</p>
 										<br />
 										<p style="color: gray; font-size: 14px">
-											<span style="color: red; font-size: 20px;">522</span>重点，<span
-												style="color: green; font-size: 20px;">328</span>比较，<span
-												style="color: blue; font-size: 20px;">128</span>一般
+											<span style="color: red; font-size: 20px;">522</span>严重，<span
+												style="color: green; font-size: 20px;">328</span>一般，<span
+												style="color: blue; font-size: 20px;">128</span>轻微
 										</p>
 									</div>
 									<div class="icon">

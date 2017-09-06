@@ -2,10 +2,28 @@
 	"code":0,
 	"message":"OK",
 	"data":{
-		"carTotal":{
-			"status":["私家车","货运车","出租车","客车","其他"],
-			"value":[30520,4020,6250,2563,65201]
-		},
+		"carTotal":[
+			{
+				"name":"私家车",
+				"value":30520
+			},
+			{
+				"name":"货运车",
+				"value":4020
+			},
+			{
+				"name":"出租车",
+				"value":6250
+			},
+			{
+				"name":"客车",
+				"value":2563
+			},
+			{
+				"name":"其他",
+				"value":65201
+			}		
+		],
 		"congestion":{
 			"base":3,
 			"value":[

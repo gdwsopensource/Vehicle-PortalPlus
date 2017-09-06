@@ -1,0 +1,29 @@
+{
+	"code":0,
+	"message":"ok",
+	"data":{
+		"lawTotal":[
+			{
+				"name":"闯红灯",
+				"value":1680
+			},
+			{
+				"name":"假套牌",
+				"value":680
+			},
+			{
+				"name":"多次违章",
+				"value":250
+			},
+			{
+				"name":"其他",
+				"value":250
+			},
+			{
+				"name":"违反交通规则",
+				"value":150
+			}
+		],
+		"regionLaw":[]
+	}
+}

@@ -1,6 +1,9 @@
 (function($) {
   // 数据
   var crossInfo = [];
+  //暴露活跃区域的地图变量出来调用
+  var activeMapChart;
+  var activeMapCenter=[113.366286, 23.130748];
   // 初始化
   // resizeInit();
   $('#search-date').daterangepicker();
@@ -23,6 +26,9 @@
   drawFeelingsScore("feelings-score");
   drawFeelingsWay("feelings-way");
   drawFellingsDay("feelings-day");
+  
+  
+  
 
   $.get('data/new_cross_info.json', function(data) {
     // 卡口列表动态获取
@@ -43,7 +49,8 @@
     // 画百度地图
     var map = new BMap.Map('search-map');
     var poi = new BMap.Point(113.268781, 23.136371);
-    map.centerAndZoom(poi, 15);
+    map.centerAndZoom(poi,15);
+    //这行设置可用来重载
     // map.enableScrollWheelZoom();
     map.addControl(new BMap.NavigationControl({
       anchor : BMAP_ANCHOR_TOP_LEFT,
@@ -84,6 +91,8 @@
         // console.log(e.overlay);
         var x1 = e.overlay.point.lng;
         var y1 = e.overlay.point.lat;
+        //传参去活跃地图中心点
+        activeMapCenter=[x1,y1];
         var r = parseFloat(e.overlay.xa);
         var inArr = [];
         var len = data.length;
@@ -109,6 +118,8 @@
         var y1 = e.overlay.po[0].lat;
         var x2 = e.overlay.po[2].lng;
         var y2 = e.overlay.po[2].lat;
+      //传参去活跃地图中心点
+        activeMapCenter=[(x1+x2)/2,(y1+y2)/2];
         var inArr = [];
         var len = data.length;
         for (var i = 0; i < len; i += 2) {
@@ -190,6 +201,10 @@
   $(window).on('resize', function() {
     resizeInit();
   });
+  $("#search-submit").on('click',function(){
+    changeActiveMapCenter(activeMapCenter,15);
+    scrollToFixed("#traffic", 95);
+  });
   $("#top-create-report").on('click', function() {
     sendReport("近一月情报分析智能报告")
   });
@@ -221,6 +236,14 @@
 
   $("#search-crosslist ul>li").click(deleteCross);
   // 自定义函数
+  function changeActiveMapCenter(center,zoom){      
+      console.log(activeMapChart.getOption());
+      var option=activeMapChart.getOption();
+      option.bmap[0].center=center;
+      option.bmap[0].zoom=zoom;
+      activeMapChart.setOption(option);
+
+  }
   function deleteCross() {
     $(this).remove();
   }
@@ -313,6 +336,7 @@
       }
       var obj = document.getElementById(id);
       var chart = echarts.init(obj);
+      activeMapChart=chart;
       var option = null;
       option = {
         bmap : {
@@ -347,7 +371,7 @@
       }));
       $(window).on("resize", function() {
         chart.resize();
-      });
+      });      
     })
   }
 
