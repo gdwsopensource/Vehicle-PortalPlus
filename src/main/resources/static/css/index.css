@@ -503,18 +503,52 @@
 	top: 10%;
 	left: 1%;
 	width: 29%;
-	height: 28%;
+	height: 18%;
 	z-index: 2;
 	background: rgba(40, 40, 140, 0.2) !important;
 	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
 }
-
+/*
 .limit-fullpage #total #totalnumber{
 	width: 100%;
 	height: 90%;
 	margin-top: 5%;
 }
-
+*/
+.limit-fullpage #total #total-img{
+	float: left;
+	width: 35%;
+	height: 80%;
+	margin-left: 10%;
+	margin-top: 3%;
+	background-image: url(../image/fullpage_blue_car.png);
+	background-repeat: no-repeat;
+	background-size:auto 100% ;
+}
+.limit-fullpage #total #total-wall{
+	float: left;
+	width: 2px;
+	height: 80%;
+	margin-left: 5%;
+	margin-top: 3%;
+	background: linear-gradient(to bottom,rgb(91,180,217), rgb(244,117,100));
+}
+.limit-fullpage #total #total-msg{
+	float: left;
+	width: 43%;
+	height: 80%;
+	margin-left: 5%;
+	margin-top: 9%;
+	color:rgb(244,117,100);
+	text-align: center;
+	
+}
+.limit-fullpage #total #total-msg .number{
+	font-size:1.5em;
+}
+.limit-fullpage #total #total-msg .word{
+	font-size:0.75em;
+}
 
 .limit-fullpage #nonlocalratio {
 	position: absolute;
@@ -540,10 +574,10 @@
 
 .limit-fullpage #crowdload {
 	position: absolute;
-	top: 40%;
+	top: 30%;
 	left: 1%;
 	width: 29%;
-	height: 28%;
+	height: 38%;
 	z-index: 2;
 	background: rgba(40, 40, 140, 0.2) !important;
 	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
@@ -559,7 +593,7 @@
 	background: rgba(40, 40, 140, 0.2) !important;
 	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
 }
-
+/*
 .limit-fullpage #quota #quota-title {
 	font-size: 20px;
 	font-weight: bolder;
@@ -569,19 +603,19 @@
 	height: 20%;
 	text-align: center;
 }
+*/
 
 .limit-fullpage #quota #quota-day {
-	display: inline-block;
-	margin-left: 5%;
-	margin-top: 5%;
-	width: 45%;
+	float: left;
+	margin-left: 2%;
+	width: 46%;
 	height: 90%;
 }
 
 .limit-fullpage #quota #quota-night {
-	display: inline-block;
-	margin-top: 5%;
-	width: 45%;
+	float: left;
+	margin-left: 2%;
+	width: 46%;
 	height: 90%;
 }
 
@@ -849,14 +883,55 @@
 .limit-fullpage #warning .fa-star {
 	color: rgb(244, 156, 16);
 }
-
-.limit-fullpage #crowdtime {
+.limit-fullpage #compare{
 	position: absolute;
 	top: 10%;
 	left: 71%;
 	right: 1%;
 	width: 28%;
-	height: 58%;
+	height: 18%;
+	z-index: 2;
+	background: rgba(40, 40, 140, 0.2) !important;
+	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
+}
+.limit-fullpage #compare #compare-title {
+	font-size: 20px;
+	font-weight: bolder;
+	font-family: '微软雅黑';
+	text-align: center;
+	width: 100%;
+	height: 15%;
+	text-align: center;
+}
+.limit-fullpage #compare #compare-body{
+	width: 100%;
+	margin-top: 5%;
+	height: 80%;
+}
+.limit-fullpage #compare #compare-body .hr{
+	margin: 1em 2em;
+	background: linear-gradient(to right,rgb(91,180,217), rgb(244,117,100));
+	border:none;
+	height: 2px;
+}
+
+.limit-fullpage #compare #compare-body .last-month{
+	text-align: center;
+	font-size:0.75em;	
+	color: rgb(91,180,217);
+}
+.limit-fullpage #compare #compare-body .last-year-month{
+	text-align: center;
+	font-size:0.75em;	
+	color: rgb(244,117,100);
+}
+.limit-fullpage #crowdtime {
+	position: absolute;
+	top: 30%;
+	left: 71%;
+	right: 1%;
+	width: 28%;
+	height: 38%;
 	z-index: 2;
 	background: rgba(40, 40, 140, 0.2) !important;
 	box-shadow: 10px 10px 40px rgba(24, 48, 96, 0.8);
@@ -1126,21 +1201,21 @@
 }
 #tagscloud .tagc1 {
 	background: rgb(92,180,218);
-	font-size:28px;
+	font-size:20px;
 }
 
 #tagscloud .tagc2 {
 	background: rgb(244,156,16);
-	font-size:24px;
+	font-size:18px;
 }
 
 #tagscloud .tagc3 {
 	background: rgb(244,116,100);
-	font-size:20px;
+	font-size:16px;
 }
 #tagscloud .tagc4 {
 	background: rgb(80,196,186);
-	font-size:16px;
+	font-size:14px;
 }
 #tagscloud .tagc5 {
 	background: rgb(134,118,168);

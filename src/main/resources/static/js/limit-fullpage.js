@@ -17,7 +17,7 @@
   fly();
   // drawMsgPie1("msg-pie1", 50, 350);
   // drawMsgPie2("msg-pie2", 20000, 100000);
-  drawMsgPie("msg-pie1", 1059845, 2113790, "外牌车辆");
+  drawMsgPie("msg-pie1", 1145236, (1145236+1852235), "外牌车辆");
   drawMsgPie("msg-pie2", 6000, 10000, "外牌违章车辆");
   drawNonlocalratio("nonlocalratio");
   drawNonlocalown("nonlocalown");
@@ -30,7 +30,7 @@
   drawGauge("quota-day", 25, "高峰平均车速");
   drawGauge3("quota-night", 63, "公共交通出行使用率");
 
-  drawGauge4("totalnumber", 60, "外牌车辆管理指数");
+  //drawGauge4("totalnumber", 60, "外牌车辆管理指数");
 
   // drawQuota("quota");
   dynamic();
@@ -360,12 +360,12 @@
         radius : '40%',
         center : [ '50%', '60%' ],
         data : [ {
-          value : 1059845,
-          name : '外地\n车牌'
-        }, {
-          value : 1053945,
+          value : 1852235,
           name : '广州市\n车牌'
-        } ],
+        } , {
+          value : 1145236,
+          name : '外地\n车牌'
+        }],
         itemStyle : {
           emphasis : {
             shadowBlur : 10,
@@ -438,8 +438,8 @@
       },
       legend : {
         data : [ '本地车牌占比', '外地车牌占比' ],
-        right : 40,
-        top : '10%',
+        right : '40',
+        top : '45',
         textStyle : {
           color : '#FFFFFF'
         }
@@ -452,10 +452,10 @@
         formatter : "{b}<br>{c}"
       },
       grid : {
-        left : '5%',
-        right : '15%',
-        bottom : '0%',
-        top : '22%',
+        left : '5',
+        right : '90',
+        bottom : '25',
+        top : '80',
         containLabel : true
       },
       xAxis : {
@@ -468,8 +468,6 @@
           }
         },
         min : 0,
-        max : 10,
-
         nameTextStyle : {
           color : '#FFFFFF'
         }
@@ -493,13 +491,15 @@
       series : [ {
         name : '本地车牌占比',
         type : 'bar',
+        barWidth : '60%',
         stack : '合并',
-        data : [ 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0 ]
+        data : [ 0.9,0.9,1.0,1.0,1.1,1.1,1.2,1.2 ]
       }, {
         name : '外地车牌占比',
         type : 'bar',
         stack : '合并',
-        data : [ 2.60, 2.65, 2.70, 2.75, 2.80, 2.85, 2.90, 2.95 ]
+        barWidth : '60%',
+        data : [ 0.85,0.9,0.95,1.0,1.05,1.1,1.15,1.2 ]
       } ]
     };
     chart.setOption(option);
@@ -511,6 +511,14 @@
     var obj = document.getElementById(id);
     var chart = echarts.init(obj);
     var option = null;
+    var dateStart=(new Date).getHours();
+    var dateArr=[];
+    for(var i=dateStart+1;i<24;i++){
+      dateArr.push(i);
+    }
+    for(var i=0;i<dateStart+1;i++){
+      dateArr.push(i);
+    }
     option = {
         color : colorRgba(), 
       title : {
@@ -522,18 +530,24 @@
         }
       },
       grid : {
-        left : '40',
-        right : '20',
-        top : '100'
+        left : '30',
+        right : '50',
+        bottom : '25',
+        top : '80',
+        containLabel : true
       },
       xAxis : {
         type : 'category',
+        name:'时',
         boundaryGap : false,
-        data : [ '0', '3', '6', '9', '12', '15', '18', '21', '24' ],
+        data : dateArr,
         axisLabel : {
           textStyle : {
             color : '#FFFFFF'
           }
+        },
+        nameTextStyle : {
+          color : '#FFFFFF'
         }
       },
       yAxis : {
@@ -542,24 +556,27 @@
           textStyle : {
             color : '#FFFFFF'
           }
+        },
+        nameTextStyle : {
+          color : '#FFFFFF'
         }
       },
       legend : {
-        data : [ '外牌车辆占比', '拥堵延时指数' ],
-        top : 60,
+        data : [  '拥堵延时指数' ,'外牌车辆占比'],
+        top : '45',
         textStyle : {
           color : '#FFFFFF'
         }
       },
-      series : [ {
-        name : '外牌车辆占比',
-        type : 'line',
-        data : [ 0.51, 0.49, 0.48, 0.53, 0.53, 0.51, 0.50, 0.49, 0.5 ]
-      }, {
+      series : [  {
         name : '拥堵延时指数',
         type : 'line',
-        data : [ 1.2, 1.2, 1.2, 1.3, 1.4, 1.2, 1.3, 1.25, 1.2 ]
-      } ]
+        data : [ 1.2, 1.2, 1.2, 1.3, 1.8, 1.2, 1.3, 1.25, 1.2 , 1.6, 1.25, 1.2, 1.2, 1.2, 1.2, 1.21, 1.22, 1.2, 1.23, 1.25, 1.2 , 1.3, 1.25, 1.2]
+      } ,{
+        name : '外牌车辆占比',
+        type : 'line',
+        data : [ 0.51, 0.49, 0.48, 0.7, 0.53, 0.51, 0.50, 0.49, 0.6, 0.50, 0.49, 0.5 ,0.51, 0.49, 0.48, 0.53, 0.53, 0.51, 0.50, 0.49, 0.5, 0.50, 0.49, 0.5  ]
+      }]
     };
     chart.setOption(option);
     $(window).on("resize", function() {
@@ -646,6 +663,7 @@
       },
       series : [ {
         type : 'gauge',
+        center:['50%','65%'],
         radius : '70%',
         detail : {
           formatter : '{value}km/h',
@@ -760,6 +778,7 @@
       },
       series : [ {
         type : 'gauge',
+        center:['50%','65%'],
         radius : '70%',
         detail : {
           formatter : '{value}%',
@@ -873,7 +892,7 @@
        */
       var random1 = 959845 + Math.floor(Math.random() * 100000);
       var random2 = 5000 + Math.floor(Math.random() * 3000);
-      drawMsgPie("msg-pie1", random1, 2113790, "外牌车辆");
+      drawMsgPie("msg-pie1", random1, (1145236+1852235), "外牌车辆");
       drawMsgPie("msg-pie2", random2, 10000, "外牌违章车辆");
     }, 5000);
   }
