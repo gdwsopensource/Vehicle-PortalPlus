@@ -219,7 +219,7 @@
 	};
 	lineECharts_2.setOption(lineECharts_2_option);
 	
-	var testBoolean=false;
+/*	var testBoolean=false;
 	$("#btn-submit").on('click',function(){
 		alert(1);
 		if(!testBoolean){
@@ -230,7 +230,7 @@
 		
 		return false;
 	})
-	
+	*/
 	
 	
 	

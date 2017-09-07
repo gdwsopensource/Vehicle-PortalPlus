@@ -210,8 +210,8 @@
                 selectedMode: 'single',
                 selectedOffset: 2,
                 data: [
-                    {value: 11142731, name: '本地车', selected: true},
-                    {value: 11053945, name: '外牌车'}
+                    {value: 1852235, name: '本地车', selected: true},
+                    {value: 1145236, name: '外牌车'}
                 ]
             },
             {
@@ -221,8 +221,8 @@
                 selectedOffset: 5,
                 radius: ['50%', '65%'],
                 data: [
-                    {value: 1059845, name: '本地车', selected: true},
-                    {value: 1053945, name: '外牌车'}
+                    {value: 1852235, name: '本地车', selected: true},
+                    {value: 1145236, name: '外牌车'}
                 ]
             }
         ]
@@ -431,7 +431,7 @@
                 center: ['70%', '40%'],
                 data: [
                     {
-                        value: 50,
+                        value: 1145236,
                         label: {
                             normal: {
                                 formatter: '{d} %',
@@ -446,7 +446,7 @@
                         }
                     },
                     {
-                        value: 50,
+                        value: 1852235 ,
                         tooltip: {
                             show: false
                         },

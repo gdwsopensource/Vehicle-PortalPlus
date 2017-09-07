@@ -221,5 +221,13 @@
 		} ]
 	}
 	pieECharts.setOption(pieECharts_option);
+	
+	$("#table_air_quality").slimScroll({
+		height: '450px',
+		size: '5px',
+		color: '#d2d6de'
+	});
+	
+	
 
 })(jQuery);

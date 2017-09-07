@@ -6,6 +6,19 @@
 			trigger : 'item',
 			formatter : "{a} <br/>{b}: {c} ({d}%)"
 		},
+	   title: {
+	        text: '违法车辆',
+	        subtext: '2562 辆',
+	        x: 'center',
+	        y: '38%',
+	        textStyle: {
+	            fontWeight: 'normal',
+	            fontSize: 22
+	        },
+	        subtextStyle:{
+	        	fontSize: 14
+	        }
+	    },
 		legend : {
 			orient : 'horizontal',
 			data : [ '闯红灯', '逆向行驶', '酒驾', '多次违章', '其他' ],
@@ -21,15 +34,10 @@
 			avoidLabelOverlap : false,
 			label : {
 				normal : {
-					show : false,
-					position : 'center'
+					show : false
 				},
 				emphasis : {
-					show : true,
-					textStyle : {
-						fontSize : '30',
-						fontWeight : 'bold'
-					}
+					show : false
 				}
 			},
 			labelLine : {

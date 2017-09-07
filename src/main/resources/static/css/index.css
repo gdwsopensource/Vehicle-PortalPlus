@@ -389,10 +389,10 @@
 /* 高频分析  end  */
 /*智能辅助 决策辅助*/
 .outer-economics-title {
-	height: 65px;
-	line-height: 65px;
+	height: 50px;
+	line-height: 50px;
 	text-align: center;
-	font-size: 26px;
+	font-size: 22px;
 }
 
 .region-explain {

@@ -233,6 +233,19 @@
 			width : '90%',
 			itemGap : 20
 		},
+		title: {
+	        text: '车辆总数',
+	        subtext: '146020 辆',
+	        x: 'center',
+	        y: '38%',
+	        textStyle: {
+	            fontWeight: 'normal',
+	            fontSize: 22
+	        },
+	        subtextStyle:{
+	        	fontSize: 14
+	        }
+	    },
 		series : [ {
 			name : '车辆类型',
 			type : 'pie',
@@ -241,15 +254,10 @@
 			avoidLabelOverlap : false,
 			label : {
 				normal : {
-					show : false,
-					position : 'center'
+					show : false
 				},
 				emphasis : {
-					show : true,
-					textStyle : {
-						fontSize : '30',
-						fontWeight : 'bold'
-					}
+					show : false
 				}
 			},
 			labelLine : {
