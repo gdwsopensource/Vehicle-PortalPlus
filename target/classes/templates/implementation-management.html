@@ -7,7 +7,8 @@
 		<header th:include="@{include/header}" class="main-header"></header>
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
 		<div class="content-wrapper">
-			<section class="content container-fluid">
+			<section class="content container-fluid">			
+				<img id="publish-report-image" src="image/publish-report-image.jpg" style="display: none;position: absolute;z-index: 50;width: 430px;height: 430px;" />
 				<div class="box box-warning" id="btn-area">
 					<div class="row">
 						<div class="col-md-3">
@@ -40,7 +41,6 @@
 
 					<div class="box-header with-border">分析报告</div>
 					<div class="box-body">
-
 						<textarea id="editor1" name="editor1">
                         </textarea>
 					</div>

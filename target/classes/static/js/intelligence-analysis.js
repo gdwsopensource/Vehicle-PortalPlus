@@ -1,9 +1,13 @@
 (function($) {
   // 数据
   var crossInfo = [];
-  //暴露活跃区域的地图变量出来调用
+  var mainRoadInfo = [];
+  // 一个切换数据的全局变量
+  var isToggle = false;
+  // 暴露活跃区域的地图变量出来调用
   var activeMapChart;
-  var activeMapCenter=[113.366286, 23.130748];
+  var activeMapCenter = [ 113.366286, 23.130748 ];
+  var searchArea = {};
   // 初始化
   // resizeInit();
   $('#search-date').daterangepicker();
@@ -11,9 +15,9 @@
 
   // 执行函数
   drawActiveMap("active-map");
+  drawOwnBar("own-bar");
   drawCrowdBar("crowd-bar");
   drawCrowdLine("crowd-line");
-  drawOwnBar("own-bar");
 
   drawEconomicArea("economic-area");
   drawEconomicType("economic-type");
@@ -26,9 +30,10 @@
   drawFeelingsScore("feelings-score");
   drawFeelingsWay("feelings-way");
   drawFellingsDay("feelings-day");
-  
-  
-  
+
+  $.get('data/main_road_node.json', function(data) {
+    mainRoadInfo = data;
+  });
 
   $.get('data/new_cross_info.json', function(data) {
     // 卡口列表动态获取
@@ -49,8 +54,8 @@
     // 画百度地图
     var map = new BMap.Map('search-map');
     var poi = new BMap.Point(113.268781, 23.136371);
-    map.centerAndZoom(poi,15);
-    //这行设置可用来重载
+    map.centerAndZoom(poi, 15);
+    // 这行设置可用来重载
     // map.enableScrollWheelZoom();
     map.addControl(new BMap.NavigationControl({
       anchor : BMAP_ANCHOR_TOP_LEFT,
@@ -91,8 +96,8 @@
         // console.log(e.overlay);
         var x1 = e.overlay.point.lng;
         var y1 = e.overlay.point.lat;
-        //传参去活跃地图中心点
-        activeMapCenter=[x1,y1];
+        // 传参去活跃地图中心点
+        activeMapCenter = [ x1, y1 ];
         var r = parseFloat(e.overlay.xa);
         var inArr = [];
         var len = data.length;
@@ -111,6 +116,11 @@
           var point = new BMap.Point(inArr[i].bd_long, inArr[i].bd_lat);
           addMarker(point);
         }
+        // 传参去找内部路段
+        searchArea.type = "circle";
+        searchArea.x1 = x1;
+        searchArea.y1 = y1;
+        searchArea.r = r;
       } else if (e.drawingMode == "rectangle") {
         // 矩形
         // console.log(e.overlay);
@@ -118,8 +128,8 @@
         var y1 = e.overlay.po[0].lat;
         var x2 = e.overlay.po[2].lng;
         var y2 = e.overlay.po[2].lat;
-      //传参去活跃地图中心点
-        activeMapCenter=[(x1+x2)/2,(y1+y2)/2];
+        // 传参去活跃地图中心点
+        activeMapCenter = [ (x1 + x2) / 2, (y1 + y2) / 2 ];
         var inArr = [];
         var len = data.length;
         for (var i = 0; i < len; i += 2) {
@@ -142,17 +152,23 @@
           var point = new BMap.Point(inArr[i].bd_long, inArr[i].bd_lat);
           addMarker(point);
         }
+        // 传参去找内部路段
+        searchArea.type = "rectangle";
+        searchArea.x1 = x1;
+        searchArea.y1 = y1;
+        searchArea.x2 = x2;
+        searchArea.y2 = y2;
       }
 
     };
     var styleOptions = {
-      strokeColor : "red", // 边线颜色。
-      fillColor : "red", // 填充颜色。当参数为空时，圆形将没有填充效果。
+      strokeColor : "rgb(91,180,217)", // 边线颜色。
+      fillColor : "rgb(91,180,217)", // 填充颜色。当参数为空时，圆形将没有填充效果。
       strokeWeight : 3, // 边线的宽度，以像素为单位。
       strokeOpacity : 0.8, // 边线透明度，取值范围0 - 1。
-      fillOpacity : 0.6, // 填充的透明度，取值范围0 - 1。
+      fillOpacity : 0.5, // 填充的透明度，取值范围0 - 1。
       strokeStyle : 'solid' // 边线的样式，solid或dashed。
-    }
+    };
     // 实例化鼠标绘制工具
     var drawingManager = new BMapLib.DrawingManager(map, {
       isOpen : false, // 是否开启绘制模式
@@ -201,9 +217,40 @@
   $(window).on('resize', function() {
     resizeInit();
   });
-  $("#search-submit").on('click',function(){
-    changeActiveMapCenter(activeMapCenter,15);
+  $("#search-submit").on('click', function() {
+    // 地图找出卡口
+    changeActiveMapCenter(activeMapCenter, 15);
     scrollToFixed("#traffic", 95);
+    // 找出路段
+
+    // active-icon的三个数据变化，数据切换数据
+    isToggle = !isToggle;
+    if (isToggle) {
+      $("#active-icon-1").html("37.5");
+      $("#active-icon-2").html("29.8");
+      $("#active-icon-3").html("17.9");
+      drawOwnBar("own-bar",[ 4.0942, 4.1551, 9.6452, 21.0000, 27.8936 ]);
+      drawCrowdLine("crowd-line",{
+        car : [ 0.51, 0.49, 0.48, 0.52, 0.50, 0.51, 0.50, 0.49, 0.51 ],
+        time : [ 1.3, 1.25, 1.2, 1.55, 1.4, 1.2, 1.2, 1.1, 1.04 ]
+      });
+      if (searchArea.type) {
+        changeRoad(searchArea);
+      }
+    } else {
+      $("#active-icon-1").html("39.5");
+      $("#active-icon-2").html("25.3");
+      $("#active-icon-3").html("18.7");
+      drawOwnBar("own-bar",[ 5.0942, 5.1551, 11.6452, 20.0000, 25.8936 ]);
+      drawCrowdLine("crowd-line",{
+        car : [ 0.51, 0.49, 0.48, 0.53, 0.53, 0.51, 0.50, 0.49, 0.5 ],
+        time : [ 1.2, 1.2, 1.2, 1.45, 1.4, 1.2, 1.2, 1.1, 1.2 ]
+      });
+      if (searchArea.type) {
+        changeRoad(searchArea);
+      }
+    }
+
   });
   $("#top-create-report").on('click', function() {
     sendReport("近一月情报分析智能报告")
@@ -236,12 +283,59 @@
 
   $("#search-crosslist ul>li").click(deleteCross);
   // 自定义函数
-  function changeActiveMapCenter(center,zoom){      
-      console.log(activeMapChart.getOption());
-      var option=activeMapChart.getOption();
-      option.bmap[0].center=center;
-      option.bmap[0].zoom=zoom;
-      activeMapChart.setOption(option);
+  function changeRoad(searchArea) {
+    var inRoadArr = [];
+    if (searchArea.type == "circle") {
+      var len = mainRoadInfo.length;
+      for (var i = 0; i < len; i++) {
+        var itemArr = mainRoadInfo[i].bd_point.split(",");
+        if (calcDistance(searchArea.x1, searchArea.y1, parseFloat(itemArr[0]),
+            parseFloat(itemArr[1])) < searchArea.r) {
+          inRoadArr.push(mainRoadInfo[i]);
+        }
+      }
+    } else if (searchArea.type == "rectangle") {
+      var len = mainRoadInfo.length;
+      for (var i = 0; i < len; i++) {
+        var itemArr = mainRoadInfo[i].bd_point.split(",");
+        if (itemArr[0] < Math.max(searchArea.x1, searchArea.x2)
+            && itemArr[0] > Math.min(searchArea.x1, searchArea.x2)
+            && itemArr[1] < Math.max(searchArea.y1, searchArea.y2)
+            && itemArr[1] > Math.min(searchArea.y1, searchArea.y2)) {
+          inRoadArr.push(mainRoadInfo[i]);
+        }
+      }
+    }
+    // 得到内部的路段数组inRoadArr
+    var roadNameArr = [];
+    var tempNameArr = [ '机场高速公路', '广园快速路', '江海大道', '环城高速', '东风东路' ];
+    for (var i = 0; i < 5; i++) {
+      if (inRoadArr[i]) {
+        roadNameArr.push(inRoadArr[i].road_name);
+      } else {
+        roadNameArr.push(tempNameArr[i]);
+      }
+    }
+    if (isToggle) {
+      drawCrowdBar("crowd-bar", roadNameArr, {
+        local : [ 0.9, 0.9, 1.0, 1.0, 1.3 ],
+        nonlocal : [ 0.85, 1.0, 0.95, 1.0, 1.2 ]
+      });
+    } else {
+      drawCrowdBar("crowd-bar", roadNameArr, {
+        local : [ 0.9, 0.7, 1.3, 1.0, 1.6 ],
+        nonlocal : [ 0.85, 1.1, 0.95, 1.0, 1.1 ]
+      });
+    }
+    console.log(inRoadArr, roadNameArr);
+  }
+
+  function changeActiveMapCenter(center, zoom) {
+    console.log(activeMapChart.getOption());
+    var option = activeMapChart.getOption();
+    option.bmap[0].center = center;
+    option.bmap[0].zoom = zoom;
+    activeMapChart.setOption(option);
 
   }
   function deleteCross() {
@@ -269,16 +363,20 @@
   }
   function sendReport(title) {
     if (window.localStorage) {
+      var feelingsTableStr='<table class="table" style="margin:auto;"><tbody>  <tr>    <td class="text-center"><span class="badge bg-light-blue">1</span></td>    <td>外牌车辆管理</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge bg-light-blue">2</span></td>    <td>广州市交通堵塞</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge bg-light-blue">3</span></td>    <td>海珠区工业大道长期塞车</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge text-blue-badge">4</span></td>    <td>内环路经常交通堵塞</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge text-blue-badge">5</span></td>    <td>龙口西往天河北方向闯红灯</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>   <tr>    <td class="text-center"><span class="badge text-blue-badge">5</span></td>    <td>内环路上下班堵塞</td>    <td><span class="icon-fire"></span></td>  </tr>                </tbody>                 </table>';
+      
+      
       var textStr = "";
       textStr += '<h1 style="text-align: center">' + title + '</h1>';
       textStr += '<h2>一、概览分析</h2>';
-      textStr += '<p>近一月（2017年07月22日-2017年08月21日）中，广州外牌车数量106万辆，占总车辆的50%；外牌车带来的经济效益为8.5万亿元，有33%的经济与此相关；外牌车总排放量为5.6万吨，占汽车总排放量的32%；跟限外相关的话题共产生3450条次，同比上月上升8%。</p>';
+      textStr += '<p>近一月（2017年07月22日-2017年08月21日）中，广州外牌车数量1145236辆，占总车辆的38.25%；外牌车带来的经济效益为8.5万亿元，有33%的经济与此相关；外牌车总排放量为5.6万吨，占汽车总排放量的32%；跟限外相关的话题共产生3450条次，同比上月上升8%。</p>';
       textStr += '<h2>二、交通分析</h2>';
       textStr += drawReportById("crowd-bar", "城市拥堵路段Top5", "东风东路最拥堵，拥堵延时指数2.0。");
-      textStr += drawReportById("crowd-line", "城市拥堵路段Top5",
+      textStr += drawReportById("crowd-line", "拥堵延时指数和外来车流量占比",
           "8点和18点拥堵情况最严重，此时外牌车占比也达到较大值。");
       textStr += '<h2>三、社情民意分析</h2>';
-      textStr += drawReportById("feelings-score", "民意满意度", "民意满意99分，多一分怕骄傲。");
+      textStr+=feelingsTableStr;
+      textStr+='民意重点关注外牌车辆管理问题，以及道路堵塞问题。';
       textStr += '<h2>四、经济分析</h2>';
       textStr += drawReportById("economic-area", "区域经济",
           "荔湾区经济总值上升35%，花都区经济总值下降15%，跟限外政策相关度不大。");
@@ -336,7 +434,7 @@
       }
       var obj = document.getElementById(id);
       var chart = echarts.init(obj);
-      activeMapChart=chart;
+      activeMapChart = chart;
       var option = null;
       option = {
         bmap : {
@@ -371,16 +469,24 @@
       }));
       $(window).on("resize", function() {
         chart.resize();
-      });      
+      });
     })
   }
 
-  function drawCrowdBar(id) {
+  function drawCrowdBar(id, roadName, data) {
+    roadName = roadName || [ '机场高速公路', '广园快速路', '江海大道', '环城高速', '东风东路' ];
+    data = data || {
+      local : [ 0.9, 0.9, 1.0, 1.0, 1.1 ],
+      nonlocal : [ 0.85, 0.9, 0.95, 1.0, 1.05 ]
+    };
     var obj = document.getElementById(id);
     var chart = echarts.init(obj);
     var option = null;
     option = {
       color : colorRgba(),
+      legend : {
+        data : [ '本地车牌占比', '外地车牌占比' ]
+      },
       tooltip : {
         trigger : 'axis',
         axisPointer : {
@@ -396,26 +502,29 @@
         containLabel : true
       },
       xAxis : {
-        name : '延时指数',
         type : 'value',
-        boundaryGap : [ 0, 0.01 ]
+        name : '拥堵指数',
+        boundaryGap : [ 0, 0.01 ],
+        min : 0
       },
       // 注意数据是从下到上
       yAxis : {
-        name : '路段',
         type : 'category',
-        data : [ '机场高速公路', '广园快速路', '江海大道', '环城高速', '东风东路' ]
+        name : '拥堵路段',
+        data : roadName
       },
       series : [ {
+        name : '本地车牌占比',
         type : 'bar',
-        data : [ 1.6, 1.7, 1.8, 1.9, 2.0 ],itemStyle : {
-          normal : {
-            color : function(params) {
-              var colorList = colorRgba().concat(colorRgba()).concat(colorRgba());
-              return colorList[params.dataIndex];
-            }
-          }
-        }
+        barWidth : '60%',
+        stack : '合并',
+        data : data.local
+      }, {
+        name : '外地车牌占比',
+        type : 'bar',
+        stack : '合并',
+        barWidth : '60%',
+        data : data.nonlocal
       } ]
     };
     chart.setOption(option);
@@ -471,7 +580,8 @@
           value : 1500,
           name : '科韵路'
         } ]
-      } ],itemStyle : {
+      } ],
+      itemStyle : {
         normal : {
           color : function(params) {
             var colorList = colorRgba().concat(colorRgba()).concat(colorRgba());
@@ -485,7 +595,11 @@
       chart.resize();
     });
   }
-  function drawCrowdLine(id) {
+  function drawCrowdLine(id, data) {
+    data = data || {
+      car : [ 0.51, 0.49, 0.48, 0.53, 0.53, 0.51, 0.50, 0.49, 0.5 ],
+      time : [ 1.2, 1.2, 1.2, 1.45, 1.4, 1.2, 1.2, 1.1, 1.2 ]
+    };
     var obj = document.getElementById(id);
     var chart = echarts.init(obj);
     var option = null;
@@ -512,11 +626,11 @@
       series : [ {
         name : '外牌车辆占比',
         type : 'line',
-        data : [ 0.51, 0.49, 0.48, 0.53, 0.53, 0.51, 0.50, 0.49, 0.5 ]
+        data : data.car
       }, {
         name : '拥堵延时指数',
         type : 'line',
-        data : [ 1.2, 1.2, 1.2, 1.45, 1.4, 1.2, 1.2, 1.1, 1.2 ]
+        data : data.time
       } ]
     };
     chart.setOption(option);
@@ -524,7 +638,8 @@
       chart.resize();
     });
   }
-  function drawOwnBar(id) {
+  function drawOwnBar(id, data) {
+    data = data || [ 5.0942, 5.1551, 11.6452, 20.0000, 25.8936 ];
     var obj = document.getElementById(id);
     var chart = echarts.init(obj);
     var option = null;
@@ -557,10 +672,12 @@
       },
       series : [ {
         type : 'bar',
-        data : [ 5.0942, 5.1551, 11.6452, 20.0000, 25.8936 ],itemStyle : {
+        data : data,
+        itemStyle : {
           normal : {
             color : function(params) {
-              var colorList = colorRgba().concat(colorRgba()).concat(colorRgba());
+              var colorList = colorRgba().concat(colorRgba()).concat(
+                  colorRgba());
               return colorList[params.dataIndex];
             }
           }
@@ -588,9 +705,7 @@
           top : 10,
           right : 10,
           data : [ '进城', '出城' ],
-          textStyle : {
-
-          }
+          textStyle : {}
         },
         geo : {
           show : true,
@@ -1101,7 +1216,7 @@
         left : '5%',
         right : '5%',
         bottom : '5%',
-        top:'10%',
+        top : '10%',
         containLabel : true
       },
       xAxis : [ {
