@@ -290,8 +290,36 @@
 	
 	$('#btn-submit').on('click',function(){
 		var rule_value=$('#rule').val();
-		if( rule_value == 1 ){
+		if( rule_value == 2 ){
 			$.getJSON("../data/outer-limit-monitoring.json",function(data){
+				if(data.code === 0){
+					var lineEChartsArrVal=[],carTotal=data.data.carTotal;
+					for(var i=0;i<carTotal.length;i++){
+						lineEChartsArrVal[i]=carTotal[i].value;
+					}
+					console.log(lineEChartsArrVal);
+					lineECharts.setOption({
+						series:[
+							 {
+					                name: '总量',
+					                type: 'line',
+					                data: lineEChartsArrVal
+					         }
+						]
+					});
+					var indexData=data.data.congestion.value;
+					$("#index").html(readIndexFrame(indexData));	
+					console.log(readIndexFrame(indexData));	
+					
+					pieECharts.setOption({
+						series:[{
+							data:data.data.carTotal
+						}]
+					});	
+				}
+			});
+		}else if(rule_value == 3){
+			$.getJSON("../data/outer-limit-monitoring2.json",function(data){
 				if(data.code === 0){
 					var lineEChartsArrVal=[],carTotal=data.data.carTotal;
 					for(var i=0;i<carTotal.length;i++){
