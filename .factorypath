@@ -85,6 +85,7 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/font-awesome/4.7.0/font-awesome-4.7.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/ionicons/2.0.1/ionicons-2.0.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/bower/jquery-ui/1.12.1/jquery-ui-1.12.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/bower/echarts/3.6.2/echarts-3.6.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/bower/chart.js/2.5.0/chart.js-2.5.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/ckeditor/4.7.0/ckeditor-4.7.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/bootstrap/3.1.0/bootstrap-3.1.0.jar" enabled="true" runInBatchMode="false"/>
