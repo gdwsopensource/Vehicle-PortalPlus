@@ -53,7 +53,7 @@
 
     // 画百度地图
     var map = new BMap.Map('search-map');
-    var poi = new BMap.Point(113.268781, 23.136371);
+    var poi = new BMap.Point(113.342369,23.132458);
     map.centerAndZoom(poi, 15);
     // 这行设置可用来重载
     // map.enableScrollWheelZoom();
@@ -305,56 +305,58 @@
       }
     }
     // 得到内部的路段数组inRoadArr
-    var roadNameArr = [];
-    var tempNameArr = [ '东风东路' ,'广园快速路', '广佛高速路','黄埔大道西','江南大道中'];;
-    for (var i = 0; i < 5; i++) {
-      if (inRoadArr[i]) {
-        roadNameArr.push(inRoadArr[i].road_name);
-      } else {
-        roadNameArr.push(tempNameArr[i]);
-      }
-    }
-    if (isToggle) {
-      drawCrowdBar("crowd-bar", roadNameArr, {
-        local : [ 0.9, 0.9, 1.0, 1.0, 1.3 ],
-        nonlocal : [ 0.85, 1.0, 0.95, 1.0, 1.2 ]
-      });
-    } else {
-      drawCrowdBar("crowd-bar", roadNameArr, {
-        local : [ 0.9, 0.7, 1.3, 1.0, 1.6 ],
-        nonlocal : [ 0.85, 1.1, 0.95, 1.0, 1.1 ]
-      });
-    }
-    console.log(inRoadArr, roadNameArr);
-    
-    
-    //更新该区域拥堵路段排名
-    for(var i=0;i<inRoadArr.length;i++){
-      inRoadArr[i].pamHigh=parseFloat((Math.random()*1+3).toFixed(2));
-      inRoadArr[i].pamFree=parseFloat((Math.random()*30+40).toFixed(2));
-      inRoadArr[i].pamSpeed=parseFloat(inRoadArr[i].pamFree/inRoadArr[i].pamHigh).toFixed(2);
+
+    // 更新该区域拥堵路段排名
+    for (var i = 0; i < inRoadArr.length; i++) {
+      inRoadArr[i].pamHigh = parseFloat((Math.random() * 1 + 3).toFixed(2));
+      inRoadArr[i].pamFree = parseFloat((Math.random() * 30 + 40).toFixed(2));
+      inRoadArr[i].pamSpeed = parseFloat(
+          inRoadArr[i].pamFree / inRoadArr[i].pamHigh).toFixed(2);
       console.log(inRoadArr[i]);
     }
 
-    inRoadArr.sort(function(a,b){
-      return (b.pamHigh-a.pamHigh);
+    inRoadArr.sort(function(a, b) {
+      return (b.pamHigh - a.pamHigh);
     });
     console.log(inRoadArr);
     $("#crowd-table>table>tbody").empty();
-    var tbodyStr="";
-    for(var i=0;i<inRoadArr.length;i++){
-      var t=inRoadArr[i];
-      tbodyStr+=('<tr>'+
-                      '<td>'+(i+1)+'</td>'+
-                      '<td>'+t.road_name+'</td>'+
-                      '<td class="text-info"><i class="fa fa-arrows-h"></i></td>'+
-                      '<td>'+t.pamHigh+'</td>'+
-                      '<td>'+t.pamSpeed+'</td>'+
-                      '<td>'+t.pamFree+'</td>'+
-                   ' </tr>')
+    var tbodyStr = "";
+    for (var i = 0; i < inRoadArr.length; i++) {
+      var t = inRoadArr[i];
+      tbodyStr += ('<tr>' + '<td>' + (i + 1) + '</td>' + '<td>' + t.road_name
+          + '</td>'
+          + '<td class="text-info"><i class="fa fa-arrows-h"></i></td>'
+          + '<td>' + t.pamHigh + '</td>' + '<td>' + t.pamSpeed + '</td>'
+          + '<td>' + t.pamFree + '</td>' + ' </tr>')
     }
     $("#crowd-table>table>tbody").append(tbodyStr);
-    
+
+    // 更新拥堵路段Top5
+    var roadNameArr = [];
+    var local = [];
+    var nonlocal = [];
+    var tempNameArr = [ '东风东路', '广园快速路', '广佛高速路', '黄埔大道西', '江南大道中' ];
+    var tempCar = [ 1.98, 1.85, 1.75, 1.72, 1.66 ];
+    var LOCAL = 0.62;
+    for (var i = 0; i < 5; i++) {
+      if (inRoadArr[i]) {
+        roadNameArr.push(inRoadArr[i].road_name);
+        local.push((tempCar[i] * LOCAL).toFixed(2));
+        nonlocal.push((tempCar[i] * (1 - LOCAL)).toFixed(2));
+      } else {
+        roadNameArr.push(tempNameArr[i]);
+        local.push((tempCar[i] * LOCAL).toFixed(2));
+        nonlocal.push((tempCar[i] * (1 - LOCAL)).toFixed(2));
+      }
+    }
+    roadNameArr = roadNameArr.reverse();
+    local=local.reverse();
+    nonlocal=nonlocal.reverse();
+    drawCrowdBar("crowd-bar", roadNameArr, {
+      local : local,
+      nonlocal : nonlocal
+    });
+    console.log(inRoadArr, roadNameArr);
   }
 
   function changeActiveMapCenter(center, zoom) {
@@ -397,7 +399,8 @@
       textStr += '<h2>一、概览分析</h2>';
       textStr += '<p>近一月（2017年08月08日-2017年09月07日）中，广州外牌车数量1145236辆，占总车辆的38.25%；外牌车带来的经济效益为8.5万亿元，有33%的经济与此相关；外牌车总排放量为5.6万吨，占汽车总排放量的32%；跟限外相关的话题共产生3450条次，同比上月上升8%。</p>';
       textStr += '<h2>二、交通分析</h2>';
-      textStr += drawReportById("crowd-bar", "城市拥堵路段Top5", "江南大道中最拥堵，拥堵延时指数2.2。");
+      textStr += drawReportById("crowd-bar", "城市拥堵路段Top5",
+          "江南大道中最拥堵，拥堵延时指数2.2。");
       textStr += drawReportById("crowd-line", "拥堵延时指数和外来车流量占比",
           "8点和18点拥堵情况最严重，此时外牌车占比也达到较大值。");
       textStr += '<h2>三、社情民意分析</h2>';
@@ -497,7 +500,7 @@
   }
 
   function drawCrowdBar(id, roadName, data) {
-    roadName = roadName || [ '东风东路' ,'广园快速路', '广佛高速路','黄埔大道西','江南大道中'];
+    roadName = roadName || [ '东风东路', '广园快速路', '广佛高速路', '黄埔大道西', '江南大道中' ];
     data = data || {
       local : [ 0.93, 0.92, 1.05, 1.06, 1.1 ],
       nonlocal : [ 0.85, 0.9, 0.95, 1.0, 1.05 ]

@@ -31,9 +31,11 @@
     publishWechat(str);
     
     $.get("/postImgAll",function(data){
-    	console.log(data);
+      console.log(data);
     });
   });
+  /*
+  //微信发布分组问题没解决，暂不公开二维码
   $("#publish-report").on('mouseover',function(){
     console.log($("#publish-report").offset().top);
     var top=parseInt($("#publish-report").offset().top)+50;
@@ -47,6 +49,7 @@
   $("#publish-report").on('mouseout',function(){
     $("#publish-report-image").hide();
   })
+  */
   // 自定义函数
   function exportWord(title) {
     var reportBody = $(".cke_wysiwyg_frame").contents().find("body");
