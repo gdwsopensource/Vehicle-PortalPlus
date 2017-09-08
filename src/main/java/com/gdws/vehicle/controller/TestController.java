@@ -132,7 +132,7 @@ public class TestController {
 	@GetMapping(value="/postImgAll")
 	public String PostImgAll() {
 		String access_token = (String) GetAccessToken().get("access_token");
-		String[] cmds = { "curl", "-F", "media=@D:/uploadImg/_20170907111515.jpg",
+		String[] cmds = { "curl", "-F", "media=img/_20170908095310.jpg",
 				"https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + access_token + "&type=image"};
 		ProcessBuilder pb = new ProcessBuilder(cmds);
 		pb.redirectErrorStream(true);
