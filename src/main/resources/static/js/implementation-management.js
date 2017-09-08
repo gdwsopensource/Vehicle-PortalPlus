@@ -33,6 +33,7 @@
     $.get("/postImgAll",function(data){
     	console.log(data);
     });
+    
   });
   $("#publish-report").on('mouseover',function(){
     console.log($("#publish-report").offset().top);

@@ -85,7 +85,7 @@
     */
     drawActiveMap("mapECharts");
     function drawActiveMap(id) {
-        $.get('data/limit-fullpage-cross.json', function(data) {
+        $.get('data/limit-fullpage-cross-4.json', function(data) {
           var len = data.length;
           var hotData = [];
           for (var i = 0; i < len; i += 2) {
@@ -316,6 +316,24 @@
 							data:data.data.carTotal
 						}]
 					});	
+					$.get('data/limit-fullpage-cross.json', function(data) {
+						  var len = data.length;
+				          var hotData = [];
+				          for (var i = 0; i < len; i += 2) {
+				            hotData[i / 2] = [ data[i].long, data[i].lat, data[i].count ];
+				          }
+				          var obj = document.getElementById("mapECharts");
+				          var chart = echarts.init(obj);
+				          var option = null;
+				          option={
+				        		  series:[{
+				        			  data:hotData
+				        		  }]
+				          }
+				          chart.setOption(option);
+					});
+					
+					
 				}
 			});
 		}else if(rule_value == 3){
@@ -381,6 +399,22 @@
 						name : '其他'
 					} ]
 				}]
+			});
+			$.get('data/limit-fullpage-cross-4.json', function(data) {
+				  var len = data.length;
+		          var hotData = [];
+		          for (var i = 0; i < len; i += 2) {
+		            hotData[i / 2] = [ data[i].long, data[i].lat, data[i].count ];
+		          }
+		          var obj = document.getElementById("mapECharts");
+		          var chart = echarts.init(obj);
+		          var option = null;
+		          option={
+		        		  series:[{
+		        			  data:hotData
+		        		  }]
+		          }
+		          chart.setOption(option);
 			});
 		}
 	});

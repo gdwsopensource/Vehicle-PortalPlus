@@ -39,6 +39,9 @@ public class TestController {
 	// 用户群发 openID
 	public static String post_oppenid_url="https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=ACCESS_TOKEN";
 
+	//用户预览接口
+	public static String post_preview_url="https://api.weixin.qq.com/cgi-bin/message/mass/preview?access_token=ACCESS_TOKEN";
+	
 	
 	
 	// 第三方用户唯一凭证
@@ -132,7 +135,7 @@ public class TestController {
 	@GetMapping(value="/postImgAll")
 	public String PostImgAll() {
 		String access_token = (String) GetAccessToken().get("access_token");
-		String[] cmds = { "curl", "-F", "media=img/_20170908095310.jpg",
+		String[] cmds = { "curl", "-F", "media=@D:/uploadImg/_20170908095310.jpg",
 				"https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + access_token + "&type=image"};
 		ProcessBuilder pb = new ProcessBuilder(cmds);
 		pb.redirectErrorStream(true);
@@ -144,16 +147,17 @@ public class TestController {
 			String result = null ;
 			br = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			while ((line = br.readLine()) != null) {
+				System.out.println("\t" + line);
 				Pattern mediaPattern = Pattern.compile("media_id\":\"(.*)\",\"url");
 				Matcher m = mediaPattern.matcher(line);
 				if(m.find()){
 					result = m.group(1);
 					System.out.println("media_id: "+result);
-				}
-				//System.out.println("\t" + line);
+				}			
 			}
 			br.close();
-			String requestUrl = post_oppenid_url.replace("ACCESS_TOKEN", access_token);
+			String requestUrl = post_preview_url.replace("ACCESS_TOKEN", access_token);		
+			/*
 			String body = "{\r\n" + 
 					"    \"touser\": [\r\n" + 
 					"        \"odsrGwRSoWBVA7wog8_xbvCDyNEI\",\r\n" + 
@@ -167,7 +171,11 @@ public class TestController {
 					"        \"media_id\": \""+result+"\"\r\n" + 
 					"    },\r\n" + 
 					"    \"msgtype\": \"image\"\r\n" + 
-					"}";	
+					"}";
+			*/
+			String body="{\"touser\":\"odsrGwTXwERWOUuCY6JYUoYov5IM\",\"image\":{\"media_id\":\"0A6ohldWhAkKGWjRKzIq3ennf1N5dIvMh3bSNv67em0\"},\"msgtype\":\"image\"}";
+			
+			
 			CloseableHttpClient httpclient = HttpClients.createDefault();
 			HttpPost httpPost = new HttpPost(requestUrl);
 			httpPost.setEntity(new StringEntity(body, "UTF-8"));
