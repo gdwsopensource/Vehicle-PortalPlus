@@ -226,18 +226,18 @@
     // active-icon的三个数据变化，数据切换数据
     isToggle = !isToggle;
     if (isToggle) {
-      $("#active-icon-1").html("37.5");
-      $("#active-icon-2").html("29.8");
-      $("#active-icon-3").html("17.9");
+      $("#active-icon-1").html("37.5% / 62.5%");
+      $("#active-icon-2").html("29.8km / 48.6km");
+      $("#active-icon-3").html("17.9次 / 34.5次");
       drawOwnBar("own-bar", [ 4.0942, 4.1551, 9.6452, 21.0000, 27.8936 ]);
       drawCrowdLine("crowd-line", {
         car : [ 0.51, 0.49, 0.48, 0.52, 0.50, 0.51, 0.50, 0.49, 0.51 ],
         time : [ 1.3, 1.25, 1.2, 1.55, 1.4, 1.2, 1.2, 1.1, 1.04 ]
       });
     } else {
-      $("#active-icon-1").html("39.5");
-      $("#active-icon-2").html("25.3");
-      $("#active-icon-3").html("18.7");
+      $("#active-icon-1").html("40.6% / 59.4%");
+      $("#active-icon-2").html("27.6km / 42.2km");
+      $("#active-icon-3").html("15.3次 / 32.4次");
       drawOwnBar("own-bar", [ 5.0942, 5.1551, 11.6452, 20.0000, 25.8936 ]);
       drawCrowdLine("crowd-line", {
         car : [ 0.51, 0.49, 0.48, 0.53, 0.53, 0.51, 0.50, 0.49, 0.5 ],
@@ -392,7 +392,7 @@
   }
   function sendReport(title) {
     if (window.localStorage) {
-      var feelingsTableStr = '<table class="table" style="margin:auto;"><tbody>  <tr>    <td class="text-center"><span class="badge bg-light-blue">1</span></td>    <td>外牌车辆管理</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge bg-light-blue">2</span></td>    <td>广州市交通堵塞</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge bg-light-blue">3</span></td>    <td>海珠区工业大道长期塞车</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge text-blue-badge">4</span></td>    <td>内环路经常交通堵塞</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge text-blue-badge">5</span></td>    <td>龙口西往天河北方向闯红灯</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>   <tr>    <td class="text-center"><span class="badge text-blue-badge">5</span></td>    <td>内环路上下班堵塞</td>    <td><span class="icon-fire"></span></td>  </tr>                </tbody>                 </table>';
+      var feelingsTableStr = '<table class="table" style="margin:auto;"><tbody>  <tr>    <td class="text-center"><span class="badge bg-light-blue">1</span></td>    <td>外牌车辆管理</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge bg-light-blue">2</span></td>    <td>广州市交通堵塞</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge bg-light-blue">3</span></td>    <td>海珠区工业大道长期塞车</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge text-blue-badge">4</span></td>    <td>内环路经常交通堵塞</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>  <tr>    <td class="text-center"><span class="badge text-blue-badge">5</span></td>    <td>龙口西往天河北方向闯红灯</td>    <td><span class="icon-fire"></span><span class="icon-fire"></span><span class="icon-fire"></span></td>  </tr>   <tr>    <td class="text-center"><span class="badge text-blue-badge">6</span></td>    <td>内环路上下班堵塞</td>    <td><span class="icon-fire"></span></td>  </tr>                </tbody>                 </table>';
 
       var textStr = "";
       textStr += '<h1 style="text-align: center">' + title + '</h1>';
