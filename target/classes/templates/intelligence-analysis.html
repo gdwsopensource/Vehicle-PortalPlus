@@ -8,7 +8,7 @@
 		<aside th:include="@{include/aside}" class="main-sidebar"></aside>
 		<div class="content-wrapper intelligence-analysis">
 			<div class="fixed-menu tab-head">
-				<div class="menu active" id="menu-search" style="margin-left: 60px;">查询入口</div>
+				<div class="menu active" id="menu-search" style="margin-left: 60px;">分析入口</div>
 				<div class="menu" id="menu-traffic">交通分析</div>
 				<div class="menu" id="menu-feelings">社情民意分析</div>
 				<div class="menu" id="menu-economic">经济分析</div>
@@ -19,7 +19,7 @@
 					<div class="col-md-4">
 						<div class="box box-defalt zw-bg-white">
 							<div class="box-header with-border">
-								<h3 class="box-title">查询条件</h3>
+								<h3 class="box-title">分析条件</h3>
 							</div>
 							<div class="box-body" id="search-list" style="height: 500px;">
 								<div class="form-group">
@@ -59,7 +59,7 @@
 								</div>
 								<button class="btn btn-sm btn-info"
 									id="search-submit"
-									style="display: block;margin: auto;padding: 0 4px; font-size: 20px; width: 60px; height: 30px; line-height: 28px;">查询</button>
+									style="display: block;margin: auto;padding: 0 4px; font-size: 20px; width: 60px; height: 30px; line-height: 28px;">分析</button>
 							</div>
 						</div>
 					</div>
@@ -147,8 +147,8 @@
 								style="height: 360px;">
 								<div class="small-box zw-bg-blue" style="height: 100px;">
 									<div class="inner">
-										<h3><span id="active-icon-1">38.1</span>%</h3>
-										<p>该区域长期在广外牌车辆占比</p>
+										<h3><span id="active-icon-1">38.1% / 61.9%</span></h3>
+										<p>该区域活跃外牌/广州车辆占比</p>
 									</div>
 									<div class="icon">
 										<i class="ion ion-pie-graph"></i>
@@ -156,8 +156,8 @@
 								</div>
 								<div class="small-box zw-bg-red" style="height: 100px;">
 									<div class="inner">
-										<h3><span id="active-icon-2">32.7</span>km</h3>
-										<p>该区域长期在广外牌车辆月均行驶里程</p>
+										<h3><span id="active-icon-2">32.7km / 50.8km</span></h3>
+										<p>该区域活跃外牌/广州车辆月均行驶里程</p>
 									</div>
 									<div class="icon">
 										<i class="ion ion-model-s"></i>
@@ -165,8 +165,8 @@
 								</div>
 								<div class="small-box zw-bg-green" style="height: 100px;">
 									<div class="inner">
-										<h3><span id="active-icon-3">18.5</span>次</h3>
-										<p>该区域长期在广外牌车辆每月使用次数</p>
+										<h3><span id="active-icon-3">18.5次 / 35.6次</span></h3>
+										<p>该区域活跃外牌/广州车辆每月使用次数</p>
 									</div>
 									<div class="icon">
 										<i class="ion ion-pinpoint"></i>
@@ -204,7 +204,7 @@
 							<div class="box-header with-border">
 								<h3 class="box-title">拥堵路段</h3>
 							</div>
-							<div class="box-body" id="crowd-table">
+							<div class="box-body" id="crowd-table" style="max-height:382px;overflow: auto;">
 								<table class="table table-bordered table-hover text-center">
 									<thead>
 										<tr>
@@ -301,7 +301,7 @@
 									</tbody>
 								</table>
 							</div>
-
+							<div style="height:10px;"></div>
 						</div>
 					</div>
 				</div>
