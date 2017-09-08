@@ -173,7 +173,7 @@ public class TestController {
 					"    \"msgtype\": \"image\"\r\n" + 
 					"}";
 			*/
-			String body="{\"touser\":\"odsrGwTXwERWOUuCY6JYUoYov5IM\",\"image\":{\"media_id\":\"0A6ohldWhAkKGWjRKzIq3ennf1N5dIvMh3bSNv67em0\"},\"msgtype\":\"image\"}";
+			String body="{\"touser\":\"odsrGwTXwERWOUuCY6JYUoYov5IM\",\"image\":{\"media_id\":\""+result+"\"},\"msgtype\":\"image\"}";
 			
 			
 			CloseableHttpClient httpclient = HttpClients.createDefault();
